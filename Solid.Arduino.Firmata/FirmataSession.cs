@@ -11,51 +11,44 @@ namespace Solid.Arduino.Firmata
     {
         #region Type declarations
 
-        private enum MessageCommand
+        private enum MessageHeader
         {
-            Undefined,
-            AnalogState,
-            DigitalState,
-            ProtocolVersion,
-            SysExStart
+            Undefined = 0x00,
+            AnalogState = 0xE0,
+            DigitalState = 0x90,
+            ReportAnalog = 0xC0,
+            ReportDigital = 0xD0,
+            SystemExtension = 0xF0,
+            SetPinMode = 0xF4,
+            ProtocolVersion = 0xF9,
+            SystemReset = 0xFF
         }
 
         private struct MessageBuffer
         {
-            public MessageCommand CurrentMessage { get; private set; }
+            public MessageHeader CurrentMessage { get; private set; }
             public int DataByteIndex { get; private set; }
-            public int[] DataBuffer;
+            public int[] Data;
 
             public void Prepare(int messageByte)
             {
-                const int analogState = 0xE0;
-                const int digitalState = 0x90;
-                const int sysExStart = 0xF0;
-                const int protocolVersion = 0xF9;
+                CurrentMessage = (MessageHeader)messageByte;
 
-                switch (messageByte & 0xF0)
+                switch (CurrentMessage)
                 {
-                    case analogState:
-                        CurrentMessage = MessageCommand.AnalogState;
-                        break;
-
-                    case digitalState:
-                        CurrentMessage = MessageCommand.DigitalState;
-                        break;
-
-                    case sysExStart:
-                        if (messageByte == sysExStart)
-                            CurrentMessage = MessageCommand.SysExStart;
-                        else if (messageByte == protocolVersion)
-                            CurrentMessage = MessageCommand.ProtocolVersion;
+                    case MessageHeader.AnalogState:
+                    case MessageHeader.DigitalState:
+                    case MessageHeader.SystemExtension:
+                    case MessageHeader.ProtocolVersion:
                         break;
 
                     default:
                         // No message header or message not supported.
+                        CurrentMessage = MessageHeader.Undefined;
                         return;
                 }
 
-                DataBuffer[0] = messageByte;
+                Data[0] = messageByte;
                 DataByteIndex = 1;
             }
 
@@ -64,13 +57,13 @@ namespace Solid.Arduino.Firmata
                 if (DataByteIndex == BUFFERSIZE)
                     throw new OverflowException("The command parsing buffer is full.");
 
-                DataBuffer[DataByteIndex] = dataByte;
+                Data[DataByteIndex] = dataByte;
                 DataByteIndex++;
             }
 
             public void Clear()
             {
-                CurrentMessage = MessageCommand.Undefined;
+                CurrentMessage = MessageHeader.Undefined;
                 DataByteIndex = 0;
             }
         }        
@@ -85,12 +78,8 @@ namespace Solid.Arduino.Firmata
 
         private const byte AnalogMessage = 0xE0;
         private const byte DigitalMessage = 0x90;
-        private const byte ReportAnalog = 0xC0;
-        private const byte ReportDigital = 0xD0;
         private const byte SysExStart = 0xF0;
         private const byte SysExEnd = 0xF7;
-        private const byte ProtocolVersion = 0xF9;
-        private const byte SystemReset = 0xFF;
 
         private const int BUFFERSIZE = 512;
 
@@ -98,7 +87,7 @@ namespace Solid.Arduino.Firmata
         private readonly bool _gotOpenConnection;
         private readonly Queue<FirmataMessage> _receivedMessageQueue = new Queue<FirmataMessage>();
 
-        private MessageBuffer _inputBuffer = new MessageBuffer { DataBuffer = new int[BUFFERSIZE] };
+        private MessageBuffer _inputBuffer = new MessageBuffer { Data = new int[BUFFERSIZE] };
 
         #endregion
 
@@ -126,18 +115,18 @@ namespace Solid.Arduino.Firmata
         public event AnalogStateMessageReceivedHandler OnAnalogStateMessageReceived;
         public event DigitalStateMessageReceivedHandler OnDigitalStateMessageReceived;
 
-        public void SetAnalogLevel(int pinNumber, ulong level)
+        public void SetAnalogLevel(int channel, ulong level)
         {
-            if (pinNumber < 0 || pinNumber > 127U)
-                throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be between 0 and 127.");
+            if (channel < 0 || channel > 127U)
+                throw new ArgumentOutOfRangeException("channel", "Channel number must be between 0 and 127.");
 
             byte[] message;
 
-            if (pinNumber < 16U && level < 0xC000)
+            if (channel < 16U && level < 0xC000)
             {
                 // Send value in a conventional Analog Message.
                 message = new byte[] {
-                    (byte)(AnalogMessage | pinNumber),
+                    (byte)(AnalogMessage | channel),
                     (byte)(level & 0x7F),
                     (byte)((level >> 7) & 0x7F)
                 };
@@ -149,7 +138,7 @@ namespace Solid.Arduino.Firmata
             message = new byte[14];
             message[0] = SysExStart;
             message[1] = (byte)0x6F;
-            message[2] = (byte)pinNumber;
+            message[2] = (byte)channel;
             int index = 3;
 
             do
@@ -163,21 +152,20 @@ namespace Solid.Arduino.Firmata
             _connection.Write(message, 0, index + 1);
         }
 
-        public void SetDigitalPinStates(int portNumber, uint pins)
+        public void SetAnalogReportMode(int channel, bool enable)
+        {
+            if (channel < 0 || channel > 15)
+                throw new ArgumentOutOfRangeException("channel", "Channel number must be in range 0 - 15.");
+
+            _connection.Write(new byte[] { (byte)(0xC0 | channel), (byte)(enable ? 1 : 0) }, 0, 2);
+        }
+
+        public void SetDigitalPortState(int portNumber, uint pins)
         {
             if (portNumber < 0 || portNumber > 15)
                 throw new ArgumentOutOfRangeException("portNumber", "Port number must be in range 0 - 15.");
 
-            _connection.Write(new byte[] { (byte)(AnalogMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x7F) }, 0, 3);
-        }
-
-        public void SetAnalogReportMode(int pinNumber, bool enable)
-        {
-            if (pinNumber < 0 || pinNumber > 15)
-                throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be in range 0 - 15.");
-
-            const int ReportAnalogPinCommand = 0xC0;
-            _connection.Write(new byte[] { (byte)(ReportAnalogPinCommand | pinNumber), (byte)(enable ? 1 : 0) }, 0, 2);
+            _connection.Write(new byte[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x7F) }, 0, 3);
         }
 
         public void SetDigitalReportMode(int portNumber, bool enable)
@@ -185,23 +173,21 @@ namespace Solid.Arduino.Firmata
             if (portNumber < 0 || portNumber > 15)
                 throw new ArgumentOutOfRangeException("portNumber", "Port number must be in range 0 - 15.");
 
-            const int ReportDigitalPinCommand = 0xD0;
-            _connection.Write(new byte[] { (byte)(ReportDigitalPinCommand | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
+            _connection.Write(new byte[] { (byte)(0xD0 | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
         }
 
-        public void SetDigitalPinMode(int pinNumber, PinMode mode)
+        public void SetPinMode(int pinNumber, PinMode mode)
         {
             if (pinNumber < 0 || pinNumber > 127)
                 throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be in range 0 - 127.");
 
-            const byte SetPinModeCommand = 0xF4;
-            _connection.Write(new byte[] { SetPinModeCommand, (byte)pinNumber, (byte)mode }, 0, 3);
+            _connection.Write(new byte[] { 0xF4, (byte)pinNumber, (byte)mode }, 0, 3);
         }
 
         public void SetSamplingInterval(int milliseconds)
         {
             if (milliseconds < 1 || milliseconds > 0x3FFF)
-                throw new ArgumentOutOfRangeException("milliseconds", "Interval must be between 1 and 16,383 milliseconds.");
+                throw new ArgumentOutOfRangeException("milliseconds", "Sampling interval must be between 1 and 16,383 milliseconds.");
 
             var command = new byte[]
             {
@@ -242,17 +228,29 @@ namespace Solid.Arduino.Firmata
             _connection.Write(command, 0, 7);
         }
 
-        public void SendText(string text)
+        public void ResetSystem()
         {
-            if (text == null)
-                throw new ArgumentNullException("text");
+            _connection.Write(new byte[] { (byte)0xFF }, 0, 1);
+        }
 
-            byte[] body = Encoding.Unicode.GetBytes(text);
-            byte[] command = new byte[body.Length + 3];
+        public void SendStringData(string data)
+        {
+            // TODO: Test if text length does not exceed host's capability.
+            if (data == null)
+                data = string.Empty;
+
+            byte[] command = new byte[data.Length * 2 + 3];
             command[0] = SysExStart;
             command[1] = (byte)0x71;
-            body.CopyTo(command, 2);
-            command[body.Length + 2] = SysExEnd;
+
+            for (int x = 0; x < data.Length; x++)
+            {
+                short c = Convert.ToInt16(data[x]);
+                command[x * 2 + 2] = (byte)(c & 0x7F);
+                command[x * 2 + 3] = (byte)((c >> 7) & 0x7F);
+            }
+
+            command[command.Length - 1] = SysExEnd;
 
             _connection.Write(command, 0, command.Length);
         }
@@ -292,17 +290,17 @@ namespace Solid.Arduino.Firmata
          *    a. I2CConfig
          *    
          * 2. verzending en ontvangst van spontane messages implementeren:
-         *    a. StringData (Gedaan, maar wordt dit ondersteund door de Arduino?)
+         *    a. StringData
          *    b. ShiftData
          * 
          * 3. asynchrone query's implementeren.
-              a. Firmware Request/Response,
-              b. Capability Request/Response,
-              c. AnalogMapping Request/Response,
-              d. PinState Request/Response,
-              e. I2C Request/Reply
+              a. I2C Request/Reply
          *
+         * Monitor-messages verwerken.
          * Async query's moeten met async/await opgehaald kunnen worden.
+         * Firmata protocol als interface definiëren.
+         * I2C protocol als aparte interface definiëren.
+         * Instelbare timeout intervals implementeren.
          */
 
         public void Dispose()
@@ -321,17 +319,11 @@ namespace Solid.Arduino.Firmata
 
         private void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            // Deze methode kan de volgende berichten verwerken:
-            // - DigitalIoMessage (3 bytes)
-            // - AnalogIoMessage (3 bytes)
-            // - VersionReportMessage (3 bytes)
-            // - SysEx response messages (variabel aantal bytes)  
-
             while (_connection.BytesToRead > 0)
             {
                 int serialByte = _connection.ReadByte();
 
-                if (_inputBuffer.CurrentMessage == MessageCommand.Undefined)
+                if (_inputBuffer.CurrentMessage == MessageHeader.Undefined)
                 {
                     _inputBuffer.Prepare(serialByte);
                     continue;
@@ -339,25 +331,24 @@ namespace Solid.Arduino.Firmata
 
                 switch (_inputBuffer.CurrentMessage)
                 {
-                    case MessageCommand.AnalogState:
+                    case MessageHeader.AnalogState:
                         ProcessAnalogStateMessage(serialByte);
                         break;
 
-                    case MessageCommand.DigitalState:
+                    case MessageHeader.DigitalState:
                         ProcessDigitalStateMessage(serialByte);
                         break;
 
-                    case MessageCommand.SysExStart:
+                    case MessageHeader.SystemExtension:
                         ProcessSysExMessage(serialByte);
                         break;
 
-                    case MessageCommand.ProtocolVersion:
+                    case MessageHeader.ProtocolVersion:
                         ProcessProtocolVersionMessage(serialByte);
                         break;
 
                     default:
-                        // No message identified. Therefore ignore received data.
-                        break;
+                        throw new NotImplementedException();
                 }
             }
         }
@@ -372,8 +363,8 @@ namespace Solid.Arduino.Firmata
             {
                 var currentState = new AnalogState
                 {
-                    Pin = _inputBuffer.DataBuffer[0] & 0x0F,
-                    Level = (ulong)(_inputBuffer.DataBuffer[1] | (messageByte << 7))
+                    Pin = _inputBuffer.Data[0] & 0x0F,
+                    Level = (ulong)(_inputBuffer.Data[1] | (messageByte << 7))
                 };
                 _inputBuffer.Clear();
 
@@ -395,8 +386,8 @@ namespace Solid.Arduino.Firmata
             {
                 var currentState = new DigitalState
                 {
-                    Port = _inputBuffer.DataBuffer[0] & 0x0F,
-                    Pins = _inputBuffer.DataBuffer[1] | (messageByte << 7)
+                    Port = _inputBuffer.Data[0] & 0x0F,
+                    Pins = _inputBuffer.Data[1] | (messageByte << 7)
                 };
                 _inputBuffer.Clear();
 
@@ -417,7 +408,7 @@ namespace Solid.Arduino.Firmata
             else
             {
                 var version = new ProtocolVersion {
-                    MajorVersion = _inputBuffer.DataBuffer[1],
+                    MajorVersion = _inputBuffer.Data[1],
                     MinorVersion = messageByte
                 };
 
@@ -441,30 +432,30 @@ namespace Solid.Arduino.Firmata
 
             FirmataMessage message;
 
-            switch (_inputBuffer.DataBuffer[1])
+            switch (_inputBuffer.Data[1])
             {
                 case 0x6A: // AnalogMappingResponse
-
-                    return;
+                    message = CreateAnalogMappingResponse();
+                    break;
 
                 case 0x6C: // CapabilityResponse
-
-                    return;
+                    message = CreateCapabilityResponse();
+                    break;
 
                 case 0x6E: // PinStateResponse
-
-                    return;
+                    message = CreatePinStateResponse();
+                    break;
 
                 case 0x71: // StringData
-
-                    return;
+                    message = CreateStringDataMessage();
+                    break;
 
                 case 0x77: // I2cReply
-
-                    return;
+                    message = CreateI2cReply();
+                    break;
 
                 case 0x79: // FirmwareReport
-                    message = CreateFirmwareMessage();
+                    message = CreateFirmwareResponse();
                     break;
 
                 default: // Unknown or unsupported message
@@ -481,19 +472,138 @@ namespace Solid.Arduino.Firmata
 
         }
 
-        private FirmataMessage CreateFirmwareMessage()
+        private FirmataMessage CreateI2cReply()
+        {
+            throw new NotImplementedException();
+        }
+
+        private FirmataMessage CreatePinStateResponse()
+        {
+            var pinState = new PinState
+            {
+                PinNumber = _inputBuffer.Data[2],
+                Mode = (PinMode)_inputBuffer.Data[3],
+                Value = (ulong)_inputBuffer.Data[_inputBuffer.DataByteIndex - 1]
+            };
+
+            for (int x = _inputBuffer.DataByteIndex; x > 4; x++)
+            {
+                pinState.Value <<= 7;
+                pinState.Value += (ulong)_inputBuffer.Data[x];
+            }
+
+            return new FirmataMessage(pinState, MessageType.PinStateResponse);
+        }
+
+        private FirmataMessage CreateAnalogMappingResponse()
+        {
+            var pins = new List<AnalogPinMapping>(8);
+
+            for (int x = 2; x < _inputBuffer.DataByteIndex; x++)
+            {
+                if (_inputBuffer.Data[x] != 0x7F)
+                {
+                    pins.Add
+                    (
+                        new AnalogPinMapping
+                        {
+                            PinNumber = x - 2,
+                            Channel = _inputBuffer.Data[x]
+                        }
+                    );
+                }
+            }
+
+            var board = new BoardAnalogMapping { PinMappings = pins.ToArray() };
+            return new FirmataMessage(board, MessageType.AnalogMappingResponse);
+        }
+
+        private FirmataMessage CreateCapabilityResponse()
+        {
+            var pins = new List<PinCapability>(16);
+            int pinIndex = 0;
+            int x = 2;
+
+            while (x <= _inputBuffer.DataByteIndex)
+            {
+                var capability = new PinCapability { PinNumber = pinIndex };
+                int pinMode = 0;
+
+                while (x < _inputBuffer.DataByteIndex && _inputBuffer.Data[x] != 127)
+                {
+                    bool isCapable = (_inputBuffer.Data[x] != 0);
+
+                    switch ((PinMode)pinMode)
+                    {
+                        case PinMode.Analog:
+                            capability.Analog = isCapable;
+                            capability.AnalogResolution = _inputBuffer.Data[x + 1];
+                            break;
+
+                        case PinMode.Input:
+                            capability.Input = isCapable;
+                            break;
+
+                        case PinMode.Output:
+                            capability.Output = isCapable;
+                            break;
+
+                        case PinMode.Pwm:
+                            capability.Pwm = isCapable;
+                            capability.PwmResolution = _inputBuffer.Data[x + 1];
+                            break;
+
+                        case PinMode.Servo:
+                            capability.Servo = isCapable;
+                            capability.ServoResolution = _inputBuffer.Data[x + 1];
+                            break;
+
+                        default:
+                            // Ignore unsupported capability.
+                            break;
+                    }
+
+                    x += 2;
+                }
+
+                pins.Add(capability);
+                x++;
+            }
+
+            var board = new BoardCapability { PinCapabilities = pins.ToArray() };
+
+            return new FirmataMessage(board, MessageType.CapabilityResponse);
+        }
+
+        private FirmataMessage CreateStringDataMessage()
+        {
+            var builder = new StringBuilder(_inputBuffer.DataByteIndex >> 1);
+
+            for (int x = 2; x < _inputBuffer.DataByteIndex; x += 2)
+            {
+                builder.Append((char)_inputBuffer.Data[x] | (_inputBuffer.Data[x + 1] << 7));
+            }
+
+            var stringData = new StringData
+            {
+                Text = builder.ToString()
+            };
+            return new FirmataMessage(stringData, MessageType.StringData);
+        }
+
+        private FirmataMessage CreateFirmwareResponse()
         {
             var firmware = new Firmware
             {
-                MajorVersion = _inputBuffer.DataBuffer[2],
-                MinorVersion = _inputBuffer.DataBuffer[3]
+                MajorVersion = _inputBuffer.Data[2],
+                MinorVersion = _inputBuffer.Data[3]
             };
 
             var builder = new StringBuilder(_inputBuffer.DataByteIndex);
 
-            for (int x = 4; x <= _inputBuffer.DataByteIndex; x++ )
+            for (int x = 4; x < _inputBuffer.DataByteIndex; x++ )
             {
-                builder.Append((char)_inputBuffer.DataBuffer[x]);
+                builder.Append((char)_inputBuffer.Data[x]);
             }
 
             firmware.Name = builder.ToString();
@@ -508,94 +618,7 @@ namespace Solid.Arduino.Firmata
         Input = 0,
         Output = 1,
         Analog = 2,
-        PWM = 3,
+        Pwm = 3,
         Servo = 4
-    }
-
-    public enum MessageType
-    {
-        AnalogState,
-        DigitalState,
-        ProtocolVersion,
-        FirmwareResponse,
-        CapabilityResponse,
-        AnalogMappingResponse,
-        PinStateResponse,
-        StringMessage,
-        I2CReply
-    }
-
-    public sealed class FirmataMessage
-    {
-        private readonly MessageType _type;
-        private readonly ValueType _value;
-
-        public FirmataMessage(ValueType value, MessageType type)
-        {
-            _value = value;
-            _type = type;
-        }
-
-        public ValueType Value { get { return _value; } }
-        public MessageType Type { get { return _type; } }
-    }
-
-    public class FirmataMessageEventArgs : EventArgs
-    {
-
-        private readonly FirmataMessage _value;
-
-        public FirmataMessageEventArgs(FirmataMessage value)
-        {
-            _value = value;
-        }
-
-        public FirmataMessage Value { get { return _value; } }
-    }
-
-    public class FirmataMessageEventArgs<T> : EventArgs
-        where T: struct
-    {
-        private readonly T _value;
-
-        public FirmataMessageEventArgs(T value)
-        {
-            _value = value;
-        }
-
-        public T Value { get { return _value; } }
-    }
-
-    public struct AnalogState
-    {
-        public int Pin { get; set; }
-        public ulong Level { get; set; }
-    }
-
-    public struct DigitalState
-    {
-        public int Port { get; set; }
-        public int Pins { get; set; }
-
-        public bool IsHigh(int pin)
-        {
-            if (pin < 0 || pin > 7)
-              throw new ArgumentOutOfRangeException("pin", "Pin must be in range 0 - 7.");
-
-            return (Pins & 1 << pin) > 0;
-        }
-    }
-
-    public struct ProtocolVersion
-    {
-        public int MajorVersion { get; set; }
-        public int MinorVersion { get; set; }
-    }
-
-    public struct Firmware
-    {
-        public int MajorVersion { get; set; }
-        public int MinorVersion { get; set; }
-        public string Name { get; set; }
     }
 }

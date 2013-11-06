@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
@@ -11,9 +8,19 @@ namespace Solid.Arduino.Firmata
     {
         #region Constructors
 
-        public SerialConnection(): base(GetLastPortName(), (int)SerialBaudRate.Bps_115200) { }
+        public SerialConnection()
+            : base(GetLastPortName(), (int)SerialBaudRate.Bps_115200)
+        {
+            this.ReadTimeout = 100;
+            this.WriteTimeout = 100;
+        }
 
-        public SerialConnection(string portName, SerialBaudRate baudRate) : base(portName, (int)baudRate) { }
+        public SerialConnection(string portName, SerialBaudRate baudRate)
+            : base(portName, (int)baudRate)
+        {
+            this.ReadTimeout = 100;
+            this.WriteTimeout = 100;
+        }
 
         #endregion
 

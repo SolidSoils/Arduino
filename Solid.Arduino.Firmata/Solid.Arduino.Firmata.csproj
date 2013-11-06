@@ -39,11 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalogPinMapping.cs" />
+    <Compile Include="AnalogState.cs" />
+    <Compile Include="BoardCapability.cs" />
+    <Compile Include="BoardMapping.cs" />
+    <Compile Include="DigitalState.cs" />
+    <Compile Include="FirmataMessage.cs" />
+    <Compile Include="FirmataMessageEventArgs.cs" />
+    <Compile Include="FirmataMessageEventArgs_.cs" />
     <Compile Include="FirmataSession.cs" />
+    <Compile Include="Firmware.cs" />
+    <Compile Include="PinCapability.cs" />
+    <Compile Include="PinState.cs" />
+    <Compile Include="ProtocolVersion.cs" />
     <Compile Include="SerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
