@@ -2,12 +2,12 @@
 
 namespace Solid.Arduino.Firmata
 {
-    public class FirmataMessageEventArgs<T> : EventArgs
+    public class FirmataEventArgs<T> : EventArgs
         where T : struct
     {
         private readonly T _value;
 
-        public FirmataMessageEventArgs(T value)
+        public FirmataEventArgs(T value)
         {
             _value = value;
         }

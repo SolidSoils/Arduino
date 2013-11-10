@@ -20,7 +20,7 @@ namespace Solid.Arduino.Firmata
     public enum MessageType
     {
         AnalogState,
-        DigitalState,
+        DigitalPortState,
         ProtocolVersion,
         FirmwareResponse,
         CapabilityResponse,

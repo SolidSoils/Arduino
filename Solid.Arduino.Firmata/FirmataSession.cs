@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
-    public class FirmataSession: IDisposable
+    public class FirmataSession: IFirmataProtocol, IDisposable
     {
         #region Type declarations
 
@@ -46,6 +46,7 @@ namespace Solid.Arduino.Firmata
 
                     default:
                         // No message header or message not supported.
+                        // TODO: implement processing of serial read ASCII strings.
                         CurrentMessage = MessageHeader.Undefined;
                         return;
                 }
@@ -70,28 +71,27 @@ namespace Solid.Arduino.Firmata
             }
         }        
 
-        public delegate void MessageReceivedHandler(object par_Sender, FirmataMessageEventArgs par_EventArgs);
-        public delegate void AnalogStateMessageReceivedHandler(object par_Sender, FirmataMessageEventArgs<AnalogState> par_EventArgs);
-        public delegate void DigitalStateMessageReceivedHandler(object par_Sender, FirmataMessageEventArgs<DigitalPortState> par_EventArgs);
-
         #endregion
 
         #region Fields
 
         private const byte AnalogMessage = 0xE0;
         private const byte DigitalMessage = 0x90;
+        private const byte VersionReportHeader = 0xF9;
         private const byte SysExStart = 0xF0;
         private const byte SysExEnd = 0xF7;
 
         private const int BUFFERSIZE = 512;
+        private const int MAXQUEUELENGTH = 100;
 
         private readonly SerialConnection _connection;
         private readonly bool _gotOpenConnection;
         private readonly Queue<FirmataMessage> _receivedMessageQueue = new Queue<FirmataMessage>();
+        private ConcurrentQueue<MessageType> _awaitedMessagesQueue = new ConcurrentQueue<MessageType>();
 
         private int _messageTimeout = -1;
         private MessageBuffer _inputBuffer = new MessageBuffer { Data = new int[BUFFERSIZE] };
-
+        
         #endregion
 
         #region Constructors
@@ -127,8 +127,21 @@ namespace Solid.Arduino.Firmata
         }
 
         public event MessageReceivedHandler OnMessageReceived;
-        public event AnalogStateMessageReceivedHandler OnAnalogStateMessageReceived;
-        public event DigitalStateMessageReceivedHandler OnDigitalStateMessageReceived;
+        public event AnalogStateReceivedHandler OnAnalogStateReceived;
+        public event DigitalStateReceivedHandler OnDigitalStateReceived;
+        public event I2cReplyReceivedHandler OnI2cReplyReceived;
+
+        public void Clear()
+        {
+            lock (_receivedMessageQueue)
+            {
+                _connection.BaseStream.Flush();
+                _connection.DiscardInBuffer();
+                _inputBuffer.Clear();
+                _receivedMessageQueue.Clear();
+                _awaitedMessagesQueue = new ConcurrentQueue<MessageType>();
+            }
+        }
 
         public void SetAnalogLevel(int channel, ulong level)
         {
@@ -243,9 +256,20 @@ namespace Solid.Arduino.Firmata
             _connection.Write(command, 0, 7);
         }
 
-        public void ResetSystem()
+        public void ResetBoard()
         {
             _connection.Write(new byte[] { (byte)0xFF }, 0, 1);
+        }
+
+        public void SendProtocolVersion(int majorVersion, int minorVersion)
+        {
+            if (majorVersion < 0 || majorVersion > 127)
+                throw new ArgumentOutOfRangeException("majorVersion", "Value must be in range 0 and 127.");
+
+            if (minorVersion < 0 || minorVersion > 127)
+                throw new ArgumentOutOfRangeException("minorVersion", "Value must be in range 0 and 127.");
+
+            _connection.Write(new byte[] { VersionReportHeader, (byte)majorVersion, (byte)minorVersion }, 0, 3);
         }
 
         public void SendStringData(string data)
@@ -362,7 +386,7 @@ namespace Solid.Arduino.Firmata
             SendSysExCommand(0x69);
         }
 
-        public void RequestDigitalPinState(int pinNumber)
+        public void RequestDigitalPortState(int pinNumber)
         {
             if (pinNumber < 0 || pinNumber > 15)
                 throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be in range 0 - 15.");
@@ -377,70 +401,117 @@ namespace Solid.Arduino.Firmata
             _connection.Write(command, 0, 4);
         }
 
+        public I2cReply GetI2cReply(int slaveAddress, int bytesToRead)
+        {
+            I2cReadOnce(slaveAddress, bytesToRead);
+            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+
+            return (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value;
+        }
+
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, bytesToRead);
+            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
 
-            return await new Task<I2cReply>(() =>
+            return await Task.Run<I2cReply>(() =>
                 (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value);
+        }
+
+        public I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead)
+        {
+            I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
+            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+
+            return (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value;
         }
 
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
+            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
 
-            return await new Task<I2cReply>(() =>
+            return await Task.Run<I2cReply>(() =>
                 (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value);
+        }
+
+        public Firmware GetFirmware()
+        {
+            RequestFirmware();
+            _awaitedMessagesQueue.Enqueue(MessageType.FirmwareResponse);
+
+            return (Firmware)((FirmataMessage)GetMessageFromQueue(MessageType.FirmwareResponse)).Value;
         }
 
         public async Task<Firmware> GetFirmwareAsync()
         {
             RequestFirmware();
+            _awaitedMessagesQueue.Enqueue(MessageType.FirmwareResponse);
 
-            return await new Task<Firmware>(() =>
+            return await Task.Run<Firmware>(() =>
                 (Firmware)((FirmataMessage)GetMessageFromQueue(MessageType.FirmwareResponse)).Value);
+        }
+
+        public BoardCapability GetBoardCapability()
+        {
+            RequestBoardCapability();
+            _awaitedMessagesQueue.Enqueue(MessageType.CapabilityResponse);
+
+            return (BoardCapability)((FirmataMessage)GetMessageFromQueue(MessageType.CapabilityResponse)).Value;
         }
 
         public async Task<BoardCapability> GetBoardCapabilityAsync()
         {
             RequestBoardCapability();
+            _awaitedMessagesQueue.Enqueue(MessageType.CapabilityResponse);
 
-            return await new Task<BoardCapability>(() =>
+            return await Task.Run<BoardCapability>(() =>
                 (BoardCapability)((FirmataMessage)GetMessageFromQueue(MessageType.CapabilityResponse)).Value);
+        }
+
+        public BoardAnalogMapping GetBoardAnalogMapping()
+        {
+            RequestBoardAnalogMapping();
+            _awaitedMessagesQueue.Enqueue(MessageType.AnalogMappingResponse);
+
+            return (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(MessageType.AnalogMappingResponse)).Value;
         }
 
         public async Task<BoardAnalogMapping> GetBoardAnalogMappingAsync()
         {
             RequestBoardAnalogMapping();
+            _awaitedMessagesQueue.Enqueue(MessageType.AnalogMappingResponse);
 
-            return await new Task<BoardAnalogMapping>(() =>
+            return await Task.Run<BoardAnalogMapping>(() =>
                 (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(MessageType.AnalogMappingResponse)).Value);
         }
 
-        public async Task<DigitalPortState> GetDigitalPinStateAsync(int pinNumber)
+        public DigitalPortState GetDigitalPortState(int pinNumber)
         {
-            RequestDigitalPinState(pinNumber);
+            RequestDigitalPortState(pinNumber);
+            _awaitedMessagesQueue.Enqueue(MessageType.DigitalPortState);
 
-            return await new Task<DigitalPortState>(() =>
-                (DigitalPortState)((FirmataMessage)GetMessageFromQueue(MessageType.DigitalState)).Value);
+            return (DigitalPortState)((FirmataMessage)GetMessageFromQueue(MessageType.DigitalPortState)).Value;
+        }
+
+        public async Task<DigitalPortState> GetDigitalPortStateAsync(int pinNumber)
+        {
+            RequestDigitalPortState(pinNumber);
+            _awaitedMessagesQueue.Enqueue(MessageType.DigitalPortState);
+
+            return await Task.Run<DigitalPortState>(() =>
+                (DigitalPortState)((FirmataMessage)GetMessageFromQueue(MessageType.DigitalPortState)).Value);
         }
 
         /*
          * TODO:
-         *    
-         * 2. verzending en ontvangst van spontane messages implementeren:
-         *    a. StringData
-         * 
-         * 3. asynchrone query's implementeren.
-              a. I2C Request/Reply
          *
-         * Methode bedenken om onverwerkte messages van de queue te halen.
-         * Monitor-messages verwerken.
-         * Async query's moeten met async/await opgehaald kunnen worden.
-         * Firmata protocol als interface definiëren.
-         * I2C Read event implementeren.
-         * I2C protocol als aparte interface definiëren.
-         * Instelbare timeout intervals implementeren.
+         * Ontvangen van ASCII-messages. (ASCII strings, als async method en als aparte event)
+         * Verzenden van ASCII-messages.
+         * Vaste tekstelementen naar resource sectie.
+         * Documenteren.
+         * Testen.
+         * 
          */
 
         public void Dispose()
@@ -592,8 +663,8 @@ namespace Solid.Arduino.Firmata
                 if (OnMessageReceived != null)
                     OnMessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.AnalogState)));
 
-                if (OnAnalogStateMessageReceived != null)
-                    OnAnalogStateMessageReceived(this, new FirmataMessageEventArgs<AnalogState>(currentState));
+                if (OnAnalogStateReceived != null)
+                    OnAnalogStateReceived(this, new FirmataEventArgs<AnalogState>(currentState));
             }
         }
 
@@ -613,10 +684,10 @@ namespace Solid.Arduino.Firmata
                 _inputBuffer.Clear();
 
                 if (OnMessageReceived != null)
-                    OnMessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalState)));
+                    OnMessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalPortState)));
 
-                if (OnDigitalStateMessageReceived != null)
-                    OnDigitalStateMessageReceived(this, new FirmataMessageEventArgs<DigitalPortState>(currentState));
+                if (OnDigitalStateReceived != null)
+                    OnDigitalStateReceived(this, new FirmataEventArgs<DigitalPortState>(currentState));
             }
         }
 
@@ -639,6 +710,9 @@ namespace Solid.Arduino.Firmata
 
                 lock (_receivedMessageQueue)
                 {
+                    if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
+                        throw new OverflowException("Received message queue is full.");
+
                     _receivedMessageQueue.Enqueue(message);
                     Monitor.PulseAll(_receivedMessageQueue);
                 }
@@ -692,19 +766,29 @@ namespace Solid.Arduino.Firmata
 
             _inputBuffer.Clear();
 
-            lock (_receivedMessageQueue)
+            MessageType awaitedMessageType;
+
+            if (_awaitedMessagesQueue.TryPeek(out awaitedMessageType)
+                && awaitedMessageType == message.Type)
             {
-                _receivedMessageQueue.Enqueue(message);
-                Monitor.PulseAll(_receivedMessageQueue);
+                lock (_receivedMessageQueue)
+                {
+                    if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
+                        throw new OverflowException("Received message queue is full.");
+
+                    _receivedMessageQueue.Enqueue(message);
+                    _awaitedMessagesQueue.TryDequeue(out awaitedMessageType);
+                    Monitor.PulseAll(_receivedMessageQueue);
+                }
             }
 
-            if (OnMessageReceived != null)
+            if (OnMessageReceived != null && message.Type != MessageType.I2CReply)
                 OnMessageReceived(this, new FirmataMessageEventArgs(message));
         }
 
         private FirmataMessage CreateI2cReply()
         {
-            var message = new I2cReply
+            var reply = new I2cReply
             {
                 Address = _inputBuffer.Data[2] | (_inputBuffer.Data[3] << 7),
                 Register = _inputBuffer.Data[4] | (_inputBuffer.Data[5] << 7)
@@ -717,8 +801,12 @@ namespace Solid.Arduino.Firmata
                 data[x - 5] = (byte)(_inputBuffer.Data[x * 2 + 6] | _inputBuffer.Data[x * 2 + 7] << 7);
             }
             
-            message.Data = data;
-            return new FirmataMessage(message, MessageType.I2CReply);
+            reply.Data = data;
+
+            if (OnI2cReplyReceived != null)
+                OnI2cReplyReceived(this, new FirmataEventArgs<I2cReply>(reply));
+
+            return new FirmataMessage(reply, MessageType.I2CReply);
         }
 
         private FirmataMessage CreatePinStateResponse()
@@ -855,14 +943,5 @@ namespace Solid.Arduino.Firmata
         }
 
         #endregion
-    }
-
-    public enum PinMode
-    {
-        Input = 0,
-        Output = 1,
-        Analog = 2,
-        Pwm = 3,
-        Servo = 4
     }
 }
