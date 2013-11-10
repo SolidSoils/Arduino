@@ -2,7 +2,7 @@
 
 namespace Solid.Arduino.Firmata
 {
-    public struct DigitalState
+    public struct DigitalPortState
     {
         public int Port { get; set; }
         public int Pins { get; set; }

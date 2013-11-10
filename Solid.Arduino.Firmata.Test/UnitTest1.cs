@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Solid.Arduino.Firmata;
+using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata.Test
 {
@@ -16,7 +17,11 @@ namespace Solid.Arduino.Firmata.Test
 
             session.OnMessageReceived += session_OnMessageReceived;
 
-            session.GetFirmware();
+            session.RequestFirmware();
+
+            Task<DigitalPortState> state = session.GetDigitalPinStateAsync(1);
+
+            DigitalPortState s = state.Result;
 
             Console.ReadLine();
         }

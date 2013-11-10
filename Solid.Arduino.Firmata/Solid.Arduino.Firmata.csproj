@@ -43,12 +43,13 @@
     <Compile Include="AnalogState.cs" />
     <Compile Include="BoardCapability.cs" />
     <Compile Include="BoardMapping.cs" />
-    <Compile Include="DigitalState.cs" />
+    <Compile Include="DigitalPortState.cs" />
     <Compile Include="FirmataMessage.cs" />
     <Compile Include="FirmataMessageEventArgs.cs" />
     <Compile Include="FirmataMessageEventArgs_.cs" />
     <Compile Include="FirmataSession.cs" />
     <Compile Include="Firmware.cs" />
+    <Compile Include="I2cReply.cs" />
     <Compile Include="PinCapability.cs" />
     <Compile Include="PinState.cs" />
     <Compile Include="ProtocolVersion.cs" />
