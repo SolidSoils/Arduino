@@ -4,7 +4,7 @@ namespace Solid.Arduino.Firmata
 {
     public struct AnalogState
     {
-        public int Pin { get; set; }
+        public int Channel { get; set; }
         public ulong Level { get; set; }
     }
 }

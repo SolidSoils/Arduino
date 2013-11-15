@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Solid.Arduino.Firmata")]
+[assembly: AssemblyTitle("Solid.Arduino.Run")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Solid Soils Solutions")]
-[assembly: AssemblyProduct("Solid.Arduino.Firmata")]
-[assembly: AssemblyCopyright("Copyright © Solid Soils Solutions 2013")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Solid.Arduino.Run")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cf7bfaf0-b331-4027-8e87-ca5f7027e158")]
+[assembly: Guid("8b619e4a-6414-4cea-91b9-5fa56d9ea1f1")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -12,6 +12,7 @@ namespace Solid.Arduino.Firmata
 
     public enum PinMode
     {
+        None = -1,
         Input = 0,
         Output = 1,
         Analog = 2,
@@ -23,10 +24,22 @@ namespace Solid.Arduino.Firmata
     {
         event MessageReceivedHandler OnMessageReceived;
         event AnalogStateReceivedHandler OnAnalogStateReceived;
+
+        /// <summary>
+        /// Event handler, raised when a digital I/O message (command 0x90) is received.
+        /// </summary>
+        /// <remarks>
+        /// Please note that the StandardFirmata implementation for Arduino only sends updates of digital port states if necessary.
+        /// When none of a port's pins have changed state since a previous polling cycle, no Firmata.sendDigitalPort message
+        /// is sent.
+        /// <para>
+        /// Also, calling method <see cref="SetDigitalReportMode"/> does not guarantee this event will receive a (first) Firmata.sendDigitalPort message.
+        /// Use method <see cref="GetPinState"/> or <see cref="GetPinStateAsync"/> inquiring the current pin states.
+        /// </para>
+        /// </remarks>
         event DigitalStateReceivedHandler OnDigitalStateReceived;
 
         void SendStringData(string data);
-        void SendProtocolVersion(int majorVersion, int minorVersion);
         void SetAnalogLevel(int channel, ulong level);
         void SetAnalogReportMode(int channel, bool enable);
         void SetDigitalPortState(int portNumber, uint pins);
@@ -35,6 +48,10 @@ namespace Solid.Arduino.Firmata
         void SetSamplingInterval(int milliseconds);
         void ConfigureServo(int pinNumber, int minPulse, int maxPulse);
         void ResetBoard();
+
+        void RequestProtocolVersion();
+        ProtocolVersion GetProtocolVersion();
+        Task<ProtocolVersion> GetProtocolVersionAsync();
 
         void RequestFirmware();
         Firmware GetFirmware();
@@ -48,8 +65,8 @@ namespace Solid.Arduino.Firmata
         BoardAnalogMapping GetBoardAnalogMapping();
         Task<BoardAnalogMapping> GetBoardAnalogMappingAsync();
 
-        void RequestDigitalPortState(int pinNumber);
-        DigitalPortState GetDigitalPortState(int pinNumber);
-        Task<DigitalPortState> GetDigitalPortStateAsync(int pinNumber);
+        void RequestPinState(int pinNumber);
+        PinState GetPinState(int pinNumber);
+        Task<PinState> GetPinStateAsync(int pinNumber);
     }
 }

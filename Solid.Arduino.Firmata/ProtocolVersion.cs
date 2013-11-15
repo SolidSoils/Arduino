@@ -4,7 +4,7 @@ namespace Solid.Arduino.Firmata
 {
     public struct ProtocolVersion
     {
-        public int MajorVersion { get; set; }
-        public int MinorVersion { get; set; }
+        public int Major { get; set; }
+        public int Minor { get; set; }
     }
 }

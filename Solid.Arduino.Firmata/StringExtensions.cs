@@ -27,13 +27,13 @@ namespace Solid.Arduino.Firmata
             if (o.Length == 0)
                 return new byte[0];
 
+            if (o.Length % 2 == 1)
+                o = "0" + o;
+
             char[] chars = o.ToCharArray();
 
-            if (chars.Any(c => !Char.IsDigit(c)))
+            if (!chars.All(c => Char.IsDigit(c)))
                 throw new ArgumentException("String must contain digits only.");
-
-            if (o.Length % 2 == 1)
-                throw new ArgumentException("String must contain an even number of digits.");
 
             byte[] bytes = new byte[o.Length >> 1];
 

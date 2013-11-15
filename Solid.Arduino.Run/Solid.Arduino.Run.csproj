@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FDF9E431-2390-4C7B-AE60-10183439A683}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Solid.Arduino.Firmata</RootNamespace>
-    <AssemblyName>Solid.Arduino.Firmata</AssemblyName>
+    <RootNamespace>Solid.Arduino.Run</RootNamespace>
+    <AssemblyName>Solid.Arduino.Run</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,31 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalogPinMapping.cs" />
-    <Compile Include="AnalogState.cs" />
-    <Compile Include="BoardCapability.cs" />
-    <Compile Include="BoardMapping.cs" />
-    <Compile Include="ByteArrayExtensions.cs" />
-    <Compile Include="DigitalPortState.cs" />
-    <Compile Include="FirmataMessage.cs" />
-    <Compile Include="FirmataMessageEventArgs.cs" />
-    <Compile Include="FirmataMessageEventArgs_.cs" />
-    <Compile Include="FirmataSession.cs" />
-    <Compile Include="Firmware.cs" />
-    <Compile Include="I2cReply.cs" />
-    <Compile Include="IFirmataProtocol.cs" />
-    <Compile Include="II2cProtocol.cs" />
-    <Compile Include="ISerialProtocol.cs" />
-    <Compile Include="PinCapability.cs" />
-    <Compile Include="PinState.cs" />
-    <Compile Include="ProtocolVersion.cs" />
-    <Compile Include="SerialConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerialMonitor.cs" />
-    <Compile Include="StringData.cs" />
-    <Compile Include="StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Solid.Arduino.Firmata\Solid.Arduino.Firmata.csproj">
+      <Project>{fdf9e431-2390-4c7b-ae60-10183439a683}</Project>
+      <Name>Solid.Arduino.Firmata</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

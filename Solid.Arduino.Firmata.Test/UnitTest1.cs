@@ -19,9 +19,8 @@ namespace Solid.Arduino.Firmata.Test
 
             session.RequestFirmware();
 
-            Task<DigitalPortState> state = session.GetDigitalPortStateAsync(1);
+            Task<PinState> state = session.GetPinStateAsync(1);
 
-            DigitalPortState s = state.Result;
 
             Console.ReadLine();
         }

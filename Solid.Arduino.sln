@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Firmata", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Firmata.Test", "Solid.Arduino.Firmata.Test\Solid.Arduino.Firmata.Test.csproj", "{74525FE1-E248-449B-B499-F3FB205054F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Run", "Solid.Arduino.Run\Solid.Arduino.Run.csproj", "{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{74525FE1-E248-449B-B499-F3FB205054F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74525FE1-E248-449B-B499-F3FB205054F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74525FE1-E248-449B-B499-F3FB205054F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
