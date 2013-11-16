@@ -23,13 +23,13 @@ namespace Solid.Arduino.Firmata
         string ReadString(char terminator);
         Task<string> ReadStringAsync(char terminator);
 
-        string RequestLine(string value);
-        Task<string> RequestLineAsync(string value);
+        string GetLine(string value);
+        Task<string> GetLineAsync(string value);
 
-        string RequestString(string value, int length);
-        Task<string> RequestStringAsync(string value, int length);
+        string GetString(string value, int length);
+        Task<string> GetStringAsync(string value, int length);
 
-        string RequestString(string value, char terminator);
-        Task<string> RequestStringAsync(string value, char terminator);
+        string GetString(string value, char terminator);
+        Task<string> GetStringAsync(string value, char terminator);
     }
 }

@@ -164,7 +164,7 @@ namespace Solid.Arduino.Firmata
             _connection.Write(new byte[] { (byte)0xFF }, 0, 1);
         }
 
-        public void SetAnalogLevel(int channel, ulong level)
+        public void PositionServo(int channel, ulong level)
         {
             if (channel < 0 || channel > 127U)
                 throw new ArgumentOutOfRangeException("channel", "Channel number must be between 0 and 127.");
@@ -906,25 +906,25 @@ namespace Solid.Arduino.Firmata
 
                     switch (pinMode)
                     {
-                        case PinMode.Analog:
+                        case PinMode.AnalogInput:
                             capability.Analog = isCapable;
                             capability.AnalogResolution = _inputBuffer.Data[x + 1];
                             break;
 
-                        case PinMode.Input:
+                        case PinMode.DigitalInput:
                             capability.Input = isCapable;
                             break;
 
-                        case PinMode.Output:
+                        case PinMode.DigitalOutput:
                             capability.Output = isCapable;
                             break;
 
-                        case PinMode.Pwm:
+                        case PinMode.PwmOutput:
                             capability.Pwm = isCapable;
                             capability.PwmResolution = _inputBuffer.Data[x + 1];
                             break;
 
-                        case PinMode.Servo:
+                        case PinMode.ServoControl:
                             capability.Servo = isCapable;
                             capability.ServoResolution = _inputBuffer.Data[x + 1];
                             break;

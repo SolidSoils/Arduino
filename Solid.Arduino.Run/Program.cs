@@ -51,8 +51,8 @@ namespace Solid.Arduino.Run
             Console.WriteLine();
             Console.WriteLine("Digital port states:");
 
-            session.SetPinMode(5, PinMode.Output);
-            session.SetPinMode(6, PinMode.Input);
+            session.SetPinMode(5, PinMode.DigitalOutput);
+            session.SetPinMode(6, PinMode.DigitalInput);
             session.SetDigitalPortState(0, 96);
 
             for (int x = 0; x < 20; x++)
