@@ -7,7 +7,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.Firmata
+using Solid.Arduino.Firmata;
+using Solid.Arduino.I2c;
+
+namespace Solid.Arduino
 {
     public class FirmataSession: IFirmataProtocol, IDisposable
     {
@@ -73,7 +76,7 @@ namespace Solid.Arduino.Firmata
             public void WriteDataByte(int dataByte)
             {
                 if (DataByteIndex == BUFFERSIZE)
-                    throw new OverflowException("The command parsing buffer is full.");
+                    throw new OverflowException(Messages.OverflowEx_CmdBufferFull);
 
                 Data[DataByteIndex] = dataByte;
                 DataByteIndex++;
@@ -164,18 +167,18 @@ namespace Solid.Arduino.Firmata
             _connection.Write(new byte[] { (byte)0xFF }, 0, 1);
         }
 
-        public void PositionServo(int channel, ulong level)
+        public void SetPinValue(int pinNumber, ulong level)
         {
-            if (channel < 0 || channel > 127U)
-                throw new ArgumentOutOfRangeException("channel", "Channel number must be between 0 and 127.");
+            if (pinNumber < 0 || pinNumber > 127)
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
 
             byte[] message;
 
-            if (channel < 16U && level < 0xC000)
+            if (pinNumber < 16 && level < 0xC000)
             {
                 // Send value in a conventional Analog Message.
                 message = new byte[] {
-                    (byte)(AnalogMessage | channel),
+                    (byte)(AnalogMessage | pinNumber),
                     (byte)(level & 0x7F),
                     (byte)((level >> 7) & 0x7F)
                 };
@@ -187,7 +190,7 @@ namespace Solid.Arduino.Firmata
             message = new byte[14];
             message[0] = SysExStart;
             message[1] = (byte)0x6F;
-            message[2] = (byte)channel;
+            message[2] = (byte)pinNumber;
             int index = 3;
 
             do
@@ -204,7 +207,7 @@ namespace Solid.Arduino.Firmata
         public void SetAnalogReportMode(int channel, bool enable)
         {
             if (channel < 0 || channel > 15)
-                throw new ArgumentOutOfRangeException("channel", "Channel number must be in range 0 - 15.");
+                throw new ArgumentOutOfRangeException("channel", Messages.ArgumentEx_ChannelRange0_15);
 
             _connection.Write(new byte[] { (byte)(0xC0 | channel), (byte)(enable ? 1 : 0) }, 0, 2);
         }
@@ -212,7 +215,7 @@ namespace Solid.Arduino.Firmata
         public void SetDigitalPortState(int portNumber, uint pins)
         {
             if (portNumber < 0 || portNumber > 15)
-                throw new ArgumentOutOfRangeException("portNumber", "Port number must be in range 0 - 15.");
+                throw new ArgumentOutOfRangeException("portNumber", Messages.ArgumentEx_PortRange0_15);
 
             _connection.Write(new byte[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x7F) }, 0, 3);
         }
@@ -220,7 +223,7 @@ namespace Solid.Arduino.Firmata
         public void SetDigitalReportMode(int portNumber, bool enable)
         {
             if (portNumber < 0 || portNumber > 15)
-                throw new ArgumentOutOfRangeException("portNumber", "Port number must be in range 0 - 15.");
+                throw new ArgumentOutOfRangeException("portNumber", Messages.ArgumentEx_PortRange0_15);
 
             _connection.Write(new byte[] { (byte)(0xD0 | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
         }
@@ -228,7 +231,7 @@ namespace Solid.Arduino.Firmata
         public void SetPinMode(int pinNumber, PinMode mode)
         {
             if (pinNumber < 0 || pinNumber > 127)
-                throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be in range 0 - 127.");
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
 
             _connection.Write(new byte[] { 0xF4, (byte)pinNumber, (byte)mode }, 0, 3);
         }
@@ -236,7 +239,7 @@ namespace Solid.Arduino.Firmata
         public void SetSamplingInterval(int milliseconds)
         {
             if (milliseconds < 1 || milliseconds > 0x3FFF)
-                throw new ArgumentOutOfRangeException("milliseconds", "Sampling interval must be between 1 and 16,383 milliseconds.");
+                throw new ArgumentOutOfRangeException("milliseconds", Messages.ArgumentEx_SamplingInterval);
 
             var command = new byte[]
             {
@@ -252,16 +255,16 @@ namespace Solid.Arduino.Firmata
         public void ConfigureServo(int pinNumber, int minPulse, int maxPulse)
         {
             if (pinNumber < 0 || pinNumber > 127)
-                throw new ArgumentOutOfRangeException("pinNumber", "Pin number must be between 0 and 127.");
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
 
             if (minPulse < 0 || minPulse > 0x3FFF)
-                throw new ArgumentOutOfRangeException("minPulse", "Minimal pulse width must be between 0 and 16,383 milliseconds.");
+                throw new ArgumentOutOfRangeException("minPulse", Messages.ArgumentEx_MinPulseWidth);
 
             if (maxPulse < 0 || maxPulse > 0x3FFF)
-                throw new ArgumentOutOfRangeException("maxPulse", "Maximal pulse width must be between 0 and 16,383 milliseconds.");
+                throw new ArgumentOutOfRangeException("maxPulse", Messages.ArgumentEx_MaxPulseWidth);
 
             if (minPulse > maxPulse)
-                throw new ArgumentException("Minimal pulse width is greater than maximal pulse width.");
+                throw new ArgumentException(Messages.ArgumentEx_MinMaxPulse);
 
             var command = new byte[]
             {
@@ -423,12 +426,12 @@ namespace Solid.Arduino.Firmata
 
         #region II2cProtocol
 
-        public event I2cReplyReceivedHandler OnI2cReplyReceived;
+        public event I2cReplyReceivedHandler I2cReplyReceived;
 
         public void I2cSetInterval(int microseconds)
         {
             if (microseconds < 0 || microseconds > 0x3FFF)
-                throw new ArgumentOutOfRangeException("microseconds", "Interval must be between 0 and 16,383 milliseconds.");
+                throw new ArgumentOutOfRangeException("microseconds", Messages.ArgumentEx_I2cInterval);
 
             var command = new byte[]
             {
@@ -444,7 +447,7 @@ namespace Solid.Arduino.Firmata
         public void I2cWrite(int slaveAddress, byte[] data)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
-                throw new ArgumentOutOfRangeException("slaveAddress", "Address must be in range of 0 and 1,023.");
+                throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
 
             // TODO: Test if data length does not exceed host's capability.
             if (data == null)
@@ -538,16 +541,6 @@ namespace Solid.Arduino.Firmata
 
         #endregion
 
-        /*
-         * TODO:
-         * Ontvangen van ASCII-messages. (ASCII strings, als async method en als aparte event)
-         * Verzenden van ASCII-messages.
-         * Vaste tekstelementen naar resource sectie.
-         * Documenteren.
-         * Testen.
-         * 
-         */
-
         #region IDisposable
 
         public void Dispose()
@@ -587,7 +580,7 @@ namespace Solid.Arduino.Firmata
                     lockTaken = Monitor.Wait(_receivedMessageQueue, _messageTimeout);
                 }
 
-                throw new TimeoutException(string.Format("Wait condition for {0} message timed out.", typeRequested));
+                throw new TimeoutException(string.Format(Messages.TimeoutEx_WaitMessage, typeRequested));
             }
             finally
             {
@@ -612,13 +605,13 @@ namespace Solid.Arduino.Firmata
         private void I2cRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
-                throw new ArgumentOutOfRangeException("slaveAddress", "Address must be in range of 0 and 1,023.");
+                throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
 
             if (slaveRegister < -1 || slaveRegister > 0x3FFF)
-                throw new ArgumentOutOfRangeException("slaveRegister", "Value must be between 0 and 16,383.");
+                throw new ArgumentOutOfRangeException("slaveRegister", Messages.ArgumentEx_ValueRange0_16383);
 
             if (bytesToRead < 0 || bytesToRead > 0x3FFF)
-                throw new ArgumentOutOfRangeException("bytesToRead", "Value must be between 0 and 16,383.");
+                throw new ArgumentOutOfRangeException("bytesToRead", Messages.ArgumentEx_ValueRange0_16383);
 
             byte[] command = new byte[(slaveRegister == -1 ? 7 : 9)];
             command[0] = SysExStart;
@@ -810,7 +803,7 @@ namespace Solid.Arduino.Firmata
                 lock (_receivedMessageQueue)
                 {
                     if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
-                        throw new OverflowException("Received message queue is full.");
+                        throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
 
                     _receivedMessageQueue.Enqueue(message);
                     _awaitedMessagesQueue.TryDequeue(out awaitedMessageType);
@@ -839,8 +832,8 @@ namespace Solid.Arduino.Firmata
             
             reply.Data = data;
 
-            if (OnI2cReplyReceived != null)
-                OnI2cReplyReceived(this, new FirmataEventArgs<I2cReply>(reply));
+            if (I2cReplyReceived != null)
+                I2cReplyReceived(this, new I2cEventArgs(reply));
 
             return new FirmataMessage(reply, MessageType.I2CReply);
         }
@@ -848,21 +841,21 @@ namespace Solid.Arduino.Firmata
         private FirmataMessage CreatePinStateResponse()
         {
             if (_inputBuffer.DataByteIndex < 5)
-                throw new InvalidOperationException("Pin not supported.");
+                throw new InvalidOperationException(Messages.InvalidOpEx_PinNotSupported);
+
+            int value = 0;
+
+            for (int x = _inputBuffer.DataByteIndex - 1; x > 3; x--)
+            {
+                value = (value << 7) | _inputBuffer.Data[x];
+            }
 
             var pinState = new PinState
             {
                 PinNumber = _inputBuffer.Data[2],
                 Mode = (PinMode)_inputBuffer.Data[3],
-                Value = (ulong)_inputBuffer.Data[_inputBuffer.DataByteIndex - 1]
+                Value = (ulong)value
             };
-
-            for (int x = _inputBuffer.DataByteIndex - 1; x > 4; x--)
-            {
-                pinState.Value <<= 7;
-                pinState.Value += (ulong)_inputBuffer.Data[x];
-            }
-
             return new FirmataMessage(pinState, MessageType.PinStateResponse);
         }
 

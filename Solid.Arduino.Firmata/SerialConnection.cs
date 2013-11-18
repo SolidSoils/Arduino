@@ -2,7 +2,7 @@
 using System.IO.Ports;
 using System.Linq;
 
-namespace Solid.Arduino.Firmata
+namespace Solid.Arduino
 {
     public sealed class SerialConnection: SerialPort, IDisposable
     {

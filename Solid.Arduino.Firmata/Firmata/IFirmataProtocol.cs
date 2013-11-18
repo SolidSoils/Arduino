@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Solid.Arduino.I2c;
+
 namespace Solid.Arduino.Firmata
 {
     /// <summary>
@@ -50,11 +52,11 @@ namespace Solid.Arduino.Firmata
         /// Event, raised for every SysEx (0xF0) and ProtocolVersion (0xF9) message not handled by an <see cref="IFirmataProtocol"/>'s Get method.
         /// </summary>
         /// <remarks>
-        /// When i.e. method <see cref="RequestBoardCapability"/> is invoked, the Arduino's response message raises this event.
+        /// When i.e. method <see cref="RequestBoardCapability"/> is invoked, the party system's response message raises this event.
         /// However, when method <see cref="GetBoardCapability"/> or <see cref="GetBoardCapabilityAsync"/> is invoked, the response is returned
-        /// to the respective methods and event <see cref="OnMessageReceived"/> is not raised.
+        /// to the respective method and event <see cref="OnMessageReceived"/> is not raised.
         /// 
-        /// This event is not raised for analog en digital I/O messages.
+        /// This event is not raised for either analog or digital I/O messages.
         /// </remarks>
         event MessageReceivedHandler OnMessageReceived;
 
@@ -62,7 +64,7 @@ namespace Solid.Arduino.Firmata
         /// Event, raised when an analog state message (command 0xE0) is received.
         /// </summary>
         /// <remarks>
-        /// The frequency at which analog state messages are sent can be set with method <see cref="SetSamplingInterval"/>.
+        /// The frequency at which analog state messages are being sent by the party system can be set with method <see cref="SetSamplingInterval"/>.
         /// </remarks>
         event AnalogStateReceivedHandler OnAnalogStateReceived;
 
@@ -71,7 +73,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <remarks>
         /// Please note that the StandardFirmata implementation for Arduino only sends updates of digital port states if necessary.
-        /// When none of a port's pins have changed state since a previous polling cycle, no Firmata.sendDigitalPort message
+        /// When none of a port's digital input pins have changed state since a previous polling cycle, no Firmata.sendDigitalPort message
         /// is sent.
         /// <para>
         /// Also, calling method <see cref="SetDigitalReportMode"/> does not guarantee this event will receive a (first) Firmata.sendDigitalPort message.
@@ -99,23 +101,47 @@ namespace Solid.Arduino.Firmata
         void SetAnalogReportMode(int channel, bool enable);
 
         /// <summary>
-        /// Sets the pins of a digital port LOW or HIGH.
+        /// Sets the digital output pins of a given port LOW or HIGH.
         /// </summary>
-        /// <param name="portNumber">The number of the port</param>
+        /// <param name="portNumber">The 0-based port number</param>
         /// <param name="pins">Binary value for the port's pins (0 to 7)</param>
+        /// <remarks>
+        /// A binary 1 sets the digital output pin HIGH (+5 or +3.3 volts).
+        /// A binary 0 sets the digital output pin LOW.
+        /// <para>
+        /// The Arduino operates with 8-bit ports, so only bits 0 to 7 of the pins parameter are mapped.
+        /// Higher bits are ignored.
+        /// </para>
+        /// <example>
+        /// For port 0 bit 2 maps to the Arduino's pin 2.
+        /// For port 1 bit 2 maps to pin 10.
+        /// 
+        /// Thet complete mapping of port 1 of the Arduino Uno looks like this:
+        /// <list type="">
+        /// <item>bit 0: pin 8</item>
+        /// <item>bit 1: pin 9</item>
+        /// <item>bit 2: pin 10</item>
+        /// <item>bit 3: pin 11</item>
+        /// <item>bit 4: pin 12</item>
+        /// <item>bit 5: pin 13</item>
+        /// <item>bit 6: not mapped</item>
+        /// <item>bit 7: not mapped</item>
+        /// </list> 
+        /// </example>
+        /// </remarks>
         void SetDigitalPortState(int portNumber, uint pins);
 
         /// <summary>
-        /// Enables or disables digital port reporting.
+        /// Enables or disables digital input pin reporting for the given port.
         /// </summary>
         /// <param name="portNumber">The number of the port</param>
-        /// <param name="enable"><c>True</c> if enabled, otherwise <c>false</c></param>
+        /// <param name="enable"><c>true</c> if enabled, otherwise <c>false</c></param>
         /// <remarks>
         /// When enabled, the party system is expected to return digital I/O messages (0x90)
         /// for the given port.
         /// <para>
         /// Note: as for Firmata version 2.3 digital I/O messages are only returned when
-        /// at least one pin's state has changed from high to low or vice versa.
+        /// at least one digital input pin's state has changed from high to low or vice versa.
         /// </para>
         /// </remarks>
         void SetDigitalReportMode(int portNumber, bool enable);
@@ -142,11 +168,11 @@ namespace Solid.Arduino.Firmata
         void ConfigureServo(int pinNumber, int minPulse, int maxPulse);
 
         /// <summary>
-        /// Positions the servo motor attached to the given channel.
+        /// Sets an analog value on a PWM or Servo enabled digital pin.
         /// </summary>
-        /// <param name="channel">The channel the servo is mapped to.</param>
+        /// <param name="pinNumber">The pin number.</param>
         /// <param name="value">THe position value</param>
-        void PositionServo(int channel, ulong value);
+        void SetPinValue(int pinNumber, ulong value);
 
         /// <summary>
         /// Sends a reset message to the party system.

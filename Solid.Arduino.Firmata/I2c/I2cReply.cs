@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Solid.Arduino.Firmata
+namespace Solid.Arduino.I2c
 {
     public struct I2cReply
     {

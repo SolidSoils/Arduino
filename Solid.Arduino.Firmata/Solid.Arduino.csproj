@@ -7,8 +7,8 @@
     <ProjectGuid>{FDF9E431-2390-4C7B-AE60-10183439A683}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Solid.Arduino.Firmata</RootNamespace>
-    <AssemblyName>Solid.Arduino.Firmata</AssemblyName>
+    <RootNamespace>Solid.Arduino</RootNamespace>
+    <AssemblyName>Solid.Arduino</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,31 +39,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalogPinMapping.cs" />
-    <Compile Include="AnalogState.cs" />
-    <Compile Include="BoardCapability.cs" />
-    <Compile Include="BoardMapping.cs" />
-    <Compile Include="ByteArrayExtensions.cs" />
-    <Compile Include="DigitalPortState.cs" />
-    <Compile Include="FirmataMessage.cs" />
-    <Compile Include="FirmataMessageEventArgs.cs" />
-    <Compile Include="FirmataMessageEventArgs_.cs" />
-    <Compile Include="FirmataSession.cs" />
-    <Compile Include="Firmware.cs" />
-    <Compile Include="I2cReply.cs" />
-    <Compile Include="IFirmataProtocol.cs" />
-    <Compile Include="II2cProtocol.cs" />
-    <Compile Include="ISerialProtocol.cs" />
-    <Compile Include="PinCapability.cs" />
-    <Compile Include="PinState.cs" />
-    <Compile Include="ProtocolVersion.cs" />
+    <Compile Include="Firmata\AnalogPinMapping.cs" />
+    <Compile Include="Firmata\AnalogState.cs" />
+    <Compile Include="Firmata\BoardCapability.cs" />
+    <Compile Include="Firmata\BoardMapping.cs" />
+    <Compile Include="Firmata\ByteArrayExtensions.cs" />
+    <Compile Include="Firmata\DigitalPortState.cs" />
+    <Compile Include="Firmata\FirmataMessage.cs" />
+    <Compile Include="Firmata\FirmataMessageEventArgs.cs" />
+    <Compile Include="Firmata\FirmataMessageEventArgs_.cs" />
+    <Compile Include="ArduinoSession.cs" />
+    <Compile Include="Firmata\Firmware.cs" />
+    <Compile Include="I2C\I2cEventArgs.cs" />
+    <Compile Include="I2C\I2cReply.cs" />
+    <Compile Include="Firmata\IFirmataProtocol.cs" />
+    <Compile Include="I2C\II2cProtocol.cs" />
+    <Compile Include="IStringProtocol.cs" />
+    <Compile Include="Firmata\PinCapability.cs" />
+    <Compile Include="Firmata\PinState.cs" />
+    <Compile Include="Firmata\ProtocolVersion.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
     <Compile Include="SerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerialMonitor.cs" />
-    <Compile Include="StringData.cs" />
+    <Compile Include="Firmata\StringData.cs" />
+    <Compile Include="StringEventArgs.cs" />
     <Compile Include="StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

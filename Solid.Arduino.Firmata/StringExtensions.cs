@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.Firmata
+namespace Solid.Arduino
 {
     public static class StringExtensions
     {
@@ -33,7 +33,7 @@ namespace Solid.Arduino.Firmata
             char[] chars = o.ToCharArray();
 
             if (!chars.All(c => Char.IsDigit(c)))
-                throw new ArgumentException("String must contain digits only.");
+                throw new ArgumentException(Messages.ArgumentEx_DigitStringOnly);
 
             byte[] bytes = new byte[o.Length >> 1];
 

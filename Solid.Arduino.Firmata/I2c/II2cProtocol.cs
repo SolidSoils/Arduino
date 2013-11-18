@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.Firmata
+namespace Solid.Arduino.I2c
 {
     /// <summary>
     /// Signature of event handlers capable of processing I2C_REPLY messages.
     /// </summary>
     /// <param name="par_Sender">The object raising the event</param>
     /// <param name="par_EventArgs">Event arguments holding an <see cref="I2cReply"/></param>
-    public delegate void I2cReplyReceivedHandler(object par_Sender, FirmataEventArgs<I2cReply> par_EventArgs);
+    public delegate void I2cReplyReceivedHandler(object par_Sender, I2cEventArgs par_EventArgs);
 
     /// <summary>
     /// Defines a comprehensive set of members supporting the I2C Protocol.
@@ -24,12 +24,33 @@ namespace Solid.Arduino.Firmata
         /// <remarks>
         /// When i.e. method <see cref="I2cReadOnce"/> is invoked, the party system's response message raises this event.
         /// However, when method <see cref="GetI2cReply"/> or <see cref="GetI2cReplyAsync"/> is invoked, the response is returned
-        /// to the respective methods and event <see cref="OnI2cReplyReceived"/> is not raised.
+        /// to the respective methods and event <see cref="I2cReplyReceived"/> is not raised.
         /// </remarks>
-        event I2cReplyReceivedHandler OnI2cReplyReceived;
+        event I2cReplyReceivedHandler I2cReplyReceived;
 
+        /// <summary>
+        /// Sets the frequency at which data is read in the continuous mode.
+        /// </summary>
+        /// <param name="microseconds">The interval, expressed in microseconds</param>
         void I2cSetInterval(int microseconds);
+
+        /// <summary>
+        /// Writes an arbitrary array of bytes to the given memory address.
+        /// </summary>
+        /// <param name="slaveAddress">The target address</param>
+        /// <param name="data">The data array</param>
         void I2cWrite(int slaveAddress, byte[] data);
+
+        /// <summary>
+        /// Requests the party system to send bytes read from the given memory address.
+        /// </summary>
+        /// <param name="slaveAddress">The source address</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <remarks>
+        /// The party system is expected to return a single I2C_REPLY message.
+        /// This message triggers the <see cref="I2cReplyReceived"/> event. The capabilities
+        /// are passed in the <see cref="FirmataEventArgs<I2cReply>"/> in an <see cref="I2cReply"/> object.
+        /// </remarks>
         void I2cReadOnce(int slaveAddress, int bytesToRead);
         void I2cReadOnce(int slaveAddress, int slaveRegister, int bytesToRead);
         void I2cReadContinuous(int slaveAddress, int bytesToRead);

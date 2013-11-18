@@ -25,7 +25,7 @@ namespace Solid.Arduino.Firmata
                 int leastSignificant = data[x] & (isLittleEndian ? 0xF0 : 0x0F);
 
                 if (mostSignificant > 9 | leastSignificant > 9)
-                    throw new ArgumentOutOfRangeException("Cannot convert non-BCD data.");
+                    throw new ArgumentOutOfRangeException(Messages.ArgumentEx_CannotConvertBcd);
 
                 chars[charIndex++] = Convert.ToChar(mostSignificant);
                 chars[charIndex++] = Convert.ToChar(leastSignificant);
