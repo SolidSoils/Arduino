@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Solid.Arduino.Firmata\Solid.Arduino.csproj">
+    <ProjectReference Include="..\Solid.Arduino\Solid.Arduino.csproj">
       <Project>{fdf9e431-2390-4c7b-ae60-10183439a683}</Project>
       <Name>Solid.Arduino</Name>
     </ProjectReference>
