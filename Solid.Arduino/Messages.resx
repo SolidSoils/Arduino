@@ -127,7 +127,7 @@
     <value>String must contain digits only.</value>
   </data>
   <data name="ArgumentEx_I2cAddressRange" xml:space="preserve">
-    <value>Address must be in range of 0 and 1,023.</value>
+    <value>Address must be between 0 and 1,023.</value>
   </data>
   <data name="ArgumentEx_I2cInterval" xml:space="preserve">
     <value>Interval must be between 0 and 16,383 milliseconds.</value>
@@ -141,6 +141,12 @@
   <data name="ArgumentEx_MinPulseWidth" xml:space="preserve">
     <value>Minimum pulse width must be between 0 and 16,383 milliseconds.</value>
   </data>
+  <data name="ArgumentEx_NoNegativeValue" xml:space="preserve">
+    <value>Value cannot be negative.</value>
+  </data>
+  <data name="ArgumentEx_NotNullOrEmpty" xml:space="preserve">
+    <value>String value can not be null or empty.</value>
+  </data>
   <data name="ArgumentEx_PinRange0_127" xml:space="preserve">
     <value>Pin number must be between 0 and 127.</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="ArgumentEx_PortRange0_15" xml:space="preserve">
     <value>Port number must be between 0 and 15.</value>
+  </data>
+  <data name="ArgumentEx_PositiveValue" xml:space="preserve">
+    <value>Value must be greater than zero.</value>
   </data>
   <data name="ArgumentEx_SamplingInterval" xml:space="preserve">
     <value>Sampling interval must be between 1 and 16,383 milliseconds.</value>
@@ -159,13 +168,22 @@
   <data name="InvalidOpEx_PinNotSupported" xml:space="preserve">
     <value>Pin is not supported.</value>
   </data>
+  <data name="NotImplementedEx_Command" xml:space="preserve">
+    <value>Commandbyte {0:X} is not implemented.</value>
+  </data>
   <data name="OverflowEx_CmdBufferFull" xml:space="preserve">
     <value>The command parsing buffer is full.</value>
   </data>
   <data name="OverflowEx_MsgBufferFull" xml:space="preserve">
     <value>Received message queue is full.</value>
   </data>
+  <data name="OverflowEx_StringBufferFull" xml:space="preserve">
+    <value>The received strings buffer is full.</value>
+  </data>
   <data name="TimeoutEx_WaitMessage" xml:space="preserve">
     <value>Wait condition for {0} message timed out.</value>
+  </data>
+  <data name="TimeoutEx_WaitStringRequest" xml:space="preserve">
+    <value>Wait condition for string read in {0} mode timed out.</value>
   </data>
 </root>

@@ -113,7 +113,7 @@ namespace Solid.Arduino.Firmata
         /// Higher bits are ignored.
         /// </para>
         /// <example>
-        /// For port 0 bit 2 maps to the Arduino's pin 2.
+        /// For port 0 bit 2 maps to the Arduino Uno's pin 2.
         /// For port 1 bit 2 maps to pin 10.
         /// 
         /// Thet complete mapping of port 1 of the Arduino Uno looks like this:
@@ -129,7 +129,7 @@ namespace Solid.Arduino.Firmata
         /// </list> 
         /// </example>
         /// </remarks>
-        void SetDigitalPortState(int portNumber, uint pins);
+        void SetDigitalPort(int portNumber, int pins);
 
         /// <summary>
         /// Enables or disables digital input pin reporting for the given port.
@@ -151,7 +151,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <param name="pinNumber">The number of the pin</param>
         /// <param name="mode">The pin's mode</param>
-        void SetPinMode(int pinNumber, PinMode mode);
+        void SetDigitalPinMode(int pinNumber, PinMode mode);
 
         /// <summary>
         /// Sets the frequency at which analog samples must be reported.
@@ -172,7 +172,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <param name="pinNumber">The pin number.</param>
         /// <param name="value">THe position value</param>
-        void SetPinValue(int pinNumber, ulong value);
+        void SetDigitalPin(int pinNumber, long value);
 
         /// <summary>
         /// Sends a reset message to the party system.

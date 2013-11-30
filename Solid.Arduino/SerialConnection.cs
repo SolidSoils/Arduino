@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Solid.Arduino
 {
-    public sealed class SerialConnection: SerialPort, IDisposable
+    public sealed class SerialConnection: SerialPort, ISerialConnection, IDisposable
     {
         #region Constructors
 

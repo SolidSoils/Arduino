@@ -54,6 +54,7 @@
     <Compile Include="I2C\I2cReply.cs" />
     <Compile Include="Firmata\IFirmataProtocol.cs" />
     <Compile Include="I2C\II2cProtocol.cs" />
+    <Compile Include="ISerialConnection.cs" />
     <Compile Include="IStringProtocol.cs" />
     <Compile Include="Firmata\PinCapability.cs" />
     <Compile Include="Firmata\PinState.cs" />

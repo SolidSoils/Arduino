@@ -88,7 +88,7 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address must be in range of 0 and 1,023..
+        ///   Looks up a localized string similar to Address must be between 0 and 1,023..
         /// </summary>
         internal static string ArgumentEx_I2cAddressRange {
             get {
@@ -133,6 +133,24 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value cannot be negative..
+        /// </summary>
+        internal static string ArgumentEx_NoNegativeValue {
+            get {
+                return ResourceManager.GetString("ArgumentEx_NoNegativeValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String value can not be null or empty..
+        /// </summary>
+        internal static string ArgumentEx_NotNullOrEmpty {
+            get {
+                return ResourceManager.GetString("ArgumentEx_NotNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pin number must be between 0 and 127..
         /// </summary>
         internal static string ArgumentEx_PinRange0_127 {
@@ -156,6 +174,15 @@ namespace Solid.Arduino {
         internal static string ArgumentEx_PortRange0_15 {
             get {
                 return ResourceManager.GetString("ArgumentEx_PortRange0_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value must be greater than zero..
+        /// </summary>
+        internal static string ArgumentEx_PositiveValue {
+            get {
+                return ResourceManager.GetString("ArgumentEx_PositiveValue", resourceCulture);
             }
         }
         
@@ -187,6 +214,15 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commandbyte {0:X} is not implemented..
+        /// </summary>
+        internal static string NotImplementedEx_Command {
+            get {
+                return ResourceManager.GetString("NotImplementedEx_Command", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The command parsing buffer is full..
         /// </summary>
         internal static string OverflowEx_CmdBufferFull {
@@ -205,11 +241,29 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The received strings buffer is full..
+        /// </summary>
+        internal static string OverflowEx_StringBufferFull {
+            get {
+                return ResourceManager.GetString("OverflowEx_StringBufferFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wait condition for {0} message timed out..
         /// </summary>
         internal static string TimeoutEx_WaitMessage {
             get {
                 return ResourceManager.GetString("TimeoutEx_WaitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wait condition for string read in {0} mode timed out..
+        /// </summary>
+        internal static string TimeoutEx_WaitStringRequest {
+            get {
+                return ResourceManager.GetString("TimeoutEx_WaitStringRequest", resourceCulture);
             }
         }
     }
