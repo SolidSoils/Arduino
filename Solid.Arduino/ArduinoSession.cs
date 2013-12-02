@@ -37,7 +37,7 @@ namespace Solid.Arduino
             ReadBlock
         }
 
-        private struct StringRequest
+        private sealed class StringRequest
         {
             private readonly StringReadMode _mode;
             private readonly int _blockLength;
@@ -87,8 +87,9 @@ namespace Solid.Arduino
         private readonly bool _gotOpenConnection;
         private readonly Queue<FirmataMessage> _receivedMessageQueue = new Queue<FirmataMessage>();
         private readonly Queue<string> _receivedStringQueue = new Queue<string>();
-        private ConcurrentQueue<MessageType> _awaitedMessagesQueue = new ConcurrentQueue<MessageType>();
+        private ConcurrentQueue<FirmataMessage> _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
         private ConcurrentQueue<StringRequest> _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
+        private StringRequest _currentStringRequest;
 
         private int _messageTimeout = -1;
         private ProcessMessageHandler _processMessage;
@@ -138,7 +139,7 @@ namespace Solid.Arduino
                 _connection.DiscardInBuffer();
                 _receivedMessageQueue.Clear();
                 _processMessage = null;
-                _awaitedMessagesQueue = new ConcurrentQueue<MessageType>();
+                _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
                 _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
             }
         }
@@ -361,14 +362,14 @@ namespace Solid.Arduino
         public Firmware GetFirmware()
         {
             RequestFirmware();
-            return (Firmware)((FirmataMessage)GetMessageFromQueue(MessageType.FirmwareResponse)).Value;
+            return (Firmware)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.FirmwareResponse))).Value;
         }
 
         public async Task<Firmware> GetFirmwareAsync()
         {
             RequestFirmware();
             return await Task.Run<Firmware>(() =>
-                (Firmware)((FirmataMessage)GetMessageFromQueue(MessageType.FirmwareResponse)).Value);
+                (Firmware)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.FirmwareResponse))).Value);
         }
 
         public void RequestProtocolVersion()
@@ -379,14 +380,14 @@ namespace Solid.Arduino
         public ProtocolVersion GetProtocolVersion()
         {
             RequestProtocolVersion();
-            return (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(MessageType.ProtocolVersion)).Value;
+            return (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.ProtocolVersion))).Value;
         }
 
         public async Task<ProtocolVersion> GetProtocolVersionAsync()
         {
             RequestProtocolVersion();
             return await Task.Run<ProtocolVersion>(() =>
-                (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(MessageType.ProtocolVersion)).Value);
+                (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.ProtocolVersion))).Value);
         }
 
         public void RequestBoardCapability()
@@ -397,14 +398,14 @@ namespace Solid.Arduino
         public BoardCapability GetBoardCapability()
         {
             RequestBoardCapability();
-            return (BoardCapability)((FirmataMessage) GetMessageFromQueue(MessageType.CapabilityResponse)).Value;
+            return (BoardCapability)((FirmataMessage) GetMessageFromQueue(new FirmataMessage(MessageType.CapabilityResponse))).Value;
         }
 
         public async Task<BoardCapability> GetBoardCapabilityAsync()
         {
             RequestBoardCapability();
             return await Task.Run<BoardCapability>(() =>
-                (BoardCapability)((FirmataMessage)GetMessageFromQueue(MessageType.CapabilityResponse)).Value);
+                (BoardCapability)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.CapabilityResponse))).Value);
         }
 
         public void RequestBoardAnalogMapping()
@@ -415,14 +416,14 @@ namespace Solid.Arduino
         public BoardAnalogMapping GetBoardAnalogMapping()
         {
             RequestBoardAnalogMapping();
-            return (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(MessageType.AnalogMappingResponse)).Value;
+            return (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.AnalogMappingResponse))).Value;
         }
 
         public async Task<BoardAnalogMapping> GetBoardAnalogMappingAsync()
         {
             RequestBoardAnalogMapping();
             return await Task.Run<BoardAnalogMapping>(() =>
-                (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(MessageType.AnalogMappingResponse)).Value);
+                (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.AnalogMappingResponse))).Value);
         }
 
         public void RequestPinState(int pinNumber)
@@ -443,14 +444,14 @@ namespace Solid.Arduino
         public PinState GetPinState(int pinNumber)
         {
             RequestPinState(pinNumber);
-            return (PinState)((FirmataMessage)GetMessageFromQueue(MessageType.PinStateResponse)).Value;
+            return (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value;
         }
 
         public async Task<PinState> GetPinStateAsync(int pinNumber)
         {
             RequestPinState(pinNumber);
             return await Task.Run<PinState>(() =>
-                (PinState)((FirmataMessage)GetMessageFromQueue(MessageType.PinStateResponse)).Value);
+                (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value);
         }
 
         #endregion
@@ -508,18 +509,18 @@ namespace Solid.Arduino
         public I2cReply GetI2cReply(int slaveAddress, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, bytesToRead);
-            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+            _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value;
+            return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, bytesToRead);
-            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+            _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return await Task.Run<I2cReply>(() =>
-                (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value);
+                (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
         public void I2cReadOnce(int slaveAddress, int slaveRegister, int bytesToRead)
@@ -530,18 +531,18 @@ namespace Solid.Arduino
         public I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
-            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+            _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value;
+            return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
-            _awaitedMessagesQueue.Enqueue(MessageType.I2CReply);
+            _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return await Task.Run<I2cReply>(() =>
-                (I2cReply)((FirmataMessage)GetMessageFromQueue(MessageType.I2CReply)).Value);
+                (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
         public void I2cReadContinuous(int slaveAddress, int bytesToRead)
@@ -628,12 +629,11 @@ namespace Solid.Arduino
                     Monitor.Exit(_receivedStringQueue);
                 }
             }
-
         }
 
-        private object GetMessageFromQueue(MessageType typeRequested)
+        private object GetMessageFromQueue(FirmataMessage awaitedMessage)
         {
-            _awaitedMessagesQueue.Enqueue(typeRequested);
+            _awaitedMessagesQueue.Enqueue(awaitedMessage);
             bool lockTaken = false;
 
             try
@@ -643,7 +643,7 @@ namespace Solid.Arduino
                 while (lockTaken)
                 {
                     if (_receivedMessageQueue.Count > 0
-                        && _receivedMessageQueue.Peek().Type == typeRequested)
+                        && _receivedMessageQueue.Peek().Type == awaitedMessage.Type)
                     {
                         FirmataMessage message = _receivedMessageQueue.Dequeue();
                         Monitor.PulseAll(_receivedMessageQueue);
@@ -653,7 +653,7 @@ namespace Solid.Arduino
                     lockTaken = Monitor.Wait(_receivedMessageQueue, _messageTimeout);
                 }
 
-                throw new TimeoutException(string.Format(Messages.TimeoutEx_WaitMessage, typeRequested));
+                throw new TimeoutException(string.Format(Messages.TimeoutEx_WaitMessage, awaitedMessage.Type));
             }
             finally
             {
@@ -724,7 +724,6 @@ namespace Solid.Arduino
                     Console.WriteLine();
 
                 Console.Write("{0:x2} ", serialByte);
-
 #endif
 
                 if (_processMessage != null)
@@ -735,12 +734,12 @@ namespace Solid.Arduino
                 {
                     if ((serialByte & 0x80) != 0)
                     {
-                        // Process command byte
+                        // Process Firmata command byte.
                         ProcessCommand(serialByte);
                     }
                     else
                     {
-                        // TODO: implement processing of serial read ASCII strings.
+                        // Process ASCII character.
                         ProcessAsciiString(serialByte);
                     }
                 }
@@ -751,17 +750,28 @@ namespace Solid.Arduino
         {
             char c = Convert.ToChar(serialByte);
 
-            StringRequest request;
+            if (_currentStringRequest == null)
+                _awaitedStringsQueue.TryDequeue(out _currentStringRequest);
 
-            if (_awaitedStringsQueue.TryPeek(out request))
+            if (_currentStringRequest == null)
             {
-                switch (request.Mode)
+                if (c == _connection.NewLine[_connection.NewLine.Length - 1] || serialByte == 0x1A) // NewLine or EOF?
+                {
+                    if (StringReceived != null)
+                        StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex)));
+
+                    _stringBufferIndex = 0;
+                    return;
+                }
+            }
+            else
+            {
+                switch (_currentStringRequest.Mode)
                 {
                     case StringReadMode.ReadLine:
                         if (c == _connection.NewLine[0] || serialByte == 0x1A)
                         {
-                            _receivedStringQueue.Enqueue(new string(_stringBuffer, 0, _stringBufferIndex));
-                            _stringBufferIndex = 0;
+                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex));
                             return;
                         }
                         if (c == '\r')
@@ -770,43 +780,43 @@ namespace Solid.Arduino
                         break;
 
                     case StringReadMode.ReadBlock:
-                        if (_stringBufferIndex == request.BlockLength - 1)
+                        if (_stringBufferIndex == _currentStringRequest.BlockLength - 1)
                         {
                             _stringBuffer[_stringBufferIndex] = c;
-                            _receivedStringQueue.Enqueue(new string(_stringBuffer, 0, _stringBufferIndex + 1));
-                            _stringBufferIndex = 0;
+                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex + 1));
                             return;
                         }
                         break;
 
                     case StringReadMode.ReadToTerminator:
-                        if (c == request.Terminator)
+                        if (c == _currentStringRequest.Terminator)
                         {
-                            _receivedStringQueue.Enqueue(new string(_stringBuffer, 0, _stringBufferIndex));
-                            _stringBufferIndex = 0;
+                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex));
                             return;
                         }
                         break;
                 }
+            }
 
-                if (_stringBufferIndex == BUFFERSIZE)
+            if (_stringBufferIndex == BUFFERSIZE)
+                throw new OverflowException(Messages.OverflowEx_StringBufferFull);
+
+            _stringBuffer[_stringBufferIndex] = c;
+            _stringBufferIndex++;
+        }
+
+        private void EnqueueString(string value)
+        {
+            lock (_receivedStringQueue)
+            {
+                if (_receivedStringQueue.Count >= MAXQUEUELENGTH)
                     throw new OverflowException(Messages.OverflowEx_StringBufferFull);
 
-                _stringBuffer[_stringBufferIndex] = c;
-                _stringBufferIndex++;
+                _receivedStringQueue.Enqueue(value);
+                _currentStringRequest = null;
+                _stringBufferIndex = 0;
+                Monitor.PulseAll(_receivedStringQueue);
             }
-            else
-            {
-                if (c == _connection.NewLine[0] || serialByte == 0x1A) // NewLine or EOF?
-                {
-                    if (StringReceived != null)
-                        StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex)));
-
-                    _stringBufferIndex = 0;
-                }
-            }
-
-            _stringBufferIndex++;
         }
 
         private void ProcessCommand(int serialByte)
@@ -911,8 +921,7 @@ namespace Solid.Arduino
                     Major = _messageBuffer[1],
                     Minor = messageByte
                 };
-                _processMessage = null;
-                EnqueueMessage(new FirmataMessage(version, MessageType.ProtocolVersion));
+                DeliverMessage(new FirmataMessage(version, MessageType.ProtocolVersion));
             }
         }
 
@@ -924,59 +933,48 @@ namespace Solid.Arduino
                 return;
             }
 
-            FirmataMessage message;
-
             switch (_messageBuffer[1])
             {
                 case 0x6A: // AnalogMappingResponse
-                    message = CreateAnalogMappingResponse();
-                    break;
+                    DeliverMessage(CreateAnalogMappingResponse());
+                    return;
 
                 case 0x6C: // CapabilityResponse
-                    message = CreateCapabilityResponse();
-                    break;
+                    DeliverMessage(CreateCapabilityResponse());
+                    return;
 
                 case 0x6E: // PinStateResponse
-                    message = CreatePinStateResponse();
-                    break;
+                    DeliverMessage(CreatePinStateResponse());
+                    return;
 
                 case 0x71: // StringData
-                    message = CreateStringDataMessage();
-                    break;
+                    DeliverMessage(CreateStringDataMessage());
+                    return;
 
                 case 0x77: // I2cReply
-                    message = CreateI2cReply();
-                    break;
+                    DeliverMessage(CreateI2cReply());
+                    return;
 
                 case 0x79: // FirmwareResponse
-                    message = CreateFirmwareResponse();
-                    break;
+                    DeliverMessage(CreateFirmwareResponse());
+                    return;
 
                 default: // Unknown or unsupported message
                     throw new NotImplementedException();
             }
-
-            _processMessage = null;
-            EnqueueMessage(message);
         }
 
-        private void EnqueueMessage(FirmataMessage message)
+        private void DeliverMessage(FirmataMessage message)
         {
-            MessageType awaitedMessageType;
+            _processMessage = null;
 
-            if (_awaitedMessagesQueue.TryPeek(out awaitedMessageType)
-                && awaitedMessageType == message.Type)
+            lock (_receivedMessageQueue)
             {
-                lock (_receivedMessageQueue)
-                {
-                    if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
-                        throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
+                if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
+                    throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
 
-                    _receivedMessageQueue.Enqueue(message);
-                    _awaitedMessagesQueue.TryDequeue(out awaitedMessageType);
-                    Monitor.PulseAll(_receivedMessageQueue);
-                }
-                return;
+                _receivedMessageQueue.Enqueue(message);
+                Monitor.PulseAll(_receivedMessageQueue);
             }
 
             if (OnMessageReceived != null && message.Type != MessageType.I2CReply)

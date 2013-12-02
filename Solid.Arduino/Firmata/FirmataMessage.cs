@@ -7,6 +7,11 @@ namespace Solid.Arduino.Firmata
         private readonly MessageType _type;
         private readonly ValueType _value;
 
+        public FirmataMessage(MessageType type)
+        {
+            _type = type;
+        }
+
         public FirmataMessage(ValueType value, MessageType type)
         {
             _value = value;
