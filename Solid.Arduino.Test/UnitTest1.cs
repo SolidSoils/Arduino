@@ -1,38 +1,91 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Solid.Arduino.Firmata;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.Firmata.Test
+namespace Solid.Arduino.Test
 {
     [TestClass]
     public class UnitTest1
     {
+
+        private readonly Queue<FirmataMessage> _messagesReceived = new Queue<FirmataMessage>();
+
         [TestMethod]
-        public void TestMethod1()
+        public void ClearSession()
         {
-            var connection = new SerialConnection();
-            var session = new FirmataSession(connection);
-
-            session.OnMessageReceived += session_OnMessageReceived;
-
-            session.RequestFirmware();
-
-            Task<PinState> state = session.GetPinStateAsync(1);
-
-
-            Console.ReadLine();
+            var connection = new MockSerialConnection();
+            var session = new ArduinoSession(connection);
+            session.Clear();
+            session.Dispose();
         }
 
-        void session_OnMessageReceived(object par_Sender, FirmataMessageEventArgs par_EventArgs)
+        [TestMethod]
+        public void ResetBoard()
         {
-            if (par_EventArgs.Value.Type == MessageType.FirmwareResponse)
-            {
-                var firmware = (Firmware)par_EventArgs.Value.Value;
-                Console.WriteLine("Version: {0}.{1}", firmware.MajorVersion, firmware.MinorVersion);
-                Console.WriteLine("Name: {0}", firmware.Name);
-            }
+            var connection = new MockSerialConnection();
+            var session = new ArduinoSession(connection);
+            session.OnMessageReceived += session_OnMessageReceived;
+            connection.EnqueueRequestAndResponse(new byte[] { 0xFF }, new byte[] { 0xF9, 2, 3 });
+            session.ResetBoard();
+
+            Assert.AreEqual(1, _messagesReceived.Count);
+            FirmataMessage message = _messagesReceived.Dequeue();
+            Assert.AreEqual(MessageType.ProtocolVersion, message.Type);
+            var version = (ProtocolVersion)message.Value;
+            Assert.AreEqual(2, version.Major);
+            Assert.AreEqual(3, version.Minor);
+        }
+
+        [TestMethod]
+        public void GetProtocolVersion()
+        {
+            var connection = new MockSerialConnection();
+            var session = new ArduinoSession(connection);
+
+            connection.EnqueueRequestAndResponse(new byte[] { 0xF9 }, new byte[] { 0xF9, 2, 3 });
+
+            ProtocolVersion version = session.GetProtocolVersion();
+            Assert.AreEqual(2, version.Major);
+            Assert.AreEqual(3, version.Minor);
+        }
+
+        [TestMethod]
+        public void GetProtocolVersionAsync()
+        {
+            var connection = new MockSerialConnection();
+            var session = new ArduinoSession(connection);
+
+            connection.EnqueueRequestAndResponse(new byte[] { 0xF9 }, new byte[] { 0xF9, 2, 3 });
+            ProtocolVersion version = session.GetProtocolVersionAsync().Result;
+            Assert.AreEqual(2, version.Major);
+            Assert.AreEqual(3, version.Minor);
+        }
+
+        [TestMethod]
+        public void RequestProtocolVersion()
+        {
+            var connection = new MockSerialConnection();
+            var session = new ArduinoSession(connection);
+            session.OnMessageReceived += session_OnMessageReceived;
+
+            connection.EnqueueRequestAndResponse(new byte[] { 0xF9 }, new byte[] { 0xF9, 2, 3 });
+
+            session.RequestProtocolVersion();
+
+            Assert.AreEqual(1, _messagesReceived.Count);
+            FirmataMessage message = _messagesReceived.Dequeue();
+            Assert.AreEqual(MessageType.ProtocolVersion, message.Type);
+            var version = (ProtocolVersion)message.Value;
+            Assert.AreEqual(2, version.Major);
+            Assert.AreEqual(3, version.Minor);
+        }
+
+        private void session_OnMessageReceived(object par_Sender, FirmataMessageEventArgs par_EventArgs)
+        {
+            _messagesReceived.Enqueue(par_EventArgs.Value);
         }
     }
 }
