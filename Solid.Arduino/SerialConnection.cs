@@ -30,6 +30,16 @@ namespace Solid.Arduino
 
         #region Public Methods & Properties
 
+        public new void Close()
+        {
+            if (IsOpen)
+            {
+                base.BaseStream.Flush();
+                base.DiscardInBuffer();
+                base.Close();
+            }
+        }
+
         #endregion
 
         #region Private Methods

@@ -12,7 +12,56 @@ namespace Solid.Arduino.Run
     {
         static void Main(string[] args)
         {
-            var session = new FirmataSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
+            Console.WriteLine("Started.");
+            var p = new Program();
+            p.TimeTest();
+
+            Console.ReadLine();
+            Console.WriteLine("Ready.");
+        }
+
+        private void TimeTest()
+        {
+            var session = new ArduinoSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
+            session.TimeOut = 1000;
+            session.OnMessageReceived += session_OnMessageReceived;
+
+            IFirmataProtocol firmata = (IFirmataProtocol)session;
+
+            var x = firmata.GetI2cReply(0x68, 7);
+
+            Console.WriteLine();
+            Console.WriteLine("{0} bytes received.", x.Data.Length);
+
+            
+            Console.WriteLine("Starting");
+
+
+
+            session.Dispose();
+        }
+
+        void session_OnMessageReceived(object par_Sender, FirmataMessageEventArgs par_EventArgs)
+        {
+            string o;
+
+            switch (par_EventArgs.Value.Type)
+            {
+                case MessageType.StringData:
+                    o = ((StringData)par_EventArgs.Value.Value).Text;
+                    break;
+
+                default:
+                    o = "?";
+                    break;
+            }
+
+            Console.WriteLine("Message {0} received: {1}", par_EventArgs.Value.Type, o);
+        }
+
+        static void SimpelTest()
+        {
+            var session = new ArduinoSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
             session.TimeOut = 1000;
             IFirmataProtocol firmata = (IFirmataProtocol)session;
 
@@ -62,27 +111,27 @@ namespace Solid.Arduino.Run
             }
             Console.WriteLine();
 
-            firmata.SetDigitalPortState(0, 0x04);
-            firmata.SetDigitalPortState(1, 0xff);
-            firmata.SetPinMode(10, PinMode.DigitalOutput);
-            firmata.SetPinMode(11, PinMode.ServoControl);
-            firmata.SetPinValue(11, 90);
+            firmata.SetDigitalPort(0, 0x04);
+            firmata.SetDigitalPort(1, 0xff);
+            firmata.SetDigitalPinMode(10, PinMode.DigitalOutput);
+            firmata.SetDigitalPinMode(11, PinMode.ServoControl);
+            firmata.SetDigitalPin(11, 90);
             firmata.ConfigureServo(11, 0, 255);
             System.Threading.Thread.Sleep(500);
-            uint hi = 0;
+            int hi = 0;
 
             for (int a = 0; a <= 179; a += 1)
             {
-                firmata.SetPinValue(11, (ulong)a);
+                firmata.SetDigitalPin(11, a);
                 System.Threading.Thread.Sleep(100);
-                firmata.SetDigitalPortState(1, hi);
+                firmata.SetDigitalPort(1, hi);
                 hi ^= 4;
                 Console.Write("{0};", a);
             }
             Console.WriteLine();
             Console.WriteLine();
 
-            firmata.SetPinMode(6, PinMode.DigitalInput);
+            firmata.SetDigitalPinMode(6, PinMode.DigitalInput);
 
             //firmata.SetDigitalPortState(2, 255);
             //firmata.SetDigitalPortState(3, 255);
@@ -120,5 +169,7 @@ namespace Solid.Arduino.Run
         {
             Console.WriteLine("Analog level of pin {0}: {1}", par_EventArgs.Value.Channel, par_EventArgs.Value.Level);
         }
+
+
     }
 }

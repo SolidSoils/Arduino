@@ -14,13 +14,11 @@ namespace Solid.Arduino
 
         bool IsOpen { get; }
         string NewLine { get; set; }
-        Stream BaseStream { get; }
         int BytesToRead { get; }
 
         void Open();
         void Close();
         int ReadByte();
-        void DiscardInBuffer();
         void Write(string text);
         void Write(byte[] buffer, int offset, int count);
         void WriteLine(string text);

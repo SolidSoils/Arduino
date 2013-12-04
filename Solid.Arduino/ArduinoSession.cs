@@ -12,7 +12,7 @@ using Solid.Arduino.I2c;
 
 namespace Solid.Arduino
 {
-    public class FirmataSession: IFirmataProtocol, IStringProtocol, IDisposable
+    public class ArduinoSession: IFirmataProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations
 
@@ -101,7 +101,7 @@ namespace Solid.Arduino
 
         #region Constructors
 
-        public FirmataSession(ISerialConnection connection)
+        public ArduinoSession(ISerialConnection connection)
         {
             if (connection == null)
                 throw new ArgumentNullException("connection");
@@ -135,12 +135,12 @@ namespace Solid.Arduino
         {
             lock (_receivedMessageQueue)
             {
-                _connection.BaseStream.Flush();
-                _connection.DiscardInBuffer();
+                _connection.Close();
                 _receivedMessageQueue.Clear();
                 _processMessage = null;
                 _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
                 _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
+                _connection.Open();
             }
         }
 
@@ -460,7 +460,7 @@ namespace Solid.Arduino
 
         public event I2cReplyReceivedHandler I2cReplyReceived;
 
-        public void I2cSetInterval(int microseconds)
+        public void SetI2cReadInterval(int microseconds)
         {
             if (microseconds < 0 || microseconds > 0x3FFF)
                 throw new ArgumentOutOfRangeException("microseconds", Messages.ArgumentEx_I2cInterval);
@@ -476,7 +476,7 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 5);
         }
 
-        public void I2cWrite(int slaveAddress, byte[] data)
+        public void WriteI2c(int slaveAddress, byte[] data)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
                 throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
@@ -501,14 +501,14 @@ namespace Solid.Arduino
             _connection.Write(command, 0, command.Length);
         }
 
-        public void I2cReadOnce(int slaveAddress, int bytesToRead)
+        public void ReadI2cOnce(int slaveAddress, int bytesToRead)
         {
             I2cRead(false, slaveAddress, -1, bytesToRead);
         }
 
         public I2cReply GetI2cReply(int slaveAddress, int bytesToRead)
         {
-            I2cReadOnce(slaveAddress, bytesToRead);
+            ReadI2cOnce(slaveAddress, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
@@ -516,21 +516,21 @@ namespace Solid.Arduino
 
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int bytesToRead)
         {
-            I2cReadOnce(slaveAddress, bytesToRead);
+            ReadI2cOnce(slaveAddress, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return await Task.Run<I2cReply>(() =>
                 (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        public void I2cReadOnce(int slaveAddress, int slaveRegister, int bytesToRead)
+        public void ReadI2cOnce(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2cRead(false, slaveAddress, slaveRegister, bytesToRead);
         }
 
         public I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
+            ReadI2cOnce(slaveAddress, slaveRegister, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
@@ -538,24 +538,24 @@ namespace Solid.Arduino
 
         public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cReadOnce(slaveAddress, slaveRegister, bytesToRead);
+            ReadI2cOnce(slaveAddress, slaveRegister, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
             return await Task.Run<I2cReply>(() =>
                 (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        public void I2cReadContinuous(int slaveAddress, int bytesToRead)
+        public void ReadI2cContinuous(int slaveAddress, int bytesToRead)
         {
             I2cRead(true, slaveAddress, -1, bytesToRead);
         }
 
-        public void I2cReadContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
+        public void ReadI2cContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2cRead(true, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        public void I2cStopReading()
+        public void StopI2cReading()
         {
             // The Firmata specification states that the I2c_read_stop message
             // should only stop the specified query. However, the current Firmata.h implementation
@@ -576,11 +576,10 @@ namespace Solid.Arduino
 
         public void Dispose()
         {
-            if (!_gotOpenConnection)
+            if (_gotOpenConnection)
             {
                 _connection.Close();
             }
-
             GC.SuppressFinalize(this);
         }
 
