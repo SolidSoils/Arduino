@@ -124,13 +124,28 @@ namespace Solid.Arduino.Test
 
         #region Public Testmethods
 
-        public void EnqueueResponse(byte[] data)
+        public void EnqueueResponse(params byte[] data)
         {
             _responseQueue.Enqueue(data);
             _responseByteCount += data.Length;
         }
 
-        public void EnqueueRequestAndResponse(byte[] request, byte[] response)
+        public void Enqueue14bitIsoResponse(string data)
+        {
+            byte[] dataBytes = new byte[data.Length * 2];
+
+            for (int x = 0; x < data.Length; x++)
+            {
+                short c = Convert.ToInt16(data[x]);
+                dataBytes[x * 2] = (byte)(c & 0x7F);
+                dataBytes[x * 2 + 1] = (byte)((c >> 7) & 0x7F);
+            }
+
+            _responseQueue.Enqueue(dataBytes);
+            _responseByteCount += dataBytes.Length;
+        }
+
+        public void EnqueueRequestAndResponse(byte[] request, params byte[] response)
         {
             _expectedRequestQueue.Enqueue(request);
             _responseQueue.Enqueue(response);
@@ -152,8 +167,10 @@ namespace Solid.Arduino.Test
                 _currentRequestIndex = 0;
             }
 
-            if (p != _currentRequest[_currentRequestIndex++])
-                throw new InvalidOperationException(string.Format("Issued request byte {0:X} not equal to expected request byte {1:X}.", p, _currentRequest[_currentRequestIndex++]));
+            if (p != _currentRequest[_currentRequestIndex])
+                throw new InvalidOperationException(string.Format("Issued request byte {0:X} not equal to expected request byte {1:X}.", p, _currentRequest[_currentRequestIndex]));
+
+            _currentRequestIndex++;
 
             if (_currentRequestIndex == _currentRequest.Length)
             {

@@ -50,8 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExceptionMonitor.cs" />
+    <Compile Include="IFirmataProtocolTester.cs" />
     <Compile Include="MockSerialConnection.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ArduinoSessionTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
