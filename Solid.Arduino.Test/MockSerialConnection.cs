@@ -46,7 +46,7 @@ namespace Solid.Arduino.Test
         public void Open()
         {
             if (_isOpen)
-                throw new InvalidOperationException("Connection is already open.");
+                throw new InvalidOperationException("MOCK VALIDATION: Connection is already open.");
 
             _isOpen = true;
         }
@@ -59,7 +59,7 @@ namespace Solid.Arduino.Test
         public int ReadByte()
         {
             if (_responseByteCount == 0)
-                throw new InvalidOperationException("No data.");
+                throw new InvalidOperationException("MOCK VALIDATION: No data.");
 
             if (_currentResponse == null || _currentResponseIndex >= _currentResponse.Length)
             {
@@ -74,10 +74,10 @@ namespace Solid.Arduino.Test
         public void Write(string text)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException("MOCK VALIDATION: text");
 
             if (text.Length == 0)
-                throw new ArgumentException("Text can not be empty.");
+                throw new ArgumentException("MOCK VALIDATION: Text can not be empty.");
 
             foreach (char c in text.ToCharArray())
             {
@@ -88,16 +88,16 @@ namespace Solid.Arduino.Test
         public void Write(byte[] buffer, int offset, int count)
         {
             if (buffer == null)
-                throw new ArgumentNullException("buffer");
+                throw new ArgumentNullException("MOCK VALIDATION: buffer");
 
             if (offset < 0)
-                throw new ArgumentException("offset");
+                throw new ArgumentException("MOCK VALIDATION: offset");
 
             if (count < 1)
-                throw new ArgumentException("count");
+                throw new ArgumentException("MOCK VALIDATION: count");
 
             if (count - offset > buffer.Length)
-                throw new InvalidOperationException("Out of range");
+                throw new InvalidOperationException("MOCK VALIDATION: Out of range");
 
 
             for (int x = 0; x < count; x++)
@@ -109,10 +109,7 @@ namespace Solid.Arduino.Test
         public void WriteLine(string text)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
-
-            if (text.Length == 0)
-                throw new ArgumentException("Text can not be empty.");
+                text = string.Empty;
 
             foreach (char c in string.Concat(text, NewLine).ToCharArray())
             {
@@ -130,26 +127,37 @@ namespace Solid.Arduino.Test
             _responseByteCount += data.Length;
         }
 
-        public void Enqueue14bitIsoResponse(string data)
+        public void EnqueueRequest(params byte[] request)
         {
-            byte[] dataBytes = new byte[data.Length * 2];
-
-            for (int x = 0; x < data.Length; x++)
-            {
-                short c = Convert.ToInt16(data[x]);
-                dataBytes[x * 2] = (byte)(c & 0x7F);
-                dataBytes[x * 2 + 1] = (byte)((c >> 7) & 0x7F);
-            }
-
-            _responseQueue.Enqueue(dataBytes);
-            _responseByteCount += dataBytes.Length;
+            _expectedRequestQueue.Enqueue(request);
         }
 
         public void EnqueueRequestAndResponse(byte[] request, params byte[] response)
         {
             _expectedRequestQueue.Enqueue(request);
-            _responseQueue.Enqueue(response);
-            _responseByteCount += response.Length;
+
+            if (response.Length > 0)
+            {
+                _responseQueue.Enqueue(response);
+                _responseByteCount += response.Length;
+            }
+        }
+
+        public void EnqueueStringResponse(string data)
+        {
+            _responseQueue.Enqueue(Encoding.ASCII.GetBytes(data));
+            _responseByteCount += data.Length;
+        }
+
+        public void EnqueueStringRequest(string data)
+        {
+            _expectedRequestQueue.Enqueue(Encoding.ASCII.GetBytes(data));
+        }
+
+        public void Receive()
+        {
+            while (_responseQueue.Count > 0)
+                ReceiveData(_responseQueue.Peek());
         }
 
         #endregion
@@ -161,14 +169,14 @@ namespace Solid.Arduino.Test
             if (_currentRequest == null || _currentRequestIndex == _currentRequest.Length)
             {
                 if (_expectedRequestQueue.Count < 1)
-                    throw new InvalidOperationException("No request data expected.");
+                    throw new InvalidOperationException("MOCK VALIDATION: No request data expected.");
 
                 _currentRequest = _expectedRequestQueue.Dequeue();
                 _currentRequestIndex = 0;
             }
 
             if (p != _currentRequest[_currentRequestIndex])
-                throw new InvalidOperationException(string.Format("Issued request byte {0:X} not equal to expected request byte {1:X}.", p, _currentRequest[_currentRequestIndex]));
+                throw new InvalidOperationException(string.Format("MOCK VALIDATION: Issued request byte {0:X} not equal to expected request byte {1:X}.", p, _currentRequest[_currentRequestIndex]));
 
             _currentRequestIndex++;
 
@@ -182,7 +190,8 @@ namespace Solid.Arduino.Test
 
         private void ReceiveData(byte[] response)
         {
-            if (this.DataReceived == null)
+            if (this.DataReceived == null
+                || response.Length == 0)
                 return;
 
             ConstructorInfo _serialDataReceivedEventArgsConstructor = typeof(SerialDataReceivedEventArgs)

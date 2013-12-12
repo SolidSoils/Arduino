@@ -50,11 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ByteArrayExtensionsTester.cs" />
     <Compile Include="ExceptionMonitor.cs" />
     <Compile Include="IFirmataProtocolTester.cs" />
+    <Compile Include="IStringProtocolTester.cs" />
     <Compile Include="MockSerialConnection.cs" />
     <Compile Include="ArduinoSessionTester.cs" />
+    <Compile Include="DigitalPortStateTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensionsTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Solid.Arduino\Solid.Arduino.csproj">
