@@ -54,11 +54,11 @@ namespace Solid.Arduino.Firmata
         /// <remarks>
         /// When i.e. method <see cref="RequestBoardCapability"/> is invoked, the party system's response message raises this event.
         /// However, when method <see cref="GetBoardCapability"/> or <see cref="GetBoardCapabilityAsync"/> is invoked, the response is returned
-        /// to the respective method and event <see cref="OnMessageReceived"/> is not raised.
+        /// to the respective method and event <see cref="MessageReceived"/> is not raised.
         /// 
         /// This event is not raised for either analog or digital I/O messages.
         /// </remarks>
-        event MessageReceivedHandler OnMessageReceived;
+        event MessageReceivedHandler MessageReceived;
 
         /// <summary>
         /// Event, raised when an analog state message (command 0xE0) is received.
@@ -66,7 +66,7 @@ namespace Solid.Arduino.Firmata
         /// <remarks>
         /// The frequency at which analog state messages are being sent by the party system can be set with method <see cref="SetSamplingInterval"/>.
         /// </remarks>
-        event AnalogStateReceivedHandler OnAnalogStateReceived;
+        event AnalogStateReceivedHandler AnalogStateReceived;
 
         /// <summary>
         /// Event, raised when a digital I/O message (command 0x90) is received.
@@ -80,7 +80,7 @@ namespace Solid.Arduino.Firmata
         /// Use method <see cref="GetPinState"/> or <see cref="GetPinStateAsync"/> inquiring the current pin states.
         /// </para>
         /// </remarks>
-        event DigitalStateReceivedHandler OnDigitalStateReceived;
+        event DigitalStateReceivedHandler DigitalStateReceived;
 
         /// <summary>
         /// Sends a message string.
@@ -184,7 +184,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <remarks>
         /// The party system is expected to return a single protocol version message (0xF9).
-        /// This message triggers the <see cref="OnMessageReceived"/> event. The protocol version
+        /// This message triggers the <see cref="MessageReceived"/> event. The protocol version
         /// is passed in the <see cref="FirmataMessageEventArgs"/> in a <see cref="ProtocolVersion"/> object.
         /// </remarks>
         void RequestProtocolVersion();
@@ -206,7 +206,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <remarks>
         /// The party system is expected to return a single SYSEX REPORT_FIRMWARE message.
-        /// This message triggers the <see cref="OnMessageReceived"/> event. The firmware signature
+        /// This message triggers the <see cref="MessageReceived"/> event. The firmware signature
         /// is passed in the <see cref="FirmataMessageEventArgs"/> in a <see cref="Firmware"/> object.
         /// </remarks>
         void RequestFirmware();
@@ -228,7 +228,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <remarks>
         /// The party system is expected to return a single SYSEX CAPABILITY_RESPONSE message.
-        /// This message triggers the <see cref="OnMessageReceived"/> event. The capabilities
+        /// This message triggers the <see cref="MessageReceived"/> event. The capabilities
         /// are passed in the <see cref="FirmataMessageEventArgs"/> in a <see cref="BoardCapability"/> object.
         /// </remarks>
         void RequestBoardCapability();
@@ -250,7 +250,7 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <remarks>
         /// The party system is expected to return a single SYSEX ANALOG_MAPPING_RESPONSE message.
-        /// This message triggers the <see cref="OnMessageReceived"/> event. The analog mappings are
+        /// This message triggers the <see cref="MessageReceived"/> event. The analog mappings are
         /// passed in the <see cref="FirmataMessageEventArgs"/> in a <see cref="BoardAnalogMapping"/> object.
         /// </remarks>
         void RequestBoardAnalogMapping();
@@ -273,7 +273,7 @@ namespace Solid.Arduino.Firmata
         /// <param name="pinNumber">The pin number</param>
         /// <remarks>
         /// The party system is expected to return a single SYSEX PINSTATE_RESPONSE message.
-        /// This message triggers the <see cref="OnMessageReceived"/> event. The pin state
+        /// This message triggers the <see cref="MessageReceived"/> event. The pin state
         /// is passed in the <see cref="FirmataMessageEventArgs"/> in a <see cref="PinState"/> object.
         /// </remarks>
         void RequestPinState(int pinNumber);

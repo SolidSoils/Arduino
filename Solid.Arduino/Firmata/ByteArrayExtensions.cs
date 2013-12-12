@@ -19,19 +19,32 @@ namespace Solid.Arduino.Firmata
             char[] chars = new char[data.Length * 2];
             int charIndex = 0;
 
-            for (int x = 0; x < data.Length; x++)
+            if (isLittleEndian)
             {
-                int mostSignificant = data[x] & (isLittleEndian ? 0x0F : 0xF0);
-                int leastSignificant = data[x] & (isLittleEndian ? 0xF0 : 0x0F);
-
-                if (mostSignificant > 9 | leastSignificant > 9)
-                    throw new ArgumentOutOfRangeException(Messages.ArgumentEx_CannotConvertBcd);
-
-                chars[charIndex++] = Convert.ToChar(mostSignificant);
-                chars[charIndex++] = Convert.ToChar(leastSignificant);
+                for (int x = data.Length - 1; x >= 0; x--)
+                {
+                    chars[charIndex++] = ConvertToChar(data[x] & 0x0F);
+                    chars[charIndex++] = ConvertToChar(data[x] >> 4);
+                }
+            }
+            else
+            {
+                for (int x = 0; x < data.Length; x++)
+                {
+                    chars[charIndex++] = ConvertToChar(data[x] >> 4);
+                    chars[charIndex++] = ConvertToChar(data[x] & 0x0F);
+                }
             }
 
-            return chars.ToString();
+            return new string(chars);
+        }
+
+        private static char ConvertToChar(int code)
+        {
+            if (code > 9)
+                throw new ArgumentException(Messages.ArgumentEx_CannotConvertBcd);
+
+            return Convert.ToChar(code | 0x30);
         }
     }
 }

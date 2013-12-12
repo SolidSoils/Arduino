@@ -160,10 +160,13 @@
     <value>Value must be greater than zero.</value>
   </data>
   <data name="ArgumentEx_SamplingInterval" xml:space="preserve">
-    <value>Sampling interval must be between 1 and 16,383 milliseconds.</value>
+    <value>Sampling interval must be between 0 and 16,383 milliseconds.</value>
   </data>
   <data name="ArgumentEx_ValueRange0_16383" xml:space="preserve">
     <value>Value must be between 0 and 16,383.</value>
+  </data>
+  <data name="ArgumentEx_ValueRange0_255" xml:space="preserve">
+    <value>Value must be betwen 0 and 255.</value>
   </data>
   <data name="InvalidOpEx_PinNotSupported" xml:space="preserve">
     <value>Pin is not supported.</value>

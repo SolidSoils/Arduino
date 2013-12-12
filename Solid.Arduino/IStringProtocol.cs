@@ -14,8 +14,8 @@ namespace Solid.Arduino
 
         string NewLine { get; set; }
 
-        void Write(string value);
-        void WriteLine(string value);
+        void Write(string value = null);
+        void WriteLine(string value = null);
 
         string ReadLine();
         Task<string> ReadLineAsync();

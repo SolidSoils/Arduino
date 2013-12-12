@@ -39,11 +39,11 @@ namespace Solid.Arduino
 
             if (isLittleEndian)
             {
-                int byteIndex = bytes.Length;
+                int byteIndex = bytes.Length - 1;
 
                 for (int x = 0; x < o.Length; x += 2)
                 {
-                    bytes[--byteIndex] = (byte)(((Convert.ToInt32(chars[x - 1]) - 48) << 4) | (Convert.ToInt32(chars[x]) - 48));
+                    bytes[byteIndex--] = (byte)(((Convert.ToInt32(chars[x + 1]) - 48) << 4) | (Convert.ToInt32(chars[x]) - 48));
                 }
             }
             else
@@ -56,6 +56,25 @@ namespace Solid.Arduino
                 }
             }
             return bytes;
+        }
+
+        public static byte[] To14BitIso(this string o)
+        {
+            if (o == null)
+                throw new ArgumentNullException();
+
+            if (o.Length == 0)
+                return new byte[0];
+
+            byte[] dataBytes = new byte[o.Length * 2];
+
+            for (int x = 0; x < o.Length; x++)
+            {
+                short c = Convert.ToInt16(o[x]);
+                dataBytes[x * 2] = (byte)(c & 0x7F);
+                dataBytes[x * 2 + 1] = (byte)((c >> 7) & 0x7F);
+            }
+            return dataBytes;
         }
     }
 }

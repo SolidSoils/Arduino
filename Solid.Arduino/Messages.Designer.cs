@@ -187,7 +187,7 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sampling interval must be between 1 and 16,383 milliseconds..
+        ///   Looks up a localized string similar to Sampling interval must be between 0 and 16,383 milliseconds..
         /// </summary>
         internal static string ArgumentEx_SamplingInterval {
             get {
@@ -201,6 +201,15 @@ namespace Solid.Arduino {
         internal static string ArgumentEx_ValueRange0_16383 {
             get {
                 return ResourceManager.GetString("ArgumentEx_ValueRange0_16383", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value must be betwen 0 and 255..
+        /// </summary>
+        internal static string ArgumentEx_ValueRange0_255 {
+            get {
+                return ResourceManager.GetString("ArgumentEx_ValueRange0_255", resourceCulture);
             }
         }
         

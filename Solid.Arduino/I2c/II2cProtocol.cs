@@ -39,7 +39,7 @@ namespace Solid.Arduino.I2c
         /// </summary>
         /// <param name="slaveAddress">The target address</param>
         /// <param name="data">The data array</param>
-        void WriteI2c(int slaveAddress, byte[] data);
+        void WriteI2c(int slaveAddress, params byte[] data);
 
         /// <summary>
         /// Requests the party system to send bytes read from the given memory address.

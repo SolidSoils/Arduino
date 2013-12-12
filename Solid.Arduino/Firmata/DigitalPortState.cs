@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Solid.Arduino.Firmata
 {
     public struct DigitalPortState
     {
-        public int Port { get; set; }
-        public int Pins { get; set; }
+        public int Port { get; internal set; }
+
+        public int Pins { get; internal set; }
 
         public bool IsHigh(int pin)
         {

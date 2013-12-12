@@ -156,14 +156,13 @@ namespace Solid.Arduino
 
         public void Write(string value)
         {
-            if (!string.IsNullOrEmpty(value))// TODO: ASCII schrijven! (Althans...)
+            if (!string.IsNullOrEmpty(value))
                 _connection.Write(value);
         }
 
         public void WriteLine(string value)
         {
-            if (!string.IsNullOrEmpty(value))
-                _connection.WriteLine(value);
+            _connection.WriteLine(value);
         }
 
         public string ReadLine()
@@ -206,9 +205,9 @@ namespace Solid.Arduino
 
         #region IFirmataProtocol
 
-        public event MessageReceivedHandler OnMessageReceived;
-        public event AnalogStateReceivedHandler OnAnalogStateReceived;
-        public event DigitalStateReceivedHandler OnDigitalStateReceived;
+        public event MessageReceivedHandler MessageReceived;
+        public event AnalogStateReceivedHandler AnalogStateReceived;
+        public event DigitalStateReceivedHandler DigitalStateReceived;
 
         public void ResetBoard()
         {
@@ -225,7 +224,7 @@ namespace Solid.Arduino
 
             byte[] message;
 
-            if (pinNumber < 16 && level < 0xC000)
+            if (pinNumber < 16 && level < 0x4000)
             {
                 // Send value in a conventional Analog Message.
                 message = new byte[] {
@@ -249,7 +248,7 @@ namespace Solid.Arduino
                 message[index] = (byte)(level & 0x7F);
                 level >>= 7;
                 index++;
-            } while (level > 0);
+            } while (level > 0 || index < 5);
 
             message[index] = SysExEnd;
             _connection.Write(message, 0, index + 1);
@@ -268,7 +267,10 @@ namespace Solid.Arduino
             if (portNumber < 0 || portNumber > 15)
                 throw new ArgumentOutOfRangeException("portNumber", Messages.ArgumentEx_PortRange0_15);
 
-            _connection.Write(new byte[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x7F) }, 0, 3);
+            if (pins < 0 || pins > 0xFF)
+                throw new ArgumentOutOfRangeException("pins", Messages.ArgumentEx_ValueRange0_255);
+
+            _connection.Write(new byte[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x03) }, 0, 3);
         }
 
         public void SetDigitalReportMode(int portNumber, bool enable)
@@ -289,7 +291,7 @@ namespace Solid.Arduino
 
         public void SetSamplingInterval(int milliseconds)
         {
-            if (milliseconds < 1 || milliseconds > 0x3FFF)
+            if (milliseconds < 0 || milliseconds > 0x3FFF)
                 throw new ArgumentOutOfRangeException("milliseconds", Messages.ArgumentEx_SamplingInterval);
 
             var command = new byte[]
@@ -336,7 +338,7 @@ namespace Solid.Arduino
             if (data == null)
                 data = string.Empty;
 
-            byte[] command = new byte[data.Length * 2 + 5];
+            byte[] command = new byte[data.Length * 2 + 3];
             command[0] = SysExStart;
             command[1] = (byte)0x71;
 
@@ -347,8 +349,6 @@ namespace Solid.Arduino
                 command[x * 2 + 3] = (byte)((c >> 7) & 0x7F);
             }
 
-            command[command.Length - 3] = (byte)0x00;
-            command[command.Length - 2] = (byte)0x00;
             command[command.Length - 1] = SysExEnd;
 
             _connection.Write(command, 0, command.Length);
@@ -450,8 +450,11 @@ namespace Solid.Arduino
         public async Task<PinState> GetPinStateAsync(int pinNumber)
         {
             RequestPinState(pinNumber);
-            return await Task.Run<PinState>(() =>
-                (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value);
+            return await Task.Run<PinState>
+            (
+                () =>
+                (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value
+            );
         }
 
         #endregion
@@ -476,19 +479,16 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 5);
         }
 
-        public void WriteI2c(int slaveAddress, byte[] data)
+        public void WriteI2c(int slaveAddress, params byte[] data)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
                 throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
-
-            if (data == null)
-                throw new ArgumentNullException("data");
 
             byte[] command = new byte[data.Length * 2 + 5];
             command[0] = SysExStart;
             command[1] = (byte)0x76;
             command[2] = (byte)(slaveAddress & 0x7F);
-            command[3] = (byte)(((slaveAddress >> 7) & 0x03) | 0x20);
+            command[3] = (byte)(slaveAddress < 0x80 ? 0 : ((slaveAddress >> 7) & 0x07) | 0x20);
 
             for (int x = 0; x < data.Length; x++)
             {
@@ -525,7 +525,7 @@ namespace Solid.Arduino
 
         public void ReadI2cOnce(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cRead(false, slaveAddress, slaveRegister, bytesToRead);
+            I2cSlaveRead(false, slaveAddress, slaveRegister, bytesToRead);
         }
 
         public I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead)
@@ -552,7 +552,7 @@ namespace Solid.Arduino
 
         public void ReadI2cContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cRead(true, slaveAddress, slaveRegister, bytesToRead);
+            I2cSlaveRead(true, slaveAddress, slaveRegister, bytesToRead);
         }
 
         public void StopI2cReading()
@@ -674,13 +674,18 @@ namespace Solid.Arduino
             _connection.Write(message, 0, 3);
         }
 
+        private void I2cSlaveRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
+        {
+            if (slaveRegister < 0 || slaveRegister > 0x3FFF)
+                throw new ArgumentOutOfRangeException("slaveRegister", Messages.ArgumentEx_ValueRange0_16383);
+
+            I2cRead(continuous, slaveAddress, slaveRegister, bytesToRead);
+        }
+
         private void I2cRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
                 throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
-
-            if (slaveRegister < -1 || slaveRegister > 0x3FFF)
-                throw new ArgumentOutOfRangeException("slaveRegister", Messages.ArgumentEx_ValueRange0_16383);
 
             if (bytesToRead < 0 || bytesToRead > 0x3FFF)
                 throw new ArgumentOutOfRangeException("bytesToRead", Messages.ArgumentEx_ValueRange0_16383);
@@ -689,7 +694,15 @@ namespace Solid.Arduino
             command[0] = SysExStart;
             command[1] = (byte)0x76;
             command[2] = (byte)(slaveAddress & 0x7F);
-            command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (continuous ? 0x10 : 0x08));
+
+            if (slaveAddress < 128)
+            {
+                command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (continuous ? 0x10 : 0x08));
+            }
+            else
+            {
+                command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (continuous ? 0x30 : 0x28));
+            }
 
             if (slaveRegister != -1)
             {
@@ -773,7 +786,7 @@ namespace Solid.Arduino
                             EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex));
                             return;
                         }
-                        if (c == '\r')
+                        if (c == '\n') // Ignore linefeed, just in case cr+lf pair was expected.
                             return;
 
                         break;
@@ -872,15 +885,15 @@ namespace Solid.Arduino
                 var currentState = new AnalogState
                 {
                     Channel = _messageBuffer[0] & 0x0F,
-                    Level = (ulong)(_messageBuffer[1] | (messageByte << 7))
+                    Level = (_messageBuffer[1] | (messageByte << 7))
                 };
                 _processMessage = null;
 
-                if (OnMessageReceived != null)
-                    OnMessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.AnalogState)));
+                if (MessageReceived != null)
+                    MessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.AnalogState)));
 
-                if (OnAnalogStateReceived != null)
-                    OnAnalogStateReceived(this, new FirmataEventArgs<AnalogState>(currentState));
+                if (AnalogStateReceived != null)
+                    AnalogStateReceived(this, new FirmataEventArgs<AnalogState>(currentState));
             }
         }
 
@@ -899,11 +912,11 @@ namespace Solid.Arduino
                 };
                 _processMessage = null;
 
-                if (OnMessageReceived != null)
-                    OnMessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalPortState)));
+                if (MessageReceived != null)
+                    MessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalPortState)));
 
-                if (OnDigitalStateReceived != null)
-                    OnDigitalStateReceived(this, new FirmataEventArgs<DigitalPortState>(currentState));
+                if (DigitalStateReceived != null)
+                    DigitalStateReceived(this, new FirmataEventArgs<DigitalPortState>(currentState));
             }
         }
 
@@ -976,8 +989,8 @@ namespace Solid.Arduino
                 Monitor.PulseAll(_receivedMessageQueue);
             }
 
-            if (OnMessageReceived != null && message.Type != MessageType.I2CReply)
-                OnMessageReceived(this, new FirmataMessageEventArgs(message));
+            if (MessageReceived != null && message.Type != MessageType.I2CReply)
+                MessageReceived(this, new FirmataMessageEventArgs(message));
         }
 
         private FirmataMessage CreateI2cReply()
@@ -1019,7 +1032,7 @@ namespace Solid.Arduino
             {
                 PinNumber = _messageBuffer[2],
                 Mode = (PinMode)_messageBuffer[3],
-                Value = (ulong)value
+                Value = value
             };
             return new FirmataMessage(pinState, MessageType.PinStateResponse);
         }
@@ -1070,11 +1083,11 @@ namespace Solid.Arduino
                             break;
 
                         case PinMode.DigitalInput:
-                            capability.Input = isCapable;
+                            capability.DigitalInput = isCapable;
                             break;
 
                         case PinMode.DigitalOutput:
-                            capability.Output = isCapable;
+                            capability.DigitalOutput = isCapable;
                             break;
 
                         case PinMode.PwmOutput:
