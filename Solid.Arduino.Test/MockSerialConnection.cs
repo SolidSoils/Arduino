@@ -40,7 +40,10 @@ namespace Solid.Arduino.Test
 
         public int BytesToRead
         {
-            get { return _responseByteCount; }
+            get
+            {
+                return _responseByteCount;
+            }
         }
 
         public void Open()
@@ -154,8 +157,37 @@ namespace Solid.Arduino.Test
             _expectedRequestQueue.Enqueue(Encoding.ASCII.GetBytes(data));
         }
 
-        public void Receive()
+        public void HandleStringResponse(string response, Action handler)
         {
+            EnqueueStringResponse(response);
+
+            Task t = Task.Run(handler);
+
+            while (t.Status != TaskStatus.Running)
+                System.Threading.Thread.Sleep(1);
+
+            System.Threading.Thread.Sleep(3);
+
+            while (_responseQueue.Count > 0)
+                ReceiveData(_responseQueue.Peek());
+
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        public void MockReceiveDelayed(string data)
+        {
+            System.Threading.Thread.Sleep(10);
+
+            _responseQueue.Enqueue(Encoding.ASCII.GetBytes(data));
+            _responseByteCount += data.Length;
+
             while (_responseQueue.Count > 0)
                 ReceiveData(_responseQueue.Peek());
         }

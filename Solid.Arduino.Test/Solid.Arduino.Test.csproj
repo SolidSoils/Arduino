@@ -59,6 +59,7 @@
     <Compile Include="DigitalPortStateTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensionsTester.cs" />
+    <Compile Include="SerialConnectionTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Solid.Arduino\Solid.Arduino.csproj">

@@ -24,7 +24,7 @@ namespace Solid.Arduino.Run
         {
             var session = new ArduinoSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
             session.TimeOut = 1000;
-            session.OnMessageReceived += session_OnMessageReceived;
+            session.MessageReceived += session_OnMessageReceived;
 
             IFirmataProtocol firmata = (IFirmataProtocol)session;
 
@@ -65,8 +65,8 @@ namespace Solid.Arduino.Run
             session.TimeOut = 1000;
             IFirmataProtocol firmata = (IFirmataProtocol)session;
 
-            firmata.OnAnalogStateReceived += session_OnAnalogStateReceived;
-            firmata.OnDigitalStateReceived += session_OnDigitalStateReceived;
+            firmata.AnalogStateReceived += session_OnAnalogStateReceived;
+            firmata.DigitalStateReceived += session_OnDigitalStateReceived;
 
             Firmware firm = firmata.GetFirmware();
             Console.WriteLine();
@@ -85,7 +85,7 @@ namespace Solid.Arduino.Run
             foreach (var pincap in caps.PinCapabilities)
             {
                 Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
-                    pincap.PinNumber, pincap.Input, pincap.Output, pincap.Analog, pincap.AnalogResolution, pincap.Pwm, pincap.PwmResolution,
+                    pincap.PinNumber, pincap.DigitalInput, pincap.DigitalOutput, pincap.Analog, pincap.AnalogResolution, pincap.Pwm, pincap.PwmResolution,
                     pincap.Servo, pincap.ServoResolution);
             }
             Console.WriteLine();

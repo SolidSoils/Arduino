@@ -55,7 +55,7 @@ namespace Solid.Arduino
 
             public static StringRequest CreateReadRequest(char terminator)
             {
-                return new StringRequest(StringReadMode.ReadBlock, terminator, 0);
+                return new StringRequest(StringReadMode.ReadToTerminator, terminator, 0);
             }
 
             private StringRequest(StringReadMode mode, char terminator, int blockLength)
@@ -723,7 +723,7 @@ namespace Solid.Arduino
         }
 
         /// <summary>
-        /// Processes data bytes received on the serial bus.
+        /// Event handler processing data bytes received on the serial port.
         /// </summary>
         private void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -760,74 +760,76 @@ namespace Solid.Arduino
 
         private void ProcessAsciiString(int serialByte)
         {
-            char c = Convert.ToChar(serialByte);
-
-            if (_currentStringRequest == null)
-                _awaitedStringsQueue.TryDequeue(out _currentStringRequest);
-
-            if (_currentStringRequest == null)
-            {
-                if (c == _connection.NewLine[_connection.NewLine.Length - 1] || serialByte == 0x1A) // NewLine or EOF?
-                {
-                    if (StringReceived != null)
-                        StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex)));
-
-                    _stringBufferIndex = 0;
-                    return;
-                }
-            }
-            else
-            {
-                switch (_currentStringRequest.Mode)
-                {
-                    case StringReadMode.ReadLine:
-                        if (c == _connection.NewLine[0] || serialByte == 0x1A)
-                        {
-                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex));
-                            return;
-                        }
-                        if (c == '\n') // Ignore linefeed, just in case cr+lf pair was expected.
-                            return;
-
-                        break;
-
-                    case StringReadMode.ReadBlock:
-                        if (_stringBufferIndex == _currentStringRequest.BlockLength - 1)
-                        {
-                            _stringBuffer[_stringBufferIndex] = c;
-                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex + 1));
-                            return;
-                        }
-                        break;
-
-                    case StringReadMode.ReadToTerminator:
-                        if (c == _currentStringRequest.Terminator)
-                        {
-                            EnqueueString(new string(_stringBuffer, 0, _stringBufferIndex));
-                            return;
-                        }
-                        break;
-                }
-            }
-
             if (_stringBufferIndex == BUFFERSIZE)
                 throw new OverflowException(Messages.OverflowEx_StringBufferFull);
 
+            char c = Convert.ToChar(serialByte);
             _stringBuffer[_stringBufferIndex] = c;
             _stringBufferIndex++;
+
+            if (_currentStringRequest == null)
+            {
+                _awaitedStringsQueue.TryDequeue(out _currentStringRequest);
+
+                if (_currentStringRequest == null)
+                {
+                    // No pending Read/ReadLine/ReadTo requests.
+                    // Handle StringReceived event.
+                    if (c == _connection.NewLine[_connection.NewLine.Length - 1] || serialByte == 0x1A) // NewLine or EOF?
+                    {
+                        if (StringReceived != null)
+                            StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex - 1)));
+
+                        _stringBufferIndex = 0;
+                    }
+                    return;
+                }
+            }
+
+            switch (_currentStringRequest.Mode)
+            {
+                case StringReadMode.ReadLine:
+                    if (c == _connection.NewLine[0] || serialByte == 0x1A)
+                        EnqueueReceivedString(new string(_stringBuffer, 0, _stringBufferIndex - 1));
+                    else if (c == '\n') // Ignore linefeed, just in case cr+lf pair was expected.
+                        _stringBufferIndex--;
+                    break;
+
+                case StringReadMode.ReadBlock:
+                    if (_stringBufferIndex == _currentStringRequest.BlockLength)
+                        EnqueueReceivedString(new string(_stringBuffer, 0, _stringBufferIndex));
+                    break;
+
+                case StringReadMode.ReadToTerminator:
+                    if (c == _currentStringRequest.Terminator)
+                        EnqueueReceivedString(new string(_stringBuffer, 0, _stringBufferIndex - 1));
+                    break;
+            }
         }
 
-        private void EnqueueString(string value)
+        private void EnqueueReceivedString(string value)
         {
-            lock (_receivedStringQueue)
+            bool lockTaken = false;
+
+            try
             {
+                Monitor.TryEnter(_receivedStringQueue, _messageTimeout, ref lockTaken);
+
+                if (!lockTaken)
+                    throw new TimeoutException();
+
                 if (_receivedStringQueue.Count >= MAXQUEUELENGTH)
                     throw new OverflowException(Messages.OverflowEx_StringBufferFull);
 
                 _receivedStringQueue.Enqueue(value);
+                Monitor.PulseAll(_receivedStringQueue);
                 _currentStringRequest = null;
                 _stringBufferIndex = 0;
-                Monitor.PulseAll(_receivedStringQueue);
+            }
+            finally
+            {
+                if (lockTaken)
+                    Monitor.Exit(_receivedStringQueue);
             }
         }
 
