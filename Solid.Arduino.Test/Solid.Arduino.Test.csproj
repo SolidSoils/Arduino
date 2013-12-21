@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ByteArrayExtensionsTester.cs" />
     <Compile Include="ExceptionMonitor.cs" />
+    <Compile Include="I2cProtocolTester.cs" />
     <Compile Include="IFirmataProtocolTester.cs" />
     <Compile Include="IStringProtocolTester.cs" />
     <Compile Include="MockSerialConnection.cs" />

@@ -32,6 +32,11 @@ namespace Solid.Arduino.Test
             get { return _isOpen; }
         }
 
+        internal int QueuedRequestCount
+        {
+            get { return _expectedRequestQueue.Count; }
+        }
+
         public string NewLine
         {
             get { return _newLine; }
@@ -183,7 +188,7 @@ namespace Solid.Arduino.Test
 
         public void MockReceiveDelayed(string data)
         {
-            System.Threading.Thread.Sleep(10);
+            System.Threading.Thread.Sleep(20);
 
             _responseQueue.Enqueue(Encoding.ASCII.GetBytes(data));
             _responseByteCount += data.Length;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -6,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Solid.Arduino;
+using System.Reflection;
+using System.Threading;
 
 namespace Solid.Arduino.Test
 {
@@ -159,6 +162,64 @@ namespace Solid.Arduino.Test
             await t;
         }
 
+        //[TestMethod]
+        public void StringReceived()
+        {
+            string s = null;
+
+            var connection = new MockSerialConnection();
+            var session = CreateSerialSession(connection);
+            session.NewLine = "\n";
+            session.StringReceived += (o, e) =>
+                {
+                    s = e.Text;
+                };
+
+            connection.MockReceiveDelayed("ACME\n");
+            Assert.AreEqual("ACME", s);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
+        public async Task ReceivedStringBufferOverflow()
+        {
+            var connection = new MockSerialConnection();
+            var session = CreateSerialSession(connection);
+
+            var t = Task.Run(() =>
+                {
+                    string data = session.Read(1000);
+                }
+            );
+
+            connection.MockReceiveDelayed(new string('*', 1000));
+
+            await t;
+        }
+
+        //[TestMethod] // Verdacht
+        public async Task RequestBufferOverflow()
+        {
+            var connection = new MockSerialConnection();
+            var session = CreateSerialSession(connection);
+
+            var tasks = new List<Task<string>>(100);
+
+            for (int x = 0; x < 100; x++)
+                tasks.Add(session.ReadAsync());
+
+            Thread.Sleep(250);
+
+            connection.MockReceiveDelayed(new string('*', 100));
+
+            await Task.WhenAll(tasks);
+
+            foreach (Task<string> t in tasks)
+            {
+                Assert.AreEqual("*", t.Result);
+            }
+        }
+
         [TestMethod]
         public async Task Read_StringBlock()
         {
@@ -173,6 +234,23 @@ namespace Solid.Arduino.Test
             );
 
             connection.MockReceiveDelayed("Hello!!!");
+
+            await t;
+        }
+
+        //[TestMethod]
+        //[ExpectedException(typeof(TimeoutException))]
+        public async Task Read_WithTimeout()
+        {
+            var connection = new MockSerialConnection();
+            var session = CreateSerialSession(connection, 550);
+            
+            var t = Task.Run(() =>
+                {
+                    string data = session.Read(6);
+                    Assert.AreEqual("Hello!", data);
+                }
+            );
 
             await t;
         }
@@ -374,10 +452,10 @@ namespace Solid.Arduino.Test
             Assert.AreEqual("alpha", data);
         }
 
-        private IStringProtocol CreateSerialSession(ISerialConnection connection)
+        private IStringProtocol CreateSerialSession(ISerialConnection connection, int timeout = -1)
         {
             var session = new ArduinoSession(connection);
-            //session.TimeOut = 100;
+            session.TimeOut = timeout;
             session.MessageReceived += (o, e) =>
                 {
                     Assert.Fail("MessageReceived event triggered");
