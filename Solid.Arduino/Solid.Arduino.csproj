@@ -41,10 +41,12 @@
   <ItemGroup>
     <Compile Include="Firmata\AnalogPinMapping.cs" />
     <Compile Include="Firmata\AnalogState.cs" />
+    <Compile Include="Firmata\AnalogStateTracker.cs" />
     <Compile Include="Firmata\BoardCapability.cs" />
     <Compile Include="Firmata\BoardMapping.cs" />
     <Compile Include="Firmata\ByteArrayExtensions.cs" />
     <Compile Include="Firmata\DigitalPortState.cs" />
+    <Compile Include="Firmata\DigitalStateTracker.cs" />
     <Compile Include="Firmata\FirmataMessage.cs" />
     <Compile Include="Firmata\FirmataMessageEventArgs.cs" />
     <Compile Include="Firmata\FirmataMessageEventArgs_.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="I2C\I2cEventArgs.cs" />
     <Compile Include="I2C\I2cReply.cs" />
     <Compile Include="Firmata\IFirmataProtocol.cs" />
+    <Compile Include="I2C\I2cReplyTracker.cs" />
     <Compile Include="I2C\II2cProtocol.cs" />
     <Compile Include="ISerialConnection.cs" />
     <Compile Include="IStringProtocol.cs" />
@@ -64,6 +67,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="ObservableEventTracker.cs" />
+    <Compile Include="ReceivedStringTracker.cs" />
     <Compile Include="SerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>

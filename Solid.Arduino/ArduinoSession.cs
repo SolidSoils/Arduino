@@ -12,7 +12,7 @@ using Solid.Arduino.I2c;
 
 namespace Solid.Arduino
 {
-    public class ArduinoSession: IFirmataProtocol, IStringProtocol, IDisposable
+    public class ArduinoSession: IFirmataProtocol, II2cProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations
 
@@ -148,6 +148,11 @@ namespace Solid.Arduino
 
         public event StringReceivedHandler StringReceived;
 
+        public IObservable<string> CreateReceivedStringTracker()
+        {
+            return new ReceivedStringTracker(this);
+        }
+
         public string NewLine
         {
             get { return _connection.NewLine; }
@@ -208,6 +213,16 @@ namespace Solid.Arduino
         public event MessageReceivedHandler MessageReceived;
         public event AnalogStateReceivedHandler AnalogStateReceived;
         public event DigitalStateReceivedHandler DigitalStateReceived;
+
+        public IObservable<DigitalPortState> CreateDigitalStateTracker()
+        {
+            return new DigitalStateTracker(this);
+        }
+
+        public IObservable<AnalogState> CreateAnalogStateTracker()
+        {
+            return new AnalogStateTracker(this);
+        }
 
         public void ResetBoard()
         {
@@ -462,6 +477,11 @@ namespace Solid.Arduino
         #region II2cProtocol
 
         public event I2cReplyReceivedHandler I2cReplyReceived;
+
+        IObservable<I2cReply> CreateI2cReplyTracker()
+        {
+            return new I2cReplyTracker(this);
+        }
 
         public void SetI2cReadInterval(int microseconds)
         {
@@ -1103,8 +1123,7 @@ namespace Solid.Arduino
                             break;
 
                         default:
-                            // Ignore unsupported capability.
-                            break;
+                            throw new NotImplementedException();
                     }
 
                     x += 2;

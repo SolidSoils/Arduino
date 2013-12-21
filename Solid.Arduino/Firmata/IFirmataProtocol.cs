@@ -46,7 +46,7 @@ namespace Solid.Arduino.Firmata
     /// Defines a comprehensive set of members supporting the Firmata Protocol.
     /// Currently version 2.3 is supported.
     /// </summary>
-    public interface IFirmataProtocol: II2cProtocol
+    public interface IFirmataProtocol
     {
         /// <summary>
         /// Event, raised for every SysEx (0xF0) and ProtocolVersion (0xF9) message not handled by an <see cref="IFirmataProtocol"/>'s Get method.
@@ -81,6 +81,18 @@ namespace Solid.Arduino.Firmata
         /// </para>
         /// </remarks>
         event DigitalStateReceivedHandler DigitalStateReceived;
+
+        /// <summary>
+        /// Creates an observable object tracking <see cref="AnalogState"/> messages.
+        /// </summary>
+        /// <returns><see cref="IObservable<AnalogState>"/> interface</returns>
+        IObservable<AnalogState> CreateAnalogStateTracker();
+
+        /// <summary>
+        /// Creates an observable object tracking <see cref="DigitalPortState"/> messages.
+        /// </summary>
+        /// <returns><see cref="IObservable<DigitalPortState>"/> interface</returns>
+        IObservable<DigitalPortState> CreateDigitalStateTracker();
 
         /// <summary>
         /// Sends a message string.

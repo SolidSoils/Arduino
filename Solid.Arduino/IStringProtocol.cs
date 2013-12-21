@@ -12,6 +12,8 @@ namespace Solid.Arduino
     {
         event StringReceivedHandler StringReceived;
 
+        IObservable<string> CreateReceivedStringTracker();
+
         string NewLine { get; set; }
 
         void Write(string value = null);
