@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
+using Solid.Arduino.I2c;
 
 namespace Solid.Arduino.Run
 {
@@ -26,7 +27,7 @@ namespace Solid.Arduino.Run
             session.TimeOut = 1000;
             session.MessageReceived += session_OnMessageReceived;
 
-            IFirmataProtocol firmata = (IFirmataProtocol)session;
+            var firmata = (II2cProtocol)session;
 
             var x = firmata.GetI2cReply(0x68, 7);
 
@@ -116,7 +117,6 @@ namespace Solid.Arduino.Run
             firmata.SetDigitalPinMode(10, PinMode.DigitalOutput);
             firmata.SetDigitalPinMode(11, PinMode.ServoControl);
             firmata.SetDigitalPin(11, 90);
-            firmata.ConfigureServo(11, 0, 255);
             System.Threading.Thread.Sleep(500);
             int hi = 0;
 

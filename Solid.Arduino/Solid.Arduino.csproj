@@ -52,6 +52,7 @@
     <Compile Include="Firmata\FirmataMessageEventArgs_.cs" />
     <Compile Include="ArduinoSession.cs" />
     <Compile Include="Firmata\Firmware.cs" />
+    <Compile Include="Firmata\Servo\IServoProtocol.cs" />
     <Compile Include="I2C\I2cEventArgs.cs" />
     <Compile Include="I2C\I2cReply.cs" />
     <Compile Include="Firmata\IFirmataProtocol.cs" />

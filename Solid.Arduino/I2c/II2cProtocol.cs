@@ -29,6 +29,12 @@ namespace Solid.Arduino.I2c
         event I2cReplyReceivedHandler I2cReplyReceived;
 
         /// <summary>
+        /// Creates an observable object tracking <see cref="I2cReply"/> messages.
+        /// </summary>
+        /// <returns>An <see cref="IObservable{I2cReply}"/> interface</returns>
+        IObservable<I2cReply> CreateI2cReplyMonitor();
+
+        /// <summary>
         /// Sets the frequency at which data is read in the continuous mode.
         /// </summary>
         /// <param name="microseconds">The interval, expressed in microseconds</param>
@@ -37,28 +43,91 @@ namespace Solid.Arduino.I2c
         /// <summary>
         /// Writes an arbitrary array of bytes to the given memory address.
         /// </summary>
-        /// <param name="slaveAddress">The target address</param>
+        /// <param name="slaveAddress">The slave's target address</param>
         /// <param name="data">The data array</param>
         void WriteI2c(int slaveAddress, params byte[] data);
 
         /// <summary>
         /// Requests the party system to send bytes read from the given memory address.
         /// </summary>
-        /// <param name="slaveAddress">The source address</param>
+        /// <param name="slaveAddress">The slave's memory address</param>
         /// <param name="bytesToRead">Number of bytes to read</param>
         /// <remarks>
         /// The party system is expected to return a single I2C_REPLY message.
-        /// This message triggers the <see cref="I2cReplyReceived"/> event. The capabilities
-        /// are passed in the <see cref="FirmataEventArgs<I2cReply>"/> in an <see cref="I2cReply"/> object.
+        /// This message triggers the <see cref="I2cReplyReceived"/> event. The data
+        /// are passed in the <see cref="FirmataEventArgs{I2cReply}"/> in an <see cref="I2cReply"/> object.
         /// </remarks>
         void ReadI2cOnce(int slaveAddress, int bytesToRead);
+
+        /// <summary>
+        /// Requests the party system to send bytes read from the given memory address and register.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address</param>
+        /// <param name="slaveRegister">The slave's register</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
         void ReadI2cOnce(int slaveAddress, int slaveRegister, int bytesToRead);
+
+        /// <summary>
+        /// Requests the party system to repeatedly send bytes read from the given memory address.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's address</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <remarks>
+        /// The party system is expected to return a continuous stream of I2C_REPLY messages at
+        /// an interval which can be set using the <see cref="SetI2cReadInterval"/> method.
+        /// Received I2C_REPLY messages trigger the <see cref="I2cReplyReceived"/> event. The data
+        /// are passed in the <see cref="FirmataEventArgs{I2cReply}"/> in an <see cref="I2cReply"/> object.
+        /// <para>
+        /// The party system can be stopped sending I2C_REPLY messages by issuing a <see cref="StopI2cReading"/> command.
+        /// </para>
+        /// </remarks>
         void ReadI2cContinuous(int slaveAddress, int bytesToRead);
+
+        /// <summary>
+        /// Requests the party system to repeatedly send bytes read from the given memory address and register.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address</param>
+        /// <param name="slaveRegister">The slave's register</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
         void ReadI2cContinuous(int slaveAddress, int slaveRegister, int bytesToRead);
+
+        /// <summary>
+        /// Commands the party system to stop sending I2C_REPLY messages.
+        /// </summary>
         void StopI2cReading();
+
+        /// <summary>
+        /// Gets byte data from the party system, read from the given memory address.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <returns>An <see cref="I2cReply"/> object holding the data read</returns>
         I2cReply GetI2cReply(int slaveAddress, int bytesToRead);
+
+        /// <summary>
+        /// Asynchronously gets byte data from the party system, read from the given memory address.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <returns>An awaitable <see cref="Task{I2cReply}"/> holding the data read</returns>
         Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int bytesToRead);
+
+        /// <summary>
+        /// Gets byte data from the party system, read from the given memory address and register.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address and register</param>
+        /// <param name="slaveRegister">The slave's register</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <returns>An <see cref="I2cReply"/> object holding the data read</returns>
         I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead);
+
+        /// <summary>
+        /// Asynchronously gets byte data from the party system, read from the given memory address and register.
+        /// </summary>
+        /// <param name="slaveAddress">The slave's memory address</param>
+        /// <param name="slaveRegister">The slave's register</param>
+        /// <param name="bytesToRead">Number of bytes to read</param>
+        /// <returns>An awaitable <see cref="Task{I2cReply}"/> holding the data read</returns>
         Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead);
     }
 }

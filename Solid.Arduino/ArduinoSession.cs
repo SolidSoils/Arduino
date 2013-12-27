@@ -8,11 +8,19 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
+using Solid.Arduino.Firmata.Servo;
 using Solid.Arduino.I2c;
 
 namespace Solid.Arduino
 {
-    public class ArduinoSession: IFirmataProtocol, II2cProtocol, IStringProtocol, IDisposable
+    /// <summary>
+    /// Represents an active layer for serial communication with an Arduino board.
+    /// </summary>
+    /// <remarks>
+    /// This class supports a few common protocols used for communicating with Arduino boards.
+    /// The protocols can be used simultaneous and independently of each other.
+    /// </remarks>
+    public class ArduinoSession: IFirmataProtocol, IServoProtocol, II2cProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations
 
@@ -119,18 +127,27 @@ namespace Solid.Arduino
 
         #region Public Events, Methods & Properties
 
+        /// <summary>
+        /// Gets or sets the number of milliseconds before a time-out occurs when a read operation does not finish.
+        /// </summary>
+        /// <remarks>
+        /// The default is a <see cref="SerialPort.InfiniteTimeout"/> value (-1).
+        /// </remarks>
         public int TimeOut
         {
             get { return _messageTimeout; }
             set
             {
-                if (value < -1)
-                    throw new InvalidOperationException();
+                if (value < SerialPort.InfiniteTimeout)
+                    throw new ArgumentOutOfRangeException();
 
                 _messageTimeout = value;
             }
         }
 
+        /// <summary>
+        /// Closes and reopens the underlying connection and clears all buffers and queues.
+        /// </summary>
         public void Clear()
         {
             lock (_receivedMessageQueue)
@@ -148,7 +165,7 @@ namespace Solid.Arduino
 
         public event StringReceivedHandler StringReceived;
 
-        public IObservable<string> CreateReceivedStringTracker()
+        public IObservable<string> CreateReceivedStringMonitor()
         {
             return new ReceivedStringTracker(this);
         }
@@ -214,12 +231,12 @@ namespace Solid.Arduino
         public event AnalogStateReceivedHandler AnalogStateReceived;
         public event DigitalStateReceivedHandler DigitalStateReceived;
 
-        public IObservable<DigitalPortState> CreateDigitalStateTracker()
+        public IObservable<DigitalPortState> CreateDigitalStateMonitor()
         {
             return new DigitalStateTracker(this);
         }
 
-        public IObservable<AnalogState> CreateAnalogStateTracker()
+        public IObservable<AnalogState> CreateAnalogStateMonitor()
         {
             return new AnalogStateTracker(this);
         }
@@ -318,34 +335,6 @@ namespace Solid.Arduino
                 SysExEnd
             };
             _connection.Write(command, 0, 5);
-        }
-
-        public void ConfigureServo(int pinNumber, int minPulse, int maxPulse)
-        {
-            if (pinNumber < 0 || pinNumber > 127)
-                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
-
-            if (minPulse < 0 || minPulse > 0x3FFF)
-                throw new ArgumentOutOfRangeException("minPulse", Messages.ArgumentEx_MinPulseWidth);
-
-            if (maxPulse < 0 || maxPulse > 0x3FFF)
-                throw new ArgumentOutOfRangeException("maxPulse", Messages.ArgumentEx_MaxPulseWidth);
-
-            if (minPulse > maxPulse)
-                throw new ArgumentException(Messages.ArgumentEx_MinMaxPulse);
-
-            var command = new byte[]
-            {
-                SysExStart,
-                (byte)0x70,
-                (byte)pinNumber,
-                (byte)(minPulse & 0x7F),
-                (byte)((minPulse >> 7) & 0x7F),
-                (byte)(maxPulse & 0x7F),
-                (byte)((maxPulse >> 7) & 0x7F),
-                SysExEnd
-            };
-            _connection.Write(command, 0, 7);
         }
 
         public void SendStringData(string data)
@@ -474,11 +463,43 @@ namespace Solid.Arduino
 
         #endregion
 
+        #region IServoProtocol
+
+        public void ConfigureServo(int pinNumber, int minPulse, int maxPulse)
+        {
+            if (pinNumber < 0 || pinNumber > 127)
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
+
+            if (minPulse < 0 || minPulse > 0x3FFF)
+                throw new ArgumentOutOfRangeException("minPulse", Messages.ArgumentEx_MinPulseWidth);
+
+            if (maxPulse < 0 || maxPulse > 0x3FFF)
+                throw new ArgumentOutOfRangeException("maxPulse", Messages.ArgumentEx_MaxPulseWidth);
+
+            if (minPulse > maxPulse)
+                throw new ArgumentException(Messages.ArgumentEx_MinMaxPulse);
+
+            var command = new byte[]
+            {
+                SysExStart,
+                (byte)0x70,
+                (byte)pinNumber,
+                (byte)(minPulse & 0x7F),
+                (byte)((minPulse >> 7) & 0x7F),
+                (byte)(maxPulse & 0x7F),
+                (byte)((maxPulse >> 7) & 0x7F),
+                SysExEnd
+            };
+            _connection.Write(command, 0, 7);
+        }
+
+        #endregion
+
         #region II2cProtocol
 
         public event I2cReplyReceivedHandler I2cReplyReceived;
 
-        IObservable<I2cReply> CreateI2cReplyTracker()
+        public IObservable<I2cReply> CreateI2cReplyMonitor()
         {
             return new I2cReplyTracker(this);
         }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Test", "Solid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Run", "Solid.Arduino.Run\Solid.Arduino.Run.csproj", "{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Monitor", "Solid.Arduino.Monitor\Solid.Arduino.Monitor.csproj", "{CC3D7242-A984-49EC-B6A7-B0F006B08D34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2688801E-DD4C-4BEE-8E1D-3C1E3E448D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3D7242-A984-49EC-B6A7-B0F006B08D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3D7242-A984-49EC-B6A7-B0F006B08D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3D7242-A984-49EC-B6A7-B0F006B08D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3D7242-A984-49EC-B6A7-B0F006B08D34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,10 +4,16 @@ using System.Linq;
 
 namespace Solid.Arduino
 {
+    /// <summary>
+    /// Represents a serial port connection.
+    /// </summary>
     public sealed class SerialConnection: SerialPort, ISerialConnection, IDisposable
     {
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="SerialConnection"/> class using the highest COM port available at 115,200 bits per second.
+        /// </summary>
         public SerialConnection()
             : base(GetLastPortName(), (int)SerialBaudRate.Bps_115200)
         {
@@ -15,6 +21,11 @@ namespace Solid.Arduino
             this.WriteTimeout = 100;
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="SerialConnection"/> class on the given serial port and at the given baud rate.
+        /// </summary>
+        /// <param name="portName">The port name (e.g. 'COM3')</param>
+        /// <param name="baudRate">The baud rate</param>
         public SerialConnection(string portName, SerialBaudRate baudRate)
             : base(portName, (int)baudRate)
         {
@@ -52,6 +63,9 @@ namespace Solid.Arduino
         #endregion
     }
 
+    /// <summary>
+    /// Common standard baud rates
+    /// </summary>
     public enum SerialBaudRate
     {
         Bps_300 = 300,

@@ -8,6 +8,13 @@ namespace Solid.Arduino.Firmata
 {
     public static class ByteArrayExtensions
     {
+        /// <summary>
+        /// Converts a <see cref="byte"/> array holding binary coded digits to a readable string.
+        /// </summary>
+        /// <param name="data">The binary coded digit bytes</param>
+        /// <param name="isLittleEndian">Value indicating if the first nibble contains the least significant part</param>
+        /// <returns>A string containing numeric data</returns>
+        /// <exception cref="ArgumentException">The array contains one or more non-BCD bytes.</exception>
         public static string ConvertBinaryCodedDecimalToString(this byte[] data, bool isLittleEndian = false)
         {
             if (data == null)

@@ -85,14 +85,14 @@ namespace Solid.Arduino.Firmata
         /// <summary>
         /// Creates an observable object tracking <see cref="AnalogState"/> messages.
         /// </summary>
-        /// <returns><see cref="IObservable<AnalogState>"/> interface</returns>
-        IObservable<AnalogState> CreateAnalogStateTracker();
+        /// <returns>An <see cref="IObservable<AnalogState>"/> interface</returns>
+        IObservable<AnalogState> CreateAnalogStateMonitor();
 
         /// <summary>
         /// Creates an observable object tracking <see cref="DigitalPortState"/> messages.
         /// </summary>
-        /// <returns><see cref="IObservable<DigitalPortState>"/> interface</returns>
-        IObservable<DigitalPortState> CreateDigitalStateTracker();
+        /// <returns>An <see cref="IObservable<DigitalPortState>"/> interface</returns>
+        IObservable<DigitalPortState> CreateDigitalStateMonitor();
 
         /// <summary>
         /// Sends a message string.
@@ -170,14 +170,6 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <param name="milliseconds">The sampling interval in milliseconds</param>
         void SetSamplingInterval(int milliseconds);
-
-        /// <summary>
-        /// Configures the minimum and maximum pulse length for a servo pin.
-        /// </summary>
-        /// <param name="pinNumber">The pin number</param>
-        /// <param name="minPulse">Minimum pulse length</param>
-        /// <param name="maxPulse">Maximum pulse length</param>
-        void ConfigureServo(int pinNumber, int minPulse, int maxPulse);
 
         /// <summary>
         /// Sets an analog value on a PWM or Servo enabled digital pin.

@@ -54,10 +54,12 @@
     <Compile Include="ExceptionMonitor.cs" />
     <Compile Include="I2cProtocolTester.cs" />
     <Compile Include="IFirmataProtocolTester.cs" />
+    <Compile Include="IServoProtocolTester.cs" />
     <Compile Include="IStringProtocolTester.cs" />
     <Compile Include="MockSerialConnection.cs" />
     <Compile Include="ArduinoSessionTester.cs" />
     <Compile Include="DigitalPortStateTester.cs" />
+    <Compile Include="ObservableArduinoSessionTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensionsTester.cs" />
     <Compile Include="SerialConnectionTester.cs" />

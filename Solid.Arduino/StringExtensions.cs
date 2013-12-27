@@ -10,7 +10,7 @@ namespace Solid.Arduino
     public static class StringExtensions
     {
         /// <summary>
-        /// Convert the argument string into its binary-coded decimal (BCD) representation, e.g.
+        /// Converts the argument string into its binary-coded decimal (BCD) representation, e.g.
         ///  "0110" -> { 0x01, 0x10 } (for Big Endian byte order)
         ///  "0110" -> { 0x10, 0x01 } (for Little Endian byte order)
         /// </summary>
@@ -18,7 +18,6 @@ namespace Solid.Arduino
         /// <param name="o">String representation of BCD bytes.</param>
         /// <returns>Byte array representation of the string as BCD.</returns>
         /// <exception cref="ArgumentException">Thrown if the argument string isn't entirely made up of BCD pairs.</exception>
-
         public static byte[] ToBinaryCodedDecimal(this string o, bool isLittleEndian = false)
         {
             if (o == null)
@@ -58,6 +57,14 @@ namespace Solid.Arduino
             return bytes;
         }
 
+        /// <summary>
+        /// Converts a <see cref="String"/> to a 14 bit bigendian <see cref="byte"/> array.
+        /// </summary>
+        /// <param name="o">The string being converted</param>
+        /// <returns>A <see cref="byte"/> array.</returns>
+        /// <remarks>
+        /// Every character in the string is converted into two 7-bit bytes, starting with the most significant byte.
+        /// </remarks>
         public static byte[] To14BitIso(this string o)
         {
             if (o == null)
