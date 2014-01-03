@@ -18,7 +18,7 @@ Technology used: Microsoft .NET/C# v4.5
 
 ## Current status
 
-**v0.5**
+**v0.0**
 
 Code complete for the library core. (Pre-beta)
 
