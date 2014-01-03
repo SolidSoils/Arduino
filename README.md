@@ -5,24 +5,30 @@ The library implements a few communication protocols, the first of which is the 
 It aims to make communication with Arduino boards in MS .NET projects easier
 through a comprehensive and consistent set of methods and events.
 
-The project's goal is to support the following protocols:
+The library supports the following protocols:
 
 1. Serial (ASCII) messaging protocol
 2. Firmata protocol
 3. I2C protocol (as it has become part of Firmata)
 
+The protocols mentioned can be used simultaneously. The library brokers all incoming message types
+and directs them to the proper requestors (synchronous as well as asynchronous) and events.
+
 Technology used: Microsoft .NET/C# v4.5
 
 ## Current status
 
-**v0.0**
+**v0.5**
 
-Mainly a lot of work in progress. (Pre-alpha draft)
+Code complete for the library core. (Pre-beta)
 
 ## Milestones
 
-1. Firmata protocol largely implemented and tested.
-2. I2C protocol implemented (but not yet tested).
+1. Firmata protocol implemented, unit- and integration-tested.
+2. I2C protocol implemented.
+3. Serial ASCII protocol implemented.
+4. Interfaces documented.
+5. IObservable methods implemented.
 
 ## Contributing
 If you discover a bug or would like to propose a new feature,
