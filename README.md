@@ -25,8 +25,8 @@ Code complete for the library core. (Pre-beta)
 ## Milestones
 
 1. Firmata protocol implemented, unit- and integration-tested.
-2. I2C protocol implemented.
-3. Serial ASCII protocol implemented.
+2. I2C protocol implemented and unit-tested.
+3. Serial ASCII protocol implemented and unit-tested.
 4. Interfaces documented.
 5. IObservable methods implemented.
 
