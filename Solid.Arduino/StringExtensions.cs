@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino
 {
+    /// <summary>
+    /// Provides extension methods for <see cref="String"/> objects.
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

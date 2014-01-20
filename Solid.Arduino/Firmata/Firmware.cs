@@ -2,10 +2,24 @@
 
 namespace Solid.Arduino.Firmata
 {
+    /// <summary>
+    /// Identifies the Arduino board's firmware.
+    /// </summary>
     public struct Firmware
     {
-        public int MajorVersion { get; set; }
-        public int MinorVersion { get; set; }
-        public string Name { get; set; }
+        /// <summary>
+        /// Gets the major version number.
+        /// </summary>
+        public int MajorVersion { get; internal set; }
+
+        /// <summary>
+        /// Gets the minor version number.
+        /// </summary>
+        public int MinorVersion { get; internal set; }
+
+        /// <summary>
+        /// Gets the name of the board's firmware.
+        /// </summary>
+        public string Name { get; internal set; }
     }
 }

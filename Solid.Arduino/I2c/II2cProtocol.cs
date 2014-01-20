@@ -14,7 +14,7 @@ namespace Solid.Arduino.I2c
     public delegate void I2cReplyReceivedHandler(object par_Sender, I2cEventArgs par_EventArgs);
 
     /// <summary>
-    /// Defines a comprehensive set of members supporting the I2C Protocol.
+    /// Defines a comprehensive set of members supporting the I2C Protocol.d:\Data\Mijn SolidSoils documenten\Visual Studio 2012\Projects\Solid.Arduino\Solid.Arduino\I2C\II2cProtocol.cs
     /// </summary>
     public interface II2cProtocol
     {

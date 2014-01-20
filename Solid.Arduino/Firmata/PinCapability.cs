@@ -6,16 +6,54 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
+    /// <summary>
+    /// Contains information about the capabilities of a pin.
+    /// </summary>
     public struct PinCapability
     {
-        public int PinNumber { get; set; }
-        public bool DigitalInput { get; set; }
-        public bool DigitalOutput { get; set; }
-        public bool Analog { get; set; }
-        public bool Pwm { get; set; }
-        public bool Servo { get; set; }
-        public int AnalogResolution { get; set; }
-        public int PwmResolution { get; set; }
-        public int ServoResolution { get; set; }
+        /// <summary>
+        /// Gets the 0-based number of the pin.
+        /// </summary>
+        public int PinNumber { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if the pin can be in digital input mode.
+        /// </summary>
+        public bool DigitalInput { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if the pin can be in digital output mode.
+        /// </summary>
+        public bool DigitalOutput { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is an analog pin.
+        /// </summary>
+        public bool Analog { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if the pin supports pulse width modulation.
+        /// </summary>
+        public bool Pwm { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if the pin supports servo motor control.
+        /// </summary>
+        public bool Servo { get; internal set; }
+
+        /// <summary>
+        /// Gets the bit resolution for analog pins.
+        /// </summary>
+        public int AnalogResolution { get; internal set; }
+
+        /// <summary>
+        /// Gets the bit resolution for PWM enabled pins.
+        /// </summary>
+        public int PwmResolution { get; internal set; }
+
+        /// <summary>
+        /// Gets the bit resolution for servo enabled pins.
+        /// </summary>
+        public int ServoResolution { get; internal set; }
     }
 }

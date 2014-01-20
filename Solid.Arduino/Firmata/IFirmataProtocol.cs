@@ -30,7 +30,7 @@ namespace Solid.Arduino.Firmata
     public delegate void DigitalStateReceivedHandler(object par_Sender, FirmataEventArgs<DigitalPortState> par_EventArgs);
 
     /// <summary>
-    /// The modes a pin can support or be set to.
+    /// The modes a pin can be in or can be set to.
     /// </summary>
     public enum PinMode
     {

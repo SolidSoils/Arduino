@@ -10,7 +10,7 @@ namespace Solid.Arduino
     {
         private readonly string _text;
 
-        public StringEventArgs(string text)
+        internal StringEventArgs(string text)
         {
             _text = text;
         }

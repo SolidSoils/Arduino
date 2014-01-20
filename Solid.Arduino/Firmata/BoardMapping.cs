@@ -12,8 +12,8 @@ namespace Solid.Arduino.Firmata
     public struct BoardAnalogMapping
     {
         /// <summary>
-        /// Gets or sets the channel mapping array of the board's analog pins.
+        /// Gets the channel mapping array of the board's analog pins.
         /// </summary>
-        public AnalogPinMapping[] PinMappings { get; set; }
+        public AnalogPinMapping[] PinMappings { get; internal set; }
     }
 }

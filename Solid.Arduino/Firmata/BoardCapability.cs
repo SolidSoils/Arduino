@@ -12,8 +12,8 @@ namespace Solid.Arduino.Firmata
     public struct BoardCapability
     {
         /// <summary>
-        /// Gets or sets the capability array of the board's pins.
+        /// Gets the capability array of the board's pins.
         /// </summary>
-        public PinCapability[] PinCapabilities { get; set; }
+        public PinCapability[] PinCapabilities { get; internal set; }
     }
 }

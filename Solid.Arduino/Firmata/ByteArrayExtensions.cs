@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
+    /// <summary>
+    /// Provides extension methods for <see cref="byte"/> arrays.
+    /// </summary>
     public static class ByteArrayExtensions
     {
         /// <summary>
