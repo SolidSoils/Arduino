@@ -52,7 +52,9 @@
     <Compile Include="Firmata\FirmataMessageEventArgs_.cs" />
     <Compile Include="ArduinoSession.cs" />
     <Compile Include="Firmata\Firmware.cs" />
+    <Compile Include="Firmata\ProtocolVersion.cs" />
     <Compile Include="Firmata\Servo\IServoProtocol.cs" />
+    <Compile Include="Firmata\StringData.cs" />
     <Compile Include="I2C\I2cEventArgs.cs" />
     <Compile Include="I2C\I2cReply.cs" />
     <Compile Include="Firmata\IFirmataProtocol.cs" />
@@ -62,7 +64,6 @@
     <Compile Include="IStringProtocol.cs" />
     <Compile Include="Firmata\PinCapability.cs" />
     <Compile Include="Firmata\PinState.cs" />
-    <Compile Include="Firmata\ProtocolVersion.cs" />
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,7 +75,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Firmata\StringData.cs" />
     <Compile Include="StringEventArgs.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
