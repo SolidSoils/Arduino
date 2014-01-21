@@ -109,6 +109,11 @@ namespace Solid.Arduino
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArduinoSession"/> class.
+        /// </summary>
+        /// <param name="connection">The serial port connection</param>
+        /// <exception cref="System.ArgumentNullException">connection</exception>
         public ArduinoSession(ISerialConnection connection)
         {
             if (connection == null)
@@ -121,6 +126,22 @@ namespace Solid.Arduino
                 _connection.Open();
 
             _connection.DataReceived += SerialDataReceived;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArduinoSession"/> class.
+        /// </summary>
+        /// <param name="connection">The serial port connection</param>
+        /// <param name="timeOut">The response time out</param>
+        /// <exception cref="System.ArgumentNullException">connection</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">timeOut</exception>
+        public ArduinoSession(ISerialConnection connection, int timeOut)
+            : this(connection)
+        {
+            if (timeOut < SerialPort.InfiniteTimeout)
+                throw new ArgumentOutOfRangeException("timeOut");
+
+            _messageTimeout = timeOut;
         }
 
         #endregion
