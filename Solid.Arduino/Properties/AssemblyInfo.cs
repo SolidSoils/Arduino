@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Solid.Arduino.Firmata")]
+[assembly: AssemblyTitle("Solid.Arduino")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Solid Soils Solutions")]
 [assembly: AssemblyProduct("Solid.Arduino.Firmata")]
-[assembly: AssemblyCopyright("Copyright © Solid Soils Solutions 2013")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Solid Soils Solutions 2013 - 2014")]
+[assembly: AssemblyTrademark("Solid Soils (tm)")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
