@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.I2c
 {
-    public sealed class I2cEventArgs: EventArgs
+    /// <summary>
+    /// Event arguments passed to a <see cref="I2cReplyReceivedHandler"/> type event.
+    /// </summary>
+    public sealed class I2cEventArgs : EventArgs
     {
         private readonly I2cReply _value;
 
-        public I2cEventArgs(I2cReply value)
+        internal I2cEventArgs(I2cReply value)
         {
             _value = value;
         }
 
+        /// <summary>
+        /// Gets the I2C message value being received.
+        /// </summary>
         public I2cReply Value { get { return _value; } }
 
     }

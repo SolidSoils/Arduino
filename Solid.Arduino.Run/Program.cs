@@ -162,7 +162,7 @@ namespace Solid.Arduino.Run
 
         static void session_OnDigitalStateReceived(object par_Sender, FirmataEventArgs<DigitalPortState> par_EventArgs)
         {
-            Console.WriteLine("Digital level of port {0}: {1}", par_EventArgs.Value.Port, par_EventArgs.Value.IsHigh(6) ? 'X' : 'O');
+            Console.WriteLine("Digital level of port {0}: {1}", par_EventArgs.Value.Port, par_EventArgs.Value.IsSet(6) ? 'X' : 'O');
         }
 
         static void session_OnAnalogStateReceived(object par_Sender, FirmataEventArgs<AnalogState> par_EventArgs)

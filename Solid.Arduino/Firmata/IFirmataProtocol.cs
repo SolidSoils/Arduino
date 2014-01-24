@@ -9,7 +9,7 @@ using Solid.Arduino.I2c;
 namespace Solid.Arduino.Firmata
 {
     /// <summary>
-    /// Signature of event handlers capable of processing messages.
+    /// Signature of event handlers capable of processing Firmata messages.
     /// </summary>
     /// <param name="par_Sender">The object raising the event</param>
     /// <param name="par_EventArgs">Event arguments holding a <see cref="FirmataMessage"/></param>

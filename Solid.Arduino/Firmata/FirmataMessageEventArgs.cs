@@ -3,11 +3,9 @@
 namespace Solid.Arduino.Firmata
 {
     /// <summary>
-    /// Contains event data for a <see cref="MessageReceivedHandler"/> type event.
+    /// Event arguments passed to a <see cref="MessageReceivedHandler"/> type event.
     /// </summary>
-    /// <remarks>
-    /// This class is primarily implemented by the <see cref="IFirmataProtocol.MessageReceived"/> event.
-    /// </remarks>
+    /// <see cref="MessageReceivedHandler"/>
     public sealed class FirmataMessageEventArgs : EventArgs
     {
 

@@ -41,6 +41,7 @@ namespace Solid.Arduino
 
         #region Public Methods & Properties
 
+        /// <inheritdoc cref="SerialPort"/>
         public new void Close()
         {
             if (IsOpen)
@@ -64,7 +65,7 @@ namespace Solid.Arduino
     }
 
     /// <summary>
-    /// Common standard baud rates
+    /// Enumeration of common baud rates, supported by Arduino boards
     /// </summary>
     public enum SerialBaudRate
     {

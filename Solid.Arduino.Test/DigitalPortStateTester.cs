@@ -64,28 +64,28 @@ namespace Solid.Arduino.Test
         public void IsHigh_Pins_Is0()
         {
             var state = new DigitalPortState() { Pins = 0 };
-            Assert.AreEqual(false, state.IsHigh(0));
-            Assert.AreEqual(false, state.IsHigh(1));
-            Assert.AreEqual(false, state.IsHigh(2));
-            Assert.AreEqual(false, state.IsHigh(3));
-            Assert.AreEqual(false, state.IsHigh(4));
-            Assert.AreEqual(false, state.IsHigh(5));
-            Assert.AreEqual(false, state.IsHigh(6));
-            Assert.AreEqual(false, state.IsHigh(7));
+            Assert.AreEqual(false, state.IsSet(0));
+            Assert.AreEqual(false, state.IsSet(1));
+            Assert.AreEqual(false, state.IsSet(2));
+            Assert.AreEqual(false, state.IsSet(3));
+            Assert.AreEqual(false, state.IsSet(4));
+            Assert.AreEqual(false, state.IsSet(5));
+            Assert.AreEqual(false, state.IsSet(6));
+            Assert.AreEqual(false, state.IsSet(7));
         }
 
         [TestMethod]
         public void IsHigh_Pins_Is255()
         {
             var state = new DigitalPortState() { Pins = 255 };
-            Assert.AreEqual(true, state.IsHigh(0));
-            Assert.AreEqual(true, state.IsHigh(1));
-            Assert.AreEqual(true, state.IsHigh(2));
-            Assert.AreEqual(true, state.IsHigh(3));
-            Assert.AreEqual(true, state.IsHigh(4));
-            Assert.AreEqual(true, state.IsHigh(5));
-            Assert.AreEqual(true, state.IsHigh(6));
-            Assert.AreEqual(true, state.IsHigh(7));
+            Assert.AreEqual(true, state.IsSet(0));
+            Assert.AreEqual(true, state.IsSet(1));
+            Assert.AreEqual(true, state.IsSet(2));
+            Assert.AreEqual(true, state.IsSet(3));
+            Assert.AreEqual(true, state.IsSet(4));
+            Assert.AreEqual(true, state.IsSet(5));
+            Assert.AreEqual(true, state.IsSet(6));
+            Assert.AreEqual(true, state.IsSet(7));
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace Solid.Arduino.Test
         public void IsHigh_Pin_Argument_IsNegative()
         {
             var state = new DigitalPortState();
-            state.IsHigh(-1);
+            state.IsSet(-1);
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace Solid.Arduino.Test
         {
             var state = new DigitalPortState();
             typeof(DigitalPortState).GetProperty("Pins").SetValue(state, 0);
-            state.IsHigh(8);
+            state.IsSet(8);
         }
     }
 }

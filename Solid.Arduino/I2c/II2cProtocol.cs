@@ -14,7 +14,7 @@ namespace Solid.Arduino.I2c
     public delegate void I2cReplyReceivedHandler(object par_Sender, I2cEventArgs par_EventArgs);
 
     /// <summary>
-    /// Defines a comprehensive set of members supporting the I2C Protocol.d:\Data\Mijn SolidSoils documenten\Visual Studio 2012\Projects\Solid.Arduino\Solid.Arduino\I2C\II2cProtocol.cs
+    /// Defines a comprehensive set of members supporting the I2C Protocol.
     /// </summary>
     public interface II2cProtocol
     {
@@ -22,9 +22,10 @@ namespace Solid.Arduino.I2c
         /// Event, raised for every SYSEX I2C message not handled by an <see cref="II2cProtocol"/>'s Get method.
         /// </summary>
         /// <remarks>
-        /// When i.e. method <see cref="ReadI2cOnce"/> is invoked, the party system's response message raises this event.
-        /// However, when method <see cref="GetI2cReply"/> or <see cref="GetI2cReplyAsync"/> is invoked, the response is returned
-        /// to the respective methods and event <see cref="I2cReplyReceived"/> is not raised.
+        /// When i.e. methods <see cref="ReadI2cOnce(int, int)"/> and <see cref="ReadI2cContinuous(int, int)"/> are invoked,
+        /// the party system's response messages raise this event.
+        /// However, when method <see cref="GetI2cReply(int, int)"/> or <see cref="GetI2cReplyAsync(int, int)"/> is invoked,
+        /// the response received is returned to the method that issued the command and event <see cref="I2cReplyReceived"/> is not raised.
         /// </remarks>
         event I2cReplyReceivedHandler I2cReplyReceived;
 
@@ -76,7 +77,7 @@ namespace Solid.Arduino.I2c
         /// The party system is expected to return a continuous stream of I2C_REPLY messages at
         /// an interval which can be set using the <see cref="SetI2cReadInterval"/> method.
         /// Received I2C_REPLY messages trigger the <see cref="I2cReplyReceived"/> event. The data
-        /// are passed in the <see cref="FirmataEventArgs{I2cReply}"/> in an <see cref="I2cReply"/> object.
+        /// are served in the <see cref="I2cEventArgs"/>'s Value property as an <see cref="I2cReply"/> object.
         /// <para>
         /// The party system can be stopped sending I2C_REPLY messages by issuing a <see cref="StopI2cReading"/> command.
         /// </para>

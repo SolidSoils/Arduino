@@ -19,11 +19,11 @@ namespace Solid.Arduino.Firmata
         public int Pins { get; internal set; }
 
         /// <summary>
-        /// Gets a value indicating if the given pin is 1 (high).
+        /// Gets a value indicating if a pin is set (1 or 'high').
         /// </summary>
         /// <param name="pin">The 0-based pin number</param>
         /// <returns><c>true</c> when the pin has a binary 1 value, otherwise <c>false</c></returns>
-        public bool IsHigh(int pin)
+        public bool IsSet(int pin)
         {
             if (pin < 0 || pin > 7)
                 throw new ArgumentOutOfRangeException("pin", Messages.ArgumentEx_PinRange0_7);

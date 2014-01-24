@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino
 {
+    /// <summary>
+    /// Event arguments passed to a <see cref="StringReceivedHandler"/> type event.
+    /// </summary>
+    /// <see cref="StringReceivedHandler"/>
+    /// <see cref="ArduinoSession.StringReceived"/>
     public sealed class StringEventArgs
     {
         private readonly string _text;
@@ -15,6 +20,9 @@ namespace Solid.Arduino
             _text = text;
         }
 
+        /// <summary>
+        /// Gets the string value being received.
+        /// </summary>
         public string Text { get { return _text; } }
     }
 }
