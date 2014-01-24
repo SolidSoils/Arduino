@@ -16,6 +16,42 @@ and directs them to the proper requestors (synchronous as well as asynchronous) 
 
 Technology used: Microsoft .NET/C# v4.5
 
+### A basic code example
+
+	using Solid.Arduino.Firmata;
+
+    (...)
+
+    var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
+	var session = new ArduinoSession(connection, timeOut: 250);
+    // Cast to interface done, just for the sake of this demo.
+	IFirmataProtocol firmata = (IFirmataProtocol)session;
+	
+	Firmware firm = firmata.GetFirmware();
+	Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
+	
+	ProtocolVersion version = firmata.GetProtocolVersion();
+	Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
+	
+	BoardCapability caps = firmata.GetBoardCapability();
+	Console.WriteLine("Board Capabilities:");
+	
+	foreach (var pincap in caps.PinCapabilities)
+	{
+	    Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
+	        pincap.PinNumber,
+			pincap.DigitalInput,
+			pincap.DigitalOutput,
+			pincap.Analog,
+			pincap.AnalogResolution,
+			pincap.Pwm,
+			pincap.PwmResolution,
+	        pincap.Servo,
+			pincap.ServoResolution);
+	}
+	Console.WriteLine();
+    Console.ReadLine();
+
 ## Current status
 
 **v0.0**
@@ -27,8 +63,13 @@ Code complete for the library core. (Pre-beta)
 1. Firmata protocol implemented, unit- and integration-tested.
 2. I2C protocol implemented and unit-tested.
 3. Serial ASCII protocol implemented and unit-tested.
-4. Interfaces documented.
-5. IObservable methods implemented.
+4. API fully documented.
+5. IObservable methods implemented (not yet unittested or documented).
+
+## Upcoming
+1. Finish unit tests and documentation for latest additions.
+2. Develop a WPF application demonstrating the library (project Solid.Arduino.Monitor).
+3. Release the first version.
 
 ## Contributing
 If you discover a bug or would like to propose a new feature,
@@ -43,4 +84,3 @@ the issue to express your intent to begin work and/or to get any additional info
 
 Please, test your contributed code thoroughly. In your pull request, describe tests performed to ensure 
 that no existing code is broken and that any changes maintain backwards compatibility with the existing API.
-
