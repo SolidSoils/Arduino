@@ -11,7 +11,7 @@ namespace Solid.Arduino.Firmata
         /// Gets the MIDI channel number (0 - 15).
         /// </summary>
         /// <remarks>
-        /// The mapping of analog pins to channel numbers can be retrieved using the <see cref="IFirmata.GetBoardMapping"/> method.
+        /// The mapping of analog pins to channel numbers can be retrieved using the <see cref="IFirmataProtocol.GetBoardAnalogMapping"/> method.
         /// </remarks>
         public int Channel { get; internal set; }
 

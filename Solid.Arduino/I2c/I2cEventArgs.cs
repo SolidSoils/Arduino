@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.I2c
+namespace Solid.Arduino.I2C
 {
     /// <summary>
-    /// Event arguments passed to a <see cref="I2cReplyReceivedHandler"/> type event.
+    /// Event arguments passed to a <see cref="I2CReplyReceivedHandler"/> type event.
     /// </summary>
-    public sealed class I2cEventArgs : EventArgs
+    public sealed class I2CEventArgs : EventArgs
     {
-        private readonly I2cReply _value;
+        private readonly I2CReply _value;
 
-        internal I2cEventArgs(I2cReply value)
+        internal I2CEventArgs(I2CReply value)
         {
             _value = value;
         }
@@ -21,7 +21,7 @@ namespace Solid.Arduino.I2c
         /// <summary>
         /// Gets the I2C message value being received.
         /// </summary>
-        public I2cReply Value { get { return _value; } }
+        public I2CReply Value { get { return _value; } }
 
     }
 }

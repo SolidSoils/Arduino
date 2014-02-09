@@ -13,7 +13,7 @@ namespace Solid.Arduino.Firmata
         internal DigitalStateTracker(IFirmataProtocol source)
             : base(source)
         {
-            _trackingSource.DigitalStateReceived += Firmata_DigitalStateReceived;
+            TrackingSource.DigitalStateReceived += Firmata_DigitalStateReceived;
         }
 
         #endregion
@@ -22,9 +22,9 @@ namespace Solid.Arduino.Firmata
 
         public override void Dispose()
         {
-            if (!_isDisposed)
+            if (!IsDisposed)
             {
-                _trackingSource.DigitalStateReceived -= Firmata_DigitalStateReceived;
+                TrackingSource.DigitalStateReceived -= Firmata_DigitalStateReceived;
                 base.Dispose();
             }
         }
@@ -33,9 +33,9 @@ namespace Solid.Arduino.Firmata
 
         #region Private Methods
 
-        void Firmata_DigitalStateReceived(object par_Sender, FirmataEventArgs<DigitalPortState> par_EventArgs)
+        void Firmata_DigitalStateReceived(object parSender, FirmataEventArgs<DigitalPortState> parEventArgs)
         {
-            _observers.ForEach(o => o.OnNext(par_EventArgs.Value));
+            Observers.ForEach(o => o.OnNext(parEventArgs.Value));
         }
 
         #endregion

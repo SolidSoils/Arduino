@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solid.Arduino.I2c
+namespace Solid.Arduino.I2C
 {
-    internal sealed class I2cReplyTracker : ObservableEventTracker<II2cProtocol, I2cReply>
+    internal sealed class I2CReplyTracker : ObservableEventTracker<II2CProtocol, I2CReply>
     {
         #region Constructors
 
-        internal I2cReplyTracker(II2cProtocol i2c): base(i2c)
+        internal I2CReplyTracker(II2CProtocol ii2C): base(ii2C)
         {
-            _trackingSource.I2cReplyReceived += I2cReplyReceived;
+            TrackingSource.I2CReplyReceived += I2CReplyReceived;
         }
 
         #endregion
@@ -21,9 +21,9 @@ namespace Solid.Arduino.I2c
 
         public override void Dispose()
         {
-            if (!_isDisposed)
+            if (!IsDisposed)
             {
-                _trackingSource.I2cReplyReceived -= I2cReplyReceived;
+                TrackingSource.I2CReplyReceived -= I2CReplyReceived;
                 base.Dispose();
             }
         }
@@ -32,9 +32,9 @@ namespace Solid.Arduino.I2c
 
         #region Private Methods
 
-        private void I2cReplyReceived(object par_Sender, I2cEventArgs par_EventArgs)
+        private void I2CReplyReceived(object parSender, I2CEventArgs parEventArgs)
         {
-            _observers.ForEach(o => o.OnNext(par_EventArgs.Value));
+            Observers.ForEach(o => o.OnNext(parEventArgs.Value));
         }
 
         #endregion

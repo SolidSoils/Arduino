@@ -6,42 +6,42 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino
 {
-    internal abstract class ObservableEventTracker<Tsource, Ttracked> : IObservable<Ttracked>, IDisposable
+    internal abstract class ObservableEventTracker<TSource, TTracked> : IObservable<TTracked>, IDisposable
     {
         #region Protected Fields
 
-        protected readonly Tsource _trackingSource;
-        protected readonly List<IObserver<Ttracked>> _observers = new List<IObserver<Ttracked>>();
-        protected bool _isDisposed = false;
+        protected readonly TSource TrackingSource;
+        protected readonly List<IObserver<TTracked>> Observers = new List<IObserver<TTracked>>();
+        protected bool IsDisposed = false;
 
         #endregion
 
         #region Constructors
 
-        internal ObservableEventTracker(Tsource trackingSource)
+        internal ObservableEventTracker(TSource trackingSource)
         {
-            _trackingSource = trackingSource;
+            TrackingSource = trackingSource;
         }
 
         #endregion
 
         #region Public Methods
 
-        public IDisposable Subscribe(IObserver<Ttracked> observer)
+        public IDisposable Subscribe(IObserver<TTracked> observer)
         {
-            _observers.Add(observer);
+            Observers.Add(observer);
             return this;
         }
 
         public virtual void Dispose()
         {
-            if (!_isDisposed)
+            if (!IsDisposed)
             {
-                foreach (IObserver<Ttracked> observer in _observers)
+                foreach (IObserver<TTracked> observer in Observers)
                     observer.OnCompleted();
 
                 GC.SuppressFinalize(this);
-                _isDisposed = true;
+                IsDisposed = true;
             }
         }
 

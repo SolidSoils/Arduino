@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,9 @@ namespace Solid.Arduino
     /// <summary>
     /// Signature of event handlers capable of processing received strings.
     /// </summary>
-    /// <param name="par_Sender">The object raising the event</param>
-    /// <param name="par_EventArgs">Event arguments holding a <see cref="string"/> message</param>
-    public delegate void StringReceivedHandler(object par_Sender, StringEventArgs par_EventArgs);
+    /// <param name="sender">The object raising the event</param>
+    /// <param name="eventArgs">Event arguments holding a <see cref="string"/> message</param>
+    public delegate void StringReceivedHandler(object sender, StringEventArgs eventArgs);
 
     /// <summary>
     /// Defines members for sending and receiving ASCII string messages.
@@ -30,7 +31,7 @@ namespace Solid.Arduino
         /// <summary>
         /// Creates an observable object tracking received ASCII <see cref="System.String"/> messages.
         /// </summary>
-        /// <returns>An <see cref="IObservable<string>"/> interface</returns>
+        /// <returns>An <see cref="IObservable{String}"/> interface</returns>
         IObservable<string> CreateReceivedStringMonitor();
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Solid.Arduino
         /// <summary>
         /// Reads a string asynchronous up to the next <see cref="NewLine"/> character.
         /// </summary>
-        /// <returns>An awaitable <see cref="Task{string}"/> returning the string read</returns>
+        /// <returns>An awaitable <see cref="Task{String}"/> returning the string read</returns>
         Task<string> ReadLineAsync();
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Solid.Arduino
         /// Reads a specified number of characters asynchronous.
         /// </summary>
         /// <param name="length">The number of characters to be read (default is 1)</param>
-        /// <returns>An awaitable <see cref="Task{string}"/> returning the string read</returns>
+        /// <returns>An awaitable <see cref="Task{String}"/> returning the string read</returns>
         Task<string> ReadAsync(int length = 1);
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace Solid.Arduino
         /// Reads a string asynchronous up to the first terminating character.
         /// </summary>
         /// <param name="terminator">The character identifying the end of the string</param>
-        /// <returns>An awaitable <see cref="Task{string}"/> returning the string read</returns>
+        /// <returns>An awaitable <see cref="Task{String}"/> returning the string read</returns>
         Task<string> ReadToAsync(char terminator);
     }
 }

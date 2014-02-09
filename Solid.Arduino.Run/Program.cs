@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
-using Solid.Arduino.I2c;
+using Solid.Arduino.I2C;
 
 namespace Solid.Arduino.Run
 {
@@ -27,9 +27,9 @@ namespace Solid.Arduino.Run
             session.TimeOut = 1000;
             session.MessageReceived += session_OnMessageReceived;
 
-            var firmata = (II2cProtocol)session;
+            var firmata = (II2CProtocol)session;
 
-            var x = firmata.GetI2cReply(0x68, 7);
+            var x = firmata.GetI2CReply(0x68, 7);
 
             Console.WriteLine();
             Console.WriteLine("{0} bytes received.", x.Data.Length);
@@ -42,14 +42,14 @@ namespace Solid.Arduino.Run
             session.Dispose();
         }
 
-        void session_OnMessageReceived(object par_Sender, FirmataMessageEventArgs par_EventArgs)
+        void session_OnMessageReceived(object sender, FirmataMessageEventArgs eventArgs)
         {
             string o;
 
-            switch (par_EventArgs.Value.Type)
+            switch (eventArgs.Value.Type)
             {
                 case MessageType.StringData:
-                    o = ((StringData)par_EventArgs.Value.Value).Text;
+                    o = ((StringData)eventArgs.Value.Value).Text;
                     break;
 
                 default:
@@ -57,13 +57,13 @@ namespace Solid.Arduino.Run
                     break;
             }
 
-            Console.WriteLine("Message {0} received: {1}", par_EventArgs.Value.Type, o);
+            Console.WriteLine("Message {0} received: {1}", eventArgs.Value.Type, o);
         }
 
         static void SimpelTest()
         {
-            var session = new ArduinoSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
-            session.TimeOut = 1000;
+            var connection = new SerialConnection("COM6", SerialBaudRate.Bps_57600);
+            var session = new ArduinoSession(connection, timeOut: 250);
             IFirmataProtocol firmata = (IFirmataProtocol)session;
 
             firmata.AnalogStateReceived += session_OnAnalogStateReceived;
@@ -74,7 +74,7 @@ namespace Solid.Arduino.Run
             Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
             Console.WriteLine();
 
-            var version = firmata.GetProtocolVersion();
+            ProtocolVersion version = firmata.GetProtocolVersion();
             Console.WriteLine();
             Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
             Console.WriteLine();
@@ -160,14 +160,14 @@ namespace Solid.Arduino.Run
             Console.WriteLine("Ready.");
         }
 
-        static void session_OnDigitalStateReceived(object par_Sender, FirmataEventArgs<DigitalPortState> par_EventArgs)
+        static void session_OnDigitalStateReceived(object sender, FirmataEventArgs<DigitalPortState> eventArgs)
         {
-            Console.WriteLine("Digital level of port {0}: {1}", par_EventArgs.Value.Port, par_EventArgs.Value.IsSet(6) ? 'X' : 'O');
+            Console.WriteLine("Digital level of port {0}: {1}", eventArgs.Value.Port, eventArgs.Value.IsSet(6) ? 'X' : 'O');
         }
 
-        static void session_OnAnalogStateReceived(object par_Sender, FirmataEventArgs<AnalogState> par_EventArgs)
+        static void session_OnAnalogStateReceived(object sender, FirmataEventArgs<AnalogState> eventArgs)
         {
-            Console.WriteLine("Analog level of pin {0}: {1}", par_EventArgs.Value.Channel, par_EventArgs.Value.Level);
+            Console.WriteLine("Analog level of pin {0}: {1}", eventArgs.Value.Channel, eventArgs.Value.Level);
         }
 
 

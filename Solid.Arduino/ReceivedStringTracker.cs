@@ -13,7 +13,7 @@ namespace Solid.Arduino
         internal ReceivedStringTracker(IStringProtocol source)
             : base(source)
         {
-            _trackingSource.StringReceived += TrackingSource_StringReceived;
+            TrackingSource.StringReceived += TrackingSource_StringReceived;
         }
 
         #endregion
@@ -22,9 +22,9 @@ namespace Solid.Arduino
 
         public override void Dispose()
         {
-            if (!_isDisposed)
+            if (!IsDisposed)
             {
-                _trackingSource.StringReceived -= TrackingSource_StringReceived;
+                TrackingSource.StringReceived -= TrackingSource_StringReceived;
                 base.Dispose();
             }
         }
@@ -33,9 +33,9 @@ namespace Solid.Arduino
 
         #region Private Methods
 
-        void TrackingSource_StringReceived(object par_Sender, StringEventArgs par_EventArgs)
+        void TrackingSource_StringReceived(object parSender, StringEventArgs parEventArgs)
         {
-            _observers.ForEach(o => o.OnNext(par_EventArgs.Text));
+            Observers.ForEach(o => o.OnNext(parEventArgs.Text));
         }
 
         #endregion

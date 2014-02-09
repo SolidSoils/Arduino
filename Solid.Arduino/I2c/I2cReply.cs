@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Solid.Arduino.I2c
+namespace Solid.Arduino.I2C
 {
     /// <summary>
     /// Container for an I2C message
     /// </summary>
-    public struct I2cReply
+    public struct I2CReply
     {
         /// <summary>
         /// Gets or sets the memory address.

@@ -12,7 +12,7 @@ namespace Solid.Arduino.Firmata
 
         internal AnalogStateTracker(IFirmataProtocol source): base(source)
         {
-            _trackingSource.AnalogStateReceived += Firmata_AnalogStateReceived;
+            TrackingSource.AnalogStateReceived += Firmata_AnalogStateReceived;
         }
 
         #endregion
@@ -21,9 +21,9 @@ namespace Solid.Arduino.Firmata
 
         public override void Dispose()
         {
-            if (!_isDisposed)
+            if (!IsDisposed)
             {
-                _trackingSource.AnalogStateReceived -= Firmata_AnalogStateReceived;
+                TrackingSource.AnalogStateReceived -= Firmata_AnalogStateReceived;
                 base.Dispose();
             }
         }
@@ -32,9 +32,9 @@ namespace Solid.Arduino.Firmata
 
         #region Private Methods
 
-        void Firmata_AnalogStateReceived(object par_Sender, FirmataEventArgs<AnalogState> par_EventArgs)
+        void Firmata_AnalogStateReceived(object parSender, FirmataEventArgs<AnalogState> parEventArgs)
         {
-            _observers.ForEach(o => o.OnNext(par_EventArgs.Value));
+            Observers.ForEach(o => o.OnNext(parEventArgs.Value));
         }
 
         #endregion

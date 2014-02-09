@@ -7,7 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection.
     /// </summary>
-    public sealed class SerialConnection: SerialPort, ISerialConnection, IDisposable
+    public sealed class SerialConnection: SerialPort, ISerialConnection
     {
         #region Constructors
 
@@ -17,8 +17,8 @@ namespace Solid.Arduino
         public SerialConnection()
             : base(GetLastPortName(), (int)SerialBaudRate.Bps_115200)
         {
-            this.ReadTimeout = 100;
-            this.WriteTimeout = 100;
+            ReadTimeout = 100;
+            WriteTimeout = 100;
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace Solid.Arduino
         public SerialConnection(string portName, SerialBaudRate baudRate)
             : base(portName, (int)baudRate)
         {
-            this.ReadTimeout = 100;
-            this.WriteTimeout = 100;
+            ReadTimeout = 100;
+            WriteTimeout = 100;
         }
 
         #endregion
@@ -46,8 +46,8 @@ namespace Solid.Arduino
         {
             if (IsOpen)
             {
-                base.BaseStream.Flush();
-                base.DiscardInBuffer();
+                BaseStream.Flush();
+                DiscardInBuffer();
                 base.Close();
             }
         }
@@ -58,7 +58,7 @@ namespace Solid.Arduino
 
         private static string GetLastPortName()
         {
-            return SerialPort.GetPortNames().Where(n => n.StartsWith("COM")).OrderByDescending(n => n).First();
+            return GetPortNames().Where(n => n.StartsWith("COM")).OrderByDescending(n => n).First();
         }
 
         #endregion

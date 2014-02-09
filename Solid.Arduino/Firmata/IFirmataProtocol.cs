@@ -4,30 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Solid.Arduino.I2c;
-
 namespace Solid.Arduino.Firmata
 {
     /// <summary>
     /// Signature of event handlers capable of processing Firmata messages.
     /// </summary>
-    /// <param name="par_Sender">The object raising the event</param>
-    /// <param name="par_EventArgs">Event arguments holding a <see cref="FirmataMessage"/></param>
-    public delegate void MessageReceivedHandler(object par_Sender, FirmataMessageEventArgs par_EventArgs);
+    /// <param name="sender">The object raising the event</param>
+    /// <param name="eventArgs">Event arguments holding a <see cref="FirmataMessage"/></param>
+    public delegate void MessageReceivedHandler(object sender, FirmataMessageEventArgs eventArgs);
 
     /// <summary>
     /// Signature of event handlers capable of processing analog I/O messages.
     /// </summary>
-    /// <param name="par_Sender">The object raising the event</param>
-    /// <param name="par_EventArgs">Event arguments holding a <see cref="AnalogState"/></param>
-    public delegate void AnalogStateReceivedHandler(object par_Sender, FirmataEventArgs<AnalogState> par_EventArgs);
+    /// <param name="sender">The object raising the event</param>
+    /// <param name="eventArgs">Event arguments holding a <see cref="AnalogState"/></param>
+    public delegate void AnalogStateReceivedHandler(object sender, FirmataEventArgs<AnalogState> eventArgs);
 
     /// <summary>
     /// Signature of event handlers capable of processing digital I/O messages.
     /// </summary>
-    /// <param name="par_Sender">The object raising the event</param>
-    /// <param name="par_EventArgs">Event arguments holding a <see cref="DigitalPortState"/></param>
-    public delegate void DigitalStateReceivedHandler(object par_Sender, FirmataEventArgs<DigitalPortState> par_EventArgs);
+    /// <param name="sender">The object raising the event</param>
+    /// <param name="eventArgs">Event arguments holding a <see cref="DigitalPortState"/></param>
+    public delegate void DigitalStateReceivedHandler(object sender, FirmataEventArgs<DigitalPortState> eventArgs);
 
     /// <summary>
     /// The modes a pin can be in or can be set to.
@@ -85,13 +83,13 @@ namespace Solid.Arduino.Firmata
         /// <summary>
         /// Creates an observable object tracking <see cref="AnalogState"/> messages.
         /// </summary>
-        /// <returns>An <see cref="IObservable<AnalogState>"/> interface</returns>
+        /// <returns>An <see cref="IObservable{AnalogState}"/> interface</returns>
         IObservable<AnalogState> CreateAnalogStateMonitor();
 
         /// <summary>
         /// Creates an observable object tracking <see cref="DigitalPortState"/> messages.
         /// </summary>
-        /// <returns>An <see cref="IObservable<DigitalPortState>"/> interface</returns>
+        /// <returns>An <see cref="IObservable{DigitalPortState}"/> interface</returns>
         IObservable<DigitalPortState> CreateDigitalStateMonitor();
 
         /// <summary>

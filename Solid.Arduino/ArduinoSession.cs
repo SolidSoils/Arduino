@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
 using Solid.Arduino.Firmata.Servo;
-using Solid.Arduino.I2c;
+using Solid.Arduino.I2C;
 
 namespace Solid.Arduino
 {
@@ -20,7 +20,7 @@ namespace Solid.Arduino
     /// This class supports a few common protocols used for communicating with Arduino boards.
     /// The protocols can be used simultaneous and independently of each other.
     /// </remarks>
-    public class ArduinoSession : IFirmataProtocol, IServoProtocol, II2cProtocol, IStringProtocol, IDisposable
+    public class ArduinoSession : IFirmataProtocol, IServoProtocol, II2CProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations
 
@@ -28,7 +28,6 @@ namespace Solid.Arduino
 
         private enum MessageHeader
         {
-            Undefined = 0x00,
             AnalogState = 0xE0, // 224
             DigitalState = 0x90, // 144
             ReportAnalog = 0xC0,
@@ -132,7 +131,7 @@ namespace Solid.Arduino
         /// Initializes a new instance of the <see cref="ArduinoSession"/> class.
         /// </summary>
         /// <param name="connection">The serial port connection</param>
-        /// <param name="timeOut">The response time out</param>
+        /// <param name="timeOut">The response time out in milliseconds</param>
         /// <exception cref="System.ArgumentNullException">connection</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">timeOut</exception>
         public ArduinoSession(ISerialConnection connection, int timeOut)
@@ -222,7 +221,7 @@ namespace Solid.Arduino
         /// <inheritdoc cref="IStringProtocol"/>
         public async Task<string> ReadLineAsync()
         {
-            return await Task.Run<string>(() => GetStringFromQueue(StringRequest.CreateReadLineRequest()));
+            return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadLineRequest()));
         }
 
         /// <inheritdoc cref="IStringProtocol"/>
@@ -240,7 +239,7 @@ namespace Solid.Arduino
             if (length < 0)
                 throw new ArgumentOutOfRangeException("length", Messages.ArgumentEx_PositiveValue);
 
-            return await Task.Run<string>(() => GetStringFromQueue(StringRequest.CreateReadRequest(length)));
+            return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadRequest(length)));
         }
 
         /// <inheritdoc cref="IStringProtocol"/>
@@ -252,7 +251,7 @@ namespace Solid.Arduino
         /// <inheritdoc cref="IStringProtocol"/>
         public async Task<string> ReadToAsync(char terminator)
         {
-            return await Task.Run<string>(() => GetStringFromQueue(StringRequest.CreateReadRequest(terminator)));
+            return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadRequest(terminator)));
         }
 
         #endregion
@@ -281,7 +280,7 @@ namespace Solid.Arduino
         /// <inheritdoc cref="IFirmataProtocol"/>
         public void ResetBoard()
         {
-            _connection.Write(new byte[] { (byte)0xFF }, 0, 1);
+            _connection.Write(new [] { (byte)0xFF }, 0, 1);
         }
 
         /// <inheritdoc cref="IFirmataProtocol"/>
@@ -298,7 +297,7 @@ namespace Solid.Arduino
             if (pinNumber < 16 && level < 0x4000)
             {
                 // Send value in a conventional Analog Message.
-                message = new byte[] {
+                message = new[] {
                     (byte)(AnalogMessage | pinNumber),
                     (byte)(level & 0x7F),
                     (byte)((level >> 7) & 0x7F)
@@ -310,7 +309,7 @@ namespace Solid.Arduino
             // Send long value in an Extended Analog Message.
             message = new byte[14];
             message[0] = SysExStart;
-            message[1] = (byte)0x6F;
+            message[1] = 0x6F;
             message[2] = (byte)pinNumber;
             int index = 3;
 
@@ -331,7 +330,7 @@ namespace Solid.Arduino
             if (channel < 0 || channel > 15)
                 throw new ArgumentOutOfRangeException("channel", Messages.ArgumentEx_ChannelRange0_15);
 
-            _connection.Write(new byte[] { (byte)(0xC0 | channel), (byte)(enable ? 1 : 0) }, 0, 2);
+            _connection.Write(new[] { (byte)(0xC0 | channel), (byte)(enable ? 1 : 0) }, 0, 2);
         }
 
         /// <inheritdoc cref="IFirmataProtocol"/>
@@ -343,7 +342,7 @@ namespace Solid.Arduino
             if (pins < 0 || pins > 0xFF)
                 throw new ArgumentOutOfRangeException("pins", Messages.ArgumentEx_ValueRange0_255);
 
-            _connection.Write(new byte[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x03) }, 0, 3);
+            _connection.Write(new[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x03) }, 0, 3);
         }
 
         /// <inheritdoc cref="IFirmataProtocol"/>
@@ -352,7 +351,7 @@ namespace Solid.Arduino
             if (portNumber < 0 || portNumber > 15)
                 throw new ArgumentOutOfRangeException("portNumber", Messages.ArgumentEx_PortRange0_15);
 
-            _connection.Write(new byte[] { (byte)(0xD0 | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
+            _connection.Write(new[] { (byte)(0xD0 | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
         }
 
         /// <inheritdoc cref="IFirmataProtocol"/>
@@ -370,7 +369,7 @@ namespace Solid.Arduino
             if (milliseconds < 0 || milliseconds > 0x3FFF)
                 throw new ArgumentOutOfRangeException("milliseconds", Messages.ArgumentEx_SamplingInterval);
 
-            var command = new byte[]
+            var command = new[]
             {
                 SysExStart,
                 (byte)0x7A,
@@ -389,7 +388,7 @@ namespace Solid.Arduino
 
             byte[] command = new byte[data.Length * 2 + 3];
             command[0] = SysExStart;
-            command[1] = (byte)0x71;
+            command[1] = 0x71;
 
             for (int x = 0; x < data.Length; x++)
             {
@@ -420,7 +419,7 @@ namespace Solid.Arduino
         public async Task<Firmware> GetFirmwareAsync()
         {
             RequestFirmware();
-            return await Task.Run<Firmware>(() =>
+            return await Task.Run(() =>
                 (Firmware)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.FirmwareResponse))).Value);
         }
 
@@ -441,7 +440,7 @@ namespace Solid.Arduino
         public async Task<ProtocolVersion> GetProtocolVersionAsync()
         {
             RequestProtocolVersion();
-            return await Task.Run<ProtocolVersion>(() =>
+            return await Task.Run(() =>
                 (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.ProtocolVersion))).Value);
         }
 
@@ -462,7 +461,7 @@ namespace Solid.Arduino
         public async Task<BoardCapability> GetBoardCapabilityAsync()
         {
             RequestBoardCapability();
-            return await Task.Run<BoardCapability>(() =>
+            return await Task.Run(() =>
                 (BoardCapability)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.CapabilityResponse))).Value);
         }
 
@@ -483,7 +482,7 @@ namespace Solid.Arduino
         public async Task<BoardAnalogMapping> GetBoardAnalogMappingAsync()
         {
             RequestBoardAnalogMapping();
-            return await Task.Run<BoardAnalogMapping>(() =>
+            return await Task.Run(() =>
                 (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.AnalogMappingResponse))).Value);
         }
 
@@ -493,7 +492,7 @@ namespace Solid.Arduino
             if (pinNumber < 0 || pinNumber > 127)
                 throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
 
-            var command = new byte[]
+            var command = new[]
             {
                 SysExStart,
                 (byte)0x6D,
@@ -514,7 +513,7 @@ namespace Solid.Arduino
         public async Task<PinState> GetPinStateAsync(int pinNumber)
         {
             RequestPinState(pinNumber);
-            return await Task.Run<PinState>
+            return await Task.Run
             (
                 () =>
                 (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value
@@ -540,7 +539,7 @@ namespace Solid.Arduino
             if (minPulse > maxPulse)
                 throw new ArgumentException(Messages.ArgumentEx_MinMaxPulse);
 
-            var command = new byte[]
+            var command = new[]
             {
                 SysExStart,
                 (byte)0x70,
@@ -558,22 +557,22 @@ namespace Solid.Arduino
 
         #region II2cProtocol
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public event I2cReplyReceivedHandler I2cReplyReceived;
+        /// <inheritdoc cref="II2CProtocol"/>
+        public event I2CReplyReceivedHandler I2CReplyReceived;
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public IObservable<I2cReply> CreateI2cReplyMonitor()
+        /// <inheritdoc cref="II2CProtocol"/>
+        public IObservable<I2CReply> CreateI2CReplyMonitor()
         {
-            return new I2cReplyTracker(this);
+            return new I2CReplyTracker(this);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void SetI2cReadInterval(int microseconds)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void SetI2CReadInterval(int microseconds)
         {
             if (microseconds < 0 || microseconds > 0x3FFF)
                 throw new ArgumentOutOfRangeException("microseconds", Messages.ArgumentEx_I2cInterval);
 
-            var command = new byte[]
+            var command = new []
             {
                 SysExStart,
                 (byte)0x78,
@@ -584,15 +583,15 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 5);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void WriteI2c(int slaveAddress, params byte[] data)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void WriteI2C(int slaveAddress, params byte[] data)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
                 throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
 
             byte[] command = new byte[data.Length * 2 + 5];
             command[0] = SysExStart;
-            command[1] = (byte)0x76;
+            command[1] = 0x76;
             command[2] = (byte)(slaveAddress & 0x7F);
             command[3] = (byte)(slaveAddress < 0x80 ? 0 : ((slaveAddress >> 7) & 0x07) | 0x20);
 
@@ -607,69 +606,69 @@ namespace Solid.Arduino
             _connection.Write(command, 0, command.Length);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void ReadI2cOnce(int slaveAddress, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void ReadI2COnce(int slaveAddress, int bytesToRead)
         {
-            I2cRead(false, slaveAddress, -1, bytesToRead);
+            I2CRead(false, slaveAddress, -1, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public I2cReply GetI2cReply(int slaveAddress, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public I2CReply GetI2CReply(int slaveAddress, int bytesToRead)
         {
-            ReadI2cOnce(slaveAddress, bytesToRead);
+            ReadI2COnce(slaveAddress, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
+            return (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public async Task<I2CReply> GetI2CReplyAsync(int slaveAddress, int bytesToRead)
         {
-            ReadI2cOnce(slaveAddress, bytesToRead);
+            ReadI2COnce(slaveAddress, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return await Task.Run<I2cReply>(() =>
-                (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
+            return await Task.Run(() =>
+                (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void ReadI2cOnce(int slaveAddress, int slaveRegister, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void ReadI2COnce(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cSlaveRead(false, slaveAddress, slaveRegister, bytesToRead);
+            I2CSlaveRead(false, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public I2cReply GetI2cReply(int slaveAddress, int slaveRegister, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public I2CReply GetI2CReply(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            ReadI2cOnce(slaveAddress, slaveRegister, bytesToRead);
+            ReadI2COnce(slaveAddress, slaveRegister, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
+            return (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public async Task<I2cReply> GetI2cReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public async Task<I2CReply> GetI2CReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            ReadI2cOnce(slaveAddress, slaveRegister, bytesToRead);
+            ReadI2COnce(slaveAddress, slaveRegister, bytesToRead);
             _awaitedMessagesQueue.Enqueue(new FirmataMessage(MessageType.I2CReply));
 
-            return await Task.Run<I2cReply>(() =>
-                (I2cReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
+            return await Task.Run(() =>
+                (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void ReadI2cContinuous(int slaveAddress, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void ReadI2CContinuous(int slaveAddress, int bytesToRead)
         {
-            I2cRead(true, slaveAddress, -1, bytesToRead);
+            I2CRead(true, slaveAddress, -1, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
-        public void ReadI2cContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
+        /// <inheritdoc cref="II2CProtocol"/>
+        public void ReadI2CContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
         {
-            I2cSlaveRead(true, slaveAddress, slaveRegister, bytesToRead);
+            I2CSlaveRead(true, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2cProtocol"/>
+        /// <inheritdoc cref="II2CProtocol"/>
         /// <remarks>
         /// <para>
         /// Please note:
@@ -678,13 +677,13 @@ namespace Solid.Arduino
         /// stops all registered queries.
         /// </para>
         /// </remarks>
-        public void StopI2cReading()
+        public void StopI2CReading()
         {
             byte[] command = new byte[5];
             command[0] = SysExStart;
-            command[1] = (byte)0x76;
-            command[2] = (byte)0x00;
-            command[3] = (byte)0x18;
+            command[1] = 0x76;
+            command[2] = 0x00;
+            command[3] = 0x18;
             command[4] = SysExEnd;
 
             _connection.Write(command, 0, command.Length);
@@ -785,24 +784,24 @@ namespace Solid.Arduino
 
         private void SendSysExCommand(byte command)
         {
-            var message = new byte[]
+            var message = new[]
             {
                 SysExStart,
-                (byte)command,
+                command,
                 SysExEnd
             };
             _connection.Write(message, 0, 3);
         }
 
-        private void I2cSlaveRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
+        private void I2CSlaveRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
         {
             if (slaveRegister < 0 || slaveRegister > 0x3FFF)
                 throw new ArgumentOutOfRangeException("slaveRegister", Messages.ArgumentEx_ValueRange0_16383);
 
-            I2cRead(continuous, slaveAddress, slaveRegister, bytesToRead);
+            I2CRead(continuous, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        private void I2cRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
+        private void I2CRead(bool continuous, int slaveAddress, int slaveRegister = -1, int bytesToRead = 0)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
                 throw new ArgumentOutOfRangeException("slaveAddress", Messages.ArgumentEx_I2cAddressRange);
@@ -812,7 +811,7 @@ namespace Solid.Arduino
 
             byte[] command = new byte[(slaveRegister == -1 ? 7 : 9)];
             command[0] = SysExStart;
-            command[1] = (byte)0x76;
+            command[1] = 0x76;
             command[2] = (byte)(slaveAddress & 0x7F);
 
             if (slaveAddress < 128)
@@ -1086,7 +1085,7 @@ namespace Solid.Arduino
                     return;
 
                 case 0x77: // I2cReply
-                    DeliverMessage(CreateI2cReply());
+                    DeliverMessage(CreateI2CReply());
                     return;
 
                 case 0x79: // FirmwareResponse
@@ -1115,9 +1114,9 @@ namespace Solid.Arduino
                 MessageReceived(this, new FirmataMessageEventArgs(message));
         }
 
-        private FirmataMessage CreateI2cReply()
+        private FirmataMessage CreateI2CReply()
         {
-            var reply = new I2cReply
+            var reply = new I2CReply
             {
                 Address = _messageBuffer[2] | (_messageBuffer[3] << 7),
                 Register = _messageBuffer[4] | (_messageBuffer[5] << 7)
@@ -1132,8 +1131,8 @@ namespace Solid.Arduino
             
             reply.Data = data;
 
-            if (I2cReplyReceived != null)
-                I2cReplyReceived(this, new I2cEventArgs(reply));
+            if (I2CReplyReceived != null)
+                I2CReplyReceived(this, new I2CEventArgs(reply));
 
             return new FirmataMessage(reply, MessageType.I2CReply);
         }

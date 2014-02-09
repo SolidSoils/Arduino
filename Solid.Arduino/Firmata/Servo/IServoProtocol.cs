@@ -10,7 +10,7 @@ namespace Solid.Arduino.Firmata.Servo
     /// Defines Servo control related members of the Firmata protocol.
     /// </summary>
     /// <remarks>
-    /// This interface is separated from the <see cref="IFirmata"/> interface, in order to
+    /// This interface is separated from the <see cref="IFirmataProtocol"/> interface, in order to
     /// protect the latter against feature bloat. 
     /// </remarks>
     public interface IServoProtocol

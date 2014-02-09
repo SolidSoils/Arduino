@@ -468,9 +468,9 @@ namespace Solid.Arduino.Test
                 {
                     Assert.Fail("DigitalStateReceived event triggered");
                 };
-            session.I2cReplyReceived += (o, e) =>
+            session.I2CReplyReceived += (o, e) =>
                 {
-                    Assert.Fail("I2cReplyReceived event triggered");
+                    Assert.Fail("I2CReplyReceived event triggered");
                 };
             session.StringReceived += (o, e) =>
                 {

@@ -14,8 +14,8 @@ namespace Solid.Arduino
     {
         /// <summary>
         /// Converts the argument string into its binary-coded decimal (BCD) representation, e.g.
-        ///  "0110" -> { 0x01, 0x10 } (for Big Endian byte order)
-        ///  "0110" -> { 0x10, 0x01 } (for Little Endian byte order)
+        ///  "1234" -> { 0x12, 0x34 } (for Big Endian byte order)
+        ///  "1234" -> { 0x43, 0x21 } (for Little Endian byte order)
         /// </summary>
         /// <param name="isLittleEndian">True if the byte order is "little end first (leftmost)".</param>
         /// <param name="o">String representation of BCD bytes.</param>
@@ -34,7 +34,7 @@ namespace Solid.Arduino
 
             char[] chars = o.ToCharArray();
 
-            if (!chars.All(c => Char.IsDigit(c)))
+            if (!chars.All(Char.IsDigit))
                 throw new ArgumentException(Messages.ArgumentEx_DigitStringOnly);
 
             byte[] bytes = new byte[o.Length >> 1];
