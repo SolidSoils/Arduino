@@ -11,7 +11,7 @@ namespace Solid.Arduino.Firmata
     /// </remarks>
     /// <see cref="AnalogStateReceivedHandler"/>
     /// <see cref="IFirmataProtocol.DigitalStateReceived"/>
-    public sealed class FirmataEventArgs<T> : EventArgs
+    public class FirmataEventArgs<T> : EventArgs
         where T : struct
     {
         private readonly T _value;

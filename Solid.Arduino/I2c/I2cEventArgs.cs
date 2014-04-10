@@ -9,7 +9,7 @@ namespace Solid.Arduino.I2C
     /// <summary>
     /// Event arguments passed to a <see cref="I2CReplyReceivedHandler"/> type event.
     /// </summary>
-    public sealed class I2CEventArgs : EventArgs
+    public class I2CEventArgs : EventArgs
     {
         private readonly I2CReply _value;
 

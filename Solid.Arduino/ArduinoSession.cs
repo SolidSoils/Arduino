@@ -44,7 +44,7 @@ namespace Solid.Arduino
             ReadBlock
         }
 
-        private sealed class StringRequest
+        private class StringRequest
         {
             private readonly StringReadMode _mode;
             private readonly int _blockLength;

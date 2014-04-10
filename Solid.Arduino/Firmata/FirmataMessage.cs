@@ -5,7 +5,7 @@ namespace Solid.Arduino.Firmata
     /// <summary>
     /// Represents a Firmata message received from an Arduino or Arduino compatible system.
     /// </summary>
-    public sealed class FirmataMessage
+    public class FirmataMessage
     {
         private readonly MessageType _type;
         private readonly ValueType _value;

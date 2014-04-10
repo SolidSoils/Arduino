@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.I2C
 {
-    internal sealed class I2CReplyTracker : ObservableEventTracker<II2CProtocol, I2CReply>
+    internal class I2CReplyTracker : ObservableEventTracker<II2CProtocol, I2CReply>
     {
         #region Constructors
 

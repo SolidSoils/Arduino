@@ -11,7 +11,7 @@ namespace Solid.Arduino
     /// </summary>
     /// <see cref="StringReceivedHandler"/>
     /// <see cref="ArduinoSession.StringReceived"/>
-    public sealed class StringEventArgs
+    public class StringEventArgs
     {
         private readonly string _text;
 

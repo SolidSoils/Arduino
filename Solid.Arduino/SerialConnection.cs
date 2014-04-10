@@ -7,7 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection.
     /// </summary>
-    public sealed class SerialConnection: SerialPort, ISerialConnection
+    public class SerialConnection: SerialPort, ISerialConnection
     {
         #region Constructors
 

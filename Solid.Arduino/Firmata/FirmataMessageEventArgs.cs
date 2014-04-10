@@ -6,7 +6,7 @@ namespace Solid.Arduino.Firmata
     /// Event arguments passed to a <see cref="MessageReceivedHandler"/> type event.
     /// </summary>
     /// <see cref="MessageReceivedHandler"/>
-    public sealed class FirmataMessageEventArgs : EventArgs
+    public class FirmataMessageEventArgs : EventArgs
     {
 
         private readonly FirmataMessage _value;

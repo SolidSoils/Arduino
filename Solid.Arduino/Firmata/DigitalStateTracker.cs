@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
-    internal sealed class DigitalStateTracker : ObservableEventTracker<IFirmataProtocol, DigitalPortState>
+    internal class DigitalStateTracker : ObservableEventTracker<IFirmataProtocol, DigitalPortState>
     {
         #region Constructors
 

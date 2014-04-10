@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino
 {
-    internal sealed class ReceivedStringTracker : ObservableEventTracker<IStringProtocol, string>
+    internal class ReceivedStringTracker : ObservableEventTracker<IStringProtocol, string>
     {
         #region Constructors
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solid.Arduino.Firmata
 {
-    internal sealed class AnalogStateTracker : ObservableEventTracker<IFirmataProtocol, AnalogState>
+    internal class AnalogStateTracker : ObservableEventTracker<IFirmataProtocol, AnalogState>
     {
         #region Constructors
 
