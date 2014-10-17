@@ -37,7 +37,11 @@ namespace Solid.Arduino.Firmata
         DigitalOutput = 1,
         AnalogInput = 2,
         PwmOutput = 3,
-        ServoControl = 4
+        ServoControl = 4,
+        ShiftInOut = 5,
+        I2C = 6,
+        OneWire = 7,
+        StepperControl = 8
     }
 
     /// <summary>

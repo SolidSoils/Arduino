@@ -1220,7 +1220,12 @@ namespace Solid.Arduino
                             capability.Servo = isCapable;
                             capability.ServoResolution = _messageBuffer[x + 1];
                             break;
-
+                        case PinMode.I2C:
+                            capability.I2C = isCapable;
+                            break;
+                        case PinMode.OneWire:
+                            capability.OneWire = isCapable;
+                            break;
                         default:
                             throw new NotImplementedException();
                     }

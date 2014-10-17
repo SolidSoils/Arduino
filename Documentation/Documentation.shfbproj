@@ -8,7 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>721253fb-22d4-4db6-8c7e-5f90118f52d5</ProjectGuid>
-    <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
+    <SHFBSchemaVersion>1.9.9.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
          Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -20,7 +20,7 @@
     <HtmlHelpName>SolidSoils4Arduino</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Solid.Arduino\Solid.Arduino.csproj" xmlns="" />
+      <DocumentationSource sourceFile="..\Solid.Arduino\Solid.Arduino.csproj" />
     </DocumentationSources>
     <SyntaxFilters>CSharp</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
@@ -46,7 +46,7 @@
     <CatalogProductId>VS</CatalogProductId>
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Protected</VisibleItems>
     <ComponentConfigurations>
-      <ComponentConfig id="Code Block Component" enabled="True" xmlns="">
+      <ComponentConfig id="Code Block Component" enabled="True">
         <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
           <basePath value="{@HtmlEncProjectFolder}" />
           <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
@@ -57,11 +57,19 @@
       </ComponentConfig>
     </ComponentConfigurations>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="" />
-<NamespaceSummaryItem name="Solid.Arduino" isDocumented="True" xmlns="">This is the root namespace of the SolidSoils4Arduino library.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.Firmata" isDocumented="True" xmlns="">This namespace contains types related to the Firmata protocol.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.Firmata.Servo" isDocumented="True" xmlns="">This namespace contains types related to the servo extension of the Firmata protocol.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.I2c" isDocumented="True" xmlns="">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+<NamespaceSummaryItem name="Solid.Arduino" isDocumented="True">This is the root namespace of the SolidSoils4Arduino library.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Solid.Arduino.Firmata" isDocumented="True">This namespace contains types related to the Firmata protocol.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Solid.Arduino.Firmata.Servo" isDocumented="True">This namespace contains types related to the servo extension of the Firmata protocol.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Solid.Arduino.I2c" isDocumented="True">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem></NamespaceSummaries>
+    <ApiFilter />
+    <HelpAttributes />
+    <PlugInConfigurations />
+    <BuildLogFile />
+    <HtmlHelp1xCompilerPath />
+    <HtmlHelp2xCompilerPath />
+    <WorkingPath />
+    <ComponentPath />
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

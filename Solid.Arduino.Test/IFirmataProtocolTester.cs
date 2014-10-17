@@ -149,9 +149,9 @@ namespace Solid.Arduino.Test
             var connection = new MockSerialConnection();
             var session = CreateFirmataSession(connection);
 
-            // DIGITAL INPUT/DIGITAL OUTPUT/ANALOG/PWM/SERVO, 0/1/2/3/4
+            // DIGITAL INPUT/DIGITAL OUTPUT/ANALOG/PWM/SERVO/I2C, 0/1/2/3/4/6
             connection.EnqueueRequestAndResponse(new byte[] { 0xF0, 0x6B, 0xF7 }, 0xF0, 0x6C);
-            connection.EnqueueResponse(0, 1, 1, 1, 3, 10, 0x7F);
+            connection.EnqueueResponse(0, 1, 1, 1, 3, 10, 6, 1, 0x7F);
             connection.EnqueueResponse(0xF7);
 
             BoardCapability capability = session.GetBoardCapability();
@@ -162,6 +162,7 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(true, capability.PinCapabilities[0].DigitalOutput);
             Assert.AreEqual(true, capability.PinCapabilities[0].Pwm);
             Assert.AreEqual(10, capability.PinCapabilities[0].PwmResolution);
+            Assert.AreEqual(true, capability.PinCapabilities[0].I2C);
 
             Assert.AreEqual(false, capability.PinCapabilities[0].Analog);
             Assert.AreEqual(0, capability.PinCapabilities[0].AnalogResolution);
