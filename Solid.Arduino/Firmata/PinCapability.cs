@@ -55,5 +55,15 @@ namespace Solid.Arduino.Firmata
         /// Gets the bit resolution for servo enabled pins.
         /// </summary>
         public int ServoResolution { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is an I2c pin.
+        /// </summary>
+        public bool I2C { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is an OneWire pin.
+        /// </summary>
+        public bool OneWire { get; internal set; }
     }
 }
