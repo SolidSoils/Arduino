@@ -28,7 +28,7 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>True</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>Solid Soils .NET Library for Arduino Communications</HelpTitle>
+    <HelpTitle>Solid Soils .NET Library for Arduino Serial Port Communication</HelpTitle>
     <FooterText>Solid Soils Solutions</FooterText>
     <FeedbackEMailLinkText>Solid Soils Solutions</FeedbackEMailLinkText>
     <FeedbackEMailAddress>info%40solidsoils.nl</FeedbackEMailAddress>
@@ -75,7 +75,7 @@
     <HtmlHelp2xCompilerPath />
     <WorkingPath />
     <ComponentPath />
-    <MaximumGroupParts>2</MaximumGroupParts>
+    <MaximumGroupParts>3</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>

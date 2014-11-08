@@ -23,7 +23,7 @@ namespace Solid.Arduino.Run
 
         private void TimeTest()
         {
-            var session = new ArduinoSession(new SerialConnection("COM6", SerialBaudRate.Bps_57600));
+            var session = new ArduinoSession(new EnhancedSerialConnection("COM6", SerialBaudRate.Bps_57600));
             session.TimeOut = 1000;
             session.MessageReceived += session_OnMessageReceived;
 
@@ -62,7 +62,7 @@ namespace Solid.Arduino.Run
 
         static void SimpelTest()
         {
-            var connection = new SerialConnection("COM6", SerialBaudRate.Bps_57600);
+            var connection = new EnhancedSerialConnection("COM6", SerialBaudRate.Bps_57600);
             var session = new ArduinoSession(connection, timeOut: 250);
             IFirmataProtocol firmata = (IFirmataProtocol)session;
 

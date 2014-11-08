@@ -183,48 +183,48 @@ namespace Solid.Arduino
 
         #region IStringProtocol
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.StringReceived"/>
         public event StringReceivedHandler StringReceived;
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.CreateReceivedStringMonitor"/>
         public IObservable<string> CreateReceivedStringMonitor()
         {
             return new ReceivedStringTracker(this);
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.NewLine"/>
         public string NewLine
         {
             get { return _connection.NewLine; }
             set { _connection.NewLine = value; }
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.Write"/>
         public void Write(string value)
         {
             if (!string.IsNullOrEmpty(value))
                 _connection.Write(value);
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.WriteLine"/>
         public void WriteLine(string value)
         {
             _connection.WriteLine(value);
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.ReadLine"/>
         public string ReadLine()
         {
             return GetStringFromQueue(StringRequest.CreateReadLineRequest());
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.ReadLineAsync"/>
         public async Task<string> ReadLineAsync()
         {
             return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadLineRequest()));
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.Read"/>
         public string Read(int length = 1)
         {
             if (length < 0)
@@ -233,7 +233,7 @@ namespace Solid.Arduino
             return GetStringFromQueue(StringRequest.CreateReadRequest(length));
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.ReadAsync"/>
         public async Task<string> ReadAsync(int length = 1)
         {
             if (length < 0)
@@ -242,13 +242,13 @@ namespace Solid.Arduino
             return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadRequest(length)));
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.ReadTo"/>
         public string ReadTo(char terminator)
         {
             return GetStringFromQueue(StringRequest.CreateReadRequest(terminator));
         }
 
-        /// <inheritdoc cref="IStringProtocol"/>
+        /// <inheritdoc cref="IStringProtocol.ReadToAsync"/>
         public async Task<string> ReadToAsync(char terminator)
         {
             return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadRequest(terminator)));
@@ -258,32 +258,32 @@ namespace Solid.Arduino
 
         #region IFirmataProtocol
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.MessageReceived"/>
         public event MessageReceivedHandler MessageReceived;
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.AnalogStateReceived"/>
         public event AnalogStateReceivedHandler AnalogStateReceived;
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.DigitalStateReceived"/>
         public event DigitalStateReceivedHandler DigitalStateReceived;
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.CreateDigitalStateMonitor"/>
         public IObservable<DigitalPortState> CreateDigitalStateMonitor()
         {
             return new DigitalStateTracker(this);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.CreateAnalogStateMonitor"/>
         public IObservable<AnalogState> CreateAnalogStateMonitor()
         {
             return new AnalogStateTracker(this);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.ResetBoard"/>
         public void ResetBoard()
         {
             _connection.Write(new [] { (byte)0xFF }, 0, 1);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalPin(int,long)"/>
         public void SetDigitalPin(int pinNumber, long level)
         {
             if (pinNumber < 0 || pinNumber > 127)
@@ -324,7 +324,7 @@ namespace Solid.Arduino
             _connection.Write(message, 0, index + 1);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetAnalogReportMode"/>
         public void SetAnalogReportMode(int channel, bool enable)
         {
             if (channel < 0 || channel > 15)
@@ -333,7 +333,7 @@ namespace Solid.Arduino
             _connection.Write(new[] { (byte)(0xC0 | channel), (byte)(enable ? 1 : 0) }, 0, 2);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalPort"/>
         public void SetDigitalPort(int portNumber, int pins)
         {
             if (portNumber < 0 || portNumber > 15)
@@ -345,7 +345,7 @@ namespace Solid.Arduino
             _connection.Write(new[] { (byte)(DigitalMessage | portNumber), (byte)(pins & 0x7F), (byte)((pins >> 7) & 0x03) }, 0, 3);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalReportMode"/>
         public void SetDigitalReportMode(int portNumber, bool enable)
         {
             if (portNumber < 0 || portNumber > 15)
@@ -354,7 +354,7 @@ namespace Solid.Arduino
             _connection.Write(new[] { (byte)(0xD0 | portNumber), (byte)(enable ? 1 : 0) }, 0, 2);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalPinMode"/>
         public void SetDigitalPinMode(int pinNumber, PinMode mode)
         {
             if (pinNumber < 0 || pinNumber > 127)
@@ -363,7 +363,7 @@ namespace Solid.Arduino
             _connection.Write(new byte[] { 0xF4, (byte)pinNumber, (byte)mode }, 0, 3);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SetSamplingInterval"/>
         public void SetSamplingInterval(int milliseconds)
         {
             if (milliseconds < 0 || milliseconds > 0x3FFF)
@@ -380,7 +380,7 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 5);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.SendStringData"/>
         public void SendStringData(string data)
         {
             if (data == null)
@@ -402,20 +402,20 @@ namespace Solid.Arduino
             _connection.Write(command, 0, command.Length);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.RequestFirmware"/>
         public void RequestFirmware()
         {
             SendSysExCommand(0x79);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetFirmware"/>
         public Firmware GetFirmware()
         {
             RequestFirmware();
             return (Firmware)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.FirmwareResponse))).Value;
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetFirmwareAsync"/>
         public async Task<Firmware> GetFirmwareAsync()
         {
             RequestFirmware();
@@ -423,20 +423,20 @@ namespace Solid.Arduino
                 (Firmware)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.FirmwareResponse))).Value);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.RequestProtocolVersion"/>
         public void RequestProtocolVersion()
         {
             _connection.Write(new byte[] { 0xF9 }, 0, 1);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetProtocolVersion"/>
         public ProtocolVersion GetProtocolVersion()
         {
             RequestProtocolVersion();
             return (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.ProtocolVersion))).Value;
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetProtocolVersionAsync"/>
         public async Task<ProtocolVersion> GetProtocolVersionAsync()
         {
             RequestProtocolVersion();
@@ -444,20 +444,20 @@ namespace Solid.Arduino
                 (ProtocolVersion)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.ProtocolVersion))).Value);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.RequestBoardCapability"/>
         public void RequestBoardCapability()
         {
             SendSysExCommand(0x6B);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetBoardCapability"/>
         public BoardCapability GetBoardCapability()
         {
             RequestBoardCapability();
             return (BoardCapability)((FirmataMessage) GetMessageFromQueue(new FirmataMessage(MessageType.CapabilityResponse))).Value;
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetBoardCapabilityAsync"/>
         public async Task<BoardCapability> GetBoardCapabilityAsync()
         {
             RequestBoardCapability();
@@ -465,20 +465,20 @@ namespace Solid.Arduino
                 (BoardCapability)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.CapabilityResponse))).Value);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.RequestBoardAnalogMapping"/>
         public void RequestBoardAnalogMapping()
         {
             SendSysExCommand(0x69);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetBoardAnalogMapping"/>
         public BoardAnalogMapping GetBoardAnalogMapping()
         {
             RequestBoardAnalogMapping();
             return (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.AnalogMappingResponse))).Value;
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetBoardAnalogMappingAsync"/>
         public async Task<BoardAnalogMapping> GetBoardAnalogMappingAsync()
         {
             RequestBoardAnalogMapping();
@@ -486,7 +486,7 @@ namespace Solid.Arduino
                 (BoardAnalogMapping)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.AnalogMappingResponse))).Value);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.RequestPinState"/>
         public void RequestPinState(int pinNumber)
         {
             if (pinNumber < 0 || pinNumber > 127)
@@ -502,14 +502,14 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 4);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetPinState"/>
         public PinState GetPinState(int pinNumber)
         {
             RequestPinState(pinNumber);
             return (PinState)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.PinStateResponse))).Value;
         }
 
-        /// <inheritdoc cref="IFirmataProtocol"/>
+        /// <inheritdoc cref="IFirmataProtocol.GetPinStateAsync"/>
         public async Task<PinState> GetPinStateAsync(int pinNumber)
         {
             RequestPinState(pinNumber);
@@ -524,7 +524,7 @@ namespace Solid.Arduino
 
         #region IServoProtocol
 
-        /// <inheritdoc cref="IServoProtocol"/>
+        /// <inheritdoc cref="IServoProtocol.ConfigureServo"/>
         public void ConfigureServo(int pinNumber, int minPulse, int maxPulse)
         {
             if (pinNumber < 0 || pinNumber > 127)
@@ -557,16 +557,16 @@ namespace Solid.Arduino
 
         #region II2cProtocol
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.I2CReplyReceived"/>
         public event I2CReplyReceivedHandler I2CReplyReceived;
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.CreateI2CReplyMonitor"/>
         public IObservable<I2CReply> CreateI2CReplyMonitor()
         {
             return new I2CReplyTracker(this);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.SetI2CReadInterval"/>
         public void SetI2CReadInterval(int microseconds)
         {
             if (microseconds < 0 || microseconds > 0x3FFF)
@@ -583,7 +583,7 @@ namespace Solid.Arduino
             _connection.Write(command, 0, 5);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.WriteI2C"/>
         public void WriteI2C(int slaveAddress, params byte[] data)
         {
             if (slaveAddress < 0 || slaveAddress > 0x3FF)
@@ -606,13 +606,13 @@ namespace Solid.Arduino
             _connection.Write(command, 0, command.Length);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.ReadI2COnce(int,int)"/>
         public void ReadI2COnce(int slaveAddress, int bytesToRead)
         {
             I2CRead(false, slaveAddress, -1, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.GetI2CReply(int,int)"/>
         public I2CReply GetI2CReply(int slaveAddress, int bytesToRead)
         {
             ReadI2COnce(slaveAddress, bytesToRead);
@@ -621,7 +621,7 @@ namespace Solid.Arduino
             return (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.GetI2CReplyAsync(int,int)"/>
         public async Task<I2CReply> GetI2CReplyAsync(int slaveAddress, int bytesToRead)
         {
             ReadI2COnce(slaveAddress, bytesToRead);
@@ -631,13 +631,13 @@ namespace Solid.Arduino
                 (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.ReadI2COnce(int,int,int)"/>
         public void ReadI2COnce(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2CSlaveRead(false, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.GetI2CReply(int,int,int)"/>
         public I2CReply GetI2CReply(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             ReadI2COnce(slaveAddress, slaveRegister, bytesToRead);
@@ -646,7 +646,7 @@ namespace Solid.Arduino
             return (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value;
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.GetI2CReplyAsync(int,int,int)"/>
         public async Task<I2CReply> GetI2CReplyAsync(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             ReadI2COnce(slaveAddress, slaveRegister, bytesToRead);
@@ -656,23 +656,23 @@ namespace Solid.Arduino
                 (I2CReply)((FirmataMessage)GetMessageFromQueue(new FirmataMessage(MessageType.I2CReply))).Value);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.ReadI2CContinuous(int,int)"/>
         public void ReadI2CContinuous(int slaveAddress, int bytesToRead)
         {
             I2CRead(true, slaveAddress, -1, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.ReadI2CContinuous(int,int,int)"/>
         public void ReadI2CContinuous(int slaveAddress, int slaveRegister, int bytesToRead)
         {
             I2CSlaveRead(true, slaveAddress, slaveRegister, bytesToRead);
         }
 
-        /// <inheritdoc cref="II2CProtocol"/>
+        /// <inheritdoc cref="II2CProtocol.StopI2CReading"/>
         /// <remarks>
         /// <para>
         /// Please note:
-        /// The Firmata specification states that the I2c_read_stop message
+        /// The Firmata specification states that the I2C_READ_STOP message
         /// should only stop the specified query. However, the current Firmata.h implementation
         /// stops all registered queries.
         /// </para>

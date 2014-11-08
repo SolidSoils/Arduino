@@ -7,7 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection.
     /// </summary>
-    public class SerialConnection : EnhancedSerialPort, ISerialConnection
+    public class SerialConnection : SerialPort, ISerialConnection
     {
         #region Constructors
 
@@ -15,7 +15,7 @@ namespace Solid.Arduino
         /// Initializes a new instance of <see cref="SerialConnection"/> class using the highest COM port available at 115,200 bits per second.
         /// </summary>
         public SerialConnection()
-            : base(GetLastPortName(), (int)SerialBaudRate.Bps_115200)
+            : base(GetLastPortName(), (int) SerialBaudRate.Bps_115200)
         {
             ReadTimeout = 100;
             WriteTimeout = 100;
@@ -27,7 +27,7 @@ namespace Solid.Arduino
         /// <param name="portName">The port name (e.g. 'COM3')</param>
         /// <param name="baudRate">The baud rate</param>
         public SerialConnection(string portName, SerialBaudRate baudRate)
-            : base(portName, (int)baudRate)
+            : base(portName, (int) baudRate)
         {
             ReadTimeout = 100;
             WriteTimeout = 100;
@@ -58,32 +58,9 @@ namespace Solid.Arduino
 
         private static string GetLastPortName()
         {
-            return (from p in SerialPort.GetPortNames()
-                            where (p.StartsWith(@"/dev/ttyUSB") || p.StartsWith(@"/dev/ttyAMA") || p.StartsWith(@"/dev/ttyACM") || p.StartsWith("COM"))
-                            orderby p descending
-                            select p).First();
+            return GetPortNames().Where(n => n.StartsWith("COM")).OrderByDescending(n => n).First();
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Enumeration of common baud rates, supported by Arduino boards
-    /// </summary>
-    public enum SerialBaudRate
-    {
-        Bps_300 = 300,
-        Bps_600 = 600,
-        Bps_1200 = 1200,
-        Bps_2400 = 2400,
-        Bps_4800 = 4800,
-        Bps_9600 = 9600,
-        Bps_14400 = 14400,
-        Bps_19200 = 19200,
-        Bps_28800 = 28800,
-        Bps_31250 = 31250,
-        Bps_38400 = 38400,
-        Bps_57600 = 57600,
-        Bps_115200 = 115200
     }
 }

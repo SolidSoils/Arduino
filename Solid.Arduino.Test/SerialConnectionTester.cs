@@ -15,7 +15,7 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_Constructor_WithoutParameters()
         {
-            var connection = new SerialConnection();
+            var connection = new EnhancedSerialConnection();
             Assert.AreEqual(100, connection.ReadTimeout);
             Assert.AreEqual(100, connection.WriteTimeout);
         }
@@ -23,7 +23,7 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_Constructor_WithParameters()
         {
-            var connection = new SerialConnection("COM1", SerialBaudRate.Bps_115200);
+            var connection = new EnhancedSerialConnection("COM1", SerialBaudRate.Bps_115200);
             Assert.AreEqual(100, connection.ReadTimeout);
             Assert.AreEqual(100, connection.WriteTimeout);
         }
@@ -31,7 +31,7 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_OpenAndClose()
         {
-            var connection = new SerialConnection();
+            var connection = new EnhancedSerialConnection();
             connection.Open();
             connection.Close();
         }
@@ -39,7 +39,7 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_OpenAndDoubleClose()
         {
-            var connection = new SerialConnection();
+            var connection = new EnhancedSerialConnection();
             connection.Open();
             connection.Close();
             connection.Close();

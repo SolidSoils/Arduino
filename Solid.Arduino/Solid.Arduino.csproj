@@ -76,10 +76,14 @@
     </Compile>
     <Compile Include="ObservableEventTracker.cs" />
     <Compile Include="ReceivedStringTracker.cs" />
-    <Compile Include="SerialConnection.cs">
+    <Compile Include="SerialBaudRate.cs" />
+    <Compile Include="EnhancedSerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StringEventArgs.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

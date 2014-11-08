@@ -1,6 +1,8 @@
 ﻿// /*
 // Copyright 2013 Antanas Veiverys www.veiverys.com
 //
+// Refactored by Henk van Boeijen.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -21,71 +23,113 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Threading;
 
 namespace Solid.Arduino
 {
     /// <summary>
-    /// Represents a system serial port. This class is workaround for Mono's SerialPort implementation of event OnDataReceived
+    /// Represents a system serial port.
     /// </summary>
+    /// <remarks>
+    /// This class is a workaround for Mono's <see cref="SerialPort"/> implementation of event <see cref="OnDataReceived"/>.
+    /// <para>
+    /// Copyright 2013 Antanas Veiverys <see cref="http://www.veiverys.com"/>
+    /// </para>
+    /// </remarks>
     public class EnhancedSerialPort : SerialPort
     {
+
+        [DllImport("MonoPosixHelper", SetLastError = true)]
+        private static extern bool poll_serial(int fd, out int error, int timeout);
+
+        [DllImport("libc")]
+        private static extern IntPtr strerror(int errnum);
+
+        #region Private Fields
+
+        // Private member access through reflection.
+        private int _fdStreamField;
+        private FieldInfo _disposedFieldInfo;
+        private object _dataReceived;
+
+        #endregion
+
+        #region Constructors
+
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort()
             : base()
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(IContainer container)
             : base(container)
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(string portName)
             : base(portName)
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(string portName, int baudRate)
             : base(portName, baudRate)
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity)
             : base(portName, baudRate, parity)
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits)
             : base(portName, baudRate, parity, dataBits)
         {
         }
 
+        /// <inheritdoc cref="SerialPort"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
             : base(portName, baudRate, parity, dataBits, stopBits)
         {
         }
 
-        // private member access via reflection
-        int fd;
-        FieldInfo disposedFieldInfo;
-        object data_received;
+        #endregion
 
+        #region Public Methods
+
+        /// <inheritdoc cref="SerialPort.Open"/>
         public new void Open()
         {
             base.Open();
 
-            if (IsWindows == false)
-            {
-                FieldInfo fieldInfo = BaseStream.GetType().GetField("fd", BindingFlags.Instance | BindingFlags.NonPublic);
-                fd = (int)fieldInfo.GetValue(BaseStream);
-                disposedFieldInfo = BaseStream.GetType().GetField("disposed", BindingFlags.Instance | BindingFlags.NonPublic);
-                fieldInfo = typeof(SerialPort).GetField("data_received", BindingFlags.Instance | BindingFlags.NonPublic);
-                data_received = fieldInfo.GetValue(this);
+            if (IsWindows) return;
 
-                new System.Threading.Thread(this.EventThreadFunction).Start();
+            FieldInfo fieldInfo = BaseStream.GetType().GetField("fd", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            if (fieldInfo != null)
+            {
+                _fdStreamField = (int) fieldInfo.GetValue(BaseStream);
+                _disposedFieldInfo = BaseStream.GetType()
+                    .GetField("disposed", BindingFlags.Instance | BindingFlags.NonPublic);
+                fieldInfo = typeof (SerialPort).GetField("data_received", BindingFlags.Instance | BindingFlags.NonPublic);
+
+                if (fieldInfo != null)
+                    _dataReceived = fieldInfo.GetValue(this);
             }
+
+            new Thread(EventThreadFunction).Start();
         }
 
-        static bool IsWindows
+        #endregion
+
+        #region Private Methods
+
+        private static bool IsWindows
         {
             get
             {
@@ -100,12 +144,13 @@ namespace Solid.Arduino
             {
                 try
                 {
-                    var _stream = BaseStream;
-                    if (_stream == null)
+                    var stream = BaseStream;
+
+                    if (stream == null)
                     {
                         return;
                     }
-                    if (Poll(_stream, ReadTimeout))
+                    if (Poll(stream))
                     {
                         OnDataReceived(null);
                     }
@@ -118,9 +163,9 @@ namespace Solid.Arduino
             while (IsOpen);
         }
 
-        void OnDataReceived(SerialDataReceivedEventArgs args)
+        private void OnDataReceived(SerialDataReceivedEventArgs args)
         {
-            SerialDataReceivedEventHandler handler = (SerialDataReceivedEventHandler)Events[data_received];
+            var handler = (SerialDataReceivedEventHandler)Events[_dataReceived];
 
             if (handler != null)
             {
@@ -128,45 +173,37 @@ namespace Solid.Arduino
             }
         }
 
-        [DllImport("MonoPosixHelper", SetLastError = true)]
-        static extern bool poll_serial(int fd, out int error, int timeout);
-
-        private bool Poll(Stream stream, int timeout)
+        private bool Poll(Stream stream)
         {
             CheckDisposed(stream);
+
             if (IsOpen == false)
             {
-                throw new Exception("port is closed");
+                throw new InvalidOperationException("Port is closed.");
             }
             int error;
 
-            bool poll_result = poll_serial(fd, out error, ReadTimeout);
-            if (error == -1)
-            {
-                ThrowIOException();
-            }
-            return poll_result;
-        }
+            bool pollResult = poll_serial(_fdStreamField, out error, ReadTimeout);
 
-        [DllImport("libc")]
-        static extern IntPtr strerror(int errnum);
+            if (error != -1)
+                return pollResult;
 
-        static void ThrowIOException()
-        {
             int errnum = Marshal.GetLastWin32Error();
-            string error_message = Marshal.PtrToStringAnsi(strerror(errnum));
+            string errorMessage = Marshal.PtrToStringAnsi(strerror(errnum));
 
-            throw new IOException(error_message);
+            throw new IOException(errorMessage);
         }
 
-        void CheckDisposed(Stream stream)
+        private void CheckDisposed(Stream stream)
         {
-            bool disposed = (bool)disposedFieldInfo.GetValue(stream);
+            bool disposed = (bool)_disposedFieldInfo.GetValue(stream);
+
             if (disposed)
             {
                 throw new ObjectDisposedException(stream.GetType().FullName);
             }
         }
-    }
 
+        #endregion
+    }
 }
