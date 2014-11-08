@@ -54,9 +54,9 @@ Technology used: Microsoft .NET/C# v4.5
 
 ## Current status
 
-**v0.0**
+**v0.2**
 
-Code complete for the library core. (Pre-beta)
+Code complete for the library core. (Beta)
 
 ## Milestones
 
@@ -65,6 +65,7 @@ Code complete for the library core. (Pre-beta)
 3. Serial ASCII protocol implemented and unit-tested.
 4. API fully documented.
 5. IObservable methods implemented (not yet unittested or documented).
+6. Mono support added
 
 ## Upcoming
 1. Finish unit tests and documentation for latest additions.
