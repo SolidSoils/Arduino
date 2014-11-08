@@ -130,7 +130,7 @@ namespace Solid.Arduino.Firmata
         /// For port 0 bit 2 maps to the Arduino Uno's pin 2.
         /// For port 1 bit 2 maps to pin 10.
         /// 
-        /// Thet complete mapping of port 1 of the Arduino Uno looks like this:
+        /// The complete mapping of port 1 of the Arduino Uno looks like this:
         /// <list type="">
         /// <item>bit 0: pin 8</item>
         /// <item>bit 1: pin 9</item>
@@ -161,7 +161,7 @@ namespace Solid.Arduino.Firmata
         void SetDigitalReportMode(int portNumber, bool enable);
 
         /// <summary>
-        /// Sets a pin's mode (digital input/digital output/analog/PWM/servo).
+        /// Sets a pin's mode (digital input/digital output/analog/PWM/servo etc.).
         /// </summary>
         /// <param name="pinNumber">The number of the pin</param>
         /// <param name="mode">The pin's mode</param>
