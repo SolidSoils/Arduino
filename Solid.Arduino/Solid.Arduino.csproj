@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnhancedSerialPort.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Firmata\AnalogPinMapping.cs" />
     <Compile Include="Firmata\AnalogState.cs" />
     <Compile Include="Firmata\AnalogStateTracker.cs" />
