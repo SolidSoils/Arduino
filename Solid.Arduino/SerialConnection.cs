@@ -7,7 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection.
     /// </summary>
-    public class SerialConnection: SerialPort, ISerialConnection
+    public class SerialConnection : EnhancedSerialPort, ISerialConnection
     {
         #region Constructors
 
@@ -58,7 +58,10 @@ namespace Solid.Arduino
 
         private static string GetLastPortName()
         {
-            return GetPortNames().Where(n => n.StartsWith("COM")).OrderByDescending(n => n).First();
+            return (from p in SerialPort.GetPortNames()
+                            where (p.StartsWith(@"/dev/ttyUSB") || p.StartsWith(@"/dev/ttyAMA") || p.StartsWith(@"/dev/ttyACM") || p.StartsWith("COM"))
+                            orderby p descending
+                            select p).First();
         }
 
         #endregion
