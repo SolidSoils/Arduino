@@ -22,6 +22,39 @@ namespace Solid.Arduino
     /// </remarks>
     /// <seealso href="http://arduino.cc">Official Arduino website</seealso>
     /// <seealso href="https://github.com/SolidSoils/Arduino">SolidSoils4Arduino project on GitHub</seealso>
+    /// <example>
+    /// <code language="C#">
+    /// var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
+    /// var session = new ArduinoSession(connection, timeOut: 250);
+    /// // Cast to interface done, just for the sake of this demo.
+    /// IFirmataProtocol firmata = (IFirmataProtocol)session;
+    ///
+    /// Firmware firm = firmata.GetFirmware();
+    /// Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
+    ///
+    /// ProtocolVersion version = firmata.GetProtocolVersion();
+    /// Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
+    ///
+    /// BoardCapability caps = firmata.GetBoardCapability();
+    /// Console.WriteLine("Board Capabilities:");
+    ///
+    /// foreach (var pincap in caps.PinCapabilities)
+    /// {
+    ///    Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
+    ///        pincap.PinNumber,
+    ///        pincap.DigitalInput,
+    ///        pincap.DigitalOutput,
+    ///        pincap.Analog,
+    ///        pincap.AnalogResolution,
+    ///        pincap.Pwm,
+    ///        pincap.PwmResolution,
+    ///        pincap.Servo,
+    ///        pincap.ServoResolution);
+    /// }
+    /// Console.WriteLine();
+    /// Console.ReadLine();
+    /// </code>
+    /// </example>
     public class ArduinoSession : IFirmataProtocol, IServoProtocol, II2CProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations
