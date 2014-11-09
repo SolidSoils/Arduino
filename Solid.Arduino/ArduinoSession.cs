@@ -20,6 +20,8 @@ namespace Solid.Arduino
     /// This class supports a few common protocols used for communicating with Arduino boards.
     /// The protocols can be used simultaneous and independently of each other.
     /// </remarks>
+    /// <seealso href="http://arduino.cc">Official Arduino website</seealso>
+    /// <seealso href="https://github.com/SolidSoils/Arduino">SolidSoils4Arduino project on GitHub</seealso>
     public class ArduinoSession : IFirmataProtocol, IServoProtocol, II2CProtocol, IStringProtocol, IDisposable
     {
         #region Type declarations

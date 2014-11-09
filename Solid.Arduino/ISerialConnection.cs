@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.IO.Ports;
-using System.Linq;
 
 namespace Solid.Arduino
 {
     /// <summary>
     /// Defines a serial port connection.
     /// </summary>
+    /// <seealso href="http://arduino.cc/en/Reference/Serial">Serial reference for Arduino</seealso>
     public interface ISerialConnection
     {
         /// <summary>

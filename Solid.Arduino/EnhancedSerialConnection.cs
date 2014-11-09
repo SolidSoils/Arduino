@@ -7,7 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection, supporting Mono.
     /// </summary>
-    /// <seealso cref="http://www.mono-project.com/"/>
+    /// <seealso href="http://www.mono-project.com/">The official Mono project site</seealso>
     public class EnhancedSerialConnection : EnhancedSerialPort, ISerialConnection
     {
         #region Constructors

@@ -48,13 +48,16 @@ namespace Solid.Arduino.Firmata
     /// Defines a comprehensive set of members supporting the Firmata Protocol.
     /// Currently version 2.3 is supported.
     /// </summary>
+    /// <seealso href="https://github.com/firmata/arduino">Firmata project on GitHub</seealso>
+    /// <seealso href="http://www.firmata.org/wiki/Protocol">Firmata protocol details</seealso>
+    /// <seealso href="http://arduino.cc/en/reference/firmata">Firmata reference for Arduino</seealso>
     public interface IFirmataProtocol
     {
         /// <summary>
         /// Event, raised for every SysEx (0xF0) and ProtocolVersion (0xF9) message not handled by an <see cref="IFirmataProtocol"/>'s Get method.
         /// </summary>
         /// <remarks>
-        /// When i.e. method <see cref="RequestBoardCapability"/> is invoked, the party system's response message raises this event.
+        /// When e.g. method <see cref="RequestBoardCapability"/> is invoked, the party system's response message raises this event.
         /// However, when method <see cref="GetBoardCapability"/> or <see cref="GetBoardCapabilityAsync"/> is invoked, the response is returned
         /// to the respective method and event <see cref="MessageReceived"/> is not raised.
         /// 

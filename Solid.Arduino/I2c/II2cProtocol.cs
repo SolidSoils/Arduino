@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Solid.Arduino.Firmata;
 
@@ -17,15 +14,18 @@ namespace Solid.Arduino.I2C
     /// <summary>
     /// Defines a comprehensive set of members supporting the I2C Protocol.
     /// </summary>
+    /// <seealso href="http://www.i2c-bus.org/">I2C bus website by telos Systementwicklung GmbH</seealso>
+    /// <seealso href="http://www.arduino.cc/en/Reference/Wire">Arduino Wire reference</seealso>
+    /// <seealso href="http://playground.arduino.cc/Main/I2cScanner">I2C Scanner sample sketch for Arduino</seealso>
     public interface II2CProtocol
     {
         /// <summary>
         /// Event, raised for every SYSEX I2C message not handled by an <see cref="II2CProtocol"/>'s Get method.
         /// </summary>
         /// <remarks>
-        /// When i.e. methods <see cref="ReadI2COnce"/> and <see cref="ReadI2CContinuous"/> are invoked,
+        /// When e.g. methods <see cref="ReadI2COnce(int,int)"/> and <see cref="ReadI2CContinuous(int,int)"/> are invoked,
         /// the party system's response messages raise this event.
-        /// However, when method <see cref="GetI2CReply"/> or <see cref="GetI2CReplyAsync"/> is invoked,
+        /// However, when method <see cref="GetI2CReply(int,int)"/> or <see cref="GetI2CReplyAsync(int,int)"/> is invoked,
         /// the response received is returned to the method that issued the command and event <see cref="I2CReplyReceived"/> is not raised.
         /// </remarks>
         event I2CReplyReceivedHandler I2CReplyReceived;
