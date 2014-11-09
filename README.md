@@ -64,11 +64,11 @@ Code complete for the library core. (Beta)
 2. I2C protocol implemented and unit-tested.
 3. Serial ASCII protocol implemented and unit-tested.
 4. API fully documented.
-5. IObservable methods implemented (not yet unittested or documented).
-6. Mono support added
+5. IObservable methods implemented (to be unittested).
+6. Mono support added.
 
 ## Upcoming
-1. Finish unit tests and documentation for latest additions.
+1. Finish unit tests for latest additions.
 2. Develop a WPF application demonstrating the library (project Solid.Arduino.Monitor).
 3. Release the first version.
 
