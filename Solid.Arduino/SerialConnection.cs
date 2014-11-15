@@ -7,6 +7,7 @@ namespace Solid.Arduino
     /// <summary>
     /// Represents a serial port connection.
     /// </summary>
+    /// <inheritdoc cref="ISerialConnection" />
     public class SerialConnection : SerialPort, ISerialConnection
     {
         #region Constructors
@@ -41,7 +42,7 @@ namespace Solid.Arduino
 
         #region Public Methods & Properties
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort.Close"/>
         public new void Close()
         {
             if (IsOpen)
@@ -51,6 +52,9 @@ namespace Solid.Arduino
                 base.Close();
             }
         }
+
+        /// <inheritdoc cref="ISerialConnection.Write(string)" />
+        /// <inheritdoc cref="ISerialConnection.Write(byte[],int,int)" />
 
         #endregion
 

@@ -36,6 +36,7 @@ namespace Solid.Arduino
     /// Copyright 2013 Antanas Veiverys <seealso href="http://www.veiverys.com">www.veiverys.com</seealso>
     /// </para>
     /// </remarks>
+    /// <inheritdoc cref="SerialPort" />
     public class EnhancedSerialPort : SerialPort
     {
 
@@ -56,42 +57,42 @@ namespace Solid.Arduino
 
         #region Constructors
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort()"/>
         public EnhancedSerialPort()
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(IContainer)"/>
         public EnhancedSerialPort(IContainer container)
             : base(container)
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(string)"/>
         public EnhancedSerialPort(string portName)
             : base(portName)
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(string,int)"/>
         public EnhancedSerialPort(string portName, int baudRate)
             : base(portName, baudRate)
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(string,int,Parity)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity)
             : base(portName, baudRate, parity)
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(string,int,Parity,int)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits)
             : base(portName, baudRate, parity, dataBits)
         {
         }
 
-        /// <inheritdoc cref="SerialPort"/>
+        /// <inheritdoc cref="SerialPort(string,int,Parity,int,StopBits)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
             : base(portName, baudRate, parity, dataBits, stopBits)
         {

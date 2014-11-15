@@ -52,8 +52,8 @@ namespace Solid.Arduino
         /// <summary>
         /// Writes a string to the serial output data stream.
         /// </summary>
-        /// <param name="value">A string to be written</param>
-        void Write(string value);
+        /// <param name="text">A string to be written</param>
+        void Write(string text);
 
         /// <summary>
         /// Writes a specified number of bytes to the serial output stream using data from a byte array.
@@ -66,7 +66,7 @@ namespace Solid.Arduino
         /// <summary>
         /// Writes the specified string and the <see cref="SerialPort.NewLine"/> value to the serial output stream.
         /// </summary>
-        /// <param name="value">The string to write</param>
-        void WriteLine(string value);
+        /// <param name="text">The string to write</param>
+        void WriteLine(string text);
     }
 }

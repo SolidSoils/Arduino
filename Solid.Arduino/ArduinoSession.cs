@@ -319,23 +319,23 @@ namespace Solid.Arduino
         }
 
         /// <inheritdoc cref="IFirmataProtocol.SetDigitalPin(int,long)"/>
-        public void SetDigitalPin(int pinNumber, long level)
+        public void SetDigitalPin(int pinNumber, long value)
         {
             if (pinNumber < 0 || pinNumber > 127)
                 throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
 
-            if (level < 0)
-                throw new ArgumentOutOfRangeException("level", Messages.ArgumentEx_NoNegativeValue);
+            if (value < 0)
+                throw new ArgumentOutOfRangeException("value", Messages.ArgumentEx_NoNegativeValue);
 
             byte[] message;
 
-            if (pinNumber < 16 && level < 0x4000)
+            if (pinNumber < 16 && value < 0x4000)
             {
                 // Send value in a conventional Analog Message.
                 message = new[] {
                     (byte)(AnalogMessage | pinNumber),
-                    (byte)(level & 0x7F),
-                    (byte)((level >> 7) & 0x7F)
+                    (byte)(value & 0x7F),
+                    (byte)((value >> 7) & 0x7F)
                 };
                 _connection.Write(message, 0, 3);
                 return;
@@ -350,10 +350,10 @@ namespace Solid.Arduino
 
             do
             {
-                message[index] = (byte)(level & 0x7F);
-                level >>= 7;
+                message[index] = (byte)(value & 0x7F);
+                value >>= 7;
                 index++;
-            } while (level > 0 || index < 5);
+            } while (value > 0 || index < 5);
 
             message[index] = SysExEnd;
             _connection.Write(message, 0, index + 1);

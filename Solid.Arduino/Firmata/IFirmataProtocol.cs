@@ -180,7 +180,7 @@ namespace Solid.Arduino.Firmata
         /// Sets an analog value on a PWM or Servo enabled digital pin.
         /// </summary>
         /// <param name="pinNumber">The pin number.</param>
-        /// <param name="value">THe position value</param>
+        /// <param name="value">The value</param>
         void SetDigitalPin(int pinNumber, long value);
 
         /// <summary>

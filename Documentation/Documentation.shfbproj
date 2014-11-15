@@ -30,11 +30,11 @@
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>Solid Soils .NET Library for Arduino Serial Port Communication</HelpTitle>
     <FooterText>Solid Soils Solutions</FooterText>
-    <FeedbackEMailLinkText>Solid Soils Solutions</FeedbackEMailLinkText>
+    <FeedbackEMailLinkText>Solid Soils Solutions.</FeedbackEMailLinkText>
     <FeedbackEMailAddress>info%40solidsoils.nl</FeedbackEMailAddress>
     <CopyrightText>%28C%29 2013 - 2014 Henk van Boeijen</CopyrightText>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
-    <CatalogName>VisualStudio11</CatalogName>
+    <CatalogName>VisualStudio12</CatalogName>
     <TocParentId>-1</TocParentId>
     <TocParentVersion>100</TocParentVersion>
     <TopicVersion>100</TopicVersion>
@@ -72,11 +72,12 @@
     </ComponentConfigurations>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="Solid.Arduino" isDocumented="True">This is the root namespace of the SolidSoils4Arduino library.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.Firmata" isDocumented="True">This namespace contains types related to the Firmata protocol.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.Firmata.Servo" isDocumented="True">This namespace contains types related to the servo extension of the Firmata protocol.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.I2c" isDocumented="False">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Solid.Arduino.I2C" isDocumented="True">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="Solid.Arduino" isDocumented="True">This is the root namespace of the SolidSoils4Arduino library.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Solid.Arduino.Firmata" isDocumented="True">This namespace contains types related to the Firmata protocol.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Solid.Arduino.Firmata.Servo" isDocumented="True">This namespace contains types related to the servo extension of the Firmata protocol.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Solid.Arduino.I2c" isDocumented="False">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Solid.Arduino.I2C" isDocumented="True">This namespace contains types related to the I2C protocol.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <ApiFilter />
     <HelpAttributes />
     <PlugInConfigurations />
