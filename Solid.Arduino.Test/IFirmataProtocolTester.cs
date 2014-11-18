@@ -60,6 +60,7 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(1, _messagesReceived.Count);
         }
 
+
         [TestMethod]
         public void RequestProtocolVersion()
         {
@@ -98,6 +99,7 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(firmware.Name, Name);
         }
 
+        
         [TestMethod]
         public void GetFirmwareAsync()
         {
@@ -141,7 +143,7 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(firmware.MajorVersion, majorVersion);
             Assert.AreEqual(firmware.MinorVersion, minorVersion);
             Assert.AreEqual(firmware.Name, Name);
-        }
+        }        
 
         [TestMethod]
         public void GetBoardCapability()
@@ -958,6 +960,22 @@ namespace Solid.Arduino.Test
             connection.EnqueueRequest(0xF0, 0x6B, 0xF7);
 
             session.GetBoardCapability();
+        }
+
+        [TestMethod]
+        public void MixedOrderResponses()
+        {
+            var connection = new MockSerialConnection();
+            var session = CreateFirmataSession(connection, 3);
+
+            // We get first ProtocolVersion response and then FirmwareResponse
+            connection.EnqueueRequestAndResponse(new byte[] { 0xF0, 0x79, 0xF7 },
+                new byte[]
+                {
+                    0xF9, 0x02, 0x04, 0xF0, 0x79, 0x01, 0x03, 0x65, 0x00, 0x56, 0x00, 0x65, 0x00, 0x6E, 0x00, 0x75, 0x00,
+                    0x73, 0x00, 0x4D, 0x00, 0x6F, 0x00, 0x64, 0x00, 0x75, 0x00, 0x6C, 0x00, 0x65, 0x00, 0xF7
+                });
+            session.GetFirmware();
         }
 
         private IFirmataProtocol CreateFirmataSession(ISerialConnection connection, int timeout = -1)
