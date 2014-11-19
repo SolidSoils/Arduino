@@ -9,14 +9,14 @@ namespace Solid.Arduino.Firmata
     {
         private readonly MessageType _type;
         private readonly ValueType _value;
+        private readonly DateTime _time;
 
         /// <summary>
         /// Initializes a new <see cref="FirmataMessage"/> instance.
         /// </summary>
         /// <param name="type">The type of message to be created.</param>
-        internal FirmataMessage(MessageType type)
+        internal FirmataMessage(MessageType type): this (null, type, DateTime.UtcNow)
         {
-            _type = type;
         }
 
         /// <summary>
@@ -24,10 +24,21 @@ namespace Solid.Arduino.Firmata
         /// </summary>
         /// <param name="value"></param>
         /// <param name="type"></param>
-        internal FirmataMessage(ValueType value, MessageType type)
+        internal FirmataMessage(ValueType value, MessageType type): this (value, type, DateTime.UtcNow)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="FirmataMessage"/> instance.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        /// <param name="time"></param>
+        internal FirmataMessage(ValueType value, MessageType type, DateTime time)
         {
             _value = value;
             _type = type;
+            _time = time;
         }
 
         /// <summary>
@@ -39,6 +50,11 @@ namespace Solid.Arduino.Firmata
         /// Gets the type enumeration of the message.
         /// </summary>
         public MessageType Type { get { return _type; } }
+
+        /// <summary>
+        /// Gets the time of the delivered message.
+        /// </summary>
+        public DateTime Time { get { return _time; } }
     }
 
     /// <summary>

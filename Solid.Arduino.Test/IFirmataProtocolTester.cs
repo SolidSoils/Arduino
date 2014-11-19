@@ -964,19 +964,26 @@ namespace Solid.Arduino.Test
 
         [TestMethod]
         public void MixedOrderResponses()
-        {
-            var connection = new MockSerialConnection();
-            var session = CreateFirmataSession(connection, 3);
+         {
+             var connection = new MockSerialConnection();
+             var session = CreateFirmataSession(connection, 3);
 
             // We get first ProtocolVersion response and then FirmwareResponse
             connection.EnqueueRequestAndResponse(new byte[] { 0xF0, 0x79, 0xF7 },
                 new byte[]
                 {
-                    0xF9, 0x02, 0x04, 0xF0, 0x79, 0x01, 0x03, 0x65, 0x00, 0x56, 0x00, 0x65, 0x00, 0x6E, 0x00, 0x75, 0x00,
-                    0x73, 0x00, 0x4D, 0x00, 0x6F, 0x00, 0x64, 0x00, 0x75, 0x00, 0x6C, 0x00, 0x65, 0x00, 0xF7
+                    0xF9, 0x02, 0x04, 0xF0, 
+                    0x79, 
+                    0x01, 0x03,                    
+                    0x74, 0x00, 0x65, 0x00, 0x73, 0x00, 0x74, 0x00,
+                    0xF7
                 });
-            session.GetFirmware();
-        }
+             var f = session.GetFirmware();
+             Assert.AreEqual(1, f.MajorVersion);
+             Assert.AreEqual(3, f.MinorVersion);
+             Assert.AreEqual("test", f.Name);
+         }
+
 
         private IFirmataProtocol CreateFirmataSession(ISerialConnection connection, int timeout = -1)
         {

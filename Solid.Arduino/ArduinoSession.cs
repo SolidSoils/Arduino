@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -127,7 +128,7 @@ namespace Solid.Arduino
 
         private readonly ISerialConnection _connection;
         private readonly bool _gotOpenConnection;
-        private readonly Queue<FirmataMessage> _receivedMessageQueue = new Queue<FirmataMessage>();
+        private readonly LinkedList<FirmataMessage> _receivedMessageQueue = new LinkedList<FirmataMessage>();
         private readonly Queue<string> _receivedStringQueue = new Queue<string>();
         private ConcurrentQueue<FirmataMessage> _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
         private ConcurrentQueue<StringRequest> _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
@@ -795,12 +796,23 @@ namespace Solid.Arduino
 
                 while (lockTaken)
                 {
-                    if (_receivedMessageQueue.Count > 0
-                        && _receivedMessageQueue.Peek().Type == awaitedMessage.Type)
+                    if (_receivedMessageQueue.Count > 0)
                     {
-                        FirmataMessage message = _receivedMessageQueue.Dequeue();
-                        Monitor.PulseAll(_receivedMessageQueue);
-                        return message;
+                        var message = (from fmq in _receivedMessageQueue
+                            where fmq.Type == awaitedMessage.Type
+                            select fmq).FirstOrDefault();
+                        if (message != null)
+                        {
+
+                            //if (_receivedMessageQueue.Count > 0
+                            //    && _receivedMessageQueue.Select( fm => fm.Type == awaitedMessage.Type).First()) // .Find(FirmataMessage =>) .First().Type == awaitedMessage.Type)
+                            //{
+                            //FirmataMessage message = _receivedMessageQueue.First.Value;
+                            //_receivedMessageQueue.RemoveFirst();
+                            _receivedMessageQueue.Remove(message);
+                            Monitor.PulseAll(_receivedMessageQueue);
+                            return message;
+                        }
                     }
 
                     lockTaken = Monitor.Wait(_receivedMessageQueue, _messageTimeout);
@@ -1140,8 +1152,16 @@ namespace Solid.Arduino
             {
                 if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
                     throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
+                else
+                    // Clean old undelivered message if exists
+                    if (_receivedMessageQueue.Count > 0 &&
+                        ((DateTime.UtcNow - _receivedMessageQueue.First.Value.Time).TotalSeconds > TimeOut))
+                    {
+                        _receivedMessageQueue.RemoveFirst();
+                    }
+               
 
-                _receivedMessageQueue.Enqueue(message);
+                _receivedMessageQueue.AddLast(message);
                 Monitor.PulseAll(_receivedMessageQueue);
             }
 
