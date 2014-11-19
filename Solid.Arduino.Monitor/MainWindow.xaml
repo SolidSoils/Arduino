@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" Height="29" Margin="29,10,0,0" VerticalAlignment="Top" Width="61" ToolTip="Connect to Arduino board..." Background="#FFEDD4F9"/>
     </Grid>
 </Window>

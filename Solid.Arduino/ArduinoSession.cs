@@ -128,7 +128,7 @@ namespace Solid.Arduino
 
         private readonly ISerialConnection _connection;
         private readonly bool _gotOpenConnection;
-        private readonly LinkedList<FirmataMessage> _receivedMessageQueue = new LinkedList<FirmataMessage>();
+        private readonly LinkedList<FirmataMessage> _receivedMessageList = new LinkedList<FirmataMessage>();
         private readonly Queue<string> _receivedStringQueue = new Queue<string>();
         private ConcurrentQueue<FirmataMessage> _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
         private ConcurrentQueue<StringRequest> _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
@@ -206,10 +206,10 @@ namespace Solid.Arduino
         /// </summary>
         public void Clear()
         {
-            lock (_receivedMessageQueue)
+            lock (_receivedMessageList)
             {
                 _connection.Close();
-                _receivedMessageQueue.Clear();
+                _receivedMessageList.Clear();
                 _processMessage = null;
                 _awaitedMessagesQueue = new ConcurrentQueue<FirmataMessage>();
                 _awaitedStringsQueue = new ConcurrentQueue<StringRequest>();
@@ -792,30 +792,29 @@ namespace Solid.Arduino
 
             try
             {
-                Monitor.TryEnter(_receivedMessageQueue, _messageTimeout, ref lockTaken);
+                Monitor.TryEnter(_receivedMessageList, _messageTimeout, ref lockTaken);
 
                 while (lockTaken)
                 {
-                    if (_receivedMessageQueue.Count > 0)
+                    if (_receivedMessageList.Count > 0)
                     {
-                        var message = (from fmq in _receivedMessageQueue
-                            where fmq.Type == awaitedMessage.Type
-                            select fmq).FirstOrDefault();
+                        var message = (from firmataMessage in _receivedMessageList
+                            where firmataMessage.Type == awaitedMessage.Type
+                            select firmataMessage).FirstOrDefault();
                         if (message != null)
                         {
-
                             //if (_receivedMessageQueue.Count > 0
                             //    && _receivedMessageQueue.Select( fm => fm.Type == awaitedMessage.Type).First()) // .Find(FirmataMessage =>) .First().Type == awaitedMessage.Type)
                             //{
                             //FirmataMessage message = _receivedMessageQueue.First.Value;
                             //_receivedMessageQueue.RemoveFirst();
-                            _receivedMessageQueue.Remove(message);
-                            Monitor.PulseAll(_receivedMessageQueue);
+                            _receivedMessageList.Remove(message);
+                            Monitor.PulseAll(_receivedMessageList);
                             return message;
                         }
                     }
 
-                    lockTaken = Monitor.Wait(_receivedMessageQueue, _messageTimeout);
+                    lockTaken = Monitor.Wait(_receivedMessageList, _messageTimeout);
                 }
 
                 throw new TimeoutException(string.Format(Messages.TimeoutEx_WaitMessage, awaitedMessage.Type));
@@ -824,7 +823,7 @@ namespace Solid.Arduino
             {
                 if (lockTaken)
                 {
-                    Monitor.Exit(_receivedMessageQueue);
+                    Monitor.Exit(_receivedMessageList);
                 }
             }
         }
@@ -1148,21 +1147,20 @@ namespace Solid.Arduino
         {
             _processMessage = null;
 
-            lock (_receivedMessageQueue)
+            lock (_receivedMessageList)
             {
-                if (_receivedMessageQueue.Count >= MAXQUEUELENGTH)
+                if (_receivedMessageList.Count >= MAXQUEUELENGTH)
                     throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
-                else
-                    // Clean old undelivered message if exists
-                    if (_receivedMessageQueue.Count > 0 &&
-                        ((DateTime.UtcNow - _receivedMessageQueue.First.Value.Time).TotalSeconds > TimeOut))
-                    {
-                        _receivedMessageQueue.RemoveFirst();
-                    }
-               
 
-                _receivedMessageQueue.AddLast(message);
-                Monitor.PulseAll(_receivedMessageQueue);
+                // Remove all unprocessed and timed-out messages.
+                while (_receivedMessageList.Count > 0 &&
+                    ((DateTime.UtcNow - _receivedMessageList.First.Value.Time).TotalMilliseconds > TimeOut))
+                {
+                    _receivedMessageList.RemoveFirst();
+                }
+
+                _receivedMessageList.AddLast(message);
+                Monitor.PulseAll(_receivedMessageList);
             }
 
             if (MessageReceived != null && message.Type != MessageType.I2CReply)
