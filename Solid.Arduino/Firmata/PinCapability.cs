@@ -65,5 +65,10 @@ namespace Solid.Arduino.Firmata
         /// Gets a value indicating if it is an OneWire pin.
         /// </summary>
         public bool OneWire { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is a Stepper Control pin.
+        /// </summary>
+        public bool StepperControl { get; internal set; }
     }
 }

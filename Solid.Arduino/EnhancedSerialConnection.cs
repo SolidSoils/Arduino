@@ -14,7 +14,7 @@ namespace Solid.Arduino
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <see cref="EnhancedSerialConnection"/> class using the highest COM port available at 115,200 bits per second.
+        /// Initializes a new instance of <see cref="EnhancedSerialConnection"/> class using the highest serial port available at 115,200 bits per second.
         /// </summary>
         public EnhancedSerialConnection()
             : base(GetLastPortName(), (int)SerialBaudRate.Bps_115200)

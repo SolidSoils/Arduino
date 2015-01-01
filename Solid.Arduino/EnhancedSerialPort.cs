@@ -28,7 +28,7 @@ using System.Threading;
 namespace Solid.Arduino
 {
     /// <summary>
-    /// Represents a system serial port.
+    /// Represents a system serial port, supporting .NET and Mono.
     /// </summary>
     /// <remarks>
     /// This class is a workaround for Mono's <see cref="SerialPort"/> implementation of event <see cref="OnDataReceived"/>.

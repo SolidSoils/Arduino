@@ -301,16 +301,34 @@ namespace Solid.Arduino
         /// <inheritdoc cref="IFirmataProtocol.DigitalStateReceived"/>
         public event DigitalStateReceivedHandler DigitalStateReceived;
 
-        /// <inheritdoc cref="IFirmataProtocol.CreateDigitalStateMonitor"/>
+        /// <inheritdoc cref="IFirmataProtocol.CreateDigitalStateMonitor()"/>
         public IObservable<DigitalPortState> CreateDigitalStateMonitor()
         {
             return new DigitalStateTracker(this);
         }
 
-        /// <inheritdoc cref="IFirmataProtocol.CreateAnalogStateMonitor"/>
+        /// <inheritdoc cref="IFirmataProtocol.CreateDigitalStateMonitor(int)"/>
+        public IObservable<DigitalPortState> CreateDigitalStateMonitor(int port)
+        {
+            if (port < 0 || port > 15)
+                throw new ArgumentOutOfRangeException("port", Messages.ArgumentEx_PortRange0_15);
+
+            return new DigitalStateTracker(this, port);
+        }
+
+        /// <inheritdoc cref="IFirmataProtocol.CreateAnalogStateMonitor()"/>
         public IObservable<AnalogState> CreateAnalogStateMonitor()
         {
             return new AnalogStateTracker(this);
+        }
+
+        /// <inheritdoc cref="IFirmataProtocol.CreateAnalogStateMonitor(int)"/>
+        public IObservable<AnalogState> CreateAnalogStateMonitor(int channel)
+        {
+            if (channel < 0 || channel > 15)
+                throw new ArgumentOutOfRangeException("channel", Messages.ArgumentEx_ChannelRange0_15);
+
+            return new AnalogStateTracker(this, channel);
         }
 
         /// <inheritdoc cref="IFirmataProtocol.ResetBoard"/>
@@ -1273,12 +1291,19 @@ namespace Solid.Arduino
                             capability.Servo = isCapable;
                             capability.ServoResolution = _messageBuffer[x + 1];
                             break;
+
                         case PinMode.I2C:
                             capability.I2C = isCapable;
                             break;
+
                         case PinMode.OneWire:
                             capability.OneWire = isCapable;
                             break;
+
+                        case PinMode.StepperControl:
+                            capability.StepperControl = isCapable;
+                            break;
+
                         default:
                             throw new NotImplementedException();
                     }

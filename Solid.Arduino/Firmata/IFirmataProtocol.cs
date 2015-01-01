@@ -94,10 +94,28 @@ namespace Solid.Arduino.Firmata
         IObservable<AnalogState> CreateAnalogStateMonitor();
 
         /// <summary>
+        /// Creates an observable object tracking <see cref="AnalogState" /> messages for a specific channel.
+        /// </summary>
+        /// <param name="channel">The channel to track</param>
+        /// <returns>
+        /// An <see cref="IObservable{AnalogState}" /> interface
+        /// </returns>
+        IObservable<AnalogState> CreateAnalogStateMonitor(int channel);
+
+        /// <summary>
         /// Creates an observable object tracking <see cref="DigitalPortState"/> messages.
         /// </summary>
         /// <returns>An <see cref="IObservable{DigitalPortState}"/> interface</returns>
         IObservable<DigitalPortState> CreateDigitalStateMonitor();
+
+        /// <summary>
+        /// Creates an observable object tracking <see cref="DigitalPortState" /> messages for a specific port.
+        /// </summary>
+        /// <param name="port">The port to track</param>
+        /// <returns>
+        /// An <see cref="IObservable{DigitalPortState}" /> interface
+        /// </returns>
+        IObservable<DigitalPortState> CreateDigitalStateMonitor(int port);
 
         /// <summary>
         /// Sends a message string.

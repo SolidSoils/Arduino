@@ -9,8 +9,8 @@ namespace Solid.Arduino.Firmata
     /// <remarks>
     /// This class is primarily implemented by the <see cref="IFirmataProtocol.AnalogStateReceived"/> and <see cref="IFirmataProtocol.DigitalStateReceived"/> events.
     /// </remarks>
-    /// <see cref="AnalogStateReceivedHandler"/>
-    /// <see cref="IFirmataProtocol.DigitalStateReceived"/>
+    /// <seealso cref="AnalogStateReceivedHandler"/>
+    /// <seealso cref="DigitalStateReceivedHandler"/>
     public class FirmataEventArgs<T> : EventArgs
         where T : struct
     {
