@@ -1,7 +1,7 @@
 ﻿// /*
-// Copyright 2013 Antanas Veiverys www.veiverys.com
+// Copyright 2013 Antanas Veiverys antanas.veiverys.com
 //
-// Refactored by Henk van Boeijen.
+// Refactored 2014 by Henk van Boeijen.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ namespace Solid.Arduino
     /// <remarks>
     /// This class is a workaround for Mono's <see cref="SerialPort"/> implementation of event <see cref="OnDataReceived"/>.
     /// <para>
-    /// Copyright 2013 Antanas Veiverys <seealso href="http://www.veiverys.com">www.veiverys.com</seealso>
+    /// Copyright 2013 Antanas Veiverys <seealso href="https://antanas.veiverys.com">antanas.veiverys.com</seealso>
     /// </para>
     /// </remarks>
     /// <inheritdoc cref="SerialPort" />

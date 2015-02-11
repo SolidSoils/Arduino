@@ -145,7 +145,7 @@
     <value>Value cannot be negative.</value>
   </data>
   <data name="ArgumentEx_NotNullOrEmpty" xml:space="preserve">
-    <value>String value can not be null or empty.</value>
+    <value>String argument can not be null or empty.</value>
   </data>
   <data name="ArgumentEx_PinRange0_127" xml:space="preserve">
     <value>Pin number must be between 0 and 127.</value>

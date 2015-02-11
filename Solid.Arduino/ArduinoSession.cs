@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -123,8 +123,8 @@ namespace Solid.Arduino
         private const byte SysExStart = 0xF0;
         private const byte SysExEnd = 0xF7;
 
-        private const int BUFFERSIZE = 512;
-        private const int MAXQUEUELENGTH = 100;
+        private const int Buffersize = 512;
+        private const int MaxQueuelength = 100;
 
         private readonly ISerialConnection _connection;
         private readonly bool _gotOpenConnection;
@@ -137,8 +137,8 @@ namespace Solid.Arduino
         private int _messageTimeout = -1;
         private ProcessMessageHandler _processMessage;
         private int _messageBufferIndex, _stringBufferIndex;
-        private readonly int[] _messageBuffer = new int[BUFFERSIZE];
-        private readonly char[] _stringBuffer = new char[BUFFERSIZE];
+        private readonly int[] _messageBuffer = new int[Buffersize];
+        private readonly char[] _stringBuffer = new char[Buffersize];
 
         #endregion
 
@@ -158,7 +158,7 @@ namespace Solid.Arduino
             _gotOpenConnection = connection.IsOpen;
 
             if (!connection.IsOpen)
-                _connection.Open();
+                connection.Open();
 
             _connection.DataReceived += SerialDataReceived;
         }
@@ -229,6 +229,10 @@ namespace Solid.Arduino
         }
 
         /// <inheritdoc cref="IStringProtocol.NewLine"/>
+        /// <remarks>
+        /// The value of this property is mapped to the <see cref="ISerialConnection.NewLine"/> property of the
+        /// connection the <see cref="ArduinoSession"/> instance is relying on.
+        /// </remarks>
         public string NewLine
         {
             get { return _connection.NewLine; }
@@ -279,13 +283,13 @@ namespace Solid.Arduino
         }
 
         /// <inheritdoc cref="IStringProtocol.ReadTo"/>
-        public string ReadTo(char terminator)
+        public string ReadTo(char terminator = char.MinValue)
         {
             return GetStringFromQueue(StringRequest.CreateReadRequest(terminator));
         }
 
         /// <inheritdoc cref="IStringProtocol.ReadToAsync"/>
-        public async Task<string> ReadToAsync(char terminator)
+        public async Task<string> ReadToAsync(char terminator = char.MinValue)
         {
             return await Task.Run(() => GetStringFromQueue(StringRequest.CreateReadRequest(terminator)));
         }
@@ -764,7 +768,7 @@ namespace Solid.Arduino
 
         private void WriteMessageByte(int dataByte)
         {
-            if (_messageBufferIndex == BUFFERSIZE)
+            if (_messageBufferIndex == Buffersize)
                 throw new OverflowException(Messages.OverflowEx_CmdBufferFull);
 
             _messageBuffer[_messageBufferIndex] = dataByte;
@@ -916,9 +920,9 @@ namespace Solid.Arduino
 
 #if DEBUG
                 if (_messageBufferIndex > 0 && _messageBufferIndex % 8 == 0)
-                    Console.WriteLine();
+                    Debug.WriteLine(string.Empty);
 
-                Console.Write("{0:x2} ", serialByte);
+                Debug.Write(string.Format("{0:x2} ", serialByte));
 #endif
 
                 if (_processMessage != null)
@@ -943,7 +947,7 @@ namespace Solid.Arduino
 
         private void ProcessAsciiString(int serialByte)
         {
-            if (_stringBufferIndex == BUFFERSIZE)
+            if (_stringBufferIndex == Buffersize)
                 throw new OverflowException(Messages.OverflowEx_StringBufferFull);
 
             char c = Convert.ToChar(serialByte);
@@ -1001,7 +1005,7 @@ namespace Solid.Arduino
                 if (!lockTaken)
                     throw new TimeoutException();
 
-                if (_receivedStringQueue.Count >= MAXQUEUELENGTH)
+                if (_receivedStringQueue.Count >= MaxQueuelength)
                     throw new OverflowException(Messages.OverflowEx_StringBufferFull);
 
                 _receivedStringQueue.Enqueue(value);
@@ -1045,8 +1049,8 @@ namespace Solid.Arduino
                             _processMessage = ProcessProtocolVersionMessage;
                             break;
 
-                        case MessageHeader.SetPinMode:
-                        case MessageHeader.SystemReset:
+                        //case MessageHeader.SetPinMode:
+                        //case MessageHeader.SystemReset:
                         default:
                             // 0xF? command not supported.
                             throw new NotImplementedException(string.Format(Messages.NotImplementedEx_Command, serialByte));
@@ -1167,7 +1171,7 @@ namespace Solid.Arduino
 
             lock (_receivedMessageList)
             {
-                if (_receivedMessageList.Count >= MAXQUEUELENGTH)
+                if (_receivedMessageList.Count >= MaxQueuelength)
                     throw new OverflowException(Messages.OverflowEx_MsgBufferFull);
 
                 // Remove all unprocessed and timed-out messages.

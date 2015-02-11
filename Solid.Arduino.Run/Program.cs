@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
@@ -15,16 +16,24 @@ namespace Solid.Arduino.Run
         {
             Console.WriteLine("Started.");
             var p = new Program();
-            p.TimeTest();
+            AutoOpenTest();
 
             Console.ReadLine();
             Console.WriteLine("Ready.");
         }
 
+        private static void AutoOpenTest()
+        {
+            for (int x = 0; x < 1; x++)
+            {
+                var a = SerialConnection.FindSerialConnection();
+
+            }
+        }
+
         private void TimeTest()
         {
-            var session = new ArduinoSession(new EnhancedSerialConnection("COM6", SerialBaudRate.Bps_57600));
-            session.TimeOut = 1000;
+            var session = new ArduinoSession(new SerialConnection("COM3", SerialBaudRate.Bps_57600)) {TimeOut = 1000};
             session.MessageReceived += session_OnMessageReceived;
 
             var firmata = (II2CProtocol)session;
@@ -64,7 +73,7 @@ namespace Solid.Arduino.Run
         {
             var connection = new EnhancedSerialConnection("COM6", SerialBaudRate.Bps_57600);
             var session = new ArduinoSession(connection, timeOut: 250);
-            IFirmataProtocol firmata = (IFirmataProtocol)session;
+            IFirmataProtocol firmata = session;
 
             firmata.AnalogStateReceived += session_OnAnalogStateReceived;
             firmata.DigitalStateReceived += session_OnDigitalStateReceived;
@@ -117,13 +126,13 @@ namespace Solid.Arduino.Run
             firmata.SetDigitalPinMode(10, PinMode.DigitalOutput);
             firmata.SetDigitalPinMode(11, PinMode.ServoControl);
             firmata.SetDigitalPin(11, 90);
-            System.Threading.Thread.Sleep(500);
+            Thread.Sleep(500);
             int hi = 0;
 
             for (int a = 0; a <= 179; a += 1)
             {
                 firmata.SetDigitalPin(11, a);
-                System.Threading.Thread.Sleep(100);
+                Thread.Sleep(100);
                 firmata.SetDigitalPort(1, hi);
                 hi ^= 4;
                 Console.Write("{0};", a);
