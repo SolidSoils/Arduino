@@ -23,7 +23,7 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(true, connection.IsOpen);
         }
 
-        [TestMethod]
+        //[TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ArduinoSession_Constructor_NullArgument()
         {

@@ -7,12 +7,18 @@ namespace Solid.Arduino
     /// Defines a serial port connection.
     /// </summary>
     /// <seealso href="http://arduino.cc/en/Reference/Serial">Serial reference for Arduino</seealso>
-    public interface ISerialConnection
+    public interface ISerialConnection: IDisposable
     {
         /// <summary>
         ///  Represents the method that will handle the data received event of a <see cref="ISerialConnection"/> object.
         /// </summary>
         event SerialDataReceivedEventHandler DataReceived;
+
+        /// <inheritdoc cref="SerialPort.BaudRate"/>
+        int BaudRate { get; set; }
+
+        /// <inheritdoc cref="SerialPort.PortName"/>
+        string PortName { get; set; }
 
         /// <summary>
         /// Gets a value indicating the open or closed status of the <see cref="ISerialConnection"/> object.

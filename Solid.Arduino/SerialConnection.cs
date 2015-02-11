@@ -91,14 +91,14 @@ namespace Solid.Arduino
         /// <inheritdoc cref="SerialPort.Close"/>
         public new void Close()
         {
-            if (IsOpen)
-            {
-                BaseStream.Flush();
-                DiscardInBuffer();
-            }
+            if (!IsOpen)
+                return;
 
-            base.Close();
+            Thread.Sleep(250);
+            BaseStream.Flush();
+            DiscardInBuffer();
             BaseStream.Close();
+            base.Close();
         }
 
         /// <inheritdoc cref="SerialPort.Dispose"/>
@@ -108,10 +108,10 @@ namespace Solid.Arduino
                 return;
 
             _isDisposed = true;
-            base.Dispose();
             BaseStream.Dispose();
-            GC.SuppressFinalize(this);
             GC.SuppressFinalize(BaseStream);
+            base.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <inheritdoc cref="ISerialConnection.Write(string)" />
@@ -120,7 +120,7 @@ namespace Solid.Arduino
         /// <summary>
         /// Finds a serial connection to a device supporting the Firmata protocol.
         /// </summary>
-        /// <returns>A <see cref="SerialConnection"/> instance or <c>null</c> if no connection is found</returns>
+        /// <returns>A <see cref="ISerialConnection"/> instance or <c>null</c> if no connection is found</returns>
         /// <remarks>
         /// <para>
         /// This method searches all available serial ports until it finds a working serial connection.
@@ -135,7 +135,7 @@ namespace Solid.Arduino
         /// </remarks>
         /// <seealso cref="IFirmataProtocol"/>
         /// <seealso href="http://www.firmata.org/wiki/Protocol#Query_Firmware_Name_and_Version">Query Firmware Name and Version</seealso>
-        public static SerialConnection FindSerialConnection()
+        public static ISerialConnection FindSerialConnection()
         {
             Func<ArduinoSession, bool> isAvailableFunc = session =>
                 {
@@ -144,7 +144,7 @@ namespace Solid.Arduino
                 };
 
             string[] portNames = GetPortNames();
-            SerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
+            ISerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
             return connection ?? FindConnection(isAvailableFunc, portNames, OtherBaudRates);
         }
 
@@ -153,7 +153,7 @@ namespace Solid.Arduino
         /// </summary>
         /// <param name="query">The query text used to inquire the connection</param>
         /// <param name="expectedReply">The reply text the connected device is expected to respond with</param>
-        /// <returns>A <see cref="SerialConnection"/> instance or <c>null</c> if no connection is found</returns>
+        /// <returns>A <see cref="ISerialConnection"/> instance or <c>null</c> if no connection is found</returns>
         /// <remarks>
         /// <para>
         /// This method searches all available serial ports until it finds a working serial connection.
@@ -195,7 +195,7 @@ namespace Solid.Arduino
         /// </code>
         /// </example>
         /// <seealso cref="IStringProtocol"/>
-        public static SerialConnection FindSerialConnection(string query, string expectedReply)
+        public static ISerialConnection FindSerialConnection(string query, string expectedReply)
         {
             if (string.IsNullOrEmpty(query))
                 throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, "query");
@@ -210,7 +210,7 @@ namespace Solid.Arduino
                 };
 
             string[] portNames = GetPortNames();
-            SerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
+            ISerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
             return connection ?? FindConnection(isAvailableFunc, portNames, OtherBaudRates);
         }
 
@@ -223,7 +223,7 @@ namespace Solid.Arduino
             return GetPortNames().Where(n => n.StartsWith("COM")).OrderByDescending(n => n).FirstOrDefault();
         }
 
-        private static SerialConnection FindConnection(Func<ArduinoSession, bool> isDeviceAvailable, string[] portNames, SerialBaudRate[] baudRates)
+        private static ISerialConnection FindConnection(Func<ArduinoSession, bool> isDeviceAvailable, string[] portNames, SerialBaudRate[] baudRates)
         {
             for (int x = portNames.Length - 1; x >= 0; x--)
             {
@@ -231,14 +231,14 @@ namespace Solid.Arduino
                 {
                     try
                     {
-                        using (var connection = new SerialConnection(portNames[x], rate))
+                        using (var connection = new EnhancedSerialConnection(portNames[x], rate))
                         {
                             using (var session = new ArduinoSession(connection, 100))
                             {
                                 Debug.WriteLine("{0}:{1}; ", portNames[x], (int)rate);
 
                                 if (isDeviceAvailable(session))
-                                    return new SerialConnection(portNames[x], rate);
+                                    return new EnhancedSerialConnection(portNames[x], rate);
                             }
                         }
                     }

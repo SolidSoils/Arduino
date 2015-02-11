@@ -914,7 +914,7 @@ namespace Solid.Arduino
         /// </summary>
         private void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            while (_connection.BytesToRead > 0)
+            while (_connection.IsOpen && _connection.BytesToRead > 0)
             {
                 int serialByte = _connection.ReadByte();
 
@@ -956,13 +956,13 @@ namespace Solid.Arduino
 
             if (_currentStringRequest == null)
             {
-                _awaitedStringsQueue.TryDequeue(out _currentStringRequest);
-
-                if (_currentStringRequest == null)
+                if (!_awaitedStringsQueue.TryDequeue(out _currentStringRequest))
                 {
                     // No pending Read/ReadLine/ReadTo requests.
                     // Handle StringReceived event.
-                    if (c == _connection.NewLine[_connection.NewLine.Length - 1] || serialByte == 0x1A) // NewLine or EOF?
+                    if (c == _connection.NewLine[_connection.NewLine.Length - 1]
+                        || serialByte == 0x1A
+                        || serialByte == 0x00) // NewLine, EOF or terminating 0-byte?
                     {
                         if (StringReceived != null)
                             StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex - 1)));

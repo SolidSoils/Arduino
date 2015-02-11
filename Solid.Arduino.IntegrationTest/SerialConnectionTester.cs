@@ -42,7 +42,6 @@ namespace Solid.Arduino.IntegrationTest
             using (var arduinoConnection = SerialConnection.FindSerialConnection("Hello?", "Arduino!"))
             {
                 Assert.IsNotNull(arduinoConnection);
-                Assert.AreEqual(9600, arduinoConnection.BaudRate);
             }
         }
     }

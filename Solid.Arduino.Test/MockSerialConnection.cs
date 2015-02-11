@@ -11,7 +11,7 @@ namespace Solid.Arduino.Test
 {
     internal class MockSerialConnection: ISerialConnection
     {
-        private static readonly ConstructorInfo _serialDataReceivedEventArgsConstructor = typeof(SerialDataReceivedEventArgs)
+        private static readonly ConstructorInfo SerialDataReceivedEventArgsConstructor = typeof(SerialDataReceivedEventArgs)
                 .GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(SerialData) }, null);
         
         private bool _isOpen;
@@ -24,6 +24,18 @@ namespace Solid.Arduino.Test
         private int _responseByteCount, _currentResponseIndex, _currentRequestIndex;
         
         #region ISerialConnection Members
+
+        public int BaudRate
+        {
+            get { return 9600; }
+            set {}
+        }
+
+        public string PortName
+        {
+            get { return "COM3"; }
+            set {}
+        }
 
         public event SerialDataReceivedEventHandler DataReceived;
 
@@ -123,6 +135,11 @@ namespace Solid.Arduino.Test
             {
                 AssertEqualToExpectedRequestByte(Convert.ToByte(c));
             }
+        }
+
+        public void Dispose()
+        {
+
         }
 
         #endregion
