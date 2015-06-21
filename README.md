@@ -72,6 +72,10 @@ Code complete for the library core. (Beta)
 2. Develop a WPF application demonstrating the library (project Solid.Arduino.Monitor).
 3. Release the first version.
 
+## License
+[BSD-2 license](https://github.com/SolidSoils/Arduino/edit/master/LICENSE.md)
+ 
+
 ## Contributing
 If you discover a bug or would like to propose a new feature,
 please open a new [issue](https://github.com/solidsoils/arduino/issues?sort=created&state=open).
