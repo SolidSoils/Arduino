@@ -70,6 +70,7 @@ namespace Solid.Arduino
             ReportDigital = 0xD0,
             SystemExtension = 0xF0,
             SetPinMode = 0xF4,
+            SetDigitalPinValue = 0xF5,
             ProtocolVersion = 0xF9,
             SystemReset = 0xFF
         }
@@ -380,6 +381,15 @@ namespace Solid.Arduino
 
             message[index] = SysExEnd;
             _connection.Write(message, 0, index + 1);
+        }
+
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalPinValue(int,bool)"/>
+        public void SetDigitalPinValue(int pinNumber, bool value)
+        {
+            if (pinNumber < 0 || pinNumber > 127)
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
+
+            _connection.Write(new byte[] { (byte)0xF5, (byte)pinNumber, (byte)(value ? 1 : 0) }, 0, 3);
         }
 
         /// <inheritdoc cref="IFirmataProtocol.SetAnalogReportMode"/>
