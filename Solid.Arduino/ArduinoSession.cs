@@ -608,7 +608,7 @@ namespace Solid.Arduino
                 (byte)((maxPulse >> 7) & 0x7F),
                 SysExEnd
             };
-            _connection.Write(command, 0, 7);
+            _connection.Write(command, 0, 8);
         }
 
         #endregion
