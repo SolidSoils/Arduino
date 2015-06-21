@@ -14,6 +14,8 @@ The library supports the following protocols:
 The protocols mentioned can be used simultaneously. The library brokers all incoming message types
 and directs them to the appropriate requestors (synchronous as well as asynchronous) and events.
 
+Currently [Standard Firmata 2.4](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
+
 Technology used: Microsoft .NET/C# v4.5
 
 ### A basic code example
@@ -54,7 +56,7 @@ Technology used: Microsoft .NET/C# v4.5
 
 ## Current status
 
-**v0.2**
+**v0.3**
 
 Code complete for the library core. (Beta)
 
@@ -66,6 +68,7 @@ Code complete for the library core. (Beta)
 4. API fully documented.
 5. IObservable methods implemented (to be unittested).
 6. Mono support added.
+7. Library upgraded to Standard Firmata 2.4
 
 ## Upcoming
 1. Finish unit tests for latest additions.
