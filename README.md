@@ -18,7 +18,21 @@ Currently [Standard Firmata 2.4](https://github.com/firmata/protocol/blob/master
 
 Technology used: Microsoft .NET/C# v4.5
 
-### A basic code example
+### Code example: Setting pin 13 HI
+
+In this example a connection is made to an Arduino board attached to any USB port. Then pin 13 is set HI.
+
+    using Solid.Arduino;
+
+    (...)
+
+	var session = new ArduinoSession(SerialConnection.FindSerialConnection());
+	session.SetDigitalPin(13, true);
+
+
+### Code example: Getting board capabilities
+
+In this example the board capabilities of an Arduino device are retrieved and displayed.
 
     using Solid.Arduino.Firmata;
 
@@ -68,7 +82,6 @@ Code complete for the library core. (Beta)
 4. API fully documented.
 5. IObservable methods implemented (to be unittested).
 6. Mono support added.
-7. Library upgraded to Standard Firmata 2.4
 
 ## Upcoming
 1. Finish unit tests for latest additions.
