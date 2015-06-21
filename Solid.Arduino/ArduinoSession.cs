@@ -70,6 +70,7 @@ namespace Solid.Arduino
             ReportDigital = 0xD0,
             SystemExtension = 0xF0,
             SetPinMode = 0xF4,
+            SetPinValue = 0xF5,
             ProtocolVersion = 0xF9,
             SystemReset = 0xFF
         }

@@ -38,10 +38,10 @@ namespace Solid.Arduino.Firmata
         AnalogInput = 2,
         PwmOutput = 3,
         ServoControl = 4,
-        ShiftInOut = 5,
         I2C = 6,
         OneWire = 7,
-        StepperControl = 8
+        StepperControl = 8,
+        Encoder = 9
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ namespace Solid.Arduino.Firmata
     /// Currently version 2.3 is supported.
     /// </summary>
     /// <seealso href="https://github.com/firmata/arduino">Firmata project on GitHub</seealso>
-    /// <seealso href="http://www.firmata.org/wiki/Protocol">Firmata protocol details</seealso>
+    /// <seealso href="https://github.com/firmata/protocol">Firmata protocol details</seealso>
     /// <seealso href="http://arduino.cc/en/reference/firmata">Firmata reference for Arduino</seealso>
     public interface IFirmataProtocol
     {
