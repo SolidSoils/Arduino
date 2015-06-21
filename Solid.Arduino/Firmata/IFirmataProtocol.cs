@@ -202,6 +202,13 @@ namespace Solid.Arduino.Firmata
         void SetDigitalPin(int pinNumber, long value);
 
         /// <summary>
+        /// Sets a digital value
+        /// </summary>
+        /// <param name="pinNumber">The pin number.</param>
+        /// <param name="value">The value</param>
+        void SetDigitalPinValue(int pinNumber, bool value);
+
+        /// <summary>
         /// Sends a reset message to the party system.
         /// </summary>
         void ResetBoard();
