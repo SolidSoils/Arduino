@@ -195,11 +195,18 @@ namespace Solid.Arduino.Firmata
         void SetSamplingInterval(int milliseconds);
 
         /// <summary>
-        /// Sets an analog value on a PWM or Servo enabled digital pin.
+        /// Sets an analog value on a PWM or Servo enabled analog output pin.
         /// </summary>
         /// <param name="pinNumber">The pin number.</param>
         /// <param name="value">The value</param>
         void SetDigitalPin(int pinNumber, long value);
+
+        /// <summary>
+        /// Sets a HI or LO value on a digital output pin.
+        /// </summary>
+        /// <param name="pinNumber">The pin number</param>
+        /// <param name="value">The value (<c>false</c> = Low, <c>true</c> = High)</param>
+        void SetDigitalPin(int pinNumber, bool value);
 
         /// <summary>
         /// Sends a reset message to the party system.

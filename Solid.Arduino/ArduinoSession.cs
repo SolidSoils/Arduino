@@ -66,13 +66,8 @@ namespace Solid.Arduino
         {
             AnalogState = 0xE0, // 224
             DigitalState = 0x90, // 144
-            ReportAnalog = 0xC0,
-            ReportDigital = 0xD0,
             SystemExtension = 0xF0,
-            SetPinMode = 0xF4,
-            SetPinValue = 0xF5,
-            ProtocolVersion = 0xF9,
-            SystemReset = 0xFF
+            ProtocolVersion = 0xF9
         }
 
         private enum StringReadMode {
@@ -381,6 +376,15 @@ namespace Solid.Arduino
 
             message[index] = SysExEnd;
             _connection.Write(message, 0, index + 1);
+        }
+
+        /// <inheritdoc cref="IFirmataProtocol.SetDigitalPin(int,bool)"/>
+        public void SetDigitalPin(int pinNumber, bool value)
+        {
+            if (pinNumber < 0 || pinNumber > 127)
+                throw new ArgumentOutOfRangeException("pinNumber", Messages.ArgumentEx_PinRange0_127);
+
+            _connection.Write(new[] { (byte)0xF5, (byte)pinNumber, (byte)(value ? 1 : 0) }, 0, 3);
         }
 
         /// <inheritdoc cref="IFirmataProtocol.SetAnalogReportMode"/>
