@@ -89,7 +89,7 @@ Code complete for the library core. (Beta)
 3. Release the first version.
 
 ## License
-[BSD-2 license](https://github.com/SolidSoils/Arduino/edit/master/LICENSE.md)
+[BSD-2 license](https://github.com/SolidSoils/Arduino/blob/master/LICENSE.md)
  
 
 ## Contributing
