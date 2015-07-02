@@ -119,7 +119,7 @@ namespace Solid.Arduino
         private const byte SysExStart = 0xF0;
         private const byte SysExEnd = 0xF7;
 
-        private const int Buffersize = 512;
+        private const int Buffersize = 2048;
         private const int MaxQueuelength = 100;
 
         private readonly ISerialConnection _connection;
