@@ -12,9 +12,8 @@
   See http://www.galasoft.ch/mvvm
 */
 
-using GalaSoft.MvvmLight;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
 
 namespace Solid.Arduino.Monitor.ViewModel
 {
@@ -29,7 +28,7 @@ namespace Solid.Arduino.Monitor.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            ServiceLocator.SetLocatorProvider(() => (IServiceLocator)SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
