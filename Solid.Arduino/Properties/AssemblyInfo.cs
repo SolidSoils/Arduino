@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Solid Soils Solutions")]
-[assembly: AssemblyProduct("Solid.Arduino.Firmata")]
-[assembly: AssemblyCopyright("Copyright © Solid Soils Solutions 2013 - 2014")]
+[assembly: AssemblyProduct("Solid.Arduino")]
+[assembly: AssemblyCopyright("Copyright © Solid Soils Solutions 2013 - 2017")]
 [assembly: AssemblyTrademark("Solid Soils (tm)")]
 [assembly: AssemblyCulture("")]
 

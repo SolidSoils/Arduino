@@ -11,12 +11,18 @@ The library supports the following protocols:
 2. Firmata
 3. I2C (as it has become part of Firmata)
 
-The protocols mentioned can be used simultaneously. The library brokers all incoming message types
-and directs them to the appropriate requestors (synchronous as well as asynchronous) and events.
+All protocols can be mixed. The library brokers all incoming message types
+and directs them to the appropriate requestors (synchronous as well as asynchronous).
 
 Currently [Standard Firmata 2.4](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
 
-Technology used: Microsoft .NET/C# v4.5
+Technology: Microsoft .NET/C# v4.5
+
+Dependencies: none
+
+### Downloads
+
+[NuGet package](https://www.nuget.org/packages/SolidSoils.Arduino.Client/#)
 
 ### Code example: Setting pin 13 HI
 
@@ -82,15 +88,10 @@ Code complete for the library core. (Beta)
 4. API fully documented.
 5. IObservable methods implemented (to be unittested).
 6. Mono support added.
-
-## Upcoming
-1. Finish unit tests for latest additions.
-2. Develop a WPF application demonstrating the library (project Solid.Arduino.Monitor).
-3. Release the first version.
+7. NuGet package published.
 
 ## License
 [BSD-2 license](https://github.com/SolidSoils/Arduino/blob/master/LICENSE.md)
- 
 
 ## Contributing
 If you discover a bug or would like to propose a new feature,
