@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 using Solid.Arduino.Firmata;
 using Solid.Arduino.I2C;
+using System.Linq;
 
 namespace Solid.Arduino.Run
 {
@@ -16,7 +13,7 @@ namespace Solid.Arduino.Run
         {
             Console.WriteLine("Started.");
             var p = new Program();
-            AutoOpenTest();
+            SimpelTest(EnhancedSerialConnection.FindSerialConnection());
 
             Console.ReadLine();
             Console.WriteLine("Ready.");
@@ -26,7 +23,7 @@ namespace Solid.Arduino.Run
         {
             for (int x = 0; x < 1; x++)
             {
-                var a = SerialConnection.FindSerialConnection();
+                var a = EnhancedSerialConnection.FindSerialConnection();
 
             }
         }
@@ -34,7 +31,7 @@ namespace Solid.Arduino.Run
         private void TimeTest()
         {
             var session = new ArduinoSession(new SerialConnection("COM3", SerialBaudRate.Bps_57600)) {TimeOut = 1000};
-            session.MessageReceived += session_OnMessageReceived;
+            session.MessageReceived += Session_OnMessageReceived;
 
             var firmata = (II2CProtocol)session;
 
@@ -51,7 +48,7 @@ namespace Solid.Arduino.Run
             session.Dispose();
         }
 
-        void session_OnMessageReceived(object sender, FirmataMessageEventArgs eventArgs)
+        void Session_OnMessageReceived(object sender, FirmataMessageEventArgs eventArgs)
         {
             string o;
 
@@ -69,14 +66,13 @@ namespace Solid.Arduino.Run
             Console.WriteLine("Message {0} received: {1}", eventArgs.Value.Type, o);
         }
 
-        static void SimpelTest()
+        static void SimpelTest(ISerialConnection connection)
         {
-            var connection = new EnhancedSerialConnection("COM6", SerialBaudRate.Bps_57600);
-            var session = new ArduinoSession(connection, timeOut: 250);
+            var session = new ArduinoSession(connection, timeOut: 2500);
             IFirmataProtocol firmata = session;
 
-            firmata.AnalogStateReceived += session_OnAnalogStateReceived;
-            firmata.DigitalStateReceived += session_OnDigitalStateReceived;
+            firmata.AnalogStateReceived += Session_OnAnalogStateReceived;
+            firmata.DigitalStateReceived += Session_OnDigitalStateReceived;
 
             Firmware firm = firmata.GetFirmware();
             Console.WriteLine();
@@ -94,9 +90,19 @@ namespace Solid.Arduino.Run
 
             foreach (var pincap in caps.PinCapabilities)
             {
-                Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
-                    pincap.PinNumber, pincap.DigitalInput, pincap.DigitalOutput, pincap.Analog, pincap.AnalogResolution, pincap.Pwm, pincap.PwmResolution,
-                    pincap.Servo, pincap.ServoResolution);
+                Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}, Serial: {9}, Encoder: {10}, Input-pullup: {11}",
+                    pincap.PinNumber,
+                    pincap.DigitalInput,
+                    pincap.DigitalOutput,
+                    pincap.Analog,
+                    pincap.AnalogResolution,
+                    pincap.Pwm,
+                    pincap.PwmResolution,
+                    pincap.Servo,
+                    pincap.ServoResolution,
+                    pincap.Serial,
+                    pincap.Encoder,
+                    pincap.InputPullup);
             }
             Console.WriteLine();
 
@@ -113,11 +119,10 @@ namespace Solid.Arduino.Run
             Console.WriteLine();
             Console.WriteLine("Digital port states:");
 
-            for (int x = 0; x < 20; x++)
+            foreach (var pincap in caps.PinCapabilities.Where(c => (c.DigitalInput || c.DigitalOutput) && !c.Analog))
             {
-                var pinState = firmata.GetPinState(x);
-
-                Console.WriteLine("Pin {0}: Mode = {1}, Value = {2}", x, pinState.Mode, pinState.Value);
+                var pinState = firmata.GetPinState(pincap.PinNumber);
+                Console.WriteLine("Pin {0}: Mode = {1}, Value = {2}", pincap.PinNumber, pinState.Mode, pinState.Value);
             }
             Console.WriteLine();
 
@@ -148,18 +153,18 @@ namespace Solid.Arduino.Run
             firmata.SetSamplingInterval(500);
             firmata.SetAnalogReportMode(0, false);
 
+            Console.WriteLine("Setting digital report modes:");
             firmata.SetDigitalReportMode(0, true);
             firmata.SetDigitalReportMode(1, true);
             firmata.SetDigitalReportMode(2, true);
-
-            for (int x = 0; x < 20; x++)
-            {
-                PinState state = firmata.GetPinState(x);
-                Console.WriteLine("Digital {1} pin {0}: {2}", x, state.Mode, state.Value);
-            }
             Console.WriteLine();
 
-
+            foreach (var pinCap in caps.PinCapabilities.Where(c => (c.DigitalInput || c.DigitalOutput) && !c.Analog))
+            {
+                PinState state = firmata.GetPinState(pinCap.PinNumber);
+                Console.WriteLine("Digital {1} pin {0}: {2}", state.PinNumber, state.Mode, state.Value);
+            }
+            Console.WriteLine();
 
             Console.ReadLine();
             firmata.SetAnalogReportMode(0, false);
@@ -169,12 +174,12 @@ namespace Solid.Arduino.Run
             Console.WriteLine("Ready.");
         }
 
-        static void session_OnDigitalStateReceived(object sender, FirmataEventArgs<DigitalPortState> eventArgs)
+        static void Session_OnDigitalStateReceived(object sender, FirmataEventArgs<DigitalPortState> eventArgs)
         {
             Console.WriteLine("Digital level of port {0}: {1}", eventArgs.Value.Port, eventArgs.Value.IsSet(6) ? 'X' : 'O');
         }
 
-        static void session_OnAnalogStateReceived(object sender, FirmataEventArgs<AnalogState> eventArgs)
+        static void Session_OnAnalogStateReceived(object sender, FirmataEventArgs<AnalogState> eventArgs)
         {
             Console.WriteLine("Analog level of pin {0}: {1}", eventArgs.Value.Channel, eventArgs.Value.Level);
         }

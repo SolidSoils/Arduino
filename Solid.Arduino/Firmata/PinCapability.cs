@@ -70,5 +70,25 @@ namespace Solid.Arduino.Firmata
         /// Gets a value indicating if it is a Stepper Control pin.
         /// </summary>
         public bool StepperControl { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is an encoder pin.
+        /// </summary>
+        public bool Encoder { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is a serial pin.
+        /// </summary>
+        public bool Serial { get; internal set; }
+
+        /// <summary>
+        /// Gets a value indicating if it is an input pullup pin.
+        /// </summary>
+        public bool InputPullup { get; internal set; }
+
+        /// <summary>
+        /// Gets the maximum number of steps if it is a Stepper Control pin.
+        /// </summary>
+        public int MaxStepNumber { get; internal set; }
     }
 }

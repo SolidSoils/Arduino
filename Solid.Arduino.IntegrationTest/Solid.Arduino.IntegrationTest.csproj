@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="SerialConnectionTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketConnectionTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Solid.Arduino\Solid.Arduino.csproj">
@@ -66,6 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="HC06-Bluetooth.ino" />
     <None Include="SerialReply.ino" />
   </ItemGroup>
   <Choose>

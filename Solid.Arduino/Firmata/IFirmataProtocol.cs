@@ -41,7 +41,9 @@ namespace Solid.Arduino.Firmata
         I2C = 6,
         OneWire = 7,
         StepperControl = 8,
-        Encoder = 9
+        Encoder = 9,
+        Serial = 10,
+        InputPullup = 11
     }
 
     /// <summary>
