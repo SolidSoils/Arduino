@@ -759,9 +759,8 @@ namespace Solid.Arduino
         public void Dispose()
         {
             if (!_gotOpenConnection)
-            {
                 _connection.Close();
-            }
+
             GC.SuppressFinalize(this);
         }
 
