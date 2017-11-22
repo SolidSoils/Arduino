@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Address property" Url="html/7a82d399-3fe1-048e-ecb1-00b55cbfaba0.htm" />
+  <HelpKINode Title="Analog property" Url="html/a53a9e81-536d-aec6-959d-32e03a3a7888.htm" />
+  <HelpKINode Title="AnalogInput enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="AnalogMappingResponse enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="AnalogPinMapping structure">
+    <HelpKINode Title="AnalogPinMapping Structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm" />
+    <HelpKINode Title="about AnalogPinMapping structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm" />
+    <HelpKINode Title="properties" Url="html/e10b3718-42ae-bdb7-e8c5-8fda7d054d52.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AnalogPinMapping.Channel property" Url="html/42b47bc8-9e23-e9db-a8db-1972173530f1.htm" />
+  <HelpKINode Title="AnalogPinMapping.PinNumber property" Url="html/3a4802af-ada6-81eb-0d1a-ca7c114653cf.htm" />
+  <HelpKINode Title="AnalogResolution property" Url="html/f2343bf9-88ac-78c3-a6fe-965b78aeaafe.htm" />
+  <HelpKINode Title="AnalogState enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="AnalogState structure">
+    <HelpKINode Title="AnalogState Structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm" />
+    <HelpKINode Title="about AnalogState structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm" />
+    <HelpKINode Title="properties" Url="html/9eea4668-107b-8de8-59e3-22aa6c969ea0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AnalogState.Channel property" Url="html/ecad3166-5f2c-2fd8-b94c-de688c02211e.htm" />
+  <HelpKINode Title="AnalogState.Level property" Url="html/6c5bac35-ce3a-6988-f1ab-557b5c8c89ef.htm" />
+  <HelpKINode Title="AnalogStateReceived event">
+    <HelpKINode Title="ArduinoSession.AnalogStateReceived Event" Url="html/fecece2f-667b-dda0-f43c-d33ef4c15171.htm" />
+    <HelpKINode Title="IFirmataProtocol.AnalogStateReceived Event" Url="html/fccc0a99-97e3-0285-7073-e3b2d3aa43cf.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AnalogStateReceivedHandler delegate" Url="html/82864edc-a8c0-fb1e-c8d2-f70b564a089f.htm" />
+  <HelpKINode Title="ArduinoSession class">
+    <HelpKINode Title="ArduinoSession Class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm" />
+    <HelpKINode Title="about ArduinoSession class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm" />
+    <HelpKINode Title="constructor" Url="html/f3a69b92-0354-52fc-b2c3-8f442702ea51.htm" />
+    <HelpKINode Title="events" Url="html/32c1b709-03cf-fa67-24d3-12552bab13dd.htm" />
+    <HelpKINode Title="methods" Url="html/712af620-4f36-ce65-1d71-1af90ef6e16a.htm" />
+    <HelpKINode Title="properties" Url="html/e2c9ceb2-6c34-7bb9-f1d7-041270a1088f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ArduinoSession.AnalogStateReceived event" Url="html/fecece2f-667b-dda0-f43c-d33ef4c15171.htm" />
+  <HelpKINode Title="ArduinoSession.ArduinoSession constructor" Url="html/f3a69b92-0354-52fc-b2c3-8f442702ea51.htm" />
+  <HelpKINode Title="ArduinoSession.Clear method" Url="html/3840dfdb-97e9-882b-796e-9ad6e28ea2a1.htm" />
+  <HelpKINode Title="ArduinoSession.ConfigureServo method" Url="html/ce05c987-6053-fb21-59f1-0c83c611e513.htm" />
+  <HelpKINode Title="ArduinoSession.CreateAnalogStateMonitor method" Url="html/2cf2e931-e0e8-d47d-aaa6-73cc82ef2e55.htm" />
+  <HelpKINode Title="ArduinoSession.CreateDigitalStateMonitor method" Url="html/cad99045-36ff-2d40-f881-6d9616efe8f0.htm" />
+  <HelpKINode Title="ArduinoSession.CreateI2CReplyMonitor method" Url="html/1fa615e5-a5c8-2d2c-fa47-0e38434c27c8.htm" />
+  <HelpKINode Title="ArduinoSession.CreateReceivedStringMonitor method" Url="html/43733aea-c265-b3e4-c53b-17a82b3360b0.htm" />
+  <HelpKINode Title="ArduinoSession.DigitalStateReceived event" Url="html/e6bd7820-438b-49a9-5605-ed00a5e9caea.htm" />
+  <HelpKINode Title="ArduinoSession.Dispose method" Url="html/6d15bb99-b68e-873c-6c87-e374f6ded979.htm" />
+  <HelpKINode Title="ArduinoSession.GetBoardAnalogMapping method" Url="html/0db70497-3543-ccc9-2141-40d1fd170c64.htm" />
+  <HelpKINode Title="ArduinoSession.GetBoardAnalogMappingAsync method" Url="html/eb1339b7-b6a8-a213-53c8-70fdd94961fc.htm" />
+  <HelpKINode Title="ArduinoSession.GetBoardCapability method" Url="html/012dd994-5a18-29df-21ef-6f6e228030c9.htm" />
+  <HelpKINode Title="ArduinoSession.GetBoardCapabilityAsync method" Url="html/580f8ee8-6e40-6d26-8290-6b7b75def84f.htm" />
+  <HelpKINode Title="ArduinoSession.GetFirmware method" Url="html/04428aca-6102-c5fd-3222-18c2e545b0e8.htm" />
+  <HelpKINode Title="ArduinoSession.GetFirmwareAsync method" Url="html/9eccbac6-fe16-acb8-6b8c-643606251dda.htm" />
+  <HelpKINode Title="ArduinoSession.GetI2CReply method" Url="html/c88283e6-8a6d-e7e4-3a38-9c343e31d7cf.htm" />
+  <HelpKINode Title="ArduinoSession.GetI2CReplyAsync method" Url="html/c7cb67b3-109d-5722-69ed-5ac3b5fdbc0e.htm" />
+  <HelpKINode Title="ArduinoSession.GetPinState method" Url="html/ca00d61b-80d6-3c26-6474-e9592a8cd67b.htm" />
+  <HelpKINode Title="ArduinoSession.GetPinStateAsync method" Url="html/a8b5fb3d-a1eb-e372-c1a5-228efd902dd6.htm" />
+  <HelpKINode Title="ArduinoSession.GetProtocolVersion method" Url="html/5da15ad8-5869-11b4-3347-2390a0333c45.htm" />
+  <HelpKINode Title="ArduinoSession.GetProtocolVersionAsync method" Url="html/8dbe1dc8-266a-4668-ee8a-1fd53d220651.htm" />
+  <HelpKINode Title="ArduinoSession.I2CReplyReceived event" Url="html/a761b35c-6058-6fce-044e-7204c140e2f9.htm" />
+  <HelpKINode Title="ArduinoSession.MessageReceived event" Url="html/3d50005b-be1d-3245-76c1-a4e60bcd5c18.htm" />
+  <HelpKINode Title="ArduinoSession.NewLine property" Url="html/c4d800a5-a5de-dc32-6725-c24ca5b6b07f.htm" />
+  <HelpKINode Title="ArduinoSession.Read method" Url="html/55aa38a0-1f7a-ec22-10d8-8bae26960810.htm" />
+  <HelpKINode Title="ArduinoSession.ReadAsync method" Url="html/7619d119-9fb4-a181-7523-07273f09e83b.htm" />
+  <HelpKINode Title="ArduinoSession.ReadI2CContinuous method" Url="html/0ea9cbae-1535-ba11-3134-4520d69334f0.htm" />
+  <HelpKINode Title="ArduinoSession.ReadI2COnce method" Url="html/11348d42-72bd-635f-c392-da90b6c27daa.htm" />
+  <HelpKINode Title="ArduinoSession.ReadLine method" Url="html/26b1753d-4f47-ecdb-98fb-1c150eb3ca88.htm" />
+  <HelpKINode Title="ArduinoSession.ReadLineAsync method" Url="html/db417185-54cd-7eef-2cf0-cb2d7474cff2.htm" />
+  <HelpKINode Title="ArduinoSession.ReadTo method" Url="html/e8c9a889-19bc-c8cd-34c1-6912de66612c.htm" />
+  <HelpKINode Title="ArduinoSession.ReadToAsync method" Url="html/d1f00718-36e3-c0a5-bf63-061a713f4bd2.htm" />
+  <HelpKINode Title="ArduinoSession.RequestBoardAnalogMapping method" Url="html/da17a595-dd19-6c94-c319-ba92780ff1b1.htm" />
+  <HelpKINode Title="ArduinoSession.RequestBoardCapability method" Url="html/c016e57d-a1aa-1502-b266-eac555320bd8.htm" />
+  <HelpKINode Title="ArduinoSession.RequestFirmware method" Url="html/4fc6a36d-12cb-113e-4379-c04f55226882.htm" />
+  <HelpKINode Title="ArduinoSession.RequestPinState method" Url="html/6a12da48-72f2-3808-70bd-2c02bfde97d7.htm" />
+  <HelpKINode Title="ArduinoSession.RequestProtocolVersion method" Url="html/72f7cd86-5a81-b6fb-50cb-a849074a1f87.htm" />
+  <HelpKINode Title="ArduinoSession.ResetBoard method" Url="html/5a3e57ca-2a41-36d6-d0a8-f413e253efc6.htm" />
+  <HelpKINode Title="ArduinoSession.SendStringData method" Url="html/ae1ba7d3-433e-fd72-3f50-1a8ec37aa5f4.htm" />
+  <HelpKINode Title="ArduinoSession.SetAnalogReportMode method" Url="html/2396779a-20f5-49b8-2a1b-ad7d188cde76.htm" />
+  <HelpKINode Title="ArduinoSession.SetDigitalPin method" Url="html/e5ea2b24-4ddf-bc82-32fe-c787c3e974b8.htm" />
+  <HelpKINode Title="ArduinoSession.SetDigitalPinMode method" Url="html/f5861e12-17f7-6986-f198-a79101b9a107.htm" />
+  <HelpKINode Title="ArduinoSession.SetDigitalPort method" Url="html/cf75ec9d-e7a8-37cb-f0f2-4bf4f0279cd5.htm" />
+  <HelpKINode Title="ArduinoSession.SetDigitalReportMode method" Url="html/6cb87d56-cba5-8b38-17aa-047743f53227.htm" />
+  <HelpKINode Title="ArduinoSession.SetI2CReadInterval method" Url="html/c482d8a0-7998-bb79-5e92-1376e076a5de.htm" />
+  <HelpKINode Title="ArduinoSession.SetSamplingInterval method" Url="html/209690c4-2404-13af-d697-d0889345d94e.htm" />
+  <HelpKINode Title="ArduinoSession.StopI2CReading method" Url="html/b68dd438-ddc6-b2f7-4a92-8396c448faf5.htm" />
+  <HelpKINode Title="ArduinoSession.StringReceived event" Url="html/d5b7f09a-bd5a-8bfd-17c4-218040fe6a3e.htm" />
+  <HelpKINode Title="ArduinoSession.TimeOut property" Url="html/0ce955e9-de04-3300-073d-2932518e0070.htm" />
+  <HelpKINode Title="ArduinoSession.Write method" Url="html/e159fcbc-2053-31ec-dcaa-c3583d88b072.htm" />
+  <HelpKINode Title="ArduinoSession.WriteI2C method" Url="html/b74ea0f2-07f1-a01d-83c7-d8830d90e57d.htm" />
+  <HelpKINode Title="ArduinoSession.WriteLine method" Url="html/66f3d7c2-96b2-9c5e-65be-7d2071ec8f9b.htm" />
+  <HelpKINode Title="BaudRate property" Url="html/0cd4e1e3-e5af-40f1-dc97-f2f08fb64119.htm" />
+  <HelpKINode Title="BoardAnalogMapping structure">
+    <HelpKINode Title="BoardAnalogMapping Structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm" />
+    <HelpKINode Title="about BoardAnalogMapping structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm" />
+    <HelpKINode Title="properties" Url="html/17a49847-9f5e-41b4-a84a-1bb15979af70.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BoardAnalogMapping.PinMappings property" Url="html/1cd0d237-552e-0958-a3ef-7dec5153ffa3.htm" />
+  <HelpKINode Title="BoardCapability structure">
+    <HelpKINode Title="BoardCapability Structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm" />
+    <HelpKINode Title="about BoardCapability structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm" />
+    <HelpKINode Title="properties" Url="html/bcbabe45-8718-bce0-5974-bae720038d00.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BoardCapability.PinCapabilities property" Url="html/d7584345-cfb1-bae2-17d7-a3c94b6323c5.htm" />
+  <HelpKINode Title="Bps_115200 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_1200 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_14400 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_19200 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_2400 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_28800 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_300 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_31250 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_38400 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_4800 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_57600 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_600 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Bps_9600 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="ByteArrayExtensions class">
+    <HelpKINode Title="ByteArrayExtensions Class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm" />
+    <HelpKINode Title="about ByteArrayExtensions class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm" />
+    <HelpKINode Title="methods" Url="html/1685f037-3a5d-6004-7e2c-c72f2c403fed.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ByteArrayExtensions.ConvertBinaryCodedDecimalToString method" Url="html/05b5327f-d814-405f-e2bd-e56a351a861e.htm" />
+  <HelpKINode Title="BytesToRead property" Url="html/2bd00801-6ea4-9aeb-869f-6be672f4b934.htm" />
+  <HelpKINode Title="CapabilityResponse enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="Channel property">
+    <HelpKINode Title="AnalogPinMapping.Channel Property " Url="html/42b47bc8-9e23-e9db-a8db-1972173530f1.htm" />
+    <HelpKINode Title="AnalogState.Channel Property " Url="html/ecad3166-5f2c-2fd8-b94c-de688c02211e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Clear method" Url="html/3840dfdb-97e9-882b-796e-9ad6e28ea2a1.htm" />
+  <HelpKINode Title="Close method">
+    <HelpKINode Title="EnhancedSerialConnection.Close Method " Url="html/fbb61933-2aad-26b0-f4ef-a12c45469c8f.htm" />
+    <HelpKINode Title="ISerialConnection.Close Method " Url="html/62d13dd3-f1d7-9949-5659-a07a902efa91.htm" />
+    <HelpKINode Title="SerialConnection.Close Method " Url="html/5560f824-7c26-030f-a351-7a43f48d3616.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConfigureServo method">
+    <HelpKINode Title="ArduinoSession.ConfigureServo Method " Url="html/ce05c987-6053-fb21-59f1-0c83c611e513.htm" />
+    <HelpKINode Title="IServoProtocol.ConfigureServo Method " Url="html/fdfbef58-1137-cab4-864a-66bcdc536cab.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConvertBinaryCodedDecimalToString method" Url="html/05b5327f-d814-405f-e2bd-e56a351a861e.htm" />
+  <HelpKINode Title="CreateAnalogStateMonitor method">
+    <HelpKINode Title="ArduinoSession.CreateAnalogStateMonitor Method " Url="html/2cf2e931-e0e8-d47d-aaa6-73cc82ef2e55.htm" />
+    <HelpKINode Title="IFirmataProtocol.CreateAnalogStateMonitor Method " Url="html/9d307145-50e5-2464-e284-b13666d1b1eb.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateDigitalStateMonitor method">
+    <HelpKINode Title="ArduinoSession.CreateDigitalStateMonitor Method " Url="html/cad99045-36ff-2d40-f881-6d9616efe8f0.htm" />
+    <HelpKINode Title="IFirmataProtocol.CreateDigitalStateMonitor Method " Url="html/29676853-5f19-d961-917d-d2a3b1005bc2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateI2CReplyMonitor method">
+    <HelpKINode Title="ArduinoSession.CreateI2CReplyMonitor Method " Url="html/1fa615e5-a5c8-2d2c-fa47-0e38434c27c8.htm" />
+    <HelpKINode Title="II2CProtocol.CreateI2CReplyMonitor Method " Url="html/7cb762fd-74b7-2119-6570-82592544a596.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateReceivedStringMonitor method">
+    <HelpKINode Title="ArduinoSession.CreateReceivedStringMonitor Method " Url="html/43733aea-c265-b3e4-c53b-17a82b3360b0.htm" />
+    <HelpKINode Title="IStringProtocol.CreateReceivedStringMonitor Method " Url="html/700edc62-50ef-619d-5d88-1907d15ce4ab.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Data property" Url="html/4be8895c-9e74-2785-cce2-fc78782aa936.htm" />
+  <HelpKINode Title="DataReceived event" Url="html/f677cae4-0b7e-0f2f-a248-5fa2f0281327.htm" />
+  <HelpKINode Title="DigitalInput enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="DigitalInput property" Url="html/cab481d4-3500-53ac-365e-cbf3f4131689.htm" />
+  <HelpKINode Title="DigitalOutput enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="DigitalOutput property" Url="html/e100ef8b-93b9-5cb8-5f77-ba3c6992a598.htm" />
+  <HelpKINode Title="DigitalPortState enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="DigitalPortState structure">
+    <HelpKINode Title="DigitalPortState Structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm" />
+    <HelpKINode Title="about DigitalPortState structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm" />
+    <HelpKINode Title="methods" Url="html/0f03b0e7-a914-e46b-c2d6-e0bed40eac37.htm" />
+    <HelpKINode Title="properties" Url="html/70740235-9698-52af-7cd1-614f7550f80b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DigitalPortState.IsSet method" Url="html/d7e6400a-af87-1003-be8a-a9effb1b622a.htm" />
+  <HelpKINode Title="DigitalPortState.Pins property" Url="html/4622e83d-5f7a-6c28-8838-b7bda56a96fd.htm" />
+  <HelpKINode Title="DigitalPortState.Port property" Url="html/f0ad8da5-0e56-8c1e-74a0-29953ad98f99.htm" />
+  <HelpKINode Title="DigitalStateReceived event">
+    <HelpKINode Title="ArduinoSession.DigitalStateReceived Event" Url="html/e6bd7820-438b-49a9-5605-ed00a5e9caea.htm" />
+    <HelpKINode Title="IFirmataProtocol.DigitalStateReceived Event" Url="html/76f722a5-1f41-3369-469a-50225dc7f079.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DigitalStateReceivedHandler delegate" Url="html/a04d813f-23c5-6fc3-bc98-55d2c67527cf.htm" />
+  <HelpKINode Title="Dispose method">
+    <HelpKINode Title="ArduinoSession.Dispose Method " Url="html/6d15bb99-b68e-873c-6c87-e374f6ded979.htm" />
+    <HelpKINode Title="SerialConnection.Dispose Method " Url="html/24763d00-2f5b-09be-8ace-29f24895ed1b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Encoder enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="Encoder property" Url="html/00b485cd-b70e-e463-f9aa-ba11cee21ff7.htm" />
+  <HelpKINode Title="EnhancedSerialConnection class">
+    <HelpKINode Title="EnhancedSerialConnection Class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm" />
+    <HelpKINode Title="about EnhancedSerialConnection class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm" />
+    <HelpKINode Title="constructor" Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm" />
+    <HelpKINode Title="methods" Url="html/60dd3c0d-a640-05d4-db8d-c2637f7f2b39.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EnhancedSerialConnection.Close method" Url="html/fbb61933-2aad-26b0-f4ef-a12c45469c8f.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.EnhancedSerialConnection constructor" Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.FindSerialConnection method" Url="html/decd0be6-d026-cd06-d680-2d4d66e18b70.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.ReadByte explicitly implemented method" Url="html/e3624fc2-b4fb-895d-3b74-40390ea3994d.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.WriteLine explicitly implemented method" Url="html/cfafcb67-8636-fcae-c56c-aad4f2241248.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.Write method" Url="html/90348614-3a75-cec2-bea4-b5847353f958.htm" />
+  <HelpKINode Title="EnhancedSerialPort class">
+    <HelpKINode Title="EnhancedSerialPort Class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm" />
+    <HelpKINode Title="about EnhancedSerialPort class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm" />
+    <HelpKINode Title="constructor" Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm" />
+    <HelpKINode Title="methods" Url="html/2f361478-0a2b-cf8c-c0b5-c347820086fe.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EnhancedSerialPort.EnhancedSerialPort constructor" Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm" />
+  <HelpKINode Title="EnhancedSerialPort.Open method" Url="html/70512b72-78fb-5a4a-8fbd-8c01ff72fb9e.htm" />
+  <HelpKINode Title="FindSerialConnection method">
+    <HelpKINode Title="EnhancedSerialConnection.FindSerialConnection Method " Url="html/decd0be6-d026-cd06-d680-2d4d66e18b70.htm" />
+    <HelpKINode Title="SerialConnection.FindSerialConnection Method " Url="html/5b77c75f-cfbe-e83f-3dbf-a6365edf0f1e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FirmataEventArgs(Of T) class">
+    <HelpKINode Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+    <HelpKINode Title="about FirmataEventArgs(Of T) class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+    <HelpKINode Title="properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FirmataEventArgs(Of T).Value property" Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
+  <HelpKINode Title="FirmataEventArgs&lt;T&gt; class">
+    <HelpKINode Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+    <HelpKINode Title="about FirmataEventArgs&lt;T&gt; class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+    <HelpKINode Title="properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FirmataEventArgs&lt;T&gt;.Value property" Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
+  <HelpKINode Title="FirmataMessage class">
+    <HelpKINode Title="FirmataMessage Class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm" />
+    <HelpKINode Title="about FirmataMessage class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm" />
+    <HelpKINode Title="properties" Url="html/830f17c7-c111-019a-9c23-522994fd13a3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FirmataMessage.Time property" Url="html/9196cfe1-64f6-4623-a1c0-a941ecd8c7c7.htm" />
+  <HelpKINode Title="FirmataMessage.Type property" Url="html/1251dc84-c748-62a3-d876-c92c0cab97c6.htm" />
+  <HelpKINode Title="FirmataMessage.Value property" Url="html/6bdc660a-cd9d-455a-7908-b6d762c1d8af.htm" />
+  <HelpKINode Title="FirmataMessageEventArgs class">
+    <HelpKINode Title="FirmataMessageEventArgs Class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm" />
+    <HelpKINode Title="about FirmataMessageEventArgs class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm" />
+    <HelpKINode Title="properties" Url="html/7fbb1bc0-5346-9adb-23ca-afde8a1cda88.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FirmataMessageEventArgs.Value property" Url="html/3e9fb5e9-92dc-8797-9059-3f3a27da6673.htm" />
+  <HelpKINode Title="Firmware structure">
+    <HelpKINode Title="Firmware Structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm" />
+    <HelpKINode Title="about Firmware structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm" />
+    <HelpKINode Title="properties" Url="html/bf222e0f-2117-7a4d-78cb-0a8e02803aa8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Firmware.MajorVersion property" Url="html/dc621830-82ae-2687-3604-92d7fefcbc76.htm" />
+  <HelpKINode Title="Firmware.MinorVersion property" Url="html/e0096895-6dd0-6b06-703d-ccd773068601.htm" />
+  <HelpKINode Title="Firmware.Name property" Url="html/50af8943-91c9-96fc-307d-423c066c5933.htm" />
+  <HelpKINode Title="FirmwareResponse enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="GetBoardAnalogMapping method">
+    <HelpKINode Title="ArduinoSession.GetBoardAnalogMapping Method " Url="html/0db70497-3543-ccc9-2141-40d1fd170c64.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetBoardAnalogMapping Method " Url="html/01aaeb2a-fd21-bbd7-2dc2-9e6597c264d4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetBoardAnalogMappingAsync method">
+    <HelpKINode Title="ArduinoSession.GetBoardAnalogMappingAsync Method " Url="html/eb1339b7-b6a8-a213-53c8-70fdd94961fc.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetBoardAnalogMappingAsync Method " Url="html/c6965049-109b-ccc8-ab08-add00fa5fe2d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetBoardCapability method">
+    <HelpKINode Title="ArduinoSession.GetBoardCapability Method " Url="html/012dd994-5a18-29df-21ef-6f6e228030c9.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetBoardCapability Method " Url="html/be39b34a-20e0-0491-49a7-5a456eef0133.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetBoardCapabilityAsync method">
+    <HelpKINode Title="ArduinoSession.GetBoardCapabilityAsync Method " Url="html/580f8ee8-6e40-6d26-8290-6b7b75def84f.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetBoardCapabilityAsync Method " Url="html/66d7d0c0-44ca-0d27-5596-1957f0c526a4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetFirmware method">
+    <HelpKINode Title="ArduinoSession.GetFirmware Method " Url="html/04428aca-6102-c5fd-3222-18c2e545b0e8.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetFirmware Method " Url="html/60de7d10-c386-9961-e219-777be8815603.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetFirmwareAsync method">
+    <HelpKINode Title="ArduinoSession.GetFirmwareAsync Method " Url="html/9eccbac6-fe16-acb8-6b8c-643606251dda.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetFirmwareAsync Method " Url="html/3bcf8a5b-b062-5af3-2db8-15cf583f2f31.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetI2CReply method">
+    <HelpKINode Title="ArduinoSession.GetI2CReply Method " Url="html/c88283e6-8a6d-e7e4-3a38-9c343e31d7cf.htm" />
+    <HelpKINode Title="II2CProtocol.GetI2CReply Method " Url="html/bd23b31c-aa0c-ec47-793e-36bb05f1ac59.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetI2CReplyAsync method">
+    <HelpKINode Title="ArduinoSession.GetI2CReplyAsync Method " Url="html/c7cb67b3-109d-5722-69ed-5ac3b5fdbc0e.htm" />
+    <HelpKINode Title="II2CProtocol.GetI2CReplyAsync Method " Url="html/3a711afe-a630-a052-9ad9-87bd4345613b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetPinState method">
+    <HelpKINode Title="ArduinoSession.GetPinState Method " Url="html/ca00d61b-80d6-3c26-6474-e9592a8cd67b.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetPinState Method " Url="html/8cbb0e35-0dba-781e-d204-2a9d4ea3c191.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetPinStateAsync method">
+    <HelpKINode Title="ArduinoSession.GetPinStateAsync Method " Url="html/a8b5fb3d-a1eb-e372-c1a5-228efd902dd6.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetPinStateAsync Method " Url="html/c7bdc16d-4098-6768-85e3-0b449ad30c1f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetProtocolVersion method">
+    <HelpKINode Title="ArduinoSession.GetProtocolVersion Method " Url="html/5da15ad8-5869-11b4-3347-2390a0333c45.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetProtocolVersion Method " Url="html/03dc5f50-ca95-43b1-418c-d8465fb55383.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetProtocolVersionAsync method">
+    <HelpKINode Title="ArduinoSession.GetProtocolVersionAsync Method " Url="html/8dbe1dc8-266a-4668-ee8a-1fd53d220651.htm" />
+    <HelpKINode Title="IFirmataProtocol.GetProtocolVersionAsync Method " Url="html/56d39bd9-c75f-545e-3b10-d8bc999931d1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="I2C enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="I2C property" Url="html/cf70a8e1-e4eb-2183-4c35-df109d3d7818.htm" />
+  <HelpKINode Title="I2CEventArgs class">
+    <HelpKINode Title="I2CEventArgs Class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm" />
+    <HelpKINode Title="about I2CEventArgs class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm" />
+    <HelpKINode Title="properties" Url="html/82a6b8d0-f606-38df-3050-7192e8c47e61.htm" />
+  </HelpKINode>
+  <HelpKINode Title="I2CEventArgs.Value property" Url="html/c7f31e4f-9f61-353e-7a50-70a068be8196.htm" />
+  <HelpKINode Title="I2CReply enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="I2CReply structure">
+    <HelpKINode Title="I2CReply Structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm" />
+    <HelpKINode Title="about I2CReply structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm" />
+    <HelpKINode Title="properties" Url="html/40d05494-2f3b-10bd-1fdb-485097690ee9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="I2CReply.Address property" Url="html/7a82d399-3fe1-048e-ecb1-00b55cbfaba0.htm" />
+  <HelpKINode Title="I2CReply.Data property" Url="html/4be8895c-9e74-2785-cce2-fc78782aa936.htm" />
+  <HelpKINode Title="I2CReply.Register property" Url="html/2387accb-7f3f-aff7-0482-b5a6bc2fdaee.htm" />
+  <HelpKINode Title="I2CReplyReceived event">
+    <HelpKINode Title="ArduinoSession.I2CReplyReceived Event" Url="html/a761b35c-6058-6fce-044e-7204c140e2f9.htm" />
+    <HelpKINode Title="II2CProtocol.I2CReplyReceived Event" Url="html/d574222f-0884-4d82-406d-598e7e49b9ca.htm" />
+  </HelpKINode>
+  <HelpKINode Title="I2CReplyReceivedHandler delegate" Url="html/3695c805-d9b7-b3e6-32be-183a64f8873a.htm" />
+  <HelpKINode Title="IFirmataProtocol interface">
+    <HelpKINode Title="IFirmataProtocol Interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm" />
+    <HelpKINode Title="about IFirmataProtocol interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm" />
+    <HelpKINode Title="events" Url="html/05b14b65-ca9d-7ff2-68b7-f70d7cfcc100.htm" />
+    <HelpKINode Title="methods" Url="html/d205b57d-0a11-6b7d-ceab-edfecfd42975.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IFirmataProtocol.AnalogStateReceived event" Url="html/fccc0a99-97e3-0285-7073-e3b2d3aa43cf.htm" />
+  <HelpKINode Title="IFirmataProtocol.CreateAnalogStateMonitor method" Url="html/9d307145-50e5-2464-e284-b13666d1b1eb.htm" />
+  <HelpKINode Title="IFirmataProtocol.CreateDigitalStateMonitor method" Url="html/29676853-5f19-d961-917d-d2a3b1005bc2.htm" />
+  <HelpKINode Title="IFirmataProtocol.DigitalStateReceived event" Url="html/76f722a5-1f41-3369-469a-50225dc7f079.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetBoardAnalogMapping method" Url="html/01aaeb2a-fd21-bbd7-2dc2-9e6597c264d4.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetBoardAnalogMappingAsync method" Url="html/c6965049-109b-ccc8-ab08-add00fa5fe2d.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetBoardCapability method" Url="html/be39b34a-20e0-0491-49a7-5a456eef0133.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetBoardCapabilityAsync method" Url="html/66d7d0c0-44ca-0d27-5596-1957f0c526a4.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetFirmware method" Url="html/60de7d10-c386-9961-e219-777be8815603.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetFirmwareAsync method" Url="html/3bcf8a5b-b062-5af3-2db8-15cf583f2f31.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetPinState method" Url="html/8cbb0e35-0dba-781e-d204-2a9d4ea3c191.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetPinStateAsync method" Url="html/c7bdc16d-4098-6768-85e3-0b449ad30c1f.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetProtocolVersion method" Url="html/03dc5f50-ca95-43b1-418c-d8465fb55383.htm" />
+  <HelpKINode Title="IFirmataProtocol.GetProtocolVersionAsync method" Url="html/56d39bd9-c75f-545e-3b10-d8bc999931d1.htm" />
+  <HelpKINode Title="IFirmataProtocol.MessageReceived event" Url="html/d47ffb57-0449-9050-402b-fd4b77b8ce85.htm" />
+  <HelpKINode Title="IFirmataProtocol.RequestBoardAnalogMapping method" Url="html/0cc5ebbb-9d0b-0d4e-0b8a-59b7c490f7bd.htm" />
+  <HelpKINode Title="IFirmataProtocol.RequestBoardCapability method" Url="html/dafbf808-d45b-fe61-dfe2-6d1930d50f81.htm" />
+  <HelpKINode Title="IFirmataProtocol.RequestFirmware method" Url="html/1c2dd961-3134-4b2a-ab4d-c8025ab4cfe1.htm" />
+  <HelpKINode Title="IFirmataProtocol.RequestPinState method" Url="html/23a2c9b4-3a0c-9075-c87f-a4fc4d89c978.htm" />
+  <HelpKINode Title="IFirmataProtocol.RequestProtocolVersion method" Url="html/cc033925-07e6-b137-a60c-6ffb2f4afb99.htm" />
+  <HelpKINode Title="IFirmataProtocol.ResetBoard method" Url="html/7c606b90-720d-be95-c43d-4a18e8cb2ccc.htm" />
+  <HelpKINode Title="IFirmataProtocol.SendStringData method" Url="html/0e0528df-22b4-60f2-8cc6-9c7e3d140d01.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetAnalogReportMode method" Url="html/a5aa12b2-f49e-5944-919e-f689fca5e38c.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetDigitalPin method" Url="html/e82cd517-dc93-1d39-8d56-50744a6a3193.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetDigitalPinMode method" Url="html/d6753490-3f4c-d5df-cc50-3cd0a2fbb98e.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetDigitalPort method" Url="html/df0364a4-478b-4057-055f-90c0cdf91e0c.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetDigitalReportMode method" Url="html/deaf5148-850e-a69d-5c63-5a1a7264006c.htm" />
+  <HelpKINode Title="IFirmataProtocol.SetSamplingInterval method" Url="html/d1faec22-b4a8-57d4-8509-fc1e35b530b0.htm" />
+  <HelpKINode Title="II2CProtocol interface">
+    <HelpKINode Title="II2CProtocol Interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm" />
+    <HelpKINode Title="about II2CProtocol interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm" />
+    <HelpKINode Title="events" Url="html/3d0a9909-c581-51c4-1343-950e2653b152.htm" />
+    <HelpKINode Title="methods" Url="html/bcee4a6a-47c8-e1cb-621c-2f876839efd6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="II2CProtocol.CreateI2CReplyMonitor method" Url="html/7cb762fd-74b7-2119-6570-82592544a596.htm" />
+  <HelpKINode Title="II2CProtocol.GetI2CReply method" Url="html/bd23b31c-aa0c-ec47-793e-36bb05f1ac59.htm" />
+  <HelpKINode Title="II2CProtocol.GetI2CReplyAsync method" Url="html/3a711afe-a630-a052-9ad9-87bd4345613b.htm" />
+  <HelpKINode Title="II2CProtocol.I2CReplyReceived event" Url="html/d574222f-0884-4d82-406d-598e7e49b9ca.htm" />
+  <HelpKINode Title="II2CProtocol.ReadI2CContinuous method" Url="html/e65a4995-c3ff-c6e1-ee8b-b5d5c2b3f7b2.htm" />
+  <HelpKINode Title="II2CProtocol.ReadI2COnce method" Url="html/ba11da02-35ff-5b18-068e-812d1f92f7df.htm" />
+  <HelpKINode Title="II2CProtocol.SetI2CReadInterval method" Url="html/5d246b79-ab99-fb9d-d02f-6af063d1fa6c.htm" />
+  <HelpKINode Title="II2CProtocol.StopI2CReading method" Url="html/1f020e05-4452-f270-4785-162fd272270d.htm" />
+  <HelpKINode Title="II2CProtocol.WriteI2C method" Url="html/6192a41b-b08d-c9b4-3907-2b945d8fcf80.htm" />
+  <HelpKINode Title="InputPullup enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="InputPullup property" Url="html/6d552a41-b41f-9fab-d4ce-41d17f28dfc1.htm" />
+  <HelpKINode Title="ISerialConnection interface">
+    <HelpKINode Title="ISerialConnection Interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm" />
+    <HelpKINode Title="about ISerialConnection interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm" />
+    <HelpKINode Title="events" Url="html/55c86eb1-5578-8ae0-dd84-5582fa070efe.htm" />
+    <HelpKINode Title="methods" Url="html/10dde3c8-66dc-d300-0d82-de410352094d.htm" />
+    <HelpKINode Title="properties" Url="html/990ca6d1-4785-c37c-0a9d-5db6af732336.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ISerialConnection.BaudRate property" Url="html/0cd4e1e3-e5af-40f1-dc97-f2f08fb64119.htm" />
+  <HelpKINode Title="ISerialConnection.BytesToRead property" Url="html/2bd00801-6ea4-9aeb-869f-6be672f4b934.htm" />
+  <HelpKINode Title="ISerialConnection.Close method" Url="html/62d13dd3-f1d7-9949-5659-a07a902efa91.htm" />
+  <HelpKINode Title="ISerialConnection.DataReceived event" Url="html/f677cae4-0b7e-0f2f-a248-5fa2f0281327.htm" />
+  <HelpKINode Title="ISerialConnection.IsOpen property" Url="html/72c4ea1b-c375-10ed-d9f6-9f5bba287781.htm" />
+  <HelpKINode Title="ISerialConnection.NewLine property" Url="html/5a9a83eb-057c-1b58-f5ca-4c8149729116.htm" />
+  <HelpKINode Title="ISerialConnection.Open method" Url="html/e1637911-8e22-f5a6-46a8-f22a852f09b0.htm" />
+  <HelpKINode Title="ISerialConnection.PortName property" Url="html/6fa948b9-48cd-ec3b-47c3-b25d3b1a85dc.htm" />
+  <HelpKINode Title="ISerialConnection.ReadByte explicitly implemented method">
+    <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.ReadByte Method " Url="html/e3624fc2-b4fb-895d-3b74-40390ea3994d.htm" />
+    <HelpKINode Title="SerialConnection.ISerialConnection.ReadByte Method " Url="html/b35dd5f1-998f-89d6-dad2-e05be835d949.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ISerialConnection.ReadByte method" Url="html/9e51c12b-d4aa-b3dc-5578-3081a2bb752f.htm" />
+  <HelpKINode Title="ISerialConnection.Write method" Url="html/ed3c9749-6890-8dc7-f108-7da5fb5ebcaa.htm" />
+  <HelpKINode Title="ISerialConnection.WriteLine explicitly implemented method">
+    <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.WriteLine Method " Url="html/cfafcb67-8636-fcae-c56c-aad4f2241248.htm" />
+    <HelpKINode Title="SerialConnection.ISerialConnection.WriteLine Method " Url="html/ec6875fc-d3d0-99bd-0300-cbe303b3ab73.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ISerialConnection.WriteLine method" Url="html/183523fa-f6c5-0635-d6ba-336781e21c95.htm" />
+  <HelpKINode Title="IServoProtocol interface">
+    <HelpKINode Title="IServoProtocol Interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm" />
+    <HelpKINode Title="about IServoProtocol interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm" />
+    <HelpKINode Title="methods" Url="html/449f192e-e39e-4f35-d4bd-fd8fd14ef6ad.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IServoProtocol.ConfigureServo method" Url="html/fdfbef58-1137-cab4-864a-66bcdc536cab.htm" />
+  <HelpKINode Title="IsOpen property" Url="html/72c4ea1b-c375-10ed-d9f6-9f5bba287781.htm" />
+  <HelpKINode Title="IsSet method" Url="html/d7e6400a-af87-1003-be8a-a9effb1b622a.htm" />
+  <HelpKINode Title="IStringProtocol interface">
+    <HelpKINode Title="IStringProtocol Interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm" />
+    <HelpKINode Title="about IStringProtocol interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm" />
+    <HelpKINode Title="events" Url="html/dffc6c6c-da1a-0e05-486a-66c89481c970.htm" />
+    <HelpKINode Title="methods" Url="html/407075b2-2a77-655b-0bb4-fb45ded42876.htm" />
+    <HelpKINode Title="properties" Url="html/4b854918-3dfc-0e52-8333-edc9d7d419fb.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IStringProtocol.CreateReceivedStringMonitor method" Url="html/700edc62-50ef-619d-5d88-1907d15ce4ab.htm" />
+  <HelpKINode Title="IStringProtocol.NewLine property" Url="html/ecf46ad6-5296-888e-e4ab-149e15fc50e3.htm" />
+  <HelpKINode Title="IStringProtocol.Read method" Url="html/a7c3cac8-d32c-cfa4-b82d-a575dbbff983.htm" />
+  <HelpKINode Title="IStringProtocol.ReadAsync method" Url="html/c3c646da-8314-4fd5-f46e-5f8fd1d5730b.htm" />
+  <HelpKINode Title="IStringProtocol.ReadLine method" Url="html/bb8ee71c-0808-feda-2e0a-4b05fc986980.htm" />
+  <HelpKINode Title="IStringProtocol.ReadLineAsync method" Url="html/52906872-565e-78c6-6f2c-cfd646f7e3d4.htm" />
+  <HelpKINode Title="IStringProtocol.ReadTo method" Url="html/65ff277a-8063-787e-af75-87fa326a97b7.htm" />
+  <HelpKINode Title="IStringProtocol.ReadToAsync method" Url="html/c1885039-892e-e2b5-0fa0-96da02a925c3.htm" />
+  <HelpKINode Title="IStringProtocol.StringReceived event" Url="html/92bd2ded-5ae5-cfc1-8eb7-f68e747845ca.htm" />
+  <HelpKINode Title="IStringProtocol.Write method" Url="html/63516731-32a5-c7a6-6170-f8a002200d8c.htm" />
+  <HelpKINode Title="IStringProtocol.WriteLine method" Url="html/d298d81b-b8d3-69e1-1d56-b27dd784823e.htm" />
+  <HelpKINode Title="Level property" Url="html/6c5bac35-ce3a-6988-f1ab-557b5c8c89ef.htm" />
+  <HelpKINode Title="Major property" Url="html/66ebce33-e458-872b-5952-866144b9ada0.htm" />
+  <HelpKINode Title="MajorVersion property" Url="html/dc621830-82ae-2687-3604-92d7fefcbc76.htm" />
+  <HelpKINode Title="MaxStepNumber property" Url="html/6ff6011b-6cc8-7f93-8265-dbc3a1df4666.htm" />
+  <HelpKINode Title="MessageReceived event">
+    <HelpKINode Title="ArduinoSession.MessageReceived Event" Url="html/3d50005b-be1d-3245-76c1-a4e60bcd5c18.htm" />
+    <HelpKINode Title="IFirmataProtocol.MessageReceived Event" Url="html/d47ffb57-0449-9050-402b-fd4b77b8ce85.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MessageReceivedHandler delegate" Url="html/3cfbfb3e-5b55-59d8-2a64-d298cca31bde.htm" />
+  <HelpKINode Title="MessageType enumeration" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="Minor property" Url="html/edd086d3-b73e-a9c8-583a-728b34baf2b4.htm" />
+  <HelpKINode Title="MinorVersion property" Url="html/e0096895-6dd0-6b06-703d-ccd773068601.htm" />
+  <HelpKINode Title="Mode property" Url="html/1a181c03-5d41-d3a2-e280-049cad8d349a.htm" />
+  <HelpKINode Title="Name property" Url="html/50af8943-91c9-96fc-307d-423c066c5933.htm" />
+  <HelpKINode Title="NewLine property">
+    <HelpKINode Title="ArduinoSession.NewLine Property " Url="html/c4d800a5-a5de-dc32-6725-c24ca5b6b07f.htm" />
+    <HelpKINode Title="ISerialConnection.NewLine Property " Url="html/5a9a83eb-057c-1b58-f5ca-4c8149729116.htm" />
+    <HelpKINode Title="IStringProtocol.NewLine Property " Url="html/ecf46ad6-5296-888e-e4ab-149e15fc50e3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OneWire enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="OneWire property" Url="html/08af42a6-bb1e-b13e-b90d-ac47e8583dd9.htm" />
+  <HelpKINode Title="Open method">
+    <HelpKINode Title="EnhancedSerialPort.Open Method " Url="html/70512b72-78fb-5a4a-8fbd-8c01ff72fb9e.htm" />
+    <HelpKINode Title="ISerialConnection.Open Method " Url="html/e1637911-8e22-f5a6-46a8-f22a852f09b0.htm" />
+    <HelpKINode Title="SerialConnection.Open Method " Url="html/12415ea1-5b04-0b26-d464-d851efbbce73.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PinCapabilities property" Url="html/d7584345-cfb1-bae2-17d7-a3c94b6323c5.htm" />
+  <HelpKINode Title="PinCapability structure">
+    <HelpKINode Title="PinCapability Structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm" />
+    <HelpKINode Title="about PinCapability structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm" />
+    <HelpKINode Title="properties" Url="html/ad6eda66-4832-2efc-b3c0-55e7c8ef7ba4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PinCapability.Analog property" Url="html/a53a9e81-536d-aec6-959d-32e03a3a7888.htm" />
+  <HelpKINode Title="PinCapability.AnalogResolution property" Url="html/f2343bf9-88ac-78c3-a6fe-965b78aeaafe.htm" />
+  <HelpKINode Title="PinCapability.DigitalInput property" Url="html/cab481d4-3500-53ac-365e-cbf3f4131689.htm" />
+  <HelpKINode Title="PinCapability.DigitalOutput property" Url="html/e100ef8b-93b9-5cb8-5f77-ba3c6992a598.htm" />
+  <HelpKINode Title="PinCapability.Encoder property" Url="html/00b485cd-b70e-e463-f9aa-ba11cee21ff7.htm" />
+  <HelpKINode Title="PinCapability.I2C property" Url="html/cf70a8e1-e4eb-2183-4c35-df109d3d7818.htm" />
+  <HelpKINode Title="PinCapability.InputPullup property" Url="html/6d552a41-b41f-9fab-d4ce-41d17f28dfc1.htm" />
+  <HelpKINode Title="PinCapability.MaxStepNumber property" Url="html/6ff6011b-6cc8-7f93-8265-dbc3a1df4666.htm" />
+  <HelpKINode Title="PinCapability.OneWire property" Url="html/08af42a6-bb1e-b13e-b90d-ac47e8583dd9.htm" />
+  <HelpKINode Title="PinCapability.PinNumber property" Url="html/0cace141-f273-7ad7-d632-31e0ff0815fb.htm" />
+  <HelpKINode Title="PinCapability.Pwm property" Url="html/d1d06fd1-3384-00fc-2611-25539b67b954.htm" />
+  <HelpKINode Title="PinCapability.PwmResolution property" Url="html/b8f2dc6f-68a0-31f3-6a5b-55042ad516ed.htm" />
+  <HelpKINode Title="PinCapability.Serial property" Url="html/98ce7e9b-a9d6-7c3f-04f1-2da2a06944e6.htm" />
+  <HelpKINode Title="PinCapability.Servo property" Url="html/17eed47b-8bf5-ea44-13cd-722e37bb68c9.htm" />
+  <HelpKINode Title="PinCapability.ServoResolution property" Url="html/119049c4-1ba0-964e-94c7-cfc08e55a37a.htm" />
+  <HelpKINode Title="PinCapability.StepperControl property" Url="html/b64f5e5c-6d8a-0177-8932-f59e1971c505.htm" />
+  <HelpKINode Title="PinMappings property" Url="html/1cd0d237-552e-0958-a3ef-7dec5153ffa3.htm" />
+  <HelpKINode Title="PinMode enumeration" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="PinNumber property">
+    <HelpKINode Title="AnalogPinMapping.PinNumber Property " Url="html/3a4802af-ada6-81eb-0d1a-ca7c114653cf.htm" />
+    <HelpKINode Title="PinCapability.PinNumber Property " Url="html/0cace141-f273-7ad7-d632-31e0ff0815fb.htm" />
+    <HelpKINode Title="PinState.PinNumber Property " Url="html/7b2ad63d-78ca-4a9b-7bf8-2a3619d8ae78.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Pins property" Url="html/4622e83d-5f7a-6c28-8838-b7bda56a96fd.htm" />
+  <HelpKINode Title="PinState structure">
+    <HelpKINode Title="PinState Structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm" />
+    <HelpKINode Title="about PinState structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm" />
+    <HelpKINode Title="properties" Url="html/a6c005fe-f1fb-c257-4693-5dd2ccf4a508.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PinState.Mode property" Url="html/1a181c03-5d41-d3a2-e280-049cad8d349a.htm" />
+  <HelpKINode Title="PinState.PinNumber property" Url="html/7b2ad63d-78ca-4a9b-7bf8-2a3619d8ae78.htm" />
+  <HelpKINode Title="PinState.Value property" Url="html/51289ed1-279a-240e-f276-9147c12f6217.htm" />
+  <HelpKINode Title="PinStateResponse enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="Port property" Url="html/f0ad8da5-0e56-8c1e-74a0-29953ad98f99.htm" />
+  <HelpKINode Title="PortName property" Url="html/6fa948b9-48cd-ec3b-47c3-b25d3b1a85dc.htm" />
+  <HelpKINode Title="ProtocolVersion enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="ProtocolVersion structure">
+    <HelpKINode Title="ProtocolVersion Structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm" />
+    <HelpKINode Title="about ProtocolVersion structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm" />
+    <HelpKINode Title="properties" Url="html/280d4128-f443-8cf2-6a53-33e6e7eb5e4e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProtocolVersion.Major property" Url="html/66ebce33-e458-872b-5952-866144b9ada0.htm" />
+  <HelpKINode Title="ProtocolVersion.Minor property" Url="html/edd086d3-b73e-a9c8-583a-728b34baf2b4.htm" />
+  <HelpKINode Title="Pwm property" Url="html/d1d06fd1-3384-00fc-2611-25539b67b954.htm" />
+  <HelpKINode Title="PwmOutput enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="PwmResolution property" Url="html/b8f2dc6f-68a0-31f3-6a5b-55042ad516ed.htm" />
+  <HelpKINode Title="Read method">
+    <HelpKINode Title="ArduinoSession.Read Method " Url="html/55aa38a0-1f7a-ec22-10d8-8bae26960810.htm" />
+    <HelpKINode Title="IStringProtocol.Read Method " Url="html/a7c3cac8-d32c-cfa4-b82d-a575dbbff983.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadAsync method">
+    <HelpKINode Title="ArduinoSession.ReadAsync Method " Url="html/7619d119-9fb4-a181-7523-07273f09e83b.htm" />
+    <HelpKINode Title="IStringProtocol.ReadAsync Method " Url="html/c3c646da-8314-4fd5-f46e-5f8fd1d5730b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadByte method" Url="html/9e51c12b-d4aa-b3dc-5578-3081a2bb752f.htm" />
+  <HelpKINode Title="ReadI2CContinuous method">
+    <HelpKINode Title="ArduinoSession.ReadI2CContinuous Method " Url="html/0ea9cbae-1535-ba11-3134-4520d69334f0.htm" />
+    <HelpKINode Title="II2CProtocol.ReadI2CContinuous Method " Url="html/e65a4995-c3ff-c6e1-ee8b-b5d5c2b3f7b2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadI2COnce method">
+    <HelpKINode Title="ArduinoSession.ReadI2COnce Method " Url="html/11348d42-72bd-635f-c392-da90b6c27daa.htm" />
+    <HelpKINode Title="II2CProtocol.ReadI2COnce Method " Url="html/ba11da02-35ff-5b18-068e-812d1f92f7df.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadLine method">
+    <HelpKINode Title="ArduinoSession.ReadLine Method " Url="html/26b1753d-4f47-ecdb-98fb-1c150eb3ca88.htm" />
+    <HelpKINode Title="IStringProtocol.ReadLine Method " Url="html/bb8ee71c-0808-feda-2e0a-4b05fc986980.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadLineAsync method">
+    <HelpKINode Title="ArduinoSession.ReadLineAsync Method " Url="html/db417185-54cd-7eef-2cf0-cb2d7474cff2.htm" />
+    <HelpKINode Title="IStringProtocol.ReadLineAsync Method " Url="html/52906872-565e-78c6-6f2c-cfd646f7e3d4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadTo method">
+    <HelpKINode Title="ArduinoSession.ReadTo Method " Url="html/e8c9a889-19bc-c8cd-34c1-6912de66612c.htm" />
+    <HelpKINode Title="IStringProtocol.ReadTo Method " Url="html/65ff277a-8063-787e-af75-87fa326a97b7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReadToAsync method">
+    <HelpKINode Title="ArduinoSession.ReadToAsync Method " Url="html/d1f00718-36e3-c0a5-bf63-061a713f4bd2.htm" />
+    <HelpKINode Title="IStringProtocol.ReadToAsync Method " Url="html/c1885039-892e-e2b5-0fa0-96da02a925c3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Register property" Url="html/2387accb-7f3f-aff7-0482-b5a6bc2fdaee.htm" />
+  <HelpKINode Title="RequestBoardAnalogMapping method">
+    <HelpKINode Title="ArduinoSession.RequestBoardAnalogMapping Method " Url="html/da17a595-dd19-6c94-c319-ba92780ff1b1.htm" />
+    <HelpKINode Title="IFirmataProtocol.RequestBoardAnalogMapping Method " Url="html/0cc5ebbb-9d0b-0d4e-0b8a-59b7c490f7bd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RequestBoardCapability method">
+    <HelpKINode Title="ArduinoSession.RequestBoardCapability Method " Url="html/c016e57d-a1aa-1502-b266-eac555320bd8.htm" />
+    <HelpKINode Title="IFirmataProtocol.RequestBoardCapability Method " Url="html/dafbf808-d45b-fe61-dfe2-6d1930d50f81.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RequestFirmware method">
+    <HelpKINode Title="ArduinoSession.RequestFirmware Method " Url="html/4fc6a36d-12cb-113e-4379-c04f55226882.htm" />
+    <HelpKINode Title="IFirmataProtocol.RequestFirmware Method " Url="html/1c2dd961-3134-4b2a-ab4d-c8025ab4cfe1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RequestPinState method">
+    <HelpKINode Title="ArduinoSession.RequestPinState Method " Url="html/6a12da48-72f2-3808-70bd-2c02bfde97d7.htm" />
+    <HelpKINode Title="IFirmataProtocol.RequestPinState Method " Url="html/23a2c9b4-3a0c-9075-c87f-a4fc4d89c978.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RequestProtocolVersion method">
+    <HelpKINode Title="ArduinoSession.RequestProtocolVersion Method " Url="html/72f7cd86-5a81-b6fb-50cb-a849074a1f87.htm" />
+    <HelpKINode Title="IFirmataProtocol.RequestProtocolVersion Method " Url="html/cc033925-07e6-b137-a60c-6ffb2f4afb99.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ResetBoard method">
+    <HelpKINode Title="ArduinoSession.ResetBoard Method " Url="html/5a3e57ca-2a41-36d6-d0a8-f413e253efc6.htm" />
+    <HelpKINode Title="IFirmataProtocol.ResetBoard Method " Url="html/7c606b90-720d-be95-c43d-4a18e8cb2ccc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendStringData method">
+    <HelpKINode Title="ArduinoSession.SendStringData Method " Url="html/ae1ba7d3-433e-fd72-3f50-1a8ec37aa5f4.htm" />
+    <HelpKINode Title="IFirmataProtocol.SendStringData Method " Url="html/0e0528df-22b4-60f2-8cc6-9c7e3d140d01.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Serial enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="Serial property" Url="html/98ce7e9b-a9d6-7c3f-04f1-2da2a06944e6.htm" />
+  <HelpKINode Title="SerialBaudRate enumeration" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="SerialConnection class">
+    <HelpKINode Title="SerialConnection Class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm" />
+    <HelpKINode Title="about SerialConnection class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm" />
+    <HelpKINode Title="constructor" Url="html/a357a146-da10-d1c5-6dbe-293d4072e351.htm" />
+    <HelpKINode Title="methods" Url="html/335a34f6-a012-4732-1fea-87527cebbecd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SerialConnection.Close method" Url="html/5560f824-7c26-030f-a351-7a43f48d3616.htm" />
+  <HelpKINode Title="SerialConnection.Dispose method" Url="html/24763d00-2f5b-09be-8ace-29f24895ed1b.htm" />
+  <HelpKINode Title="SerialConnection.FindSerialConnection method" Url="html/5b77c75f-cfbe-e83f-3dbf-a6365edf0f1e.htm" />
+  <HelpKINode Title="SerialConnection.ISerialConnection.ReadByte explicitly implemented method" Url="html/b35dd5f1-998f-89d6-dad2-e05be835d949.htm" />
+  <HelpKINode Title="SerialConnection.ISerialConnection.WriteLine explicitly implemented method" Url="html/ec6875fc-d3d0-99bd-0300-cbe303b3ab73.htm" />
+  <HelpKINode Title="SerialConnection.Open method" Url="html/12415ea1-5b04-0b26-d464-d851efbbce73.htm" />
+  <HelpKINode Title="SerialConnection.SerialConnection constructor" Url="html/a357a146-da10-d1c5-6dbe-293d4072e351.htm" />
+  <HelpKINode Title="SerialConnection.Write method" Url="html/d2d31ad9-8abb-b53a-7417-7720b259e979.htm" />
+  <HelpKINode Title="Servo property" Url="html/17eed47b-8bf5-ea44-13cd-722e37bb68c9.htm" />
+  <HelpKINode Title="ServoControl enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="ServoResolution property" Url="html/119049c4-1ba0-964e-94c7-cfc08e55a37a.htm" />
+  <HelpKINode Title="SetAnalogReportMode method">
+    <HelpKINode Title="ArduinoSession.SetAnalogReportMode Method " Url="html/2396779a-20f5-49b8-2a1b-ad7d188cde76.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetAnalogReportMode Method " Url="html/a5aa12b2-f49e-5944-919e-f689fca5e38c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetDigitalPin method">
+    <HelpKINode Title="ArduinoSession.SetDigitalPin Method " Url="html/e5ea2b24-4ddf-bc82-32fe-c787c3e974b8.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetDigitalPin Method " Url="html/e82cd517-dc93-1d39-8d56-50744a6a3193.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetDigitalPinMode method">
+    <HelpKINode Title="ArduinoSession.SetDigitalPinMode Method " Url="html/f5861e12-17f7-6986-f198-a79101b9a107.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetDigitalPinMode Method " Url="html/d6753490-3f4c-d5df-cc50-3cd0a2fbb98e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetDigitalPort method">
+    <HelpKINode Title="ArduinoSession.SetDigitalPort Method " Url="html/cf75ec9d-e7a8-37cb-f0f2-4bf4f0279cd5.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetDigitalPort Method " Url="html/df0364a4-478b-4057-055f-90c0cdf91e0c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetDigitalReportMode method">
+    <HelpKINode Title="ArduinoSession.SetDigitalReportMode Method " Url="html/6cb87d56-cba5-8b38-17aa-047743f53227.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetDigitalReportMode Method " Url="html/deaf5148-850e-a69d-5c63-5a1a7264006c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetI2CReadInterval method">
+    <HelpKINode Title="ArduinoSession.SetI2CReadInterval Method " Url="html/c482d8a0-7998-bb79-5e92-1376e076a5de.htm" />
+    <HelpKINode Title="II2CProtocol.SetI2CReadInterval Method " Url="html/5d246b79-ab99-fb9d-d02f-6af063d1fa6c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetSamplingInterval method">
+    <HelpKINode Title="ArduinoSession.SetSamplingInterval Method " Url="html/209690c4-2404-13af-d697-d0889345d94e.htm" />
+    <HelpKINode Title="IFirmataProtocol.SetSamplingInterval Method " Url="html/d1faec22-b4a8-57d4-8509-fc1e35b530b0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Solid.Arduino namespace" Url="html/3a2ac349-bf62-313a-9f20-4c7c3932b60a.htm" />
+  <HelpKINode Title="Solid.Arduino.ArduinoSession class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm" />
+  <HelpKINode Title="Solid.Arduino.EnhancedSerialConnection class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm" />
+  <HelpKINode Title="Solid.Arduino.EnhancedSerialPort class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata namespace" Url="html/b45c02d5-d804-8090-5057-0b3e3cbc19a0.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.AnalogPinMapping structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.AnalogState structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.AnalogStateReceivedHandler delegate" Url="html/82864edc-a8c0-fb1e-c8d2-f70b564a089f.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.BoardAnalogMapping structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.BoardCapability structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.ByteArrayExtensions class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.DigitalPortState structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.DigitalStateReceivedHandler delegate" Url="html/a04d813f-23c5-6fc3-bc98-55d2c67527cf.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.FirmataEventArgs(Of T) class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.FirmataEventArgs&lt;T&gt; class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.FirmataMessage class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.FirmataMessageEventArgs class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.Firmware structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.IFirmataProtocol interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.MessageReceivedHandler delegate" Url="html/3cfbfb3e-5b55-59d8-2a64-d298cca31bde.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.MessageType enumeration" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.PinCapability structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.PinMode enumeration" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.PinState structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.ProtocolVersion structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.Servo namespace" Url="html/505b8bcb-2c04-8a59-85ee-f86d7a81133c.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.Servo.IServoProtocol interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm" />
+  <HelpKINode Title="Solid.Arduino.Firmata.StringData structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm" />
+  <HelpKINode Title="Solid.Arduino.I2C namespace" Url="html/25858b6c-f545-022f-1421-1980e7d2f9ec.htm" />
+  <HelpKINode Title="Solid.Arduino.I2C.I2CEventArgs class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm" />
+  <HelpKINode Title="Solid.Arduino.I2C.I2CReply structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm" />
+  <HelpKINode Title="Solid.Arduino.I2C.I2CReplyReceivedHandler delegate" Url="html/3695c805-d9b7-b3e6-32be-183a64f8873a.htm" />
+  <HelpKINode Title="Solid.Arduino.I2C.II2CProtocol interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm" />
+  <HelpKINode Title="Solid.Arduino.ISerialConnection interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm" />
+  <HelpKINode Title="Solid.Arduino.IStringProtocol interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm" />
+  <HelpKINode Title="Solid.Arduino.SerialBaudRate enumeration" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
+  <HelpKINode Title="Solid.Arduino.SerialConnection class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm" />
+  <HelpKINode Title="Solid.Arduino.StringEventArgs class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm" />
+  <HelpKINode Title="Solid.Arduino.StringExtensions class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm" />
+  <HelpKINode Title="Solid.Arduino.StringReceivedHandler delegate" Url="html/d8f33960-4595-c5e9-ce95-7e4193308d98.htm" />
+  <HelpKINode Title="StepperControl enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="StepperControl property" Url="html/b64f5e5c-6d8a-0177-8932-f59e1971c505.htm" />
+  <HelpKINode Title="StopI2CReading method">
+    <HelpKINode Title="ArduinoSession.StopI2CReading Method " Url="html/b68dd438-ddc6-b2f7-4a92-8396c448faf5.htm" />
+    <HelpKINode Title="II2CProtocol.StopI2CReading Method " Url="html/1f020e05-4452-f270-4785-162fd272270d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StringData enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
+  <HelpKINode Title="StringData structure">
+    <HelpKINode Title="StringData Structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm" />
+    <HelpKINode Title="about StringData structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm" />
+    <HelpKINode Title="properties" Url="html/6cd07b17-b3e8-55c6-ec51-b4294f445a2d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StringData.Text property" Url="html/6bc5ef18-fb9b-7465-3576-f2fcc3b30b44.htm" />
+  <HelpKINode Title="StringEventArgs class">
+    <HelpKINode Title="StringEventArgs Class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm" />
+    <HelpKINode Title="about StringEventArgs class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm" />
+    <HelpKINode Title="properties" Url="html/8e596088-4f9e-1214-eb48-e8369d8d3277.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StringEventArgs.Text property" Url="html/5a68ef5b-372d-e6ea-0c35-79d60143c238.htm" />
+  <HelpKINode Title="StringExtensions class">
+    <HelpKINode Title="StringExtensions Class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm" />
+    <HelpKINode Title="about StringExtensions class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm" />
+    <HelpKINode Title="methods" Url="html/c231898c-c0fd-8636-cd01-91e62005ca68.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StringExtensions.To14BitIso method" Url="html/e3237dff-8b9e-7ddf-ff84-7c62943af619.htm" />
+  <HelpKINode Title="StringExtensions.ToBinaryCodedDecimal method" Url="html/8b6e7069-faa8-05a2-21cd-e6bee8fa1578.htm" />
+  <HelpKINode Title="StringReceived event">
+    <HelpKINode Title="ArduinoSession.StringReceived Event" Url="html/d5b7f09a-bd5a-8bfd-17c4-218040fe6a3e.htm" />
+    <HelpKINode Title="IStringProtocol.StringReceived Event" Url="html/92bd2ded-5ae5-cfc1-8eb7-f68e747845ca.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StringReceivedHandler delegate" Url="html/d8f33960-4595-c5e9-ce95-7e4193308d98.htm" />
+  <HelpKINode Title="Text property">
+    <HelpKINode Title="StringData.Text Property " Url="html/6bc5ef18-fb9b-7465-3576-f2fcc3b30b44.htm" />
+    <HelpKINode Title="StringEventArgs.Text Property " Url="html/5a68ef5b-372d-e6ea-0c35-79d60143c238.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Time property" Url="html/9196cfe1-64f6-4623-a1c0-a941ecd8c7c7.htm" />
+  <HelpKINode Title="TimeOut property" Url="html/0ce955e9-de04-3300-073d-2932518e0070.htm" />
+  <HelpKINode Title="To14BitIso method" Url="html/e3237dff-8b9e-7ddf-ff84-7c62943af619.htm" />
+  <HelpKINode Title="ToBinaryCodedDecimal method" Url="html/8b6e7069-faa8-05a2-21cd-e6bee8fa1578.htm" />
+  <HelpKINode Title="Type property" Url="html/1251dc84-c748-62a3-d876-c92c0cab97c6.htm" />
+  <HelpKINode Title="Undefined enumeration member" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
+  <HelpKINode Title="Value property">
+    <HelpKINode Title="FirmataEventArgs(T).Value Property " Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
+    <HelpKINode Title="FirmataMessage.Value Property " Url="html/6bdc660a-cd9d-455a-7908-b6d762c1d8af.htm" />
+    <HelpKINode Title="FirmataMessageEventArgs.Value Property " Url="html/3e9fb5e9-92dc-8797-9059-3f3a27da6673.htm" />
+    <HelpKINode Title="I2CEventArgs.Value Property " Url="html/c7f31e4f-9f61-353e-7a50-70a068be8196.htm" />
+    <HelpKINode Title="PinState.Value Property " Url="html/51289ed1-279a-240e-f276-9147c12f6217.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Write method">
+    <HelpKINode Title="ArduinoSession.Write Method " Url="html/e159fcbc-2053-31ec-dcaa-c3583d88b072.htm" />
+    <HelpKINode Title="EnhancedSerialConnection.Write Method " Url="html/90348614-3a75-cec2-bea4-b5847353f958.htm" />
+    <HelpKINode Title="ISerialConnection.Write Method " Url="html/ed3c9749-6890-8dc7-f108-7da5fb5ebcaa.htm" />
+    <HelpKINode Title="IStringProtocol.Write Method " Url="html/63516731-32a5-c7a6-6170-f8a002200d8c.htm" />
+    <HelpKINode Title="SerialConnection.Write Method " Url="html/d2d31ad9-8abb-b53a-7417-7720b259e979.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WriteI2C method">
+    <HelpKINode Title="ArduinoSession.WriteI2C Method " Url="html/b74ea0f2-07f1-a01d-83c7-d8830d90e57d.htm" />
+    <HelpKINode Title="II2CProtocol.WriteI2C Method " Url="html/6192a41b-b08d-c9b4-3907-2b945d8fcf80.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WriteLine method">
+    <HelpKINode Title="ArduinoSession.WriteLine Method " Url="html/66f3d7c2-96b2-9c5e-65be-7d2071ec8f9b.htm" />
+    <HelpKINode Title="ISerialConnection.WriteLine Method " Url="html/183523fa-f6c5-0635-d6ba-336781e21c95.htm" />
+    <HelpKINode Title="IStringProtocol.WriteLine Method " Url="html/d298d81b-b8d3-69e1-1d56-b27dd784823e.htm" />
+  </HelpKINode>
+</HelpKI>

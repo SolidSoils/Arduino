@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino", "Solid.Arduino\Solid.Arduino.csproj", "{FDF9E431-2390-4C7B-AE60-10183439A683}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Arduino.Test", "Solid.Arduino.Test\Solid.Arduino.Test.csproj", "{74525FE1-E248-449B-B499-F3FB205054F8}"
@@ -50,5 +52,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF58A0B9-B321-427F-ACFC-AD580097EEDE}
 	EndGlobalSection
 EndGlobal
