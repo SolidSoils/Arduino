@@ -36,7 +36,7 @@ In this example a connection is made to an Arduino board attached to any USB por
 ```csharp
 using Solid.Arduino;
 
-(...)
+/* essential code omitted for brevity */
 
 var session = new ArduinoSession(SerialConnection.FindSerialConnection());
 session.SetDigitalPin(13, true);
@@ -49,7 +49,7 @@ In this example the board capabilities of an Arduino device are retrieved and di
 ```csharp
 using Solid.Arduino.Firmata;
 
-(...)
+/* essential code omitted for brevity */
 
 var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
 var session = new ArduinoSession(connection, timeOut: 250);
