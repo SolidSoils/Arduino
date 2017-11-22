@@ -15,7 +15,7 @@ All protocols can be mixed. The library brokers all incoming message types
 and directs them to the appropriate requestors (synchronous as well as asynchronous).
 
 Currently [Standard Firmata 2.5](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
-(Added capabilities of Standard Firmata Plus and Configurable Firmata are curently not supported.)
+(Extra capabilities of Standard Firmata Plus and Configurable Firmata are currently not supported by this client library.)
 
 Technology: Microsoft .NET/C# v4.5
 
@@ -23,65 +23,68 @@ Dependencies: none
 
 ### Downloads
 
-[NuGet package](https://www.nuget.org/packages/SolidSoils.Arduino.Client/#)
+The library is available as a [NuGet package](https://www.nuget.org/packages/SolidSoils.Arduino.Client/#).
 
 ### API Documentation
 
-See [reference documentation](https://solidsoils.github.io/Arduino/index.html)
+See [reference documentation](https://solidsoils.github.io/Arduino/index.html).
 
 #### Code example: Setting pin 13 HI
 
 In this example a connection is made to an Arduino board attached to any USB port. Then pin 13 is set HI.
 
-    using Solid.Arduino;
+```csharp
+using Solid.Arduino;
 
-    (...)
+(...)
 
-	var session = new ArduinoSession(SerialConnection.FindSerialConnection());
-	session.SetDigitalPin(13, true);
-
+var session = new ArduinoSession(SerialConnection.FindSerialConnection());
+session.SetDigitalPin(13, true);
+```
 
 #### Code example: Getting board capabilities
 
 In this example the board capabilities of an Arduino device are retrieved and displayed.
 
-    using Solid.Arduino.Firmata;
+```csharp
+using Solid.Arduino.Firmata;
 
-    (...)
+(...)
 
-    var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
-	var session = new ArduinoSession(connection, timeOut: 250);
-    // Cast to interface done, just for the sake of this demo.
-	IFirmataProtocol firmata = (IFirmataProtocol)session;
+var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
+var session = new ArduinoSession(connection, timeOut: 250);
+// Cast to interface done, just for the sake of this demo.
+IFirmataProtocol firmata = (IFirmataProtocol)session;
 	
-	Firmware firm = firmata.GetFirmware();
-	Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
+Firmware firm = firmata.GetFirmware();
+Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
 	
-	ProtocolVersion version = firmata.GetProtocolVersion();
-	Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
+ProtocolVersion version = firmata.GetProtocolVersion();
+Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
 	
-	BoardCapability caps = firmata.GetBoardCapability();
-	Console.WriteLine("Board Capabilities:");
+BoardCapability caps = firmata.GetBoardCapability();
+Console.WriteLine("Board Capabilities:");
 	
-	foreach (var pincap in caps.PinCapabilities)
-	{
-	    Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
-	        pincap.PinNumber,
-			pincap.DigitalInput,
-			pincap.DigitalOutput,
-			pincap.Analog,
-			pincap.AnalogResolution,
-			pincap.Pwm,
-			pincap.PwmResolution,
-	        pincap.Servo,
-			pincap.ServoResolution);
-	}
-	Console.WriteLine();
-    Console.ReadLine();
+foreach (var pincap in caps.PinCapabilities)
+{
+   Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
+      pincap.PinNumber,
+      pincap.DigitalInput,
+      pincap.DigitalOutput,
+      pincap.Analog,
+      pincap.AnalogResolution,
+      pincap.Pwm,
+      pincap.PwmResolution,
+      pincap.Servo,
+      pincap.ServoResolution);
+}
+Console.WriteLine();
+Console.ReadLine();
+```
 
 ## Current status
 
-**v0.3**
+**v0.4**
 
 Code complete for the library core. (Beta)
 
