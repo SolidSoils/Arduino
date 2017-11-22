@@ -14,7 +14,8 @@ The library supports the following protocols:
 All protocols can be mixed. The library brokers all incoming message types
 and directs them to the appropriate requestors (synchronous as well as asynchronous).
 
-Currently [Standard Firmata 2.4](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
+Currently [Standard Firmata 2.5](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
+(Added capabilities of Standard Firmata Plus and Configurable Firmata are curently not supported.)
 
 Technology: Microsoft .NET/C# v4.5
 
@@ -24,7 +25,11 @@ Dependencies: none
 
 [NuGet package](https://www.nuget.org/packages/SolidSoils.Arduino.Client/#)
 
-### Code example: Setting pin 13 HI
+### API Documentation
+
+See [reference documentation](https://solidsoils.github.io/Arduino/index.html)
+
+#### Code example: Setting pin 13 HI
 
 In this example a connection is made to an Arduino board attached to any USB port. Then pin 13 is set HI.
 
@@ -36,7 +41,7 @@ In this example a connection is made to an Arduino board attached to any USB por
 	session.SetDigitalPin(13, true);
 
 
-### Code example: Getting board capabilities
+#### Code example: Getting board capabilities
 
 In this example the board capabilities of an Arduino device are retrieved and displayed.
 
