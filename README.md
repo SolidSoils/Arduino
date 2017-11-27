@@ -29,62 +29,134 @@ The library is available as a [NuGet package](https://www.nuget.org/packages/Sol
 
 See [reference documentation](https://solidsoils.github.io/Arduino/index.html).
 
-#### Code example: Setting pin 13 HI
+## Getting started
 
-In this example a connection is made to an Arduino board attached to any USB port. Then pin 13 is set HI.
+#### Setup your Arduino with StandardFirmata
+1. [Download the Arduino IDE](https://www.arduino.cc/en/main/software) and install it.
+2. Connect your Arduino board to your computer using an USB cable.
+3. Start the Arduino IDE and navigate to File > Examples > Firmata > StandardFirmata.
+4. Upload the sketch.
+
+#### Basic test (C#)
+Preparation
+- Your Arduino is setup with the StandardFirmata sketch (see above).
+- An LED is connected to pin 10 of your Arduino.
+
+Further steps
+1. Open Visual Studio and create a new C# console program project.
+2. Add NuGet package [SolidSoils.Arduino.Client](https://www.nuget.org/packages/SolidSoils.Arduino.Client/).
+3. In Program.cs put the following code:
 
 ```csharp
-using Solid.Arduino;
-
-/* essential code omitted for brevity */
-
-var session = new ArduinoSession(SerialConnection.FindSerialConnection());
-session.SetDigitalPin(13, true);
-```
-
-#### Code example: Getting board capabilities
-
-In this example the board capabilities of an Arduino device are retrieved and displayed.
-
-```csharp
+using System;
 using Solid.Arduino.Firmata;
 
-/* essential code omitted for brevity */
-
-var connection = new SerialConnection("COM3", SerialBaudRate.Bps_57600);
-var session = new ArduinoSession(connection, timeOut: 250);
-// Cast to interface done, just for the sake of this demo.
-IFirmataProtocol firmata = (IFirmataProtocol)session;
-	
-Firmware firm = firmata.GetFirmware();
-Console.WriteLine("Firmware: {0} {1}.{2}", firm.Name, firm.MajorVersion, firm.MinorVersion);
-	
-ProtocolVersion version = firmata.GetProtocolVersion();
-Console.WriteLine("Protocol version: {0}.{1}", version.Major, version.Minor);
-	
-BoardCapability caps = firmata.GetBoardCapability();
-Console.WriteLine("Board Capabilities:");
-	
-foreach (var pincap in caps.PinCapabilities)
+namespace Demo
 {
-   Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}",
-      pincap.PinNumber,
-      pincap.DigitalInput,
-      pincap.DigitalOutput,
-      pincap.Analog,
-      pincap.AnalogResolution,
-      pincap.Pwm,
-      pincap.PwmResolution,
-      pincap.Servo,
-      pincap.ServoResolution);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ISerialConnection connection = GetConnection();
+
+            if (connection != null)
+                using (var session = new ArduinoSession(connection))
+                    PerformBasicTest(session);
+
+            Console.WriteLine("Press a key");
+            Console.ReadKey(true);
+        }
+
+        private static ISerialConnection GetConnection()
+        {
+            Console.WriteLine("Searching Arduino connection...");
+            ISerialConnection connection = EnhancedSerialConnection.Find();
+
+            if (connection == null)
+                Console.WriteLine("No connection found. Make shure your Arduino board is attached to a USB port.");
+            else
+                Console.WriteLine($"Connected to port {connection.PortName} at {connection.BaudRate} baud.");
+
+            return connection;
+        }
+
+        private static void PerformBasicTest(IFirmataProtocol session)
+        {
+            var firmware = session.GetFirmware();
+            Console.WriteLine($"Firmware: {firmware.Name} version {firmware.MajorVersion}.{firmware.MinorVersion}");
+            var protocolVersion = session.GetProtocolVersion();
+            Console.WriteLine($"Firmata protocol version {protocolVersion.Major}.{protocolVersion.Minor}");
+
+            session.SetDigitalPinMode(10, PinMode.DigitalOutput);
+            session.SetDigitalPin(10, true);
+            Console.WriteLine("Command sent: Light on (pin 10)");
+            Console.WriteLine("Press a key");
+            Console.ReadKey(true);
+            session.SetDigitalPin(10, false);
+            Console.WriteLine("Command sent: Light off");
+        }
+    }
 }
-Console.WriteLine();
-Console.ReadLine();
+```
+
+#### Display board capabilities
+Preparation
+- Your Arduino is setup with the StandardFirmata sketch (see above).
+- In this example the Arduino is connected to COM3 at 57600 baud. Modify as needed.
+
+Further steps
+1. Open Visual Studio and create a new C# console program project.
+2. Add NuGet package [SolidSoils.Arduino.Client](https://www.nuget.org/packages/SolidSoils.Arduino.Client/).
+3. In Program.cs put the following code:
+
+```csharp
+using System;
+using Solid.Arduino.Firmata;
+
+namespace Demo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DisplayPortCapabilities();
+            Console.WriteLine("Press a key");
+            Console.ReadKey(true);
+        }
+
+        private static void DisplayPortCapabilities()
+        {
+            using (var session = new ArduinoSession(new EnhancedSerialConnection("COM3", SerialBaudRate.Bps_57600)))
+            {
+                BoardCapability cap = session.GetBoardCapability();
+                Console.WriteLine();
+                Console.WriteLine("Board Capability:");
+
+                foreach (var pin in cap.Pins)
+                {
+                    Console.WriteLine("Pin {0}: Input: {1}, Output: {2}, Analog: {3}, Analog-Res: {4}, PWM: {5}, PWM-Res: {6}, Servo: {7}, Servo-Res: {8}, Serial: {9}, Encoder: {10}, Input-pullup: {11}",
+                        pin.PinNumber,
+                        pin.DigitalInput,
+                        pin.DigitalOutput,
+                        pin.Analog,
+                        pin.AnalogResolution,
+                        pin.Pwm,
+                        pin.PwmResolution,
+                        pin.Servo,
+                        pin.ServoResolution,
+                        pin.Serial,
+                        pin.Encoder,
+                        pin.InputPullup);
+                }
+            }
+        }
+    }
+}
 ```
 
 ## Current status
 
-**v0.4**
+**v0.5**
 
 Code complete for the library core. (Beta)
 

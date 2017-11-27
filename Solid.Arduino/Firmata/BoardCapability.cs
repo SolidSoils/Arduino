@@ -14,6 +14,6 @@ namespace Solid.Arduino.Firmata
         /// <summary>
         /// Gets the capability array of the board's pins.
         /// </summary>
-        public PinCapability[] PinCapabilities { get; internal set; }
+        public PinCapability[] Pins { get; internal set; }
     }
 }

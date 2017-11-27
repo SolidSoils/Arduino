@@ -23,7 +23,7 @@ namespace Solid.Arduino.IntegrationTest
         [TestMethod]
         public void FindSerialConnection_FirmataEnabled()
         {
-            using (var arduinoConnection = SerialConnection.FindSerialConnection())
+            using (var arduinoConnection = SerialConnection.Find())
             {
                 Assert.IsNotNull(arduinoConnection);
             }
@@ -39,7 +39,7 @@ namespace Solid.Arduino.IntegrationTest
         [TestMethod]
         public void FindSerialConnection_Serial()
         {
-            using (var arduinoConnection = SerialConnection.FindSerialConnection("Hello?", "Arduino!"))
+            using (var arduinoConnection = SerialConnection.Find("Hello?", "Arduino!"))
             {
                 Assert.IsNotNull(arduinoConnection);
             }

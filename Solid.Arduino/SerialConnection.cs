@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Threading;
@@ -135,7 +136,7 @@ namespace Solid.Arduino
         /// </remarks>
         /// <seealso cref="IFirmataProtocol"/>
         /// <seealso href="http://www.firmata.org/wiki/Protocol#Query_Firmware_Name_and_Version">Query Firmware Name and Version</seealso>
-        public static ISerialConnection FindSerialConnection()
+        public static ISerialConnection Find()
         {
             Func<ArduinoSession, bool> isAvailableFunc = session =>
                 {
@@ -195,7 +196,7 @@ namespace Solid.Arduino
         /// </code>
         /// </example>
         /// <seealso cref="IStringProtocol"/>
-        public static ISerialConnection FindSerialConnection(string query, string expectedReply)
+        public static ISerialConnection Find(string query, string expectedReply)
         {
             if (string.IsNullOrEmpty(query))
                 throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, "query");
@@ -225,6 +226,8 @@ namespace Solid.Arduino
 
         private static ISerialConnection FindConnection(Func<ArduinoSession, bool> isDeviceAvailable, string[] portNames, SerialBaudRate[] baudRates)
         {
+            bool found = false;
+
             for (int x = portNames.Length - 1; x >= 0; x--)
             {
                 foreach (SerialBaudRate rate in baudRates)
@@ -238,9 +241,12 @@ namespace Solid.Arduino
                                 Debug.WriteLine("{0}:{1}; ", portNames[x], (int)rate);
 
                                 if (isDeviceAvailable(session))
-                                    return new EnhancedSerialConnection(portNames[x], rate);
+                                    found = true;
                             }
                         }
+
+                        if (found)
+                            return new EnhancedSerialConnection(portNames[x], rate);
                     }
                     catch (UnauthorizedAccessException)
                     {
@@ -251,6 +257,10 @@ namespace Solid.Arduino
                     catch (TimeoutException)
                     {
                         // Baudrate or protocol error.
+                    }
+                    catch (IOException ex)
+                    {
+                        Debug.WriteLine($"HResult 0x{ex.HResult:X} - {ex.Message}");
                     }
                 }
             }

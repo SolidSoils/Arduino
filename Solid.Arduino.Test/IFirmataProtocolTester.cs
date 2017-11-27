@@ -157,19 +157,19 @@ namespace Solid.Arduino.Test
             connection.EnqueueResponse(0xF7);
 
             BoardCapability capability = session.GetBoardCapability();
-            Assert.AreEqual(1, capability.PinCapabilities.Length);
+            Assert.AreEqual(1, capability.Pins.Length);
 
-            Assert.AreEqual(0, capability.PinCapabilities[0].PinNumber);
-            Assert.AreEqual(true, capability.PinCapabilities[0].DigitalInput);
-            Assert.AreEqual(true, capability.PinCapabilities[0].DigitalOutput);
-            Assert.AreEqual(true, capability.PinCapabilities[0].Pwm);
-            Assert.AreEqual(10, capability.PinCapabilities[0].PwmResolution);
-            Assert.AreEqual(true, capability.PinCapabilities[0].I2C);
+            Assert.AreEqual(0, capability.Pins[0].PinNumber);
+            Assert.AreEqual(true, capability.Pins[0].DigitalInput);
+            Assert.AreEqual(true, capability.Pins[0].DigitalOutput);
+            Assert.AreEqual(true, capability.Pins[0].Pwm);
+            Assert.AreEqual(10, capability.Pins[0].PwmResolution);
+            Assert.AreEqual(true, capability.Pins[0].I2C);
 
-            Assert.AreEqual(false, capability.PinCapabilities[0].Analog);
-            Assert.AreEqual(0, capability.PinCapabilities[0].AnalogResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[0].Servo);
-            Assert.AreEqual(0, capability.PinCapabilities[0].ServoResolution);
+            Assert.AreEqual(false, capability.Pins[0].Analog);
+            Assert.AreEqual(0, capability.Pins[0].AnalogResolution);
+            Assert.AreEqual(false, capability.Pins[0].Servo);
+            Assert.AreEqual(0, capability.Pins[0].ServoResolution);
         }
 
 
@@ -187,37 +187,37 @@ namespace Solid.Arduino.Test
             connection.EnqueueResponse(0xF7);
 
             BoardCapability capability = session.GetBoardCapabilityAsync().Result;
-            Assert.AreEqual(3, capability.PinCapabilities.Length);
+            Assert.AreEqual(3, capability.Pins.Length);
 
-            Assert.AreEqual(0, capability.PinCapabilities[0].PinNumber);
-            Assert.AreEqual(false, capability.PinCapabilities[0].DigitalInput);
-            Assert.AreEqual(false, capability.PinCapabilities[0].DigitalOutput);
-            Assert.AreEqual(true, capability.PinCapabilities[0].Analog);
-            Assert.AreEqual(8, capability.PinCapabilities[0].AnalogResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[0].Pwm);
-            Assert.AreEqual(0, capability.PinCapabilities[0].PwmResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[0].Servo);
-            Assert.AreEqual(0, capability.PinCapabilities[0].ServoResolution);
+            Assert.AreEqual(0, capability.Pins[0].PinNumber);
+            Assert.AreEqual(false, capability.Pins[0].DigitalInput);
+            Assert.AreEqual(false, capability.Pins[0].DigitalOutput);
+            Assert.AreEqual(true, capability.Pins[0].Analog);
+            Assert.AreEqual(8, capability.Pins[0].AnalogResolution);
+            Assert.AreEqual(false, capability.Pins[0].Pwm);
+            Assert.AreEqual(0, capability.Pins[0].PwmResolution);
+            Assert.AreEqual(false, capability.Pins[0].Servo);
+            Assert.AreEqual(0, capability.Pins[0].ServoResolution);
 
-            Assert.AreEqual(1, capability.PinCapabilities[1].PinNumber);
-            Assert.AreEqual(true, capability.PinCapabilities[1].DigitalInput);
-            Assert.AreEqual(true, capability.PinCapabilities[1].DigitalOutput);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Analog);
-            Assert.AreEqual(0, capability.PinCapabilities[1].AnalogResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Pwm);
-            Assert.AreEqual(0, capability.PinCapabilities[1].PwmResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Servo);
-            Assert.AreEqual(0, capability.PinCapabilities[1].ServoResolution);
+            Assert.AreEqual(1, capability.Pins[1].PinNumber);
+            Assert.AreEqual(true, capability.Pins[1].DigitalInput);
+            Assert.AreEqual(true, capability.Pins[1].DigitalOutput);
+            Assert.AreEqual(false, capability.Pins[1].Analog);
+            Assert.AreEqual(0, capability.Pins[1].AnalogResolution);
+            Assert.AreEqual(false, capability.Pins[1].Pwm);
+            Assert.AreEqual(0, capability.Pins[1].PwmResolution);
+            Assert.AreEqual(false, capability.Pins[1].Servo);
+            Assert.AreEqual(0, capability.Pins[1].ServoResolution);
 
-            Assert.AreEqual(2, capability.PinCapabilities[2].PinNumber);
-            Assert.AreEqual(false, capability.PinCapabilities[2].DigitalInput);
-            Assert.AreEqual(true, capability.PinCapabilities[2].DigitalOutput);
-            Assert.AreEqual(false, capability.PinCapabilities[2].Analog);
-            Assert.AreEqual(0, capability.PinCapabilities[2].AnalogResolution);
-            Assert.AreEqual(true, capability.PinCapabilities[2].Pwm);
-            Assert.AreEqual(7, capability.PinCapabilities[2].PwmResolution);
-            Assert.AreEqual(true, capability.PinCapabilities[2].Servo);
-            Assert.AreEqual(7, capability.PinCapabilities[2].ServoResolution);
+            Assert.AreEqual(2, capability.Pins[2].PinNumber);
+            Assert.AreEqual(false, capability.Pins[2].DigitalInput);
+            Assert.AreEqual(true, capability.Pins[2].DigitalOutput);
+            Assert.AreEqual(false, capability.Pins[2].Analog);
+            Assert.AreEqual(0, capability.Pins[2].AnalogResolution);
+            Assert.AreEqual(true, capability.Pins[2].Pwm);
+            Assert.AreEqual(7, capability.Pins[2].PwmResolution);
+            Assert.AreEqual(true, capability.Pins[2].Servo);
+            Assert.AreEqual(7, capability.Pins[2].ServoResolution);
         }
 
         [TestMethod]
@@ -238,26 +238,26 @@ namespace Solid.Arduino.Test
             Assert.AreEqual(MessageType.CapabilityResponse, message.Type);
             BoardCapability capability = (BoardCapability)message.Value;
 
-            Assert.AreEqual(2, capability.PinCapabilities.Length);
-            Assert.AreEqual(0, capability.PinCapabilities[0].PinNumber);
-            Assert.AreEqual(false, capability.PinCapabilities[0].DigitalInput);
-            Assert.AreEqual(false, capability.PinCapabilities[0].DigitalOutput);
-            Assert.AreEqual(true, capability.PinCapabilities[0].Analog);
-            Assert.AreEqual(8, capability.PinCapabilities[0].AnalogResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[0].Pwm);
-            Assert.AreEqual(0, capability.PinCapabilities[0].PwmResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[0].Servo);
-            Assert.AreEqual(0, capability.PinCapabilities[0].ServoResolution);
+            Assert.AreEqual(2, capability.Pins.Length);
+            Assert.AreEqual(0, capability.Pins[0].PinNumber);
+            Assert.AreEqual(false, capability.Pins[0].DigitalInput);
+            Assert.AreEqual(false, capability.Pins[0].DigitalOutput);
+            Assert.AreEqual(true, capability.Pins[0].Analog);
+            Assert.AreEqual(8, capability.Pins[0].AnalogResolution);
+            Assert.AreEqual(false, capability.Pins[0].Pwm);
+            Assert.AreEqual(0, capability.Pins[0].PwmResolution);
+            Assert.AreEqual(false, capability.Pins[0].Servo);
+            Assert.AreEqual(0, capability.Pins[0].ServoResolution);
 
-            Assert.AreEqual(1, capability.PinCapabilities[1].PinNumber);
-            Assert.AreEqual(true, capability.PinCapabilities[1].DigitalInput);
-            Assert.AreEqual(true, capability.PinCapabilities[1].DigitalOutput);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Analog);
-            Assert.AreEqual(0, capability.PinCapabilities[1].AnalogResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Pwm);
-            Assert.AreEqual(0, capability.PinCapabilities[1].PwmResolution);
-            Assert.AreEqual(false, capability.PinCapabilities[1].Servo);
-            Assert.AreEqual(0, capability.PinCapabilities[1].ServoResolution);
+            Assert.AreEqual(1, capability.Pins[1].PinNumber);
+            Assert.AreEqual(true, capability.Pins[1].DigitalInput);
+            Assert.AreEqual(true, capability.Pins[1].DigitalOutput);
+            Assert.AreEqual(false, capability.Pins[1].Analog);
+            Assert.AreEqual(0, capability.Pins[1].AnalogResolution);
+            Assert.AreEqual(false, capability.Pins[1].Pwm);
+            Assert.AreEqual(0, capability.Pins[1].PwmResolution);
+            Assert.AreEqual(false, capability.Pins[1].Servo);
+            Assert.AreEqual(0, capability.Pins[1].ServoResolution);
         }
 
         [TestMethod]

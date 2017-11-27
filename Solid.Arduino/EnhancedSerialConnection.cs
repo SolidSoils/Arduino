@@ -43,16 +43,16 @@ namespace Solid.Arduino
 
         #region Public Methods & Properties
 
-        /// <inheritdoc cref="SerialConnection.FindSerialConnection()"/>
-        public static ISerialConnection FindSerialConnection()
+        /// <inheritdoc cref="SerialConnection.Find()"/>
+        public static ISerialConnection Find()
         {
-            return SerialConnection.FindSerialConnection();
+            return SerialConnection.Find();
         }
 
-        /// <inheritdoc cref="SerialConnection.FindSerialConnection(string, string)"/>
-        public static ISerialConnection FindSerialConnection(string query, string expectedReply)
+        /// <inheritdoc cref="SerialConnection.Find(string, string)"/>
+        public static ISerialConnection Find(string query, string expectedReply)
         {
-            return SerialConnection.FindSerialConnection(query, expectedReply);
+            return SerialConnection.Find(query, expectedReply);
         }
 
         /// <inheritdoc cref="SerialPort.Close"/>

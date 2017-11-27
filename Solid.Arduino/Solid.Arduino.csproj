@@ -84,6 +84,7 @@
     <Compile Include="SerialConnection.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SerialPortFixer.cs" />
     <Compile Include="StringEventArgs.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

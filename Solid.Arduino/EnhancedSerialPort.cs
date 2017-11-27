@@ -70,32 +70,40 @@ namespace Solid.Arduino
 
         /// <inheritdoc cref="SerialPort(string)"/>
         public EnhancedSerialPort(string portName)
-            : base(portName)
+            : this(portName, 9600, Parity.None, 8, StopBits.One)
         {
         }
 
         /// <inheritdoc cref="SerialPort(string,int)"/>
         public EnhancedSerialPort(string portName, int baudRate)
-            : base(portName, baudRate)
+            : this(portName, baudRate, Parity.None, 8, StopBits.One)
         {
         }
 
         /// <inheritdoc cref="SerialPort(string,int,Parity)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity)
-            : base(portName, baudRate, parity)
+            : this(portName, baudRate, parity, 8, StopBits.One)
         {
         }
 
         /// <inheritdoc cref="SerialPort(string,int,Parity,int)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits)
-            : base(portName, baudRate, parity, dataBits)
+            : this(portName, baudRate, parity, dataBits, StopBits.One)
         {
         }
 
         /// <inheritdoc cref="SerialPort(string,int,Parity,int,StopBits)"/>
         public EnhancedSerialPort(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
-            : base(portName, baudRate, parity, dataBits, stopBits)
+            : base(GetInitializedPortName(portName), baudRate, parity, dataBits, stopBits)
         {
+        }
+
+        private static string GetInitializedPortName(string portName)
+        {
+            if (IsWindows)
+                SerialPortFixer.Initialize(portName);
+
+            return portName;
         }
 
         #endregion

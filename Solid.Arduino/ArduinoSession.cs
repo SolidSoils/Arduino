@@ -885,15 +885,7 @@ namespace Solid.Arduino
             command[0] = SysExStart;
             command[1] = 0x76;
             command[2] = (byte)(slaveAddress & 0x7F);
-
-            if (slaveAddress < 128)
-            {
-                command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (continuous ? 0x10 : 0x08));
-            }
-            else
-            {
-                command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (continuous ? 0x30 : 0x28));
-            }
+            command[3] = (byte)(((slaveAddress >> 7) & 0x07) | (slaveAddress < 128 ? (continuous ? 0x10 : 0x08) : (continuous ? 0x30 : 0x28)));
 
             if (slaveRegister != -1)
             {
@@ -1341,7 +1333,7 @@ namespace Solid.Arduino
                 x++;
             }
 
-            return new FirmataMessage(new BoardCapability { PinCapabilities = pins.ToArray() }, MessageType.CapabilityResponse);
+            return new FirmataMessage(new BoardCapability { Pins = pins.ToArray() }, MessageType.CapabilityResponse);
         }
 
         private FirmataMessage CreateStringDataMessage()
