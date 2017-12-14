@@ -213,6 +213,14 @@ namespace Solid.Arduino
             }
         }
 
+        /// <summary>
+        /// Get the ISerialConnection from the ArduinoSession Instance.
+        /// </summary>
+        public ISerialConnection Connection
+        {
+            get { return _connection; }
+        }
+
         #region IStringProtocol
 
         /// <inheritdoc cref="IStringProtocol.StringReceived"/>
