@@ -1,108 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FDF9E431-2390-4C7B-AE60-10183439A683}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Solid.Arduino</RootNamespace>
-    <AssemblyName>Solid.Arduino</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Solid.Arduino.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Solid.Arduino.XML</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="System.IO.Ports" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnhancedSerialPort.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Firmata\AnalogPinMapping.cs" />
-    <Compile Include="Firmata\AnalogState.cs" />
-    <Compile Include="Firmata\AnalogStateTracker.cs" />
-    <Compile Include="Firmata\BoardCapability.cs" />
-    <Compile Include="Firmata\BoardMapping.cs" />
-    <Compile Include="Firmata\ByteArrayExtensions.cs" />
-    <Compile Include="Firmata\DigitalPortState.cs" />
-    <Compile Include="Firmata\DigitalStateTracker.cs" />
-    <Compile Include="Firmata\FirmataMessage.cs" />
-    <Compile Include="Firmata\FirmataMessageEventArgs.cs" />
-    <Compile Include="Firmata\FirmataMessageEventArgs_.cs" />
-    <Compile Include="ArduinoSession.cs" />
-    <Compile Include="Firmata\Firmware.cs" />
-    <Compile Include="Firmata\ProtocolVersion.cs" />
-    <Compile Include="Firmata\Servo\IServoProtocol.cs" />
-    <Compile Include="Firmata\StringData.cs" />
-    <Compile Include="I2C\I2cEventArgs.cs" />
-    <Compile Include="I2C\I2cReply.cs" />
-    <Compile Include="Firmata\IFirmataProtocol.cs" />
-    <Compile Include="I2C\I2cReplyTracker.cs" />
-    <Compile Include="I2C\II2cProtocol.cs" />
-    <Compile Include="ISerialConnection.cs" />
-    <Compile Include="IStringProtocol.cs" />
-    <Compile Include="Firmata\PinCapability.cs" />
-    <Compile Include="Firmata\PinState.cs" />
-    <Compile Include="Messages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ObservableEventTracker.cs" />
-    <Compile Include="ReceivedStringTracker.cs" />
-    <Compile Include="SerialBaudRate.cs" />
-    <Compile Include="EnhancedSerialConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerialConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SerialPortFixer.cs" />
-    <Compile Include="StringEventArgs.cs" />
-    <Compile Include="StringExtensions.cs" />
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Solid.Arduino.Test</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Solid.Arduino.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
