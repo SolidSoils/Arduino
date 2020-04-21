@@ -6,7 +6,6 @@
   <HelpKINode Title="AnalogMappingResponse enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="AnalogPinMapping structure">
     <HelpKINode Title="AnalogPinMapping Structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm" />
-    <HelpKINode Title="about AnalogPinMapping structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm" />
     <HelpKINode Title="properties" Url="html/e10b3718-42ae-bdb7-e8c5-8fda7d054d52.htm" />
   </HelpKINode>
   <HelpKINode Title="AnalogPinMapping.Channel property" Url="html/42b47bc8-9e23-e9db-a8db-1972173530f1.htm" />
@@ -15,7 +14,6 @@
   <HelpKINode Title="AnalogState enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="AnalogState structure">
     <HelpKINode Title="AnalogState Structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm" />
-    <HelpKINode Title="about AnalogState structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm" />
     <HelpKINode Title="properties" Url="html/9eea4668-107b-8de8-59e3-22aa6c969ea0.htm" />
   </HelpKINode>
   <HelpKINode Title="AnalogState.Channel property" Url="html/ecad3166-5f2c-2fd8-b94c-de688c02211e.htm" />
@@ -27,7 +25,6 @@
   <HelpKINode Title="AnalogStateReceivedHandler delegate" Url="html/82864edc-a8c0-fb1e-c8d2-f70b564a089f.htm" />
   <HelpKINode Title="ArduinoSession class">
     <HelpKINode Title="ArduinoSession Class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm" />
-    <HelpKINode Title="about ArduinoSession class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm" />
     <HelpKINode Title="constructor" Url="html/f3a69b92-0354-52fc-b2c3-8f442702ea51.htm" />
     <HelpKINode Title="events" Url="html/32c1b709-03cf-fa67-24d3-12552bab13dd.htm" />
     <HelpKINode Title="methods" Url="html/712af620-4f36-ce65-1d71-1af90ef6e16a.htm" />
@@ -89,16 +86,14 @@
   <HelpKINode Title="BaudRate property" Url="html/0cd4e1e3-e5af-40f1-dc97-f2f08fb64119.htm" />
   <HelpKINode Title="BoardAnalogMapping structure">
     <HelpKINode Title="BoardAnalogMapping Structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm" />
-    <HelpKINode Title="about BoardAnalogMapping structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm" />
     <HelpKINode Title="properties" Url="html/17a49847-9f5e-41b4-a84a-1bb15979af70.htm" />
   </HelpKINode>
   <HelpKINode Title="BoardAnalogMapping.PinMappings property" Url="html/1cd0d237-552e-0958-a3ef-7dec5153ffa3.htm" />
   <HelpKINode Title="BoardCapability structure">
     <HelpKINode Title="BoardCapability Structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm" />
-    <HelpKINode Title="about BoardCapability structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm" />
     <HelpKINode Title="properties" Url="html/bcbabe45-8718-bce0-5974-bae720038d00.htm" />
   </HelpKINode>
-  <HelpKINode Title="BoardCapability.PinCapabilities property" Url="html/d7584345-cfb1-bae2-17d7-a3c94b6323c5.htm" />
+  <HelpKINode Title="BoardCapability.Pins property" Url="html/ebf2f037-d888-6733-6882-3faf1f3e6952.htm" />
   <HelpKINode Title="Bps_115200 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
   <HelpKINode Title="Bps_1200 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
   <HelpKINode Title="Bps_14400 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
@@ -114,7 +109,6 @@
   <HelpKINode Title="Bps_9600 enumeration member" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
   <HelpKINode Title="ByteArrayExtensions class">
     <HelpKINode Title="ByteArrayExtensions Class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm" />
-    <HelpKINode Title="about ByteArrayExtensions class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm" />
     <HelpKINode Title="methods" Url="html/1685f037-3a5d-6004-7e2c-c72f2c403fed.htm" />
   </HelpKINode>
   <HelpKINode Title="ByteArrayExtensions.ConvertBinaryCodedDecimalToString method" Url="html/05b5327f-d814-405f-e2bd-e56a351a861e.htm" />
@@ -160,7 +154,6 @@
   <HelpKINode Title="DigitalPortState enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="DigitalPortState structure">
     <HelpKINode Title="DigitalPortState Structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm" />
-    <HelpKINode Title="about DigitalPortState structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm" />
     <HelpKINode Title="methods" Url="html/0f03b0e7-a914-e46b-c2d6-e0bed40eac37.htm" />
     <HelpKINode Title="properties" Url="html/70740235-9698-52af-7cd1-614f7550f80b.htm" />
   </HelpKINode>
@@ -180,43 +173,38 @@
   <HelpKINode Title="Encoder property" Url="html/00b485cd-b70e-e463-f9aa-ba11cee21ff7.htm" />
   <HelpKINode Title="EnhancedSerialConnection class">
     <HelpKINode Title="EnhancedSerialConnection Class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm" />
-    <HelpKINode Title="about EnhancedSerialConnection class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm" />
     <HelpKINode Title="constructor" Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm" />
     <HelpKINode Title="methods" Url="html/60dd3c0d-a640-05d4-db8d-c2637f7f2b39.htm" />
   </HelpKINode>
   <HelpKINode Title="EnhancedSerialConnection.Close method" Url="html/fbb61933-2aad-26b0-f4ef-a12c45469c8f.htm" />
   <HelpKINode Title="EnhancedSerialConnection.EnhancedSerialConnection constructor" Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm" />
-  <HelpKINode Title="EnhancedSerialConnection.FindSerialConnection method" Url="html/decd0be6-d026-cd06-d680-2d4d66e18b70.htm" />
+  <HelpKINode Title="EnhancedSerialConnection.Find method" Url="html/bb27603a-6a4d-9e7c-1cc2-a08ee8ef4109.htm" />
   <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.ReadByte explicitly implemented method" Url="html/e3624fc2-b4fb-895d-3b74-40390ea3994d.htm" />
   <HelpKINode Title="EnhancedSerialConnection.ISerialConnection.WriteLine explicitly implemented method" Url="html/cfafcb67-8636-fcae-c56c-aad4f2241248.htm" />
   <HelpKINode Title="EnhancedSerialConnection.Write method" Url="html/90348614-3a75-cec2-bea4-b5847353f958.htm" />
   <HelpKINode Title="EnhancedSerialPort class">
     <HelpKINode Title="EnhancedSerialPort Class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm" />
-    <HelpKINode Title="about EnhancedSerialPort class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm" />
     <HelpKINode Title="constructor" Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm" />
     <HelpKINode Title="methods" Url="html/2f361478-0a2b-cf8c-c0b5-c347820086fe.htm" />
   </HelpKINode>
   <HelpKINode Title="EnhancedSerialPort.EnhancedSerialPort constructor" Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm" />
   <HelpKINode Title="EnhancedSerialPort.Open method" Url="html/70512b72-78fb-5a4a-8fbd-8c01ff72fb9e.htm" />
-  <HelpKINode Title="FindSerialConnection method">
-    <HelpKINode Title="EnhancedSerialConnection.FindSerialConnection Method " Url="html/decd0be6-d026-cd06-d680-2d4d66e18b70.htm" />
-    <HelpKINode Title="SerialConnection.FindSerialConnection Method " Url="html/5b77c75f-cfbe-e83f-3dbf-a6365edf0f1e.htm" />
+  <HelpKINode Title="Find method">
+    <HelpKINode Title="EnhancedSerialConnection.Find Method " Url="html/bb27603a-6a4d-9e7c-1cc2-a08ee8ef4109.htm" />
+    <HelpKINode Title="SerialConnection.Find Method " Url="html/f3b51430-f6ad-bc63-f4a8-1afd7b7c2a85.htm" />
   </HelpKINode>
   <HelpKINode Title="FirmataEventArgs(Of T) class">
     <HelpKINode Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
-    <HelpKINode Title="about FirmataEventArgs(Of T) class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
     <HelpKINode Title="properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm" />
   </HelpKINode>
   <HelpKINode Title="FirmataEventArgs(Of T).Value property" Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
   <HelpKINode Title="FirmataEventArgs&lt;T&gt; class">
     <HelpKINode Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
-    <HelpKINode Title="about FirmataEventArgs&lt;T&gt; class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm" />
     <HelpKINode Title="properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm" />
   </HelpKINode>
   <HelpKINode Title="FirmataEventArgs&lt;T&gt;.Value property" Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
   <HelpKINode Title="FirmataMessage class">
     <HelpKINode Title="FirmataMessage Class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm" />
-    <HelpKINode Title="about FirmataMessage class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm" />
     <HelpKINode Title="properties" Url="html/830f17c7-c111-019a-9c23-522994fd13a3.htm" />
   </HelpKINode>
   <HelpKINode Title="FirmataMessage.Time property" Url="html/9196cfe1-64f6-4623-a1c0-a941ecd8c7c7.htm" />
@@ -224,13 +212,11 @@
   <HelpKINode Title="FirmataMessage.Value property" Url="html/6bdc660a-cd9d-455a-7908-b6d762c1d8af.htm" />
   <HelpKINode Title="FirmataMessageEventArgs class">
     <HelpKINode Title="FirmataMessageEventArgs Class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm" />
-    <HelpKINode Title="about FirmataMessageEventArgs class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm" />
     <HelpKINode Title="properties" Url="html/7fbb1bc0-5346-9adb-23ca-afde8a1cda88.htm" />
   </HelpKINode>
   <HelpKINode Title="FirmataMessageEventArgs.Value property" Url="html/3e9fb5e9-92dc-8797-9059-3f3a27da6673.htm" />
   <HelpKINode Title="Firmware structure">
     <HelpKINode Title="Firmware Structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm" />
-    <HelpKINode Title="about Firmware structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm" />
     <HelpKINode Title="properties" Url="html/bf222e0f-2117-7a4d-78cb-0a8e02803aa8.htm" />
   </HelpKINode>
   <HelpKINode Title="Firmware.MajorVersion property" Url="html/dc621830-82ae-2687-3604-92d7fefcbc76.htm" />
@@ -289,14 +275,12 @@
   <HelpKINode Title="I2C property" Url="html/cf70a8e1-e4eb-2183-4c35-df109d3d7818.htm" />
   <HelpKINode Title="I2CEventArgs class">
     <HelpKINode Title="I2CEventArgs Class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm" />
-    <HelpKINode Title="about I2CEventArgs class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm" />
     <HelpKINode Title="properties" Url="html/82a6b8d0-f606-38df-3050-7192e8c47e61.htm" />
   </HelpKINode>
   <HelpKINode Title="I2CEventArgs.Value property" Url="html/c7f31e4f-9f61-353e-7a50-70a068be8196.htm" />
   <HelpKINode Title="I2CReply enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="I2CReply structure">
     <HelpKINode Title="I2CReply Structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm" />
-    <HelpKINode Title="about I2CReply structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm" />
     <HelpKINode Title="properties" Url="html/40d05494-2f3b-10bd-1fdb-485097690ee9.htm" />
   </HelpKINode>
   <HelpKINode Title="I2CReply.Address property" Url="html/7a82d399-3fe1-048e-ecb1-00b55cbfaba0.htm" />
@@ -309,7 +293,6 @@
   <HelpKINode Title="I2CReplyReceivedHandler delegate" Url="html/3695c805-d9b7-b3e6-32be-183a64f8873a.htm" />
   <HelpKINode Title="IFirmataProtocol interface">
     <HelpKINode Title="IFirmataProtocol Interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm" />
-    <HelpKINode Title="about IFirmataProtocol interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm" />
     <HelpKINode Title="events" Url="html/05b14b65-ca9d-7ff2-68b7-f70d7cfcc100.htm" />
     <HelpKINode Title="methods" Url="html/d205b57d-0a11-6b7d-ceab-edfecfd42975.htm" />
   </HelpKINode>
@@ -343,7 +326,6 @@
   <HelpKINode Title="IFirmataProtocol.SetSamplingInterval method" Url="html/d1faec22-b4a8-57d4-8509-fc1e35b530b0.htm" />
   <HelpKINode Title="II2CProtocol interface">
     <HelpKINode Title="II2CProtocol Interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm" />
-    <HelpKINode Title="about II2CProtocol interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm" />
     <HelpKINode Title="events" Url="html/3d0a9909-c581-51c4-1343-950e2653b152.htm" />
     <HelpKINode Title="methods" Url="html/bcee4a6a-47c8-e1cb-621c-2f876839efd6.htm" />
   </HelpKINode>
@@ -360,7 +342,6 @@
   <HelpKINode Title="InputPullup property" Url="html/6d552a41-b41f-9fab-d4ce-41d17f28dfc1.htm" />
   <HelpKINode Title="ISerialConnection interface">
     <HelpKINode Title="ISerialConnection Interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm" />
-    <HelpKINode Title="about ISerialConnection interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm" />
     <HelpKINode Title="events" Url="html/55c86eb1-5578-8ae0-dd84-5582fa070efe.htm" />
     <HelpKINode Title="methods" Url="html/10dde3c8-66dc-d300-0d82-de410352094d.htm" />
     <HelpKINode Title="properties" Url="html/990ca6d1-4785-c37c-0a9d-5db6af732336.htm" />
@@ -386,7 +367,6 @@
   <HelpKINode Title="ISerialConnection.WriteLine method" Url="html/183523fa-f6c5-0635-d6ba-336781e21c95.htm" />
   <HelpKINode Title="IServoProtocol interface">
     <HelpKINode Title="IServoProtocol Interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm" />
-    <HelpKINode Title="about IServoProtocol interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm" />
     <HelpKINode Title="methods" Url="html/449f192e-e39e-4f35-d4bd-fd8fd14ef6ad.htm" />
   </HelpKINode>
   <HelpKINode Title="IServoProtocol.ConfigureServo method" Url="html/fdfbef58-1137-cab4-864a-66bcdc536cab.htm" />
@@ -394,7 +374,6 @@
   <HelpKINode Title="IsSet method" Url="html/d7e6400a-af87-1003-be8a-a9effb1b622a.htm" />
   <HelpKINode Title="IStringProtocol interface">
     <HelpKINode Title="IStringProtocol Interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm" />
-    <HelpKINode Title="about IStringProtocol interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm" />
     <HelpKINode Title="events" Url="html/dffc6c6c-da1a-0e05-486a-66c89481c970.htm" />
     <HelpKINode Title="methods" Url="html/407075b2-2a77-655b-0bb4-fb45ded42876.htm" />
     <HelpKINode Title="properties" Url="html/4b854918-3dfc-0e52-8333-edc9d7d419fb.htm" />
@@ -436,10 +415,8 @@
     <HelpKINode Title="ISerialConnection.Open Method " Url="html/e1637911-8e22-f5a6-46a8-f22a852f09b0.htm" />
     <HelpKINode Title="SerialConnection.Open Method " Url="html/12415ea1-5b04-0b26-d464-d851efbbce73.htm" />
   </HelpKINode>
-  <HelpKINode Title="PinCapabilities property" Url="html/d7584345-cfb1-bae2-17d7-a3c94b6323c5.htm" />
   <HelpKINode Title="PinCapability structure">
     <HelpKINode Title="PinCapability Structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm" />
-    <HelpKINode Title="about PinCapability structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm" />
     <HelpKINode Title="properties" Url="html/ad6eda66-4832-2efc-b3c0-55e7c8ef7ba4.htm" />
   </HelpKINode>
   <HelpKINode Title="PinCapability.Analog property" Url="html/a53a9e81-536d-aec6-959d-32e03a3a7888.htm" />
@@ -465,10 +442,12 @@
     <HelpKINode Title="PinCapability.PinNumber Property " Url="html/0cace141-f273-7ad7-d632-31e0ff0815fb.htm" />
     <HelpKINode Title="PinState.PinNumber Property " Url="html/7b2ad63d-78ca-4a9b-7bf8-2a3619d8ae78.htm" />
   </HelpKINode>
-  <HelpKINode Title="Pins property" Url="html/4622e83d-5f7a-6c28-8838-b7bda56a96fd.htm" />
+  <HelpKINode Title="Pins property">
+    <HelpKINode Title="BoardCapability.Pins Property " Url="html/ebf2f037-d888-6733-6882-3faf1f3e6952.htm" />
+    <HelpKINode Title="DigitalPortState.Pins Property " Url="html/4622e83d-5f7a-6c28-8838-b7bda56a96fd.htm" />
+  </HelpKINode>
   <HelpKINode Title="PinState structure">
     <HelpKINode Title="PinState Structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm" />
-    <HelpKINode Title="about PinState structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm" />
     <HelpKINode Title="properties" Url="html/a6c005fe-f1fb-c257-4693-5dd2ccf4a508.htm" />
   </HelpKINode>
   <HelpKINode Title="PinState.Mode property" Url="html/1a181c03-5d41-d3a2-e280-049cad8d349a.htm" />
@@ -480,7 +459,6 @@
   <HelpKINode Title="ProtocolVersion enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="ProtocolVersion structure">
     <HelpKINode Title="ProtocolVersion Structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm" />
-    <HelpKINode Title="about ProtocolVersion structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm" />
     <HelpKINode Title="properties" Url="html/280d4128-f443-8cf2-6a53-33e6e7eb5e4e.htm" />
   </HelpKINode>
   <HelpKINode Title="ProtocolVersion.Major property" Url="html/66ebce33-e458-872b-5952-866144b9ada0.htm" />
@@ -555,13 +533,12 @@
   <HelpKINode Title="SerialBaudRate enumeration" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
   <HelpKINode Title="SerialConnection class">
     <HelpKINode Title="SerialConnection Class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm" />
-    <HelpKINode Title="about SerialConnection class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm" />
     <HelpKINode Title="constructor" Url="html/a357a146-da10-d1c5-6dbe-293d4072e351.htm" />
     <HelpKINode Title="methods" Url="html/335a34f6-a012-4732-1fea-87527cebbecd.htm" />
   </HelpKINode>
   <HelpKINode Title="SerialConnection.Close method" Url="html/5560f824-7c26-030f-a351-7a43f48d3616.htm" />
   <HelpKINode Title="SerialConnection.Dispose method" Url="html/24763d00-2f5b-09be-8ace-29f24895ed1b.htm" />
-  <HelpKINode Title="SerialConnection.FindSerialConnection method" Url="html/5b77c75f-cfbe-e83f-3dbf-a6365edf0f1e.htm" />
+  <HelpKINode Title="SerialConnection.Find method" Url="html/f3b51430-f6ad-bc63-f4a8-1afd7b7c2a85.htm" />
   <HelpKINode Title="SerialConnection.ISerialConnection.ReadByte explicitly implemented method" Url="html/b35dd5f1-998f-89d6-dad2-e05be835d949.htm" />
   <HelpKINode Title="SerialConnection.ISerialConnection.WriteLine explicitly implemented method" Url="html/ec6875fc-d3d0-99bd-0300-cbe303b3ab73.htm" />
   <HelpKINode Title="SerialConnection.Open method" Url="html/12415ea1-5b04-0b26-d464-d851efbbce73.htm" />
@@ -647,19 +624,16 @@
   <HelpKINode Title="StringData enumeration member" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
   <HelpKINode Title="StringData structure">
     <HelpKINode Title="StringData Structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm" />
-    <HelpKINode Title="about StringData structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm" />
     <HelpKINode Title="properties" Url="html/6cd07b17-b3e8-55c6-ec51-b4294f445a2d.htm" />
   </HelpKINode>
   <HelpKINode Title="StringData.Text property" Url="html/6bc5ef18-fb9b-7465-3576-f2fcc3b30b44.htm" />
   <HelpKINode Title="StringEventArgs class">
     <HelpKINode Title="StringEventArgs Class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm" />
-    <HelpKINode Title="about StringEventArgs class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm" />
     <HelpKINode Title="properties" Url="html/8e596088-4f9e-1214-eb48-e8369d8d3277.htm" />
   </HelpKINode>
   <HelpKINode Title="StringEventArgs.Text property" Url="html/5a68ef5b-372d-e6ea-0c35-79d60143c238.htm" />
   <HelpKINode Title="StringExtensions class">
     <HelpKINode Title="StringExtensions Class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm" />
-    <HelpKINode Title="about StringExtensions class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm" />
     <HelpKINode Title="methods" Url="html/c231898c-c0fd-8636-cd01-91e62005ca68.htm" />
   </HelpKINode>
   <HelpKINode Title="StringExtensions.To14BitIso method" Url="html/e3237dff-8b9e-7ddf-ff84-7c62943af619.htm" />
