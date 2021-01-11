@@ -6,89 +6,251 @@
   <members>
     <member name="T:Solid.Arduino.ArduinoSession">
       <summary>
-             Represents an active layer for serial communication with an Arduino board.
-             </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.ArduinoSession</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.#ctor(Solid.Arduino.ISerialConnection)">
       <summary>
-            Initializes a new instance of the <see cref="T:Solid.Arduino.ArduinoSession" /> class.
-            </summary>
-      <param name="connection">The serial port connection</param>
-      <exception cref="T:System.ArgumentNullException">connection</exception>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.ArduinoSession</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="connection">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>connection</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.#ctor(Solid.Arduino.ISerialConnection)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.#ctor(Solid.Arduino.ISerialConnection,System.Int32)">
       <summary>
-            Initializes a new instance of the <see cref="T:Solid.Arduino.ArduinoSession" /> class.
-            </summary>
-      <param name="connection">The serial port connection</param>
-      <param name="timeOut">The response time out in milliseconds</param>
-      <exception cref="T:System.ArgumentNullException">connection</exception>
-      <exception cref="T:System.ArgumentOutOfRangeException">timeOut</exception>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.ArduinoSession</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="connection">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>connection</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.#ctor(Solid.Arduino.ISerialConnection,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="timeOut">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>timeOut</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.#ctor(Solid.Arduino.ISerialConnection,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="E:Solid.Arduino.ArduinoSession.AnalogStateReceived">
       <summary>
-            Event, raised when an analog state message (command 0xE0) is received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ArduinoSession.AnalogStateReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.Clear">
       <summary>
-            Closes and reopens the underlying connection and clears all buffers and queues.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Clear</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ConfigureServo(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Configures the minimum and maximum pulse length for a servo pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <param name="minPulse">Minimum pulse length</param>
-      <param name="maxPulse">Maximum pulse length</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="minPulse">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>minPulse</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="maxPulse">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>maxPulse</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.AnalogState" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor(System.Int32)">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.AnalogState" /> messages for a specific channel.
-            </summary>
-      <param name="channel">The channel to track</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="channel">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>channel</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
       <returns>
-            An <see cref="T:System.IObservable`1" /> interface
-            </returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.DigitalPortState" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor(System.Int32)">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.DigitalPortState" /> messages for a specific port.
-            </summary>
-      <param name="port">The port to track</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="port">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>port</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
       <returns>
-            An <see cref="T:System.IObservable`1" /> interface
-            </returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateI2CReplyMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.I2C.I2CReply" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateI2CReplyMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateI2CReplyMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.CreateReceivedStringMonitor">
       <summary>
-            Creates an observable object tracking received ASCII <see cref="T:System.String" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateReceivedStringMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.CreateReceivedStringMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.ArduinoSession.DigitalStateReceived">
       <summary>
-            Event, raised when a digital I/O message (command 0x90) is received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ArduinoSession.DigitalStateReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.Dispose">
       <summary>
@@ -102,329 +264,1103 @@
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetBoardAnalogMapping">
       <summary>
-            Gets the channel-to-pin mappings of the party system's analog lines.
-            </summary>
-      <returns>The channel-to-pin mappings</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetBoardAnalogMappingAsync">
       <summary>
-            Asynchronously gets the channel-to-pin mappings of the party system's analog lines.
-            </summary>
-      <returns>The channel-to-pin mappings</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardAnalogMappingAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardAnalogMappingAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetBoardCapability">
       <summary>
-            Gets a summary of the party system's capabilities.
-            </summary>
-      <returns>The system's capabilities</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardCapability</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardCapability</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetBoardCapabilityAsync">
       <summary>
-            Asynchronously gets a summary of the party system's capabilities.
-            </summary>
-      <returns>The system's capabilities</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardCapabilityAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetBoardCapabilityAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetFirmware">
       <summary>
-            Gets the firmware signature of the party system.
-            </summary>
-      <returns>The firmware signature</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetFirmware</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetFirmware</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetFirmwareAsync">
       <summary>
-            Asynchronously gets the firmware signature of the party system.
-            </summary>
-      <returns>The firmware signature</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetFirmwareAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetFirmwareAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32)">
       <summary>
-            Gets byte data from the party system, read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An <see cref="T:Solid.Arduino.I2C.I2CReply" /> object holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Gets byte data from the party system, read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address and register</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An <see cref="T:Solid.Arduino.I2C.I2CReply" /> object holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32)">
       <summary>
-            Asynchronously gets byte data from the party system, read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Asynchronously gets byte data from the party system, read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetPinState(System.Int32)">
       <summary>
-            Gets a pin's mode (digital input/output, analog etc.) and actual value.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <returns>The pin's state</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetPinStateAsync(System.Int32)">
       <summary>
-            Asynchronously gets a pin's mode (digital input/output, analog etc.) and actual value.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <returns>The pin's state</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetProtocolVersion">
       <summary>
-            Gets the protocol version implemented on the party system.
-            </summary>
-      <returns>The implemented protocol version</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetProtocolVersion</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetProtocolVersion</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.GetProtocolVersionAsync">
       <summary>
-            Asynchronously gets the protocol version implemented on the party system.
-            </summary>
-      <returns>The implemented protocol version</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetProtocolVersionAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.GetProtocolVersionAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.ArduinoSession.I2CReplyReceived">
       <summary>
-            Event, raised for every SYSEX I2C message not handled by an <see cref="T:Solid.Arduino.I2C.II2CProtocol" />'s Get method.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ArduinoSession.I2CReplyReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="E:Solid.Arduino.ArduinoSession.MessageReceived">
       <summary>
-            Event, raised for every SysEx (0xF0) and ProtocolVersion (0xF9) message not handled by an <see cref="T:Solid.Arduino.Firmata.IFirmataProtocol" />'s Get method.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ArduinoSession.MessageReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ArduinoSession.NewLine">
       <summary>
-            Gets or sets the value used to interpret the end of strings received and sent.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.ArduinoSession.NewLine</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.Read(System.Int32)">
       <summary>
-            Reads a specified number of characters.
-            </summary>
-      <param name="length">The number of characters to be read (default is 1)</param>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="length">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>length</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadAsync(System.Int32)">
       <summary>
-            Reads a specified number of characters asynchronous.
-            </summary>
-      <param name="length">The number of characters to be read (default is 1)</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="length">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>length</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32)">
       <summary>
-            Requests the party system to repeatedly send bytes read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Requests the party system to repeatedly send bytes read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32)">
       <summary>
-            Requests the party system to send bytes read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Requests the party system to send bytes read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadLine">
       <summary>
-            Reads a string up to the next <see cref="P:Solid.Arduino.IStringProtocol.NewLine" /> character.
-            </summary>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadLine</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadLine</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadLineAsync">
       <summary>
-            Reads a string asynchronous up to the next <see cref="P:Solid.Arduino.IStringProtocol.NewLine" /> character.
-            </summary>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadLineAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadLineAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadTo(System.Char)">
       <summary>
-            Reads a string up to the first terminating character.
-            </summary>
-      <param name="terminator">The character identifying the end of the string</param>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="terminator">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>terminator</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ReadToAsync(System.Char)">
       <summary>
-            Reads a string asynchronous up to the first terminating character.
-            </summary>
-      <param name="terminator">The character identifying the end of the string</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="terminator">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>terminator</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.RequestBoardAnalogMapping">
       <summary>
-            Requests the party system to send the channel-to-pin mappings of its analog lines.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.RequestBoardCapability">
       <summary>
-            Requests the party system to send a summary of its capabilities.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestBoardCapability</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.RequestFirmware">
       <summary>
-            Requests the party system to send a firmware message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestFirmware</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.RequestPinState(System.Int32)">
       <summary>
-            Requests the party system to send the state of a given pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.RequestProtocolVersion">
       <summary>
-            Requests the party system to send a protocol version message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.RequestProtocolVersion</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.ResetBoard">
       <summary>
-            Sends a reset message to the party system.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.ResetBoard</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SendStringData(System.String)">
       <summary>
-            Sends a message string.
-            </summary>
-      <param name="data">The message string</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SendStringData(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="data">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>data</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SendStringData(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetAnalogReportMode(System.Int32,System.Boolean)">
       <summary>
-            Enables or disables analog sampling reporting.
-            </summary>
-      <param name="channel">The channel attached to the analog pin</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="channel">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>channel</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
       <param name="enable">
-        <c>True</c> if enabled, otherwise <c>false</c></param>
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>enable</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Boolean)">
       <summary>
-            Sets a HI or LO value on a digital output pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <param name="value">The value (<c>false</c> = Low, <c>true</c> = High)</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Int64)">
       <summary>
-            Sets an analog value on a PWM or Servo enabled analog output pin.
-            </summary>
-      <param name="pinNumber">The pin number.</param>
-      <param name="value">The value</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)">
       <summary>
-            Sets a pin's mode (digital input/digital output/analog/PWM/servo etc.).
-            </summary>
-      <param name="pinNumber">The number of the pin</param>
-      <param name="mode">The pin's mode</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="mode">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>mode</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetDigitalPort(System.Int32,System.Int32)">
       <summary>
-            Sets the digital output pins of a given port LOW or HIGH.
-            </summary>
-      <param name="portNumber">The 0-based port number</param>
-      <param name="pins">Binary value for the port's pins (0 to 7)</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="pins">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pins</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetDigitalReportMode(System.Int32,System.Boolean)">
       <summary>
-            Enables or disables digital input pin reporting for the given port.
-            </summary>
-      <param name="portNumber">The number of the port</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portNumber</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
       <param name="enable">
-        <c>true</c> if enabled, otherwise <c>false</c></param>
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>enable</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetI2CReadInterval(System.Int32)">
       <summary>
-            Sets the frequency at which data is read in the continuous mode.
-            </summary>
-      <param name="microseconds">The interval, expressed in microseconds</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetI2CReadInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="microseconds">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>microseconds</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetI2CReadInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.SetSamplingInterval(System.Int32)">
       <summary>
-            Sets the frequency at which analog samples must be reported.
-            </summary>
-      <param name="milliseconds">The sampling interval in milliseconds</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetSamplingInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="milliseconds">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>milliseconds</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.SetSamplingInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.StopI2CReading">
       <summary>
-            Commands the party system to stop sending I2C_REPLY messages.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.StopI2CReading</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="E:Solid.Arduino.ArduinoSession.StringReceived">
       <summary>
-            Event, raised for every ASCII stringmessage not handled by an <see cref="T:Solid.Arduino.IStringProtocol" />'s
-            Read, ReadAsync, ReadLine, ReadLineAsync, ReadTo or ReadToAsync method
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ArduinoSession.StringReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ArduinoSession.TimeOut">
       <summary>
-            Gets or sets the number of milliseconds before a time-out occurs when a read operation does not finish.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.ArduinoSession.TimeOut</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.Write(System.String)">
       <summary>
-            Writes a string to the serial output data stream.
-            </summary>
-      <param name="value">A string to be written</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.WriteI2C(System.Int32,System.Byte[])">
       <summary>
-            Writes an arbitrary array of bytes to the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's target address</param>
-      <param name="data">The data array</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="data">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>data</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ArduinoSession.WriteLine(System.String)">
       <summary>
-            Writes the specified string and the <see cref="P:System.IO.Ports.SerialPort.NewLine" /> value to the serial output stream.
-            </summary>
-      <param name="value">The string to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.ArduinoSession.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.EnhancedSerialConnection">
       <summary>
-            Represents a serial port connection, supporting Mono.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.EnhancedSerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.#ctor">
       <summary>
-            Initializes a new instance of <see cref="T:Solid.Arduino.EnhancedSerialConnection" /> class using the highest serial port available at 115,200 bits per second.
-            </summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.EnhancedSerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)">
       <summary>
-            Initializes a new instance of <see cref="T:Solid.Arduino.EnhancedSerialConnection" /> class on the given serial port and at the given baud rate.
-            </summary>
-      <param name="portName">The port name (e.g. 'COM3')</param>
-      <param name="baudRate">The baud rate</param>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.EnhancedSerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portName">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portName</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="baudRate">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>baudRate</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.Close">
       <summary>
@@ -436,54 +1372,162 @@
         </markup>
       </summary>
     </member>
-    <member name="M:Solid.Arduino.EnhancedSerialConnection.FindSerialConnection">
+    <member name="M:Solid.Arduino.EnhancedSerialConnection.Find">
       <summary>
-            Finds a serial connection to a device supporting the Firmata protocol.
-            </summary>
-      <param name="text">A string to be written</param>
-      <param name="buffer">The byte array that contains the data to write</param>
-      <param name="offset">The zero-based byte offset in the array at which to begin copying bytes</param>
-      <param name="count">The number of bytes to write</param>
-      <returns>A <see cref="T:Solid.Arduino.ISerialConnection" /> instance or <c>null</c> if no connection is found</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
-    <member name="M:Solid.Arduino.EnhancedSerialConnection.FindSerialConnection(System.String,System.String)">
+    <member name="M:Solid.Arduino.EnhancedSerialConnection.Find(System.String,System.String)">
       <summary>
-             Finds a serial connection to a device supporting plain serial communications.
-             </summary>
-      <param name="query">The query text used to inquire the connection</param>
-      <param name="expectedReply">The reply text the connected device is expected to respond with</param>
-      <returns>A <see cref="T:Solid.Arduino.ISerialConnection" /> instance or <c>null</c> if no connection is found</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="query">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>query</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="expectedReply">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>expectedReply</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#ReadByte">
       <summary>
-            Reads a byte from the underlying serial input data stream.
-            </summary>
-      <returns>A byte value</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#ReadByte</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#ReadByte</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)">
       <summary>
-            Writes a specified number of bytes to the serial output stream using data from a byte array.
-            </summary>
-      <param name="buffer">The byte array that contains the data to write</param>
-      <param name="offset">The zero-based byte offset in the array at which to begin copying bytes</param>
-      <param name="count">The number of bytes to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="buffer">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>buffer</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="offset">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>offset</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="count">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>count</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)">
       <summary>
-            Writes a string to the serial output data stream.
-            </summary>
-      <param name="text">A string to be written</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)">
       <summary>
-            Writes the specified string and the <see cref="P:System.IO.Ports.SerialPort.NewLine" /> value to the serial output stream.
-            </summary>
-      <param name="text">The string to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.EnhancedSerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.EnhancedSerialPort">
       <summary>
-            Represents a system serial port, supporting .NET and Mono.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.EnhancedSerialPort</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.EnhancedSerialPort.#ctor">
       <summary>
@@ -704,8 +1748,13 @@
     </member>
     <member name="T:Solid.Arduino.ISerialConnection">
       <summary>
-            Defines a serial port connection.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.ISerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ISerialConnection.BaudRate">
       <summary>
@@ -719,34 +1768,63 @@
     </member>
     <member name="P:Solid.Arduino.ISerialConnection.BytesToRead">
       <summary>
-            Gets the number of bytes of data in the receive buffer.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.ISerialConnection.BytesToRead</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.Close">
       <summary>
-            Closes the connection.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Close</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="E:Solid.Arduino.ISerialConnection.DataReceived">
       <summary>
-             Represents the method that will handle the data received event of a <see cref="T:Solid.Arduino.ISerialConnection" /> object.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.ISerialConnection.DataReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ISerialConnection.IsOpen">
       <summary>
-            Gets a value indicating the open or closed status of the <see cref="T:Solid.Arduino.ISerialConnection" /> object.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.ISerialConnection.IsOpen</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ISerialConnection.NewLine">
       <summary>
-            Gets or sets the value used to interpret the end of strings received and sent
-            using <see cref="M:Solid.Arduino.IStringProtocol.ReadLine" /> and <see cref="M:Solid.Arduino.IStringProtocol.WriteLine(System.String)" /> methods.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.ISerialConnection.NewLine</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.Open">
       <summary>
-            Opens the connection.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Open</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.ISerialConnection.PortName">
       <summary>
@@ -760,125 +1838,382 @@
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.ReadByte">
       <summary>
-            Reads a byte from the underlying serial input data stream.
-            </summary>
-      <returns>A byte value</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.ReadByte</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.ReadByte</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.Write(System.Byte[],System.Int32,System.Int32)">
       <summary>
-            Writes a specified number of bytes to the serial output stream using data from a byte array.
-            </summary>
-      <param name="buffer">The byte array that contains the data to write</param>
-      <param name="offset">The zero-based byte offset in the array at which to begin copying bytes</param>
-      <param name="count">The number of bytes to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="buffer">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>buffer</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="offset">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>offset</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="count">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>count</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.Write(System.String)">
       <summary>
-            Writes a string to the serial output data stream.
-            </summary>
-      <param name="text">A string to be written</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.ISerialConnection.WriteLine(System.String)">
       <summary>
-            Writes the specified string and the <see cref="P:System.IO.Ports.SerialPort.NewLine" /> value to the serial output stream.
-            </summary>
-      <param name="text">The string to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.ISerialConnection.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.IStringProtocol">
       <summary>
-            Defines members for sending and receiving ASCII string messages.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.IStringProtocol</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.CreateReceivedStringMonitor">
       <summary>
-            Creates an observable object tracking received ASCII <see cref="T:System.String" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.CreateReceivedStringMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.CreateReceivedStringMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="P:Solid.Arduino.IStringProtocol.NewLine">
       <summary>
-            Gets or sets the value used to interpret the end of strings received and sent.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.IStringProtocol.NewLine</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.Read(System.Int32)">
       <summary>
-            Reads a specified number of characters.
-            </summary>
-      <param name="length">The number of characters to be read (default is 1)</param>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="length">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>length</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.Read(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.ReadAsync(System.Int32)">
       <summary>
-            Reads a specified number of characters asynchronous.
-            </summary>
-      <param name="length">The number of characters to be read (default is 1)</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="length">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>length</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.ReadLine">
       <summary>
-            Reads a string up to the next <see cref="P:Solid.Arduino.IStringProtocol.NewLine" /> character.
-            </summary>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadLine</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadLine</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.ReadLineAsync">
       <summary>
-            Reads a string asynchronous up to the next <see cref="P:Solid.Arduino.IStringProtocol.NewLine" /> character.
-            </summary>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadLineAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadLineAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.ReadTo(System.Char)">
       <summary>
-            Reads a string up to the first terminating character.
-            </summary>
-      <param name="terminator">The character identifying the end of the string</param>
-      <returns>The string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="terminator">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>terminator</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadTo(System.Char)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.ReadToAsync(System.Char)">
       <summary>
-            Reads a string asynchronous up to the first terminating character.
-            </summary>
-      <param name="terminator">The character identifying the end of the string</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> returning the string read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="terminator">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>terminator</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.ReadToAsync(System.Char)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.IStringProtocol.StringReceived">
       <summary>
-            Event, raised for every ASCII stringmessage not handled by an <see cref="T:Solid.Arduino.IStringProtocol" />'s
-            Read, ReadAsync, ReadLine, ReadLineAsync, ReadTo or ReadToAsync method
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.IStringProtocol.StringReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.Write(System.String)">
       <summary>
-            Writes a string to the serial output data stream.
-            </summary>
-      <param name="value">A string to be written</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.Write(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.IStringProtocol.WriteLine(System.String)">
       <summary>
-            Writes the specified string and the <see cref="P:System.IO.Ports.SerialPort.NewLine" /> value to the serial output stream.
-            </summary>
-      <param name="value">The string to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.IStringProtocol.WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.SerialBaudRate">
       <summary>
-            Enumeration of common baud rates, supported by Arduino boards
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.SerialBaudRate</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.SerialConnection">
       <summary>
-            Represents a serial port connection.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.SerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.#ctor">
       <summary>
-            Initializes a new instance of <see cref="T:Solid.Arduino.SerialConnection" /> class using the highest COM-port available at 115,200 bits per second.
-            </summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.SerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)">
       <summary>
-            Initializes a new instance of <see cref="T:Solid.Arduino.SerialConnection" /> class on the given serial port and at the given baud rate.
-            </summary>
-      <param name="portName">The port name (e.g. 'COM3')</param>
-      <param name="baudRate">The baud rate</param>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Solid.Arduino.SerialConnection</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portName">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portName</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="baudRate">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>baudRate</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.#ctor(System.String,Solid.Arduino.SerialBaudRate)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Close">
       <summary>
@@ -900,23 +2235,59 @@
         </markup>
       </summary>
     </member>
-    <member name="M:Solid.Arduino.SerialConnection.FindSerialConnection">
+    <member name="M:Solid.Arduino.SerialConnection.Find">
       <summary>
-            Finds a serial connection to a device supporting the Firmata protocol.
-            </summary>
-      <param name="text">A string to be written</param>
-      <param name="buffer">The byte array that contains the data to write</param>
-      <param name="offset">The zero-based byte offset in the array at which to begin copying bytes</param>
-      <param name="count">The number of bytes to write</param>
-      <returns>A <see cref="T:Solid.Arduino.ISerialConnection" /> instance or <c>null</c> if no connection is found</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
-    <member name="M:Solid.Arduino.SerialConnection.FindSerialConnection(System.String,System.String)">
+    <member name="M:Solid.Arduino.SerialConnection.Find(System.String,System.String)">
       <summary>
-             Finds a serial connection to a device supporting plain serial communications.
-             </summary>
-      <param name="query">The query text used to inquire the connection</param>
-      <param name="expectedReply">The reply text the connected device is expected to respond with</param>
-      <returns>A <see cref="T:Solid.Arduino.ISerialConnection" /> instance or <c>null</c> if no connection is found</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="query">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>query</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="expectedReply">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>expectedReply</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Find(System.String,System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Open">
       <summary>
@@ -930,726 +2301,1948 @@
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#ReadByte">
       <summary>
-            Reads a byte from the underlying serial input data stream.
-            </summary>
-      <returns>A byte value</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#ReadByte</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#ReadByte</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)">
       <summary>
-            Writes a specified number of bytes to the serial output stream using data from a byte array.
-            </summary>
-      <param name="buffer">The byte array that contains the data to write</param>
-      <param name="offset">The zero-based byte offset in the array at which to begin copying bytes</param>
-      <param name="count">The number of bytes to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="buffer">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>buffer</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="offset">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>offset</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="count">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>count</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.Byte[],System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)">
       <summary>
-            Writes a string to the serial output data stream.
-            </summary>
-      <param name="text">A string to be written</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#Write(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)">
       <summary>
-            Writes the specified string and the <see cref="P:System.IO.Ports.SerialPort.NewLine" /> value to the serial output stream.
-            </summary>
-      <param name="text">The string to write</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="text">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>text</parameter>
+            <parameter>M:Solid.Arduino.SerialConnection.Solid#Arduino#ISerialConnection#WriteLine(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.StringEventArgs">
       <summary>
-            Event arguments passed to a <see cref="T:Solid.Arduino.StringReceivedHandler" /> type event.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.StringEventArgs</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.StringEventArgs.Text">
       <summary>
-            Gets the string value being received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.StringEventArgs.Text</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.StringExtensions">
       <summary>
-            Provides extension methods for <see cref="T:System.String" /> objects.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.StringExtensions</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.StringExtensions.To14BitIso(System.String)">
       <summary>
-            Converts a <see cref="T:System.String" /> to a 14 bit bigendian <see cref="T:System.Byte" /> array.
-            </summary>
-      <param name="o">The string being converted</param>
-      <returns>A <see cref="T:System.Byte" /> array.</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.To14BitIso(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="o">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>o</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.To14BitIso(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.To14BitIso(System.String)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.StringExtensions.ToBinaryCodedDecimal(System.String,System.Boolean)">
       <summary>
-            Converts the argument string into its binary-coded decimal (BCD) representation, e.g.
-             "1234" -&gt; { 0x12, 0x34 } (for Big Endian byte order)
-             "1234" -&gt; { 0x43, 0x21 } (for Little Endian byte order)
-            </summary>
-      <param name="isLittleEndian">True if the byte order is "little end first (leftmost)".</param>
-      <param name="o">String representation of BCD bytes.</param>
-      <returns>Byte array representation of the string as BCD.</returns>
-      <exception cref="T:System.ArgumentException">Thrown if the argument string isn't entirely made up of BCD pairs.</exception>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.ToBinaryCodedDecimal(System.String,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="o">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>o</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.ToBinaryCodedDecimal(System.String,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="isLittleEndian">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>isLittleEndian</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.ToBinaryCodedDecimal(System.String,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.StringExtensions.ToBinaryCodedDecimal(System.String,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="T:Solid.Arduino.StringReceivedHandler">
       <summary>
-            Signature of event handlers capable of processing received strings.
-            </summary>
-      <param name="sender">The object raising the event</param>
-      <param name="eventArgs">Event arguments holding a <see cref="T:System.String" /> message</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.StringReceivedHandler</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.AnalogPinMapping">
       <summary>
-            Represents a mapping between a MIDI channel and a physical pin number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.AnalogPinMapping</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.AnalogPinMapping.Channel">
       <summary>
-            Gets the MIDI channel number (0 - 15).
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.AnalogPinMapping.Channel</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.AnalogPinMapping.PinNumber">
       <summary>
-            Gets the board's pin number (0 - 127).
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.AnalogPinMapping.PinNumber</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.AnalogState">
       <summary>
-            Represents the analog level read from or set to an analog pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.AnalogState</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.AnalogState.Channel">
       <summary>
-            Gets the MIDI channel number (0 - 15).
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.AnalogState.Channel</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.AnalogState.Level">
       <summary>
-            Gets the analog level.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.AnalogState.Level</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.AnalogStateReceivedHandler">
       <summary>
-            Signature of event handlers capable of processing analog I/O messages.
-            </summary>
-      <param name="sender">The object raising the event</param>
-      <param name="eventArgs">Event arguments holding a <see cref="T:Solid.Arduino.Firmata.AnalogState" /></param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.AnalogStateReceivedHandler</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.BoardAnalogMapping">
       <summary>
-            Represents a summary of mappings between MIDI channels and physical pin numbers.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.BoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.BoardAnalogMapping.PinMappings">
       <summary>
-            Gets the channel mapping array of the board's analog pins.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.BoardAnalogMapping.PinMappings</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.BoardCapability">
       <summary>
-            Represents a summary of pinmode capabilities supported by an Arduino board.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.BoardCapability</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
-    <member name="P:Solid.Arduino.Firmata.BoardCapability.PinCapabilities">
+    <member name="P:Solid.Arduino.Firmata.BoardCapability.Pins">
       <summary>
-            Gets the capability array of the board's pins.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.BoardCapability.Pins</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.ByteArrayExtensions">
       <summary>
-            Provides extension methods for <see cref="T:System.Byte" /> arrays.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.ByteArrayExtensions</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.ByteArrayExtensions.ConvertBinaryCodedDecimalToString(System.Byte[],System.Boolean)">
       <summary>
-            Converts a <see cref="T:System.Byte" /> array holding binary coded digits to a readable string.
-            </summary>
-      <param name="data">The binary coded digit bytes</param>
-      <param name="isLittleEndian">Value indicating if the first nibble contains the least significant part</param>
-      <returns>A string containing numeric data</returns>
-      <exception cref="T:System.ArgumentException">The array contains one or more non-BCD bytes.</exception>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.ByteArrayExtensions.ConvertBinaryCodedDecimalToString(System.Byte[],System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="data">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>data</parameter>
+            <parameter>M:Solid.Arduino.Firmata.ByteArrayExtensions.ConvertBinaryCodedDecimalToString(System.Byte[],System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="isLittleEndian">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>isLittleEndian</parameter>
+            <parameter>M:Solid.Arduino.Firmata.ByteArrayExtensions.ConvertBinaryCodedDecimalToString(System.Byte[],System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.ByteArrayExtensions.ConvertBinaryCodedDecimalToString(System.Byte[],System.Boolean)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="T:Solid.Arduino.Firmata.DigitalPortState">
       <summary>
-            Represents the pin states of a digital port.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.DigitalPortState</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.DigitalPortState.IsSet(System.Int32)">
       <summary>
-            Gets a value indicating if a pin is set (1 or 'high').
-            </summary>
-      <param name="pin">The 0-based pin number</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.DigitalPortState.IsSet(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pin">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pin</parameter>
+            <parameter>M:Solid.Arduino.Firmata.DigitalPortState.IsSet(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
       <returns>
-        <c>true</c> when the pin has a binary 1 value, otherwise <c>false</c></returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.DigitalPortState.IsSet(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="P:Solid.Arduino.Firmata.DigitalPortState.Pins">
       <summary>
-            Gets the bit-pattern value of the digital port.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.DigitalPortState.Pins</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.DigitalPortState.Port">
       <summary>
-            Gets the digital port number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.DigitalPortState.Port</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.DigitalStateReceivedHandler">
       <summary>
-            Signature of event handlers capable of processing digital I/O messages.
-            </summary>
-      <param name="sender">The object raising the event</param>
-      <param name="eventArgs">Event arguments holding a <see cref="T:Solid.Arduino.Firmata.DigitalPortState" /></param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.DigitalStateReceivedHandler</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.FirmataEventArgs`1">
       <summary>
-            Contains event data for a <see cref="T:Solid.Arduino.Firmata.AnalogStateReceivedHandler" /> and <see cref="T:Solid.Arduino.Firmata.DigitalStateReceivedHandler" /> type events.
-            </summary>
-      <typeparam name="T">Type of the event data</typeparam>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.FirmataEventArgs`1</parameter>
+          </include>
+        </markup>
+      </summary>
+      <typeparam name="T">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>typeparam</parameter>
+            <parameter>T</parameter>
+            <parameter>T:Solid.Arduino.Firmata.FirmataEventArgs`1</parameter>
+          </include>
+        </markup>
+      </typeparam>
     </member>
     <member name="P:Solid.Arduino.Firmata.FirmataEventArgs`1.Value">
       <summary>
-            Gets the received message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.FirmataEventArgs`1.Value</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.FirmataMessage">
       <summary>
-            Represents a Firmata message received from an Arduino or Arduino compatible system.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.FirmataMessage</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.FirmataMessage.Time">
       <summary>
-            Gets the time of the delivered message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.FirmataMessage.Time</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.FirmataMessage.Type">
       <summary>
-            Gets the type enumeration of the message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.FirmataMessage.Type</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.FirmataMessage.Value">
       <summary>
-            Gets the specific value delivered by the message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.FirmataMessage.Value</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.FirmataMessageEventArgs">
       <summary>
-            Event arguments passed to a <see cref="T:Solid.Arduino.Firmata.MessageReceivedHandler" /> type event.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.FirmataMessageEventArgs</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.FirmataMessageEventArgs.Value">
       <summary>
-            Gets the received message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.FirmataMessageEventArgs.Value</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.Firmware">
       <summary>
-            Identifies the Arduino board's firmware.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.Firmware</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.Firmware.MajorVersion">
       <summary>
-            Gets the major version number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.Firmware.MajorVersion</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.Firmware.MinorVersion">
       <summary>
-            Gets the minor version number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.Firmware.MinorVersion</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.Firmware.Name">
       <summary>
-            Gets the name of the board's firmware.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.Firmware.Name</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.IFirmataProtocol">
       <summary>
-            Defines a comprehensive set of members supporting the Firmata Protocol.
-            Currently version 2.3 is supported.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.IFirmataProtocol</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="E:Solid.Arduino.Firmata.IFirmataProtocol.AnalogStateReceived">
       <summary>
-            Event, raised when an analog state message (command 0xE0) is received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.Firmata.IFirmataProtocol.AnalogStateReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.AnalogState" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor(System.Int32)">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.AnalogState" /> messages for a specific channel.
-            </summary>
-      <param name="channel">The channel to track</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="channel">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>channel</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
       <returns>
-            An <see cref="T:System.IObservable`1" /> interface
-            </returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateAnalogStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.DigitalPortState" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor(System.Int32)">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.Firmata.DigitalPortState" /> messages for a specific port.
-            </summary>
-      <param name="port">The port to track</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="port">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>port</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
       <returns>
-            An <see cref="T:System.IObservable`1" /> interface
-            </returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.CreateDigitalStateMonitor(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.Firmata.IFirmataProtocol.DigitalStateReceived">
       <summary>
-            Event, raised when a digital I/O message (command 0x90) is received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.Firmata.IFirmataProtocol.DigitalStateReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMapping">
       <summary>
-            Gets the channel-to-pin mappings of the party system's analog lines.
-            </summary>
-      <returns>The channel-to-pin mappings</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMappingAsync">
       <summary>
-            Asynchronously gets the channel-to-pin mappings of the party system's analog lines.
-            </summary>
-      <returns>The channel-to-pin mappings</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMappingAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardAnalogMappingAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapability">
       <summary>
-            Gets a summary of the party system's capabilities.
-            </summary>
-      <returns>The system's capabilities</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapability</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapability</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapabilityAsync">
       <summary>
-            Asynchronously gets a summary of the party system's capabilities.
-            </summary>
-      <returns>The system's capabilities</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapabilityAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetBoardCapabilityAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmware">
       <summary>
-            Gets the firmware signature of the party system.
-            </summary>
-      <returns>The firmware signature</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmware</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmware</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmwareAsync">
       <summary>
-            Asynchronously gets the firmware signature of the party system.
-            </summary>
-      <returns>The firmware signature</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmwareAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetFirmwareAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinState(System.Int32)">
       <summary>
-            Gets a pin's mode (digital input/output, analog etc.) and actual value.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <returns>The pin's state</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinStateAsync(System.Int32)">
       <summary>
-            Asynchronously gets a pin's mode (digital input/output, analog etc.) and actual value.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <returns>The pin's state</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetPinStateAsync(System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersion">
       <summary>
-            Gets the protocol version implemented on the party system.
-            </summary>
-      <returns>The implemented protocol version</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersion</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersion</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersionAsync">
       <summary>
-            Asynchronously gets the protocol version implemented on the party system.
-            </summary>
-      <returns>The implemented protocol version</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersionAsync</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.GetProtocolVersionAsync</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.Firmata.IFirmataProtocol.MessageReceived">
       <summary>
-            Event, raised for every SysEx (0xF0) and ProtocolVersion (0xF9) message not handled by an <see cref="T:Solid.Arduino.Firmata.IFirmataProtocol" />'s Get method.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.Firmata.IFirmataProtocol.MessageReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.RequestBoardAnalogMapping">
       <summary>
-            Requests the party system to send the channel-to-pin mappings of its analog lines.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestBoardAnalogMapping</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.RequestBoardCapability">
       <summary>
-            Requests the party system to send a summary of its capabilities.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestBoardCapability</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.RequestFirmware">
       <summary>
-            Requests the party system to send a firmware message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestFirmware</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.RequestPinState(System.Int32)">
       <summary>
-            Requests the party system to send the state of a given pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestPinState(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.RequestProtocolVersion">
       <summary>
-            Requests the party system to send a protocol version message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.RequestProtocolVersion</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.ResetBoard">
       <summary>
-            Sends a reset message to the party system.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.ResetBoard</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SendStringData(System.String)">
       <summary>
-            Sends a message string.
-            </summary>
-      <param name="data">The message string</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SendStringData(System.String)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="data">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>data</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SendStringData(System.String)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetAnalogReportMode(System.Int32,System.Boolean)">
       <summary>
-            Enables or disables analog sampling reporting.
-            </summary>
-      <param name="channel">The channel attached to the analog pin</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="channel">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>channel</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
       <param name="enable">
-        <c>True</c> if enabled, otherwise <c>false</c></param>
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>enable</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetAnalogReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Boolean)">
       <summary>
-            Sets a HI or LO value on a digital output pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <param name="value">The value (<c>false</c> = Low, <c>true</c> = High)</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Int64)">
       <summary>
-            Sets an analog value on a PWM or Servo enabled analog output pin.
-            </summary>
-      <param name="pinNumber">The pin number.</param>
-      <param name="value">The value</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="value">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>value</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPin(System.Int32,System.Int64)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)">
       <summary>
-            Sets a pin's mode (digital input/digital output/analog/PWM/servo etc.).
-            </summary>
-      <param name="pinNumber">The number of the pin</param>
-      <param name="mode">The pin's mode</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="mode">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>mode</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPinMode(System.Int32,Solid.Arduino.Firmata.PinMode)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPort(System.Int32,System.Int32)">
       <summary>
-            Sets the digital output pins of a given port LOW or HIGH.
-            </summary>
-      <param name="portNumber">The 0-based port number</param>
-      <param name="pins">Binary value for the port's pins (0 to 7)</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="pins">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pins</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalPort(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalReportMode(System.Int32,System.Boolean)">
       <summary>
-            Enables or disables digital input pin reporting for the given port.
-            </summary>
-      <param name="portNumber">The number of the port</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="portNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>portNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
       <param name="enable">
-        <c>true</c> if enabled, otherwise <c>false</c></param>
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>enable</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetDigitalReportMode(System.Int32,System.Boolean)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.Firmata.IFirmataProtocol.SetSamplingInterval(System.Int32)">
       <summary>
-            Sets the frequency at which analog samples must be reported.
-            </summary>
-      <param name="milliseconds">The sampling interval in milliseconds</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetSamplingInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="milliseconds">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>milliseconds</parameter>
+            <parameter>M:Solid.Arduino.Firmata.IFirmataProtocol.SetSamplingInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.Firmata.MessageReceivedHandler">
       <summary>
-            Signature of event handlers capable of processing Firmata messages.
-            </summary>
-      <param name="sender">The object raising the event</param>
-      <param name="eventArgs">Event arguments holding a <see cref="T:Solid.Arduino.Firmata.FirmataMessage" /></param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.MessageReceivedHandler</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.MessageType">
       <summary>
-            Indicates the type of a Firmata Message.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.MessageType</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.PinCapability">
       <summary>
-            Contains information about the capabilities of a pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.PinCapability</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.Analog">
       <summary>
-            Gets a value indicating if it is an analog pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.Analog</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.AnalogResolution">
       <summary>
-            Gets the bit resolution for analog pins.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.AnalogResolution</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.DigitalInput">
       <summary>
-            Gets a value indicating if the pin can be in digital input mode.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.DigitalInput</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.DigitalOutput">
       <summary>
-            Gets a value indicating if the pin can be in digital output mode.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.DigitalOutput</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.Encoder">
       <summary>
-            Gets a value indicating if it is an encoder pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.Encoder</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.I2C">
       <summary>
-            Gets a value indicating if it is an I2c pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.I2C</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.InputPullup">
       <summary>
-            Gets a value indicating if it is an input pullup pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.InputPullup</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.MaxStepNumber">
       <summary>
-            Gets the maximum number of steps if it is a Stepper Control pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.MaxStepNumber</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.OneWire">
       <summary>
-            Gets a value indicating if it is an OneWire pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.OneWire</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.PinNumber">
       <summary>
-            Gets the 0-based number of the pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.PinNumber</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.Pwm">
       <summary>
-            Gets a value indicating if the pin supports pulse width modulation.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.Pwm</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.PwmResolution">
       <summary>
-            Gets the bit resolution for PWM enabled pins.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.PwmResolution</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.Serial">
       <summary>
-            Gets a value indicating if it is a serial pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.Serial</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.Servo">
       <summary>
-            Gets a value indicating if the pin supports servo motor control.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.Servo</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.ServoResolution">
       <summary>
-            Gets the bit resolution for servo enabled pins.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.ServoResolution</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinCapability.StepperControl">
       <summary>
-            Gets a value indicating if it is a Stepper Control pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinCapability.StepperControl</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.PinMode">
       <summary>
-            The modes a pin can be in or can be set to.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.PinMode</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.PinState">
       <summary>
-            Contains information about a pin's state.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.PinState</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinState.Mode">
       <summary>
-            Gets pin's operating mode.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinState.Mode</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinState.PinNumber">
       <summary>
-            The 0-based pin number
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinState.PinNumber</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.PinState.Value">
       <summary>
-            Gets the value of the pin.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.PinState.Value</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.ProtocolVersion">
       <summary>
-            Represents the Firmata communication protocol version.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.ProtocolVersion</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.ProtocolVersion.Major">
       <summary>
-            Gets or sets the major version number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.ProtocolVersion.Major</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.ProtocolVersion.Minor">
       <summary>
-            Gets or sets the minor version number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.ProtocolVersion.Minor</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.StringData">
       <summary>
-            Represents a string exchanged with the Firmata SYSEX STRING_DATA command.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.StringData</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.Firmata.StringData.Text">
       <summary>
-            Gets or sets the string.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.Firmata.StringData.Text</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.Firmata.Servo.IServoProtocol">
       <summary>
-            Defines Servo control related members of the Firmata protocol.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.Firmata.Servo.IServoProtocol</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.Firmata.Servo.IServoProtocol.ConfigureServo(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Configures the minimum and maximum pulse length for a servo pin.
-            </summary>
-      <param name="pinNumber">The pin number</param>
-      <param name="minPulse">Minimum pulse length</param>
-      <param name="maxPulse">Maximum pulse length</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.Firmata.Servo.IServoProtocol.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="pinNumber">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>pinNumber</parameter>
+            <parameter>M:Solid.Arduino.Firmata.Servo.IServoProtocol.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="minPulse">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>minPulse</parameter>
+            <parameter>M:Solid.Arduino.Firmata.Servo.IServoProtocol.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="maxPulse">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>maxPulse</parameter>
+            <parameter>M:Solid.Arduino.Firmata.Servo.IServoProtocol.ConfigureServo(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="T:Solid.Arduino.I2C.I2CEventArgs">
       <summary>
-            Event arguments passed to a <see cref="T:Solid.Arduino.I2C.I2CReplyReceivedHandler" /> type event.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.I2C.I2CEventArgs</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.I2C.I2CEventArgs.Value">
       <summary>
-            Gets the I2C message value being received.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.I2C.I2CEventArgs.Value</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.I2C.I2CReply">
       <summary>
-            Container for an I2C message
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.I2C.I2CReply</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.I2C.I2CReply.Address">
       <summary>
-            Gets or sets the memory address.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.I2C.I2CReply.Address</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.I2C.I2CReply.Data">
       <summary>
-            Gets or sets the binary data.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.I2C.I2CReply.Data</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="P:Solid.Arduino.I2C.I2CReply.Register">
       <summary>
-            Gets or sets the register number.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>P:Solid.Arduino.I2C.I2CReply.Register</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.I2C.I2CReplyReceivedHandler">
       <summary>
-            Signature of event handlers capable of processing I2C_REPLY messages.
-            </summary>
-      <param name="sender">The object raising the event</param>
-      <param name="eventArgs">Event arguments holding an <see cref="T:Solid.Arduino.I2C.I2CReply" /></param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.I2C.I2CReplyReceivedHandler</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="T:Solid.Arduino.I2C.II2CProtocol">
       <summary>
-            Defines a comprehensive set of members supporting the I2C Protocol.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>T:Solid.Arduino.I2C.II2CProtocol</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.CreateI2CReplyMonitor">
       <summary>
-            Creates an observable object tracking <see cref="T:Solid.Arduino.I2C.I2CReply" /> messages.
-            </summary>
-      <returns>An <see cref="T:System.IObservable`1" /> interface</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.CreateI2CReplyMonitor</parameter>
+          </include>
+        </markup>
+      </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.CreateI2CReplyMonitor</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32)">
       <summary>
-            Gets byte data from the party system, read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An <see cref="T:Solid.Arduino.I2C.I2CReply" /> object holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Gets byte data from the party system, read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address and register</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An <see cref="T:Solid.Arduino.I2C.I2CReply" /> object holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReply(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32)">
       <summary>
-            Asynchronously gets byte data from the party system, read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Asynchronously gets byte data from the party system, read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
-      <returns>An awaitable <see cref="T:System.Threading.Tasks.Task`1" /> holding the data read</returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.GetI2CReplyAsync(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </returns>
     </member>
     <member name="E:Solid.Arduino.I2C.II2CProtocol.I2CReplyReceived">
       <summary>
-            Event, raised for every SYSEX I2C message not handled by an <see cref="T:Solid.Arduino.I2C.II2CProtocol" />'s Get method.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>E:Solid.Arduino.I2C.II2CProtocol.I2CReplyReceived</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32)">
       <summary>
-            Requests the party system to repeatedly send bytes read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Requests the party system to repeatedly send bytes read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2CContinuous(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32)">
       <summary>
-            Requests the party system to send bytes read from the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32,System.Int32)">
       <summary>
-            Requests the party system to send bytes read from the given memory address and register.
-            </summary>
-      <param name="slaveAddress">The slave's memory address</param>
-      <param name="slaveRegister">The slave's register</param>
-      <param name="bytesToRead">Number of bytes to read</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="slaveRegister">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveRegister</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="bytesToRead">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>bytesToRead</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.ReadI2COnce(System.Int32,System.Int32,System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.SetI2CReadInterval(System.Int32)">
       <summary>
-            Sets the frequency at which data is read in the continuous mode.
-            </summary>
-      <param name="microseconds">The interval, expressed in microseconds</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.SetI2CReadInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="microseconds">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>microseconds</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.SetI2CReadInterval(System.Int32)</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.StopI2CReading">
       <summary>
-            Commands the party system to stop sending I2C_REPLY messages.
-            </summary>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.StopI2CReading</parameter>
+          </include>
+        </markup>
+      </summary>
     </member>
     <member name="M:Solid.Arduino.I2C.II2CProtocol.WriteI2C(System.Int32,System.Byte[])">
       <summary>
-            Writes an arbitrary array of bytes to the given memory address.
-            </summary>
-      <param name="slaveAddress">The slave's target address</param>
-      <param name="data">The data array</param>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>summary</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </summary>
+      <param name="slaveAddress">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>slaveAddress</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </param>
+      <param name="data">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>param</parameter>
+            <parameter>data</parameter>
+            <parameter>M:Solid.Arduino.I2C.II2CProtocol.WriteI2C(System.Int32,System.Byte[])</parameter>
+          </include>
+        </markup>
+      </param>
     </member>
   </members>
 </doc>
