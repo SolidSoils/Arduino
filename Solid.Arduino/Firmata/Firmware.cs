@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino.Firmata
+﻿namespace Solid.Arduino.Firmata
 {
     /// <summary>
     /// Identifies the Arduino board's firmware.

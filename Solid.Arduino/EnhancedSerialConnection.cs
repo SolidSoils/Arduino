@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO.Ports;
+﻿using System.IO.Ports;
 using System.Linq;
 
 namespace Solid.Arduino
@@ -11,8 +10,6 @@ namespace Solid.Arduino
     /// <inheritdoc />
     public class EnhancedSerialConnection : EnhancedSerialPort, ISerialConnection
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance of <see cref="EnhancedSerialConnection"/> class using the highest serial port available at 115,200 bits per second.
         /// </summary>
@@ -34,14 +31,6 @@ namespace Solid.Arduino
             ReadTimeout = 100;
             WriteTimeout = 100;
         }
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Public Methods & Properties
 
         /// <inheritdoc cref="SerialConnection.Find()"/>
         public static ISerialConnection Find()
@@ -66,18 +55,9 @@ namespace Solid.Arduino
             }
         }
 
-        #endregion
-
-        #region Private Methods
-
-        private static string GetLastPortName()
-        {
-            return (from p in SerialPort.GetPortNames()
-                            where (p.StartsWith(@"/dev/ttyUSB") || p.StartsWith(@"/dev/ttyAMA") || p.StartsWith(@"/dev/ttyACM") || p.StartsWith("COM"))
-                            orderby p descending
-                            select p).First();
-        }
-
-        #endregion
+        private static string GetLastPortName() => GetPortNames()
+            .Where(p => p.StartsWith(@"/dev/ttyUSB") || p.StartsWith(@"/dev/ttyAMA") || p.StartsWith(@"/dev/ttyACM") || p.StartsWith("COM"))
+            .OrderByDescending(p => p)
+            .FirstOrDefault();
     }
 }

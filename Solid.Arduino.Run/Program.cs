@@ -198,7 +198,7 @@ namespace Solid.Arduino.Run
             //firmata.SetDigitalPortState(3, 255);
 
             firmata.SetSamplingInterval(500);
-            firmata.SetAnalogReportMode(0, false);
+            firmata.SetAnalogReportMode(0, true);
 
             Console.WriteLine("Setting digital report modes:");
             firmata.SetDigitalReportMode(0, true);

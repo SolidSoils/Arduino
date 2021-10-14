@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino
+﻿namespace Solid.Arduino
 {
     internal class ReceivedStringTracker : ObservableEventTracker<IStringProtocol, string>
     {

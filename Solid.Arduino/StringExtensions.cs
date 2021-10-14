@@ -4,7 +4,7 @@ using System.Linq;
 namespace Solid.Arduino
 {
     /// <summary>
-    /// Provides extension methods for <see cref="String"/> objects.
+    /// Provides extension methods for <see cref="string"/> objects.
     /// </summary>
     public static class StringExtensions
     {
@@ -23,14 +23,14 @@ namespace Solid.Arduino
                 throw new ArgumentNullException();
 
             if (o.Length == 0)
-                return new byte[0];
+                return Array.Empty<byte>();
 
             if (o.Length % 2 == 1)
                 o = "0" + o;
 
             char[] chars = o.ToCharArray();
 
-            if (!chars.All(Char.IsDigit))
+            if (!chars.All(char.IsDigit))
                 throw new ArgumentException(Messages.ArgumentEx_DigitStringOnly);
 
             byte[] bytes = new byte[o.Length >> 1];
@@ -57,7 +57,7 @@ namespace Solid.Arduino
         }
 
         /// <summary>
-        /// Converts a <see cref="String"/> to a 14 bit bigendian <see cref="byte"/> array.
+        /// Converts a <see cref="string"/> to a 14 bit bigendian <see cref="byte"/> array.
         /// </summary>
         /// <param name="o">The string being converted</param>
         /// <returns>A <see cref="byte"/> array.</returns>
@@ -70,7 +70,7 @@ namespace Solid.Arduino
                 throw new ArgumentNullException();
 
             if (o.Length == 0)
-                return new byte[0];
+                return Array.Empty<byte>();
 
             byte[] dataBytes = new byte[o.Length * 2];
 

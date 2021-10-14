@@ -1,19 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>SolidSoils.Arduino.Client</PackageId>
+    <Authors>Henk van Boeijen</Authors>
+    <Company>Solid Soils Solutions</Company>
+    <Description>Client library built on .NET Standard 2.0 and providing an easy way to interact with Arduino boards.
+The library implements the serial ASCII, Firmata and I2C protocols, which can be used simultaneously.</Description>
+    <Copyright>Copyright 2013-2021 Solid Soils Solutions</Copyright>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <PackageProjectUrl>https://github.com/SolidSoils/Arduino</PackageProjectUrl>
+    <PackageTags>Arduino Firmata I2C serial</PackageTags>
+    <PackageReleaseNotes>Documentation fix &amp; cleanup
+Upgrade to .NET Standard 2.0
+Fixed compatibility with Firmata 2.6</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/SolidSoils/Arduino</RepositoryUrl>
+    <PackageIcon>SolidSoilsLogo.jpg</PackageIcon>
+    <PackageIconUrl />
+    <Product>SolidSoils4Arduino</Product>
   </PropertyGroup>
-
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Data\Git\Arduino\Solid.Arduino\Solid.Arduino.xml</DocumentationFile>
+    <DefineConstants />
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.IO.Ports" Version="4.7.0" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>Solid.Arduino.Test</_Parameter1>
     </AssemblyAttribute>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Messages.Designer.cs">
@@ -28,5 +43,10 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="..\Documentation\icons\SolidSoilsLogo.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 </Project>

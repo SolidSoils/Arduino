@@ -15,8 +15,6 @@ namespace Solid.Arduino
     /// <inheritdoc cref="ISerialConnection" />
     public class SerialConnection : SerialPort, ISerialConnection
     {
-        #region Fields
-
         private static readonly SerialBaudRate[] PopularBaudRates =
         {
             SerialBaudRate.Bps_9600,
@@ -35,10 +33,6 @@ namespace Solid.Arduino
         };
 
         private bool _isDisposed;
-
-        #endregion
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of <see cref="SerialConnection"/> class using the highest COM-port available at 115,200 bits per second.
@@ -61,14 +55,6 @@ namespace Solid.Arduino
             ReadTimeout = 100;
             WriteTimeout = 100;
         }
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Public Methods & Properties
 
         /// <inheritdoc cref="SerialPort" />
         public new void Open()
@@ -138,11 +124,11 @@ namespace Solid.Arduino
         /// <seealso href="http://www.firmata.org/wiki/Protocol#Query_Firmware_Name_and_Version">Query Firmware Name and Version</seealso>
         public static ISerialConnection Find()
         {
-            Func<ArduinoSession, bool> isAvailableFunc = session =>
-                {
-                    Firmware firmware = session.GetFirmware();
-                    return firmware.MajorVersion >= 2;
-                };
+            bool isAvailableFunc(ArduinoSession session)
+            {
+                Firmware firmware = session.GetFirmware();
+                return firmware.MajorVersion >= 2;
+            }
 
             string[] portNames = GetPortNames();
             ISerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
@@ -199,25 +185,21 @@ namespace Solid.Arduino
         public static ISerialConnection Find(string query, string expectedReply)
         {
             if (string.IsNullOrEmpty(query))
-                throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, "query");
+                throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, nameof(query));
 
             if (string.IsNullOrEmpty(expectedReply))
-                throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, "expectedReply");
+                throw new ArgumentException(Messages.ArgumentEx_NotNullOrEmpty, nameof(expectedReply));
 
-            Func<ArduinoSession, bool> isAvailableFunc = session =>
-                {
-                    session.Write(query);
-                    return session.Read(expectedReply.Length) == expectedReply;
-                };
+            bool isAvailableFunc(ArduinoSession session)
+            {
+                session.Write(query);
+                return session.Read(expectedReply.Length) == expectedReply;
+            }
 
             string[] portNames = GetPortNames();
             ISerialConnection connection = FindConnection(isAvailableFunc, portNames, PopularBaudRates);
             return connection ?? FindConnection(isAvailableFunc, portNames, OtherBaudRates);
         }
-
-        #endregion
-
-        #region Private Methods
 
         private static string GetHighestComPortName()
         {
@@ -266,7 +248,5 @@ namespace Solid.Arduino
             }
             return null;
         }
-
-        #endregion
     }
 }

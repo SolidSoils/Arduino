@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>SolidSoils.Arduino.Client</id>
-    <version>0.4.0.0</version>
+    <version>1.0.0.0</version>
     <title>SolidSoils4Arduino</title>
     <authors>Henk van Boeijen</authors>
     <owners>Solid Soils Solutions</owners>
@@ -11,11 +11,11 @@
     <projectUrl>https://github.com/SolidSoils/Arduino</projectUrl>
     <!--><iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl></-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Client library built on .NET Framework 4.5 and providing an easy way to interact with Arduino boards.
+    <description>Client library built on .NET Standard 2.0 and providing an easy way to interact with Arduino boards.
       The library implements the serial ASCII, Firmata and I2C protocols, which can be used simultaneously.
     </description>
     <releaseNotes>Fixed compatibility with Firmata 2.6</releaseNotes>
-    <copyright>Copyright 2013-2017</copyright>
+    <copyright>Copyright 2013-2021</copyright>
     <tags>Arduino Firmata I2C serial</tags>
   </metadata>
 </package>

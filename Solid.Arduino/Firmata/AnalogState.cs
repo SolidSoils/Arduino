@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino.Firmata
+﻿namespace Solid.Arduino.Firmata
 {
     /// <summary>
     /// Represents the analog level read from or set to an analog pin.

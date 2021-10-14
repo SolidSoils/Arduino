@@ -26,7 +26,7 @@ namespace Solid.Arduino
         event StringReceivedHandler StringReceived;
 
         /// <summary>
-        /// Creates an observable object tracking received ASCII <see cref="System.String"/> messages.
+        /// Creates an observable object tracking received ASCII <see cref="string"/> messages.
         /// </summary>
         /// <returns>An <see cref="IObservable{String}"/> interface</returns>
         IObservable<string> CreateReceivedStringMonitor();

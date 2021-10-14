@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino
+﻿namespace Solid.Arduino
 {
     /// <summary>
     /// Event arguments passed to a <see cref="StringReceivedHandler"/> type event.

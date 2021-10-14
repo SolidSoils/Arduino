@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino.Firmata
+﻿namespace Solid.Arduino.Firmata
 {
     /// <summary>
     /// Represents a mapping between a MIDI channel and a physical pin number.

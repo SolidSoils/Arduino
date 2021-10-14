@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Solid.Arduino.Firmata.Servo
+﻿namespace Solid.Arduino.Firmata.Servo
 {
     /// <summary>
     /// Defines Servo control related members of the Firmata protocol.

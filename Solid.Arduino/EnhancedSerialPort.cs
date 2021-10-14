@@ -173,12 +173,7 @@ namespace Solid.Arduino
 
         private void OnDataReceived(SerialDataReceivedEventArgs args)
         {
-            var handler = (SerialDataReceivedEventHandler)Events[_dataReceived];
-
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            ((SerialDataReceivedEventHandler)Events[_dataReceived])?.Invoke(this, args);
         }
 
         private bool Poll(Stream stream)
@@ -189,9 +184,8 @@ namespace Solid.Arduino
             {
                 throw new InvalidOperationException("Port is closed.");
             }
-            int error;
 
-            bool pollResult = poll_serial(_fdStreamField, out error, ReadTimeout);
+            bool pollResult = poll_serial(_fdStreamField, out int error, ReadTimeout);
 
             if (error != -1)
                 return pollResult;

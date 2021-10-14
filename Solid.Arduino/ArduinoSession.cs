@@ -111,8 +111,6 @@ namespace Solid.Arduino
 
         #endregion
 
-        #region Fields
-
         private const byte AnalogMessage = 0xE0;
         private const byte DigitalMessage = 0x90;
         private const byte VersionReportHeader = 0xF9;
@@ -136,10 +134,6 @@ namespace Solid.Arduino
         private readonly int[] _messageBuffer = new int[Buffersize];
         private readonly char[] _stringBuffer = new char[Buffersize];
 
-        #endregion
-
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ArduinoSession"/> class.
         /// </summary>
@@ -147,10 +141,7 @@ namespace Solid.Arduino
         /// <exception cref="System.ArgumentNullException">connection</exception>
         public ArduinoSession(ISerialConnection connection)
         {
-            if (connection == null)
-                throw new ArgumentNullException(nameof(connection));
-
-            _connection = connection;
+            _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _gotOpenConnection = connection.IsOpen;
 
             if (!connection.IsOpen)
@@ -174,10 +165,6 @@ namespace Solid.Arduino
 
             _messageTimeout = timeOut;
         }
-
-        #endregion
-
-        #region Public Events, Methods & Properties
 
         /// <summary>
         /// Gets or sets the number of milliseconds before a time-out occurs when a read operation does not finish.
@@ -766,8 +753,6 @@ namespace Solid.Arduino
 
         #endregion
 
-        #endregion
-
         #region Private Methods
 
         private void WriteMessageByte(int dataByte)
@@ -960,8 +945,7 @@ namespace Solid.Arduino
                         || serialByte == 0x1A
                         || serialByte == 0x00) // NewLine, EOF or terminating 0-byte?
                     {
-                        if (StringReceived != null)
-                            StringReceived(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex - 1)));
+                        StringReceived?.Invoke(this, new StringEventArgs(new string(_stringBuffer, 0, _stringBufferIndex - 1)));
 
                         _stringBufferIndex = 0;
                     }
@@ -1051,6 +1035,7 @@ namespace Solid.Arduino
                             // 0xF? command not supported.
                             throw new NotImplementedException(string.Format(Messages.NotImplementedEx_Command, serialByte));
                     }
+
                     break;
 
                 default:
@@ -1072,13 +1057,10 @@ namespace Solid.Arduino
                     Channel = _messageBuffer[0] & 0x0F,
                     Level = (_messageBuffer[1] | (messageByte << 7))
                 };
+
                 _processMessage = null;
-
-                if (MessageReceived != null)
-                    MessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.AnalogState)));
-
-                if (AnalogStateReceived != null)
-                    AnalogStateReceived(this, new FirmataEventArgs<AnalogState>(currentState));
+                MessageReceived?.Invoke(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.AnalogState)));
+                AnalogStateReceived?.Invoke(this, new FirmataEventArgs<AnalogState>(currentState));
             }
         }
 
@@ -1095,13 +1077,10 @@ namespace Solid.Arduino
                     Port = _messageBuffer[0] & 0x0F,
                     Pins = _messageBuffer[1] | (messageByte << 7)
                 };
+
                 _processMessage = null;
-
-                if (MessageReceived != null)
-                    MessageReceived(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalPortState)));
-
-                if (DigitalStateReceived != null)
-                    DigitalStateReceived(this, new FirmataEventArgs<DigitalPortState>(currentState));
+                MessageReceived?.Invoke(this, new FirmataMessageEventArgs(new FirmataMessage(currentState, MessageType.DigitalPortState)));
+                DigitalStateReceived?.Invoke(this, new FirmataEventArgs<DigitalPortState>(currentState));
             }
         }
 
@@ -1201,10 +1180,7 @@ namespace Solid.Arduino
             }
             
             reply.Data = data;
-
-            if (I2CReplyReceived != null)
-                I2CReplyReceived(this, new I2CEventArgs(reply));
-
+            I2CReplyReceived?.Invoke(this, new I2CEventArgs(reply));
             return new FirmataMessage(reply, MessageType.I2CReply);
         }
 
@@ -1267,7 +1243,6 @@ namespace Solid.Arduino
                     while (x < _messageBufferIndex && _messageBuffer[x] != 127)
                     {
                         PinMode pinMode = (PinMode)_messageBuffer[x];
-                        bool isCapable = (_messageBuffer[x + 1] != 0);
 
                         switch (pinMode)
                         {

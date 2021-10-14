@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solid.Arduino.Firmata
+﻿namespace Solid.Arduino.Firmata
 {
     /// <summary>
     /// Contains information about a pin's state.

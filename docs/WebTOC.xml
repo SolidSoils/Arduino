@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="8c07656c-5cf9-4d41-adab-9c7bc0b3c4f2" Title="Solid.Arduino" Url="html/3a2ac349-bf62-313a-9f20-4c7c3932b60a.htm">
-    <HelpTOCNode Id="8eb96960-ad4c-4e44-a55b-8e7381656429" Title="ArduinoSession Class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm">
-      <HelpTOCNode Id="c41b8172-b2ae-45d0-a876-e3f46d33d0bc" Title="ArduinoSession Constructor " Url="html/f3a69b92-0354-52fc-b2c3-8f442702ea51.htm">
+  <HelpTOCNode Id="f94f1284-29f7-4791-b24b-7e9cfc0acf02" Title="Solid.Arduino" Url="html/3a2ac349-bf62-313a-9f20-4c7c3932b60a.htm">
+    <HelpTOCNode Id="f2a21641-95c5-42c6-9994-8aa857419705" Title="ArduinoSession Class" Url="html/fc3e09de-f376-65f7-47b1-60c2511a5acd.htm">
+      <HelpTOCNode Id="824f94fc-25cd-403b-a886-f788464ad0ab" Title="ArduinoSession Constructor " Url="html/f3a69b92-0354-52fc-b2c3-8f442702ea51.htm">
         <HelpTOCNode Title="ArduinoSession Constructor (ISerialConnection)" Url="html/ed8f32fc-eda4-0426-1a15-4eeb15460ec8.htm" />
         <HelpTOCNode Title="ArduinoSession Constructor (ISerialConnection, Int32)" Url="html/00e5bd9e-f9ab-5194-8375-b9fbf1f0161e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3742d2a6-19fe-4c8d-86be-32f49d43e424" Title="ArduinoSession Properties" Url="html/e2c9ceb2-6c34-7bb9-f1d7-041270a1088f.htm">
+      <HelpTOCNode Id="3a611fb4-6c3e-45e0-afcb-eb6d6e43afe1" Title="ArduinoSession Properties" Url="html/e2c9ceb2-6c34-7bb9-f1d7-041270a1088f.htm">
         <HelpTOCNode Title="NewLine Property " Url="html/c4d800a5-a5de-dc32-6725-c24ca5b6b07f.htm" />
         <HelpTOCNode Title="TimeOut Property " Url="html/0ce955e9-de04-3300-073d-2932518e0070.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="71633617-ebaa-423d-a349-b27c5d86bbd8" Title="ArduinoSession Methods" Url="html/712af620-4f36-ce65-1d71-1af90ef6e16a.htm">
+      <HelpTOCNode Id="1de8c39b-9154-4103-b95f-736cb1986406" Title="ArduinoSession Methods" Url="html/712af620-4f36-ce65-1d71-1af90ef6e16a.htm">
         <HelpTOCNode Title="Clear Method " Url="html/3840dfdb-97e9-882b-796e-9ad6e28ea2a1.htm" />
         <HelpTOCNode Title="ConfigureServo Method " Url="html/ce05c987-6053-fb21-59f1-0c83c611e513.htm" />
-        <HelpTOCNode Id="a6d1428b-0d74-4cb1-91a2-6e7514542d8f" Title="CreateAnalogStateMonitor Method " Url="html/2cf2e931-e0e8-d47d-aaa6-73cc82ef2e55.htm">
+        <HelpTOCNode Id="520aed47-35c3-431f-8afc-d81aff5c2eb3" Title="CreateAnalogStateMonitor Method " Url="html/2cf2e931-e0e8-d47d-aaa6-73cc82ef2e55.htm">
           <HelpTOCNode Title="CreateAnalogStateMonitor Method " Url="html/36d82773-9fd2-223a-44bd-acbc25407dda.htm" />
           <HelpTOCNode Title="CreateAnalogStateMonitor Method (Int32)" Url="html/8c1d05f9-9974-d9ee-4b69-cbd727d46d5f.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="3f7bd354-890f-4255-88c8-a8636622fce8" Title="CreateDigitalStateMonitor Method " Url="html/cad99045-36ff-2d40-f881-6d9616efe8f0.htm">
+        <HelpTOCNode Id="5a9c6fd6-577a-4a74-b056-2e0d22c3e27e" Title="CreateDigitalStateMonitor Method " Url="html/cad99045-36ff-2d40-f881-6d9616efe8f0.htm">
           <HelpTOCNode Title="CreateDigitalStateMonitor Method " Url="html/a14876ac-b585-07c6-75dd-a0b2c5ce64fe.htm" />
           <HelpTOCNode Title="CreateDigitalStateMonitor Method (Int32)" Url="html/af48914f-fe94-9752-7573-db5edf2b7fd9.htm" />
         </HelpTOCNode>
@@ -31,11 +31,11 @@
         <HelpTOCNode Title="GetBoardCapabilityAsync Method " Url="html/580f8ee8-6e40-6d26-8290-6b7b75def84f.htm" />
         <HelpTOCNode Title="GetFirmware Method " Url="html/04428aca-6102-c5fd-3222-18c2e545b0e8.htm" />
         <HelpTOCNode Title="GetFirmwareAsync Method " Url="html/9eccbac6-fe16-acb8-6b8c-643606251dda.htm" />
-        <HelpTOCNode Id="d04746f3-e537-4850-9275-72216f3324da" Title="GetI2CReply Method " Url="html/c88283e6-8a6d-e7e4-3a38-9c343e31d7cf.htm">
+        <HelpTOCNode Id="5d00da10-4d17-4787-ab66-9635efebf9f0" Title="GetI2CReply Method " Url="html/c88283e6-8a6d-e7e4-3a38-9c343e31d7cf.htm">
           <HelpTOCNode Title="GetI2CReply Method (Int32, Int32)" Url="html/ab95f6d2-30cf-24bf-a427-621540e1cc36.htm" />
           <HelpTOCNode Title="GetI2CReply Method (Int32, Int32, Int32)" Url="html/dd9bc9ad-239f-96e9-955d-5d82260ce525.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="1f10822a-ee77-475a-a599-55a6e62d09df" Title="GetI2CReplyAsync Method " Url="html/c7cb67b3-109d-5722-69ed-5ac3b5fdbc0e.htm">
+        <HelpTOCNode Id="87024e36-3486-4a2d-9be8-1e9205a0433a" Title="GetI2CReplyAsync Method " Url="html/c7cb67b3-109d-5722-69ed-5ac3b5fdbc0e.htm">
           <HelpTOCNode Title="GetI2CReplyAsync Method (Int32, Int32)" Url="html/524203d1-c389-0f63-fa4a-616459b7b0e2.htm" />
           <HelpTOCNode Title="GetI2CReplyAsync Method (Int32, Int32, Int32)" Url="html/8ce35937-c031-c897-3338-d93fc03adfaa.htm" />
         </HelpTOCNode>
@@ -45,11 +45,11 @@
         <HelpTOCNode Title="GetProtocolVersionAsync Method " Url="html/8dbe1dc8-266a-4668-ee8a-1fd53d220651.htm" />
         <HelpTOCNode Title="Read Method " Url="html/55aa38a0-1f7a-ec22-10d8-8bae26960810.htm" />
         <HelpTOCNode Title="ReadAsync Method " Url="html/7619d119-9fb4-a181-7523-07273f09e83b.htm" />
-        <HelpTOCNode Id="443f3e11-20a8-4a31-8c7d-b605c4d0dfde" Title="ReadI2CContinuous Method " Url="html/0ea9cbae-1535-ba11-3134-4520d69334f0.htm">
+        <HelpTOCNode Id="1f90caf7-c109-4597-81b6-62d13ec29556" Title="ReadI2CContinuous Method " Url="html/0ea9cbae-1535-ba11-3134-4520d69334f0.htm">
           <HelpTOCNode Title="ReadI2CContinuous Method (Int32, Int32)" Url="html/0eb18a1c-9837-d7d9-6e0d-f201303effe6.htm" />
           <HelpTOCNode Title="ReadI2CContinuous Method (Int32, Int32, Int32)" Url="html/a814f7b1-656c-0782-6d3f-be715b415a1d.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="ed8f944b-570e-415f-a9bc-9d28f49b19a7" Title="ReadI2COnce Method " Url="html/11348d42-72bd-635f-c392-da90b6c27daa.htm">
+        <HelpTOCNode Id="97d35e24-df80-430f-b40e-0f7b7cdc271b" Title="ReadI2COnce Method " Url="html/11348d42-72bd-635f-c392-da90b6c27daa.htm">
           <HelpTOCNode Title="ReadI2COnce Method (Int32, Int32)" Url="html/f0277d7f-20e7-7d21-7723-eff6a7d07f49.htm" />
           <HelpTOCNode Title="ReadI2COnce Method (Int32, Int32, Int32)" Url="html/43e2abd9-863a-2f7e-aabc-f0c145bb4d29.htm" />
         </HelpTOCNode>
@@ -65,7 +65,7 @@
         <HelpTOCNode Title="ResetBoard Method " Url="html/5a3e57ca-2a41-36d6-d0a8-f413e253efc6.htm" />
         <HelpTOCNode Title="SendStringData Method " Url="html/ae1ba7d3-433e-fd72-3f50-1a8ec37aa5f4.htm" />
         <HelpTOCNode Title="SetAnalogReportMode Method " Url="html/2396779a-20f5-49b8-2a1b-ad7d188cde76.htm" />
-        <HelpTOCNode Id="1acac37c-728c-4e94-a750-646fda902705" Title="SetDigitalPin Method " Url="html/e5ea2b24-4ddf-bc82-32fe-c787c3e974b8.htm">
+        <HelpTOCNode Id="5683ff7d-dda0-46a1-a735-e987b318a69f" Title="SetDigitalPin Method " Url="html/e5ea2b24-4ddf-bc82-32fe-c787c3e974b8.htm">
           <HelpTOCNode Title="SetDigitalPin Method (Int32, Boolean)" Url="html/3370b8dd-d792-b2c8-df67-f542ff674ba9.htm" />
           <HelpTOCNode Title="SetDigitalPin Method (Int32, Int64)" Url="html/07dc3d59-f60a-0e42-9042-3bb4ac8f9137.htm" />
         </HelpTOCNode>
@@ -79,7 +79,7 @@
         <HelpTOCNode Title="WriteI2C Method " Url="html/b74ea0f2-07f1-a01d-83c7-d8830d90e57d.htm" />
         <HelpTOCNode Title="WriteLine Method " Url="html/66f3d7c2-96b2-9c5e-65be-7d2071ec8f9b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="50c159e1-75af-45eb-a263-f5909259e521" Title="ArduinoSession Events" Url="html/32c1b709-03cf-fa67-24d3-12552bab13dd.htm">
+      <HelpTOCNode Id="c30d5b96-2477-4083-a48e-4e3d52a20f12" Title="ArduinoSession Events" Url="html/32c1b709-03cf-fa67-24d3-12552bab13dd.htm">
         <HelpTOCNode Title="AnalogStateReceived Event" Url="html/fecece2f-667b-dda0-f43c-d33ef4c15171.htm" />
         <HelpTOCNode Title="DigitalStateReceived Event" Url="html/e6bd7820-438b-49a9-5605-ed00a5e9caea.htm" />
         <HelpTOCNode Title="I2CReplyReceived Event" Url="html/a761b35c-6058-6fce-044e-7204c140e2f9.htm" />
@@ -87,27 +87,27 @@
         <HelpTOCNode Title="StringReceived Event" Url="html/d5b7f09a-bd5a-8bfd-17c4-218040fe6a3e.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="dd9fedc7-d109-4818-a6bd-f7f75e68eaa8" Title="EnhancedSerialConnection Class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm">
-      <HelpTOCNode Id="0da14d0a-7b11-4000-8667-a74d54e71383" Title="EnhancedSerialConnection Constructor " Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm">
+    <HelpTOCNode Id="9485479b-9a2f-4a5b-9329-bb1040bb82fd" Title="EnhancedSerialConnection Class" Url="html/48a1f3a8-4ebd-f887-9042-461476ec06e1.htm">
+      <HelpTOCNode Id="46feb493-c82f-42f2-9485-aebfd4342283" Title="EnhancedSerialConnection Constructor " Url="html/35d22925-210f-956e-92b6-12c95fedddaa.htm">
         <HelpTOCNode Title="EnhancedSerialConnection Constructor " Url="html/4ec15f56-5d16-3f8b-7f74-a535d3698537.htm" />
         <HelpTOCNode Title="EnhancedSerialConnection Constructor (String, SerialBaudRate)" Url="html/acc5321a-11b6-194d-9978-a32b2a7ec2a3.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="81f2155b-c9df-4f6b-9f3f-b3df981b4700" Title="EnhancedSerialConnection Methods" Url="html/60dd3c0d-a640-05d4-db8d-c2637f7f2b39.htm">
+      <HelpTOCNode Id="c8671faf-8d67-4f37-aa03-e7d990e57d6d" Title="EnhancedSerialConnection Methods" Url="html/60dd3c0d-a640-05d4-db8d-c2637f7f2b39.htm">
         <HelpTOCNode Title="Close Method " Url="html/fbb61933-2aad-26b0-f4ef-a12c45469c8f.htm" />
-        <HelpTOCNode Id="405f795b-7610-4efa-a118-551468b7abcf" Title="Find Method " Url="html/bb27603a-6a4d-9e7c-1cc2-a08ee8ef4109.htm">
+        <HelpTOCNode Id="1ceff107-0b9e-46f5-bd10-d30fe6843308" Title="Find Method " Url="html/bb27603a-6a4d-9e7c-1cc2-a08ee8ef4109.htm">
           <HelpTOCNode Title="Find Method " Url="html/35350d0e-6fa0-0a27-7b7d-57a59840cdea.htm" />
           <HelpTOCNode Title="Find Method (String, String)" Url="html/fea98ee5-d17a-e9c6-54f5-db262d481cd4.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="ISerialConnection.ReadByte Method " Url="html/e3624fc2-b4fb-895d-3b74-40390ea3994d.htm" />
         <HelpTOCNode Title="ISerialConnection.WriteLine Method " Url="html/cfafcb67-8636-fcae-c56c-aad4f2241248.htm" />
-        <HelpTOCNode Id="b9b21e3e-72b1-46bf-8bef-d65e2dc538bf" Title="Write Method " Url="html/90348614-3a75-cec2-bea4-b5847353f958.htm">
+        <HelpTOCNode Id="619ec27e-d093-4d90-be6d-f43cd5b42084" Title="Write Method " Url="html/90348614-3a75-cec2-bea4-b5847353f958.htm">
           <HelpTOCNode Title="ISerialConnection.Write Method (String)" Url="html/d806a0fd-cda7-50ff-ec75-63821e97ea83.htm" />
           <HelpTOCNode Title="ISerialConnection.Write Method (Byte[], Int32, Int32)" Url="html/c0169464-5e8c-4c99-0d22-2997afa6d642.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="7630ebcf-afe4-456e-a8fe-d02fa8134cbf" Title="EnhancedSerialPort Class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm">
-      <HelpTOCNode Id="f1450816-d663-4a42-9e83-ced1309e84a0" Title="EnhancedSerialPort Constructor " Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm">
+    <HelpTOCNode Id="5ffb8153-e3f6-40f2-a84d-0ecdb5cebd5e" Title="EnhancedSerialPort Class" Url="html/6df4dbc0-c70e-59f8-73ff-a15849692f52.htm">
+      <HelpTOCNode Id="bb1aab3f-ad37-4730-b8ad-75229f86e3d4" Title="EnhancedSerialPort Constructor " Url="html/68b42756-a237-c7e8-a3f7-267ca18734b8.htm">
         <HelpTOCNode Title="EnhancedSerialPort Constructor " Url="html/9d6a2465-15ed-a5da-5353-5e0073c7e9a1.htm" />
         <HelpTOCNode Title="EnhancedSerialPort Constructor (IContainer)" Url="html/36b30020-3a33-da99-478f-3806990dcf90.htm" />
         <HelpTOCNode Title="EnhancedSerialPort Constructor (String)" Url="html/30b16045-d369-9612-cb2a-2f396b746a9d.htm" />
@@ -116,37 +116,37 @@
         <HelpTOCNode Title="EnhancedSerialPort Constructor (String, Int32, Parity, Int32)" Url="html/dea5e843-06a7-db5d-8213-d6778ec8243d.htm" />
         <HelpTOCNode Title="EnhancedSerialPort Constructor (String, Int32, Parity, Int32, StopBits)" Url="html/a24a6f37-2514-e037-21c6-52cf6f7da1ce.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e3464bb5-6354-44b9-b301-b8257e4add03" Title="EnhancedSerialPort Methods" Url="html/2f361478-0a2b-cf8c-c0b5-c347820086fe.htm">
+      <HelpTOCNode Id="27436a69-f9b4-468c-b91d-1b943d57bad5" Title="EnhancedSerialPort Methods" Url="html/2f361478-0a2b-cf8c-c0b5-c347820086fe.htm">
         <HelpTOCNode Title="Open Method " Url="html/70512b72-78fb-5a4a-8fbd-8c01ff72fb9e.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="c4749899-0253-4a4e-91fc-d35d467f433b" Title="ISerialConnection Interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm">
-      <HelpTOCNode Id="3a511edf-8816-409c-8b3a-f664a711fc54" Title="ISerialConnection Properties" Url="html/990ca6d1-4785-c37c-0a9d-5db6af732336.htm">
+    <HelpTOCNode Id="0f18171b-0743-4731-b6db-ef89f5fb8949" Title="ISerialConnection Interface" Url="html/473706ce-6549-acda-7330-ee8597293463.htm">
+      <HelpTOCNode Id="34b5231c-538e-48dc-b2f1-28298b8d08b1" Title="ISerialConnection Properties" Url="html/990ca6d1-4785-c37c-0a9d-5db6af732336.htm">
         <HelpTOCNode Title="BaudRate Property " Url="html/0cd4e1e3-e5af-40f1-dc97-f2f08fb64119.htm" />
         <HelpTOCNode Title="BytesToRead Property " Url="html/2bd00801-6ea4-9aeb-869f-6be672f4b934.htm" />
         <HelpTOCNode Title="IsOpen Property " Url="html/72c4ea1b-c375-10ed-d9f6-9f5bba287781.htm" />
         <HelpTOCNode Title="NewLine Property " Url="html/5a9a83eb-057c-1b58-f5ca-4c8149729116.htm" />
         <HelpTOCNode Title="PortName Property " Url="html/6fa948b9-48cd-ec3b-47c3-b25d3b1a85dc.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3bf3481e-f7f3-4b29-b3c6-0199a8f1c1ce" Title="ISerialConnection Methods" Url="html/10dde3c8-66dc-d300-0d82-de410352094d.htm">
+      <HelpTOCNode Id="227062d1-9d46-4b59-9cd2-e0e57bb02039" Title="ISerialConnection Methods" Url="html/10dde3c8-66dc-d300-0d82-de410352094d.htm">
         <HelpTOCNode Title="Close Method " Url="html/62d13dd3-f1d7-9949-5659-a07a902efa91.htm" />
         <HelpTOCNode Title="Open Method " Url="html/e1637911-8e22-f5a6-46a8-f22a852f09b0.htm" />
         <HelpTOCNode Title="ReadByte Method " Url="html/9e51c12b-d4aa-b3dc-5578-3081a2bb752f.htm" />
-        <HelpTOCNode Id="158ea088-2054-48cd-bc8f-05919e6cd9ea" Title="Write Method " Url="html/ed3c9749-6890-8dc7-f108-7da5fb5ebcaa.htm">
+        <HelpTOCNode Id="80695be0-5d06-4e55-a56f-843c4b83d9dd" Title="Write Method " Url="html/ed3c9749-6890-8dc7-f108-7da5fb5ebcaa.htm">
           <HelpTOCNode Title="Write Method (String)" Url="html/9fdf1328-d5a8-08a6-692e-00088ef146b7.htm" />
           <HelpTOCNode Title="Write Method (Byte[], Int32, Int32)" Url="html/002fd01e-b970-b699-d1ab-402342ab2dec.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="WriteLine Method " Url="html/183523fa-f6c5-0635-d6ba-336781e21c95.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="069aab25-ac8c-4743-9c3f-d574ab000d53" Title="ISerialConnection Events" Url="html/55c86eb1-5578-8ae0-dd84-5582fa070efe.htm">
+      <HelpTOCNode Id="35083ce5-b0dc-4dbe-9fa1-f5331520b6d7" Title="ISerialConnection Events" Url="html/55c86eb1-5578-8ae0-dd84-5582fa070efe.htm">
         <HelpTOCNode Title="DataReceived Event" Url="html/f677cae4-0b7e-0f2f-a248-5fa2f0281327.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2d71182f-e69b-4d4f-9cdf-aea7d76c7ad8" Title="IStringProtocol Interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm">
-      <HelpTOCNode Id="923330a2-5abc-4297-bc28-e6f1c016b722" Title="IStringProtocol Properties" Url="html/4b854918-3dfc-0e52-8333-edc9d7d419fb.htm">
+    <HelpTOCNode Id="7796d0cc-7e0b-4ec5-9cf7-9b913bf468af" Title="IStringProtocol Interface" Url="html/6871db6c-e61a-84b5-0ca6-4c240f90fde0.htm">
+      <HelpTOCNode Id="c8231153-53a8-40e6-8923-aba1770939fa" Title="IStringProtocol Properties" Url="html/4b854918-3dfc-0e52-8333-edc9d7d419fb.htm">
         <HelpTOCNode Title="NewLine Property " Url="html/ecf46ad6-5296-888e-e4ab-149e15fc50e3.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1021f7b9-d4a9-4f2c-9853-b7a5c8feed2b" Title="IStringProtocol Methods" Url="html/407075b2-2a77-655b-0bb4-fb45ded42876.htm">
+      <HelpTOCNode Id="9e926835-7619-498d-93e1-17f989d47300" Title="IStringProtocol Methods" Url="html/407075b2-2a77-655b-0bb4-fb45ded42876.htm">
         <HelpTOCNode Title="CreateReceivedStringMonitor Method " Url="html/700edc62-50ef-619d-5d88-1907d15ce4ab.htm" />
         <HelpTOCNode Title="Read Method " Url="html/a7c3cac8-d32c-cfa4-b82d-a575dbbff983.htm" />
         <HelpTOCNode Title="ReadAsync Method " Url="html/c3c646da-8314-4fd5-f46e-5f8fd1d5730b.htm" />
@@ -157,115 +157,115 @@
         <HelpTOCNode Title="Write Method " Url="html/63516731-32a5-c7a6-6170-f8a002200d8c.htm" />
         <HelpTOCNode Title="WriteLine Method " Url="html/d298d81b-b8d3-69e1-1d56-b27dd784823e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ba8f978e-95f5-45cd-a00e-f0102d8efd17" Title="IStringProtocol Events" Url="html/dffc6c6c-da1a-0e05-486a-66c89481c970.htm">
+      <HelpTOCNode Id="5f7ebfc6-aff0-4723-8998-dff295bb2ec0" Title="IStringProtocol Events" Url="html/dffc6c6c-da1a-0e05-486a-66c89481c970.htm">
         <HelpTOCNode Title="StringReceived Event" Url="html/92bd2ded-5ae5-cfc1-8eb7-f68e747845ca.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="SerialBaudRate Enumeration" Url="html/9c1284e9-e336-1648-c7a6-e2d50005ccb3.htm" />
-    <HelpTOCNode Id="94819c2b-c3ef-46c3-bfdb-b11f45393731" Title="SerialConnection Class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm">
-      <HelpTOCNode Id="b2811dd5-1e35-4f00-9e4b-b3a449d217a2" Title="SerialConnection Constructor " Url="html/a357a146-da10-d1c5-6dbe-293d4072e351.htm">
+    <HelpTOCNode Id="54790bd1-9941-417c-9ae0-2865d46f44c9" Title="SerialConnection Class" Url="html/d28eb91b-bf62-51fa-e18e-c4a417be7337.htm">
+      <HelpTOCNode Id="7a855a59-8496-4b18-9985-51423be6e11d" Title="SerialConnection Constructor " Url="html/a357a146-da10-d1c5-6dbe-293d4072e351.htm">
         <HelpTOCNode Title="SerialConnection Constructor " Url="html/6a423ec2-dfae-7237-31d4-736018091ea0.htm" />
         <HelpTOCNode Title="SerialConnection Constructor (String, SerialBaudRate)" Url="html/747853e5-c5f4-7ae4-6956-be594e9df208.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e81edc7d-68fd-4be1-921b-0303536ed88d" Title="SerialConnection Methods" Url="html/335a34f6-a012-4732-1fea-87527cebbecd.htm">
+      <HelpTOCNode Id="db0e056b-d9ab-4f46-a4f4-ae9d7079b035" Title="SerialConnection Methods" Url="html/335a34f6-a012-4732-1fea-87527cebbecd.htm">
         <HelpTOCNode Title="Close Method " Url="html/5560f824-7c26-030f-a351-7a43f48d3616.htm" />
         <HelpTOCNode Title="Dispose Method " Url="html/24763d00-2f5b-09be-8ace-29f24895ed1b.htm" />
-        <HelpTOCNode Id="2948070d-01fa-40f1-95e5-7726624c20b7" Title="Find Method " Url="html/f3b51430-f6ad-bc63-f4a8-1afd7b7c2a85.htm">
+        <HelpTOCNode Id="78b645b7-6afc-4618-bf9a-d78137173cca" Title="Find Method " Url="html/f3b51430-f6ad-bc63-f4a8-1afd7b7c2a85.htm">
           <HelpTOCNode Title="Find Method " Url="html/3f24f883-ede8-64a4-fdd9-f73ddadc6c6c.htm" />
           <HelpTOCNode Title="Find Method (String, String)" Url="html/fcc98eb4-51e1-b53e-5338-964284c91981.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="ISerialConnection.ReadByte Method " Url="html/b35dd5f1-998f-89d6-dad2-e05be835d949.htm" />
         <HelpTOCNode Title="ISerialConnection.WriteLine Method " Url="html/ec6875fc-d3d0-99bd-0300-cbe303b3ab73.htm" />
         <HelpTOCNode Title="Open Method " Url="html/12415ea1-5b04-0b26-d464-d851efbbce73.htm" />
-        <HelpTOCNode Id="2d303403-5e35-4bd4-8cfa-bf5b3c90332c" Title="Write Method " Url="html/d2d31ad9-8abb-b53a-7417-7720b259e979.htm">
+        <HelpTOCNode Id="2e917957-5b00-4076-9933-52ed9981b6f4" Title="Write Method " Url="html/d2d31ad9-8abb-b53a-7417-7720b259e979.htm">
           <HelpTOCNode Title="ISerialConnection.Write Method (String)" Url="html/9f48a138-2814-e12f-3ec6-bcb2fc457a47.htm" />
           <HelpTOCNode Title="ISerialConnection.Write Method (Byte[], Int32, Int32)" Url="html/d896819b-a4b3-fafe-2a40-ad78fd8303c4.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d477c1e5-8937-49c8-838b-dc94ab7703f6" Title="StringEventArgs Class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm">
-      <HelpTOCNode Id="f4a06e52-7bb5-466d-8de6-cb3301b9ef79" Title="StringEventArgs Properties" Url="html/8e596088-4f9e-1214-eb48-e8369d8d3277.htm">
+    <HelpTOCNode Id="f9b2aada-8df1-4c6a-a7dd-ce0ce0692848" Title="StringEventArgs Class" Url="html/f322eee0-b2a6-0288-20a1-9379975c4ccd.htm">
+      <HelpTOCNode Id="31d97b47-7ec8-4d67-9cb3-789df8eb8571" Title="StringEventArgs Properties" Url="html/8e596088-4f9e-1214-eb48-e8369d8d3277.htm">
         <HelpTOCNode Title="Text Property " Url="html/5a68ef5b-372d-e6ea-0c35-79d60143c238.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="fed0b9c3-42b9-4bf4-97b7-a1fec477a2c2" Title="StringExtensions Class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm">
-      <HelpTOCNode Id="380ee7a8-5c71-4b9e-a1d7-afc3b0383ec0" Title="StringExtensions Methods" Url="html/c231898c-c0fd-8636-cd01-91e62005ca68.htm">
+    <HelpTOCNode Id="b6c5bff4-fb6e-4f5e-b017-8089bacbf473" Title="StringExtensions Class" Url="html/34435006-8185-e827-453f-bcf4043b59e3.htm">
+      <HelpTOCNode Id="54d4b870-0cef-45cd-8091-ac65e43d73be" Title="StringExtensions Methods" Url="html/c231898c-c0fd-8636-cd01-91e62005ca68.htm">
         <HelpTOCNode Title="To14BitIso Method " Url="html/e3237dff-8b9e-7ddf-ff84-7c62943af619.htm" />
         <HelpTOCNode Title="ToBinaryCodedDecimal Method " Url="html/8b6e7069-faa8-05a2-21cd-e6bee8fa1578.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="StringReceivedHandler Delegate" Url="html/d8f33960-4595-c5e9-ce95-7e4193308d98.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="d35b1bcf-617c-4c36-bf31-c838692d3c61" Title="Solid.Arduino.Firmata" Url="html/b45c02d5-d804-8090-5057-0b3e3cbc19a0.htm">
-    <HelpTOCNode Id="2eb3fca2-abd3-40c3-9539-e541ed57c8ab" Title="AnalogPinMapping Structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm">
-      <HelpTOCNode Id="4dd20f14-e35d-4a3b-8409-e9fae0781196" Title="AnalogPinMapping Properties" Url="html/e10b3718-42ae-bdb7-e8c5-8fda7d054d52.htm">
+  <HelpTOCNode Id="435e72a6-b298-461e-bac8-b801c4b4ed8b" Title="Solid.Arduino.Firmata" Url="html/b45c02d5-d804-8090-5057-0b3e3cbc19a0.htm">
+    <HelpTOCNode Id="eca81773-152a-4fba-a9e7-fb9bb57759d9" Title="AnalogPinMapping Structure" Url="html/3198d1e7-848f-41e3-6b13-1e23f6eaaadd.htm">
+      <HelpTOCNode Id="373bd4ab-dbc8-40ca-add8-94f399614307" Title="AnalogPinMapping Properties" Url="html/e10b3718-42ae-bdb7-e8c5-8fda7d054d52.htm">
         <HelpTOCNode Title="Channel Property " Url="html/42b47bc8-9e23-e9db-a8db-1972173530f1.htm" />
         <HelpTOCNode Title="PinNumber Property " Url="html/3a4802af-ada6-81eb-0d1a-ca7c114653cf.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="bd77083a-c07a-4857-8aac-02ab76d731e7" Title="AnalogState Structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm">
-      <HelpTOCNode Id="f826e70e-db4b-483d-aa67-a93a8ab4b42c" Title="AnalogState Properties" Url="html/9eea4668-107b-8de8-59e3-22aa6c969ea0.htm">
+    <HelpTOCNode Id="f4825026-810f-414e-8287-eb42a7172ab8" Title="AnalogState Structure" Url="html/9eda75cf-38c6-c8fd-826b-0d151e3dfc8b.htm">
+      <HelpTOCNode Id="8d7a1d04-3148-42bf-94a3-f594903ae0dc" Title="AnalogState Properties" Url="html/9eea4668-107b-8de8-59e3-22aa6c969ea0.htm">
         <HelpTOCNode Title="Channel Property " Url="html/ecad3166-5f2c-2fd8-b94c-de688c02211e.htm" />
         <HelpTOCNode Title="Level Property " Url="html/6c5bac35-ce3a-6988-f1ab-557b5c8c89ef.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="AnalogStateReceivedHandler Delegate" Url="html/82864edc-a8c0-fb1e-c8d2-f70b564a089f.htm" />
-    <HelpTOCNode Id="46b8a422-24b7-48c0-87c6-c841592f23c8" Title="BoardAnalogMapping Structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm">
-      <HelpTOCNode Id="1d7728b2-0bd8-410a-b946-17f76c364d99" Title="BoardAnalogMapping Properties" Url="html/17a49847-9f5e-41b4-a84a-1bb15979af70.htm">
+    <HelpTOCNode Id="20a3bc19-d329-41a8-97d8-d7d7447b8876" Title="BoardAnalogMapping Structure" Url="html/b82a5fcb-a39d-b771-11ed-ae23c755838f.htm">
+      <HelpTOCNode Id="a159b129-e79f-424e-9b07-63b46571ab0f" Title="BoardAnalogMapping Properties" Url="html/17a49847-9f5e-41b4-a84a-1bb15979af70.htm">
         <HelpTOCNode Title="PinMappings Property " Url="html/1cd0d237-552e-0958-a3ef-7dec5153ffa3.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4972966a-b874-44a9-a7e3-6b30d01468b5" Title="BoardCapability Structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm">
-      <HelpTOCNode Id="5bf1a4be-b70b-416d-b0d4-771ef102ca16" Title="BoardCapability Properties" Url="html/bcbabe45-8718-bce0-5974-bae720038d00.htm">
+    <HelpTOCNode Id="3dca4bfa-ce19-4bd7-b915-154b8add689b" Title="BoardCapability Structure" Url="html/0456bfc8-b008-c8a3-77ad-0bfefc1310cb.htm">
+      <HelpTOCNode Id="540ebf8a-426f-4749-a983-e3aa4c2f0243" Title="BoardCapability Properties" Url="html/bcbabe45-8718-bce0-5974-bae720038d00.htm">
         <HelpTOCNode Title="Pins Property " Url="html/ebf2f037-d888-6733-6882-3faf1f3e6952.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="564b1328-f854-4c62-8b02-ee328d462304" Title="ByteArrayExtensions Class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm">
-      <HelpTOCNode Id="c74bc532-a64a-4bff-8adf-a2c2db881ac3" Title="ByteArrayExtensions Methods" Url="html/1685f037-3a5d-6004-7e2c-c72f2c403fed.htm">
+    <HelpTOCNode Id="9bb043c9-4fe0-441b-95bb-18a3fe47d9e6" Title="ByteArrayExtensions Class" Url="html/f0983913-5110-b3fc-40ac-31e1d74e3e11.htm">
+      <HelpTOCNode Id="bc4d331d-5e63-4727-b311-b6c932af64ba" Title="ByteArrayExtensions Methods" Url="html/1685f037-3a5d-6004-7e2c-c72f2c403fed.htm">
         <HelpTOCNode Title="ConvertBinaryCodedDecimalToString Method " Url="html/05b5327f-d814-405f-e2bd-e56a351a861e.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8dc1dc4e-c4b0-4044-a4b4-6bd65dcc2d02" Title="DigitalPortState Structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm">
-      <HelpTOCNode Id="3f463f1e-c032-4ea8-82f6-6ff2b6a9166f" Title="DigitalPortState Properties" Url="html/70740235-9698-52af-7cd1-614f7550f80b.htm">
+    <HelpTOCNode Id="1d4e0b93-98bb-40d7-b390-c6479058f365" Title="DigitalPortState Structure" Url="html/be43753c-2f1b-03df-9e55-56be16980d27.htm">
+      <HelpTOCNode Id="fbe4ba6b-0058-4519-b696-c55c89a7a81b" Title="DigitalPortState Properties" Url="html/70740235-9698-52af-7cd1-614f7550f80b.htm">
         <HelpTOCNode Title="Pins Property " Url="html/4622e83d-5f7a-6c28-8838-b7bda56a96fd.htm" />
         <HelpTOCNode Title="Port Property " Url="html/f0ad8da5-0e56-8c1e-74a0-29953ad98f99.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="01294590-1a84-47d3-badc-526d9b81b651" Title="DigitalPortState Methods" Url="html/0f03b0e7-a914-e46b-c2d6-e0bed40eac37.htm">
+      <HelpTOCNode Id="554b2770-7a7b-4d1c-9fcf-658e216305ad" Title="DigitalPortState Methods" Url="html/0f03b0e7-a914-e46b-c2d6-e0bed40eac37.htm">
         <HelpTOCNode Title="IsSet Method " Url="html/d7e6400a-af87-1003-be8a-a9effb1b622a.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="DigitalStateReceivedHandler Delegate" Url="html/a04d813f-23c5-6fc3-bc98-55d2c67527cf.htm" />
-    <HelpTOCNode Id="09ff7040-170d-404b-9595-f214b3bd01c6" Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm">
-      <HelpTOCNode Id="a249ec3b-65ea-421b-9aad-5c382ecb07b5" Title="FirmataEventArgs(T) Properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm">
+    <HelpTOCNode Id="ba4c6f31-b4e0-4729-94ac-f1c660dee3a5" Title="FirmataEventArgs(T) Class" Url="html/fa14ff3e-0df7-c3fa-7383-e4e0f123567a.htm">
+      <HelpTOCNode Id="7d73cb3d-e77a-4bdf-b925-7e548a74ca11" Title="FirmataEventArgs(T) Properties" Url="html/c0168d33-3fbb-d636-6455-d1e6d811596e.htm">
         <HelpTOCNode Title="Value Property " Url="html/ae47b3db-c68e-3be4-8385-2321b8963662.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="5365bd75-01ba-4626-97b2-91fd2d350d9e" Title="FirmataMessage Class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm">
-      <HelpTOCNode Id="dc346b5e-d497-4577-8ad2-321bbb5f2f0e" Title="FirmataMessage Properties" Url="html/830f17c7-c111-019a-9c23-522994fd13a3.htm">
+    <HelpTOCNode Id="e4f428f5-1e23-4669-a211-92444f8cec70" Title="FirmataMessage Class" Url="html/8164731e-9412-adab-9432-1fa0a03aa01d.htm">
+      <HelpTOCNode Id="502821ff-9c6b-478f-b07c-f414aba147f0" Title="FirmataMessage Properties" Url="html/830f17c7-c111-019a-9c23-522994fd13a3.htm">
         <HelpTOCNode Title="Time Property " Url="html/9196cfe1-64f6-4623-a1c0-a941ecd8c7c7.htm" />
         <HelpTOCNode Title="Type Property " Url="html/1251dc84-c748-62a3-d876-c92c0cab97c6.htm" />
         <HelpTOCNode Title="Value Property " Url="html/6bdc660a-cd9d-455a-7908-b6d762c1d8af.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="013a787c-bdc1-4a0b-b166-cdf1391434a8" Title="FirmataMessageEventArgs Class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm">
-      <HelpTOCNode Id="bef8d56f-f0d9-4987-bac6-cdab7f751f27" Title="FirmataMessageEventArgs Properties" Url="html/7fbb1bc0-5346-9adb-23ca-afde8a1cda88.htm">
+    <HelpTOCNode Id="3cc681e6-bb77-40d5-999f-b5beb9c6523b" Title="FirmataMessageEventArgs Class" Url="html/b5ad6c4c-2609-706b-f56b-547ace8e1dee.htm">
+      <HelpTOCNode Id="8a4a9707-60cf-4d8f-b1ed-f211a37a9352" Title="FirmataMessageEventArgs Properties" Url="html/7fbb1bc0-5346-9adb-23ca-afde8a1cda88.htm">
         <HelpTOCNode Title="Value Property " Url="html/3e9fb5e9-92dc-8797-9059-3f3a27da6673.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="ddfe7d8c-4ec3-4a7c-88fe-f6bb95074bcf" Title="Firmware Structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm">
-      <HelpTOCNode Id="448c4cbe-5e3f-450d-83a6-8cd5ab4dab6d" Title="Firmware Properties" Url="html/bf222e0f-2117-7a4d-78cb-0a8e02803aa8.htm">
+    <HelpTOCNode Id="335a0152-8d32-479f-8c8b-108e1d5160e9" Title="Firmware Structure" Url="html/3eeb99eb-b6d7-85a1-0001-29f3c220b63a.htm">
+      <HelpTOCNode Id="64f792b6-37f1-459d-ac8d-7eed75dd42f2" Title="Firmware Properties" Url="html/bf222e0f-2117-7a4d-78cb-0a8e02803aa8.htm">
         <HelpTOCNode Title="MajorVersion Property " Url="html/dc621830-82ae-2687-3604-92d7fefcbc76.htm" />
         <HelpTOCNode Title="MinorVersion Property " Url="html/e0096895-6dd0-6b06-703d-ccd773068601.htm" />
         <HelpTOCNode Title="Name Property " Url="html/50af8943-91c9-96fc-307d-423c066c5933.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="50ea94e7-1de7-46fd-a17a-e295a51c668e" Title="IFirmataProtocol Interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm">
-      <HelpTOCNode Id="91ed3036-60eb-4f99-a407-de6731027631" Title="IFirmataProtocol Methods" Url="html/d205b57d-0a11-6b7d-ceab-edfecfd42975.htm">
-        <HelpTOCNode Id="06bd17d7-2bee-473b-8427-dc718928a830" Title="CreateAnalogStateMonitor Method " Url="html/9d307145-50e5-2464-e284-b13666d1b1eb.htm">
+    <HelpTOCNode Id="a0b35ab3-4795-4588-8280-6bb7912be723" Title="IFirmataProtocol Interface" Url="html/2e643178-1fcf-6971-d9c1-921734b7c710.htm">
+      <HelpTOCNode Id="3feeec46-6b7b-40dd-85de-85a0d15e158d" Title="IFirmataProtocol Methods" Url="html/d205b57d-0a11-6b7d-ceab-edfecfd42975.htm">
+        <HelpTOCNode Id="1e223ff9-6fbd-40d5-96b8-1138d53ab3e5" Title="CreateAnalogStateMonitor Method " Url="html/9d307145-50e5-2464-e284-b13666d1b1eb.htm">
           <HelpTOCNode Title="CreateAnalogStateMonitor Method " Url="html/69e1e3a3-9710-3929-5a04-6ee7a1e68c3a.htm" />
           <HelpTOCNode Title="CreateAnalogStateMonitor Method (Int32)" Url="html/87c96f49-ef19-0f8c-a88d-27cb504c1ffa.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="d459a885-7aca-4f11-9c79-393655e72989" Title="CreateDigitalStateMonitor Method " Url="html/29676853-5f19-d961-917d-d2a3b1005bc2.htm">
+        <HelpTOCNode Id="d54f2d7f-a607-4113-8931-24bed3d236b1" Title="CreateDigitalStateMonitor Method " Url="html/29676853-5f19-d961-917d-d2a3b1005bc2.htm">
           <HelpTOCNode Title="CreateDigitalStateMonitor Method " Url="html/0010e8c6-eb36-7d91-486f-57a208faeca8.htm" />
           <HelpTOCNode Title="CreateDigitalStateMonitor Method (Int32)" Url="html/21bb8dd6-fb5d-9c2d-ffca-f536c5533d6a.htm" />
         </HelpTOCNode>
@@ -287,7 +287,7 @@
         <HelpTOCNode Title="ResetBoard Method " Url="html/7c606b90-720d-be95-c43d-4a18e8cb2ccc.htm" />
         <HelpTOCNode Title="SendStringData Method " Url="html/0e0528df-22b4-60f2-8cc6-9c7e3d140d01.htm" />
         <HelpTOCNode Title="SetAnalogReportMode Method " Url="html/a5aa12b2-f49e-5944-919e-f689fca5e38c.htm" />
-        <HelpTOCNode Id="2eabf156-ca84-48b1-8b06-225f5de2c7e5" Title="SetDigitalPin Method " Url="html/e82cd517-dc93-1d39-8d56-50744a6a3193.htm">
+        <HelpTOCNode Id="2ceaada2-8cce-4ceb-9125-c0d867a83fa8" Title="SetDigitalPin Method " Url="html/e82cd517-dc93-1d39-8d56-50744a6a3193.htm">
           <HelpTOCNode Title="SetDigitalPin Method (Int32, Boolean)" Url="html/36e366e7-eeb4-cfe5-dc07-3978cb22ce94.htm" />
           <HelpTOCNode Title="SetDigitalPin Method (Int32, Int64)" Url="html/4b09c588-2b2a-300c-db9d-4567209dba1d.htm" />
         </HelpTOCNode>
@@ -296,7 +296,7 @@
         <HelpTOCNode Title="SetDigitalReportMode Method " Url="html/deaf5148-850e-a69d-5c63-5a1a7264006c.htm" />
         <HelpTOCNode Title="SetSamplingInterval Method " Url="html/d1faec22-b4a8-57d4-8509-fc1e35b530b0.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="eba3311c-c77e-4378-a13c-3a4d378dd3b6" Title="IFirmataProtocol Events" Url="html/05b14b65-ca9d-7ff2-68b7-f70d7cfcc100.htm">
+      <HelpTOCNode Id="fbc1dbe2-95f8-473c-8256-7e1ce3731064" Title="IFirmataProtocol Events" Url="html/05b14b65-ca9d-7ff2-68b7-f70d7cfcc100.htm">
         <HelpTOCNode Title="AnalogStateReceived Event" Url="html/fccc0a99-97e3-0285-7073-e3b2d3aa43cf.htm" />
         <HelpTOCNode Title="DigitalStateReceived Event" Url="html/76f722a5-1f41-3369-469a-50225dc7f079.htm" />
         <HelpTOCNode Title="MessageReceived Event" Url="html/d47ffb57-0449-9050-402b-fd4b77b8ce85.htm" />
@@ -304,8 +304,8 @@
     </HelpTOCNode>
     <HelpTOCNode Title="MessageReceivedHandler Delegate" Url="html/3cfbfb3e-5b55-59d8-2a64-d298cca31bde.htm" />
     <HelpTOCNode Title="MessageType Enumeration" Url="html/1e2164e0-907c-a688-2f86-07d7ba8e85ae.htm" />
-    <HelpTOCNode Id="145d2a74-a2a3-4e32-afa4-4d8ef06ba6b6" Title="PinCapability Structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm">
-      <HelpTOCNode Id="b959409c-6f7c-4359-9ce3-00f1e807c065" Title="PinCapability Properties" Url="html/ad6eda66-4832-2efc-b3c0-55e7c8ef7ba4.htm">
+    <HelpTOCNode Id="28def590-d44d-481e-b091-e153f7bd852f" Title="PinCapability Structure" Url="html/af66df3c-8f61-d237-0415-a240644ebb01.htm">
+      <HelpTOCNode Id="450effc3-e6cb-48e7-9e96-fab365c9d1d1" Title="PinCapability Properties" Url="html/ad6eda66-4832-2efc-b3c0-55e7c8ef7ba4.htm">
         <HelpTOCNode Title="Analog Property " Url="html/a53a9e81-536d-aec6-959d-32e03a3a7888.htm" />
         <HelpTOCNode Title="AnalogResolution Property " Url="html/f2343bf9-88ac-78c3-a6fe-965b78aeaafe.htm" />
         <HelpTOCNode Title="DigitalInput Property " Url="html/cab481d4-3500-53ac-365e-cbf3f4131689.htm" />
@@ -325,62 +325,62 @@
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="PinMode Enumeration" Url="html/6e591dea-0a75-7d0f-6de5-09ca0069e873.htm" />
-    <HelpTOCNode Id="94874de6-19ba-45f2-98a7-3408d6d65457" Title="PinState Structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm">
-      <HelpTOCNode Id="9d1f0fb5-e7f6-4fd6-b5d8-156b2c6bbee2" Title="PinState Properties" Url="html/a6c005fe-f1fb-c257-4693-5dd2ccf4a508.htm">
+    <HelpTOCNode Id="538be4f2-d53a-4c69-8b39-8387e9556e7c" Title="PinState Structure" Url="html/cac50def-a782-0642-1a3e-e95e2679c778.htm">
+      <HelpTOCNode Id="0909c2dc-a87f-4353-9d50-67ca709270a8" Title="PinState Properties" Url="html/a6c005fe-f1fb-c257-4693-5dd2ccf4a508.htm">
         <HelpTOCNode Title="Mode Property " Url="html/1a181c03-5d41-d3a2-e280-049cad8d349a.htm" />
         <HelpTOCNode Title="PinNumber Property " Url="html/7b2ad63d-78ca-4a9b-7bf8-2a3619d8ae78.htm" />
         <HelpTOCNode Title="Value Property " Url="html/51289ed1-279a-240e-f276-9147c12f6217.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="f367cca5-0e0a-45e7-abfd-8cd3105d663b" Title="ProtocolVersion Structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm">
-      <HelpTOCNode Id="236706f4-74b1-4b4c-827d-ac2a83f2f03d" Title="ProtocolVersion Properties" Url="html/280d4128-f443-8cf2-6a53-33e6e7eb5e4e.htm">
+    <HelpTOCNode Id="7f808cad-3a73-489f-8ec2-f0cb89336830" Title="ProtocolVersion Structure" Url="html/1c02d293-4876-a918-1b8e-c84637cd0860.htm">
+      <HelpTOCNode Id="27f95e92-5766-4e76-8e39-25f18bb3766c" Title="ProtocolVersion Properties" Url="html/280d4128-f443-8cf2-6a53-33e6e7eb5e4e.htm">
         <HelpTOCNode Title="Major Property " Url="html/66ebce33-e458-872b-5952-866144b9ada0.htm" />
         <HelpTOCNode Title="Minor Property " Url="html/edd086d3-b73e-a9c8-583a-728b34baf2b4.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="482628ad-8908-4e08-bb9a-3cc753cc6bb3" Title="StringData Structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm">
-      <HelpTOCNode Id="78cb23d8-3f82-42c4-aeb9-1a2b3d494b3e" Title="StringData Properties" Url="html/6cd07b17-b3e8-55c6-ec51-b4294f445a2d.htm">
+    <HelpTOCNode Id="e91811dc-f104-4098-9749-b17a89afec81" Title="StringData Structure" Url="html/a2213ce7-3ec9-981b-062f-5b90e71d9ef0.htm">
+      <HelpTOCNode Id="a571a100-6a1d-47ff-a351-27d51aec3372" Title="StringData Properties" Url="html/6cd07b17-b3e8-55c6-ec51-b4294f445a2d.htm">
         <HelpTOCNode Title="Text Property " Url="html/6bc5ef18-fb9b-7465-3576-f2fcc3b30b44.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="c2695dbd-897d-46c6-b0a9-e16b8a8df15b" Title="Solid.Arduino.Firmata.Servo" Url="html/505b8bcb-2c04-8a59-85ee-f86d7a81133c.htm">
-    <HelpTOCNode Id="c4a89c56-cfd6-4c8f-9c4b-361455e1cce8" Title="IServoProtocol Interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm">
-      <HelpTOCNode Id="398f50eb-246f-488a-85ad-efc244d8d830" Title="IServoProtocol Methods" Url="html/449f192e-e39e-4f35-d4bd-fd8fd14ef6ad.htm">
+  <HelpTOCNode Id="0a222034-1d17-4426-a0b9-06c2dc09edf9" Title="Solid.Arduino.Firmata.Servo" Url="html/505b8bcb-2c04-8a59-85ee-f86d7a81133c.htm">
+    <HelpTOCNode Id="d5227fc1-f100-4fd9-8acb-21397d238474" Title="IServoProtocol Interface" Url="html/2c665003-8e12-9549-f318-997e33c1766b.htm">
+      <HelpTOCNode Id="33684e12-9c5f-4aaf-bd9b-caba1583d439" Title="IServoProtocol Methods" Url="html/449f192e-e39e-4f35-d4bd-fd8fd14ef6ad.htm">
         <HelpTOCNode Title="ConfigureServo Method " Url="html/fdfbef58-1137-cab4-864a-66bcdc536cab.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="88a44d5b-8499-4f6c-8346-4f21d9242a80" Title="Solid.Arduino.I2C" Url="html/25858b6c-f545-022f-1421-1980e7d2f9ec.htm">
-    <HelpTOCNode Id="67be1a39-abab-46a6-b504-42f3f77e258e" Title="I2CEventArgs Class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm">
-      <HelpTOCNode Id="fa47b9e6-b9e7-4631-8fb6-331f0c700f16" Title="I2CEventArgs Properties" Url="html/82a6b8d0-f606-38df-3050-7192e8c47e61.htm">
+  <HelpTOCNode Id="f43279ce-5473-4984-8f0f-81166d1c95e3" Title="Solid.Arduino.I2C" Url="html/25858b6c-f545-022f-1421-1980e7d2f9ec.htm">
+    <HelpTOCNode Id="54f06540-823c-4c8f-ba68-ef85fa4b6d37" Title="I2CEventArgs Class" Url="html/deb6bbbc-361f-e1fa-1a28-944836557e27.htm">
+      <HelpTOCNode Id="c4030f29-8473-444a-b66d-19f973cca0d7" Title="I2CEventArgs Properties" Url="html/82a6b8d0-f606-38df-3050-7192e8c47e61.htm">
         <HelpTOCNode Title="Value Property " Url="html/c7f31e4f-9f61-353e-7a50-70a068be8196.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="38c15848-068d-40f7-84d5-eba651e9adde" Title="I2CReply Structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm">
-      <HelpTOCNode Id="5fa0a019-d2f9-46ca-ab80-8e3ebfea5652" Title="I2CReply Properties" Url="html/40d05494-2f3b-10bd-1fdb-485097690ee9.htm">
+    <HelpTOCNode Id="e85ad913-5616-4b6a-a258-40051ddb1ac6" Title="I2CReply Structure" Url="html/6b3d5d48-0b4d-3b8d-e13f-9648aa1e9723.htm">
+      <HelpTOCNode Id="9e30bed0-62e7-437a-a018-58621b0bdee0" Title="I2CReply Properties" Url="html/40d05494-2f3b-10bd-1fdb-485097690ee9.htm">
         <HelpTOCNode Title="Address Property " Url="html/7a82d399-3fe1-048e-ecb1-00b55cbfaba0.htm" />
         <HelpTOCNode Title="Data Property " Url="html/4be8895c-9e74-2785-cce2-fc78782aa936.htm" />
         <HelpTOCNode Title="Register Property " Url="html/2387accb-7f3f-aff7-0482-b5a6bc2fdaee.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="I2CReplyReceivedHandler Delegate" Url="html/3695c805-d9b7-b3e6-32be-183a64f8873a.htm" />
-    <HelpTOCNode Id="99b780ec-90a8-4c8b-adfa-73c1f6ed00eb" Title="II2CProtocol Interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm">
-      <HelpTOCNode Id="7cff312f-7a63-4da6-b7dd-19a46cb94df2" Title="II2CProtocol Methods" Url="html/bcee4a6a-47c8-e1cb-621c-2f876839efd6.htm">
+    <HelpTOCNode Id="63d8dee8-2481-4870-b5df-427bb64ded11" Title="II2CProtocol Interface" Url="html/b22cca88-7580-d134-a7be-c45c7d9c8be2.htm">
+      <HelpTOCNode Id="df01062d-0563-4c0e-86bf-d8bc10d214ec" Title="II2CProtocol Methods" Url="html/bcee4a6a-47c8-e1cb-621c-2f876839efd6.htm">
         <HelpTOCNode Title="CreateI2CReplyMonitor Method " Url="html/7cb762fd-74b7-2119-6570-82592544a596.htm" />
-        <HelpTOCNode Id="e4c2758b-9b6d-4e0a-8b6f-c5fba1d6654d" Title="GetI2CReply Method " Url="html/bd23b31c-aa0c-ec47-793e-36bb05f1ac59.htm">
+        <HelpTOCNode Id="796ded0f-ea57-47e7-bd21-a1fd6a7c48b6" Title="GetI2CReply Method " Url="html/bd23b31c-aa0c-ec47-793e-36bb05f1ac59.htm">
           <HelpTOCNode Title="GetI2CReply Method (Int32, Int32)" Url="html/e75af7f2-45fb-5ecf-4f9e-41e596e9f453.htm" />
           <HelpTOCNode Title="GetI2CReply Method (Int32, Int32, Int32)" Url="html/569db704-90d1-483e-ace7-0ccba57549c5.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="6515c769-06f2-41bb-8c84-07e83805d22f" Title="GetI2CReplyAsync Method " Url="html/3a711afe-a630-a052-9ad9-87bd4345613b.htm">
+        <HelpTOCNode Id="b5d23de1-489e-49c3-b39c-cf405a40da2f" Title="GetI2CReplyAsync Method " Url="html/3a711afe-a630-a052-9ad9-87bd4345613b.htm">
           <HelpTOCNode Title="GetI2CReplyAsync Method (Int32, Int32)" Url="html/4c9c15c4-eda9-59d4-8a15-8d789489f0aa.htm" />
           <HelpTOCNode Title="GetI2CReplyAsync Method (Int32, Int32, Int32)" Url="html/a322471f-ebc5-8cdb-40f4-a9fa07e0e64f.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="a19ceece-8337-4097-ac52-3fc2f76c3860" Title="ReadI2CContinuous Method " Url="html/e65a4995-c3ff-c6e1-ee8b-b5d5c2b3f7b2.htm">
+        <HelpTOCNode Id="993d33db-f99a-4b9d-84b2-57632821cec2" Title="ReadI2CContinuous Method " Url="html/e65a4995-c3ff-c6e1-ee8b-b5d5c2b3f7b2.htm">
           <HelpTOCNode Title="ReadI2CContinuous Method (Int32, Int32)" Url="html/542fd7a2-0004-6425-e123-87277c6662cc.htm" />
           <HelpTOCNode Title="ReadI2CContinuous Method (Int32, Int32, Int32)" Url="html/4a772778-1995-b7b1-fec3-19dda6d127f9.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="386b4331-06c0-41cb-9b76-1778760b3d50" Title="ReadI2COnce Method " Url="html/ba11da02-35ff-5b18-068e-812d1f92f7df.htm">
+        <HelpTOCNode Id="cd360113-ab41-45ec-b956-0bdbb51a84b3" Title="ReadI2COnce Method " Url="html/ba11da02-35ff-5b18-068e-812d1f92f7df.htm">
           <HelpTOCNode Title="ReadI2COnce Method (Int32, Int32)" Url="html/e32ad933-56c4-059c-fcf5-99ea235b80b6.htm" />
           <HelpTOCNode Title="ReadI2COnce Method (Int32, Int32, Int32)" Url="html/e4216de2-ac9b-991f-ff65-6465c0dca53d.htm" />
         </HelpTOCNode>
@@ -388,7 +388,7 @@
         <HelpTOCNode Title="StopI2CReading Method " Url="html/1f020e05-4452-f270-4785-162fd272270d.htm" />
         <HelpTOCNode Title="WriteI2C Method " Url="html/6192a41b-b08d-c9b4-3907-2b945d8fcf80.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="438a4886-a57d-494a-b475-ff091227ce1e" Title="II2CProtocol Events" Url="html/3d0a9909-c581-51c4-1343-950e2653b152.htm">
+      <HelpTOCNode Id="fee04bc4-1b53-44fb-a820-d0b8bbfbfb47" Title="II2CProtocol Events" Url="html/3d0a9909-c581-51c4-1343-950e2653b152.htm">
         <HelpTOCNode Title="I2CReplyReceived Event" Url="html/d574222f-0884-4d82-406d-598e7e49b9ca.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
