@@ -1,6 +1,6 @@
 # SolidSoils4Arduino
 
-SolidSoils4Arduino is a client library built on the .NET Framework 4.5 and providing an easy way to interact with Arduino boards.
+SolidSoils4Arduino is a client library built on .NET Standard 2.0. It offers an easy way to interact with Arduino boards.
 The library implements the main communication protocols, the first of which is the Firmata protocol.
 It aims to make communication with Arduino boards in MS .NET projects easier
 through a comprehensive and consistent set of methods and events.
@@ -14,10 +14,10 @@ The library supports the following protocols:
 All protocols can be mixed. The library brokers all incoming message types
 and directs them to the appropriate requestors (synchronous as well as asynchronous).
 
-Currently [Standard Firmata 2.5](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
+Currently [Standard Firmata 2.6](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
 (Extra capabilities of Standard Firmata Plus and Configurable Firmata are currently not supported by this client library.)
 
-Technology: Microsoft .NET Standard 2.0
+Technology: C#/Microsoft .NET Standard 2.0
 
 Dependencies: none
 
@@ -156,9 +156,7 @@ namespace Demo
 
 ## Current status
 
-**v0.5**
-
-Code complete for the library core. (Beta)
+**v1.0.0**
 
 ## Milestones
 
