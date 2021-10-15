@@ -82,7 +82,7 @@ namespace Solid.Arduino
             const int dwAccess = unchecked((int)0xC0000000);
 
             if ((portName == null) || !portName.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
-                throw new ArgumentException("Invalid Serial Port", nameof(portName));
+                throw new ArgumentException(Messages.InvalidSerialPort, nameof(portName));
 
             SafeFileHandle fileHandle = CreateFile(@"\\.\" + portName, dwAccess, 0, IntPtr.Zero, 3, dwFlagsAndAttributes, IntPtr.Zero);
 
@@ -94,7 +94,7 @@ namespace Solid.Arduino
                 int fileType = GetFileType(fileHandle);
 
                 if ((fileType != 2) && (fileType != 0))
-                    throw new ArgumentException("Invalid Serial Port", nameof(portName));
+                    throw new ArgumentException(Messages.InvalidSerialPort, nameof(portName));
 
                 var dcb = new Dcb();
                 MarshalCommState(fileHandle, () => GetCommState(fileHandle, ref dcb));

@@ -1386,6 +1386,11 @@
               Looks up a localized string similar to Pin is not supported..
             </summary>
         </member>
+        <member name="P:Solid.Arduino.Messages.InvalidSerialPort">
+            <summary>
+              Looks up a localized string similar to Invalid serial port.
+            </summary>
+        </member>
         <member name="P:Solid.Arduino.Messages.NotImplementedEx_Command">
             <summary>
               Looks up a localized string similar to Commandbyte 0x{0:X} is not implemented..

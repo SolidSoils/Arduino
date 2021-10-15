@@ -171,6 +171,9 @@
   <data name="InvalidOpEx_PinNotSupported" xml:space="preserve">
     <value>Pin is not supported.</value>
   </data>
+  <data name="InvalidSerialPort" xml:space="preserve">
+    <value>Invalid serial port</value>
+  </data>
   <data name="NotImplementedEx_Command" xml:space="preserve">
     <value>Commandbyte 0x{0:X} is not implemented.</value>
   </data>

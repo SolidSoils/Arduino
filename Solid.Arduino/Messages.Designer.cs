@@ -223,6 +223,15 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid serial port.
+        /// </summary>
+        internal static string InvalidSerialPort {
+            get {
+                return ResourceManager.GetString("InvalidSerialPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commandbyte 0x{0:X} is not implemented..
         /// </summary>
         internal static string NotImplementedEx_Command {
