@@ -22,6 +22,9 @@ Fixed compatibility with Firmata 2.6</PackageReleaseNotes>
     <DocumentationFile>C:\Data\Git\Arduino\Solid.Arduino\Solid.Arduino.xml</DocumentationFile>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants />
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
   </ItemGroup>
