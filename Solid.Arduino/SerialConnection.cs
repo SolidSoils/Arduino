@@ -220,8 +220,9 @@ namespace Solid.Arduino
                         {
                             using (var session = new ArduinoSession(connection, 100))
                             {
+#if TRACE
                                 Debug.WriteLine("{0}:{1}; ", portNames[x], (int)rate);
-
+#endif
                                 if (isDeviceAvailable(session))
                                     found = true;
                             }
@@ -233,7 +234,9 @@ namespace Solid.Arduino
                     catch (UnauthorizedAccessException)
                     {
                         // Port is not available.
+#if TRACE
                         Debug.WriteLine("{0} NOT AVAILABLE; ", portNames[x]);
+#endif
                         break;
                     }
                     catch (TimeoutException)
@@ -242,7 +245,9 @@ namespace Solid.Arduino
                     }
                     catch (IOException ex)
                     {
+#if TRACE
                         Debug.WriteLine($"HResult 0x{ex.HResult:X} - {ex.Message}");
+#endif
                     }
                 }
             }

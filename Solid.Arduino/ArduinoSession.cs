@@ -899,7 +899,7 @@ namespace Solid.Arduino
             {
                 int serialByte = _connection.ReadByte();
 
-#if DEBUG
+#if TRACE
                 if (_messageBufferIndex > 0 && _messageBufferIndex % 8 == 0)
                     Debug.WriteLine(string.Empty);
 
