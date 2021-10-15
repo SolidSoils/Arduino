@@ -1010,11 +1010,11 @@ namespace Solid.Arduino
             {
                 case MessageHeader.AnalogState:
                     _processMessage = ProcessAnalogStateMessage;
-                    break;
+                    return;
 
                 case MessageHeader.DigitalState:
                     _processMessage = ProcessDigitalStateMessage;
-                    break;
+                    return;
 
                 case MessageHeader.SystemExtension:
                     header = (MessageHeader)serialByte;
@@ -1023,25 +1023,29 @@ namespace Solid.Arduino
                     {
                         case MessageHeader.SystemExtension:
                             _processMessage = ProcessSysExMessage;
-                            break;
+                            return;
 
                         case MessageHeader.ProtocolVersion:
                             _processMessage = ProcessProtocolVersionMessage;
-                            break;
+                            return;
 
                         //case MessageHeader.SetPinMode:
                         //case MessageHeader.SystemReset:
                         default:
                             // 0xF? command not supported.
-                            throw new NotImplementedException(string.Format(Messages.NotImplementedEx_Command, serialByte));
+                            break;
                     }
 
                     break;
 
                 default:
                     // Command not supported.
-                    throw new NotImplementedException(string.Format(Messages.NotImplementedEx_Command, serialByte));
+                    break;
             }
+
+            // Ignore unexpected command.
+            _messageBuffer[0] = 0;
+            _messageBufferIndex = 0;
         }
 
         private void ProcessAnalogStateMessage(int messageByte)
@@ -1136,7 +1140,7 @@ namespace Solid.Arduino
                     return;
 
                 default: // Unknown or unsupported message
-                    throw new NotImplementedException();
+                    throw new NotSupportedException(string.Format(Messages.NotSupportedResponse, _messageBuffer[1]));
             }
         }
 

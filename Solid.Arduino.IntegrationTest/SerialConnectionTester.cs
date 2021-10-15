@@ -1,10 +1,5 @@
-﻿using System;
-using System.IO.Ports;
-using System.Runtime.CompilerServices;
-using System.Threading;
+﻿using System.IO.Ports;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Solid.Arduino;
 
 namespace Solid.Arduino.IntegrationTest
 {
@@ -23,6 +18,12 @@ namespace Solid.Arduino.IntegrationTest
         [TestMethod]
         public void FindSerialConnection_FirmataEnabled()
         {
+            if (SerialPort.GetPortNames().Length == 0)
+            {
+                // No serial ports available.
+                return;
+            }
+
             using (var arduinoConnection = SerialConnection.Find())
             {
                 Assert.IsNotNull(arduinoConnection);
@@ -39,6 +40,12 @@ namespace Solid.Arduino.IntegrationTest
         [TestMethod]
         public void FindSerialConnection_Serial()
         {
+            if (SerialPort.GetPortNames().Length == 0)
+            {
+                // No serial ports available.
+                return;
+            }
+
             using (var arduinoConnection = SerialConnection.Find("Hello?", "Arduino!"))
             {
                 Assert.IsNotNull(arduinoConnection);

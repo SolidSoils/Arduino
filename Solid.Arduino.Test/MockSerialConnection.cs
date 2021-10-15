@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.IO.Ports;
-using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Solid.Arduino.Test
@@ -186,9 +185,9 @@ namespace Solid.Arduino.Test
             Task t = Task.Run(handler);
 
             while (t.Status != TaskStatus.Running)
-                System.Threading.Thread.Sleep(1);
+                Thread.Sleep(1);
 
-            System.Threading.Thread.Sleep(3);
+            Thread.Sleep(3);
 
             while (_responseQueue.Count > 0)
                 ReceiveData(_responseQueue.Peek());
@@ -205,7 +204,7 @@ namespace Solid.Arduino.Test
 
         public void MockReceiveDelayed(string data)
         {
-            System.Threading.Thread.Sleep(20);
+            Thread.Sleep(20);
 
             _responseQueue.Enqueue(Encoding.ASCII.GetBytes(data));
             _responseByteCount += data.Length;

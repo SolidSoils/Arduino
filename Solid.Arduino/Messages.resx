@@ -172,7 +172,10 @@
     <value>Pin is not supported.</value>
   </data>
   <data name="NotImplementedEx_Command" xml:space="preserve">
-    <value>Commandbyte {0:X} is not implemented.</value>
+    <value>Commandbyte 0x{0:X} is not implemented.</value>
+  </data>
+  <data name="NotSupportedResponse" xml:space="preserve">
+    <value>Response message code 0x{0:X} is not supported.</value>
   </data>
   <data name="OverflowEx_CmdBufferFull" xml:space="preserve">
     <value>The command parsing buffer is full.</value>

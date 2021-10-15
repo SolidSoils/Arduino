@@ -1388,7 +1388,12 @@
         </member>
         <member name="P:Solid.Arduino.Messages.NotImplementedEx_Command">
             <summary>
-              Looks up a localized string similar to Commandbyte {0:X} is not implemented..
+              Looks up a localized string similar to Commandbyte 0x{0:X} is not implemented..
+            </summary>
+        </member>
+        <member name="P:Solid.Arduino.Messages.NotSupportedResponse">
+            <summary>
+              Looks up a localized string similar to Response message code 0x{0:X} is not supported..
             </summary>
         </member>
         <member name="P:Solid.Arduino.Messages.OverflowEx_CmdBufferFull">

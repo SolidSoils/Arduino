@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.IO.Ports;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Solid.Arduino;
 
 namespace Solid.Arduino.Test
 {
@@ -15,6 +10,12 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_Constructor_WithoutParameters()
         {
+            if (!AreSerialPortsAvailable())
+            {
+                Assert.ThrowsException<ArgumentNullException>(() => new SerialConnection());
+                return;
+            }
+
             var connection = new SerialConnection();
             Assert.AreEqual(100, connection.ReadTimeout);
             Assert.AreEqual(100, connection.WriteTimeout);
@@ -33,6 +34,9 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_OpenAndClose()
         {
+            if (!AreSerialPortsAvailable())
+                return;
+
             var connection = new SerialConnection();
             connection.Open();
             connection.Close();
@@ -41,10 +45,18 @@ namespace Solid.Arduino.Test
         [TestMethod]
         public void SerialConnection_OpenAndDoubleClose()
         {
+            if (!AreSerialPortsAvailable())
+                return;
+
             var connection = new SerialConnection();
             connection.Open();
             connection.Close();
             connection.Close();
+        }
+
+        private static bool AreSerialPortsAvailable()
+        {
+            return SerialPort.GetPortNames().Length > 0;
         }
     }
 }

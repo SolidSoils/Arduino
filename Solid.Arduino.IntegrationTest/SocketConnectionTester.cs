@@ -1,8 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Solid.Arduino.IntegrationTest
@@ -13,13 +10,6 @@ namespace Solid.Arduino.IntegrationTest
     [TestClass]
     public class SocketConnectionTester
     {
-        public SocketConnectionTester()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
         private TestContext testContextInstance;
 
         /// <summary>

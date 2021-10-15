@@ -223,11 +223,20 @@ namespace Solid.Arduino {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commandbyte {0:X} is not implemented..
+        ///   Looks up a localized string similar to Commandbyte 0x{0:X} is not implemented..
         /// </summary>
         internal static string NotImplementedEx_Command {
             get {
                 return ResourceManager.GetString("NotImplementedEx_Command", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Response message code 0x{0:X} is not supported..
+        /// </summary>
+        internal static string NotSupportedResponse {
+            get {
+                return ResourceManager.GetString("NotSupportedResponse", resourceCulture);
             }
         }
         

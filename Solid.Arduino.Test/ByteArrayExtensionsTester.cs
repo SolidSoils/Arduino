@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Solid.Arduino;
 using Solid.Arduino.Firmata;
 
 namespace Solid.Arduino.Test
@@ -15,13 +10,6 @@ namespace Solid.Arduino.Test
     [TestClass]
     public class ByteArrayExtensionsTester
     {
-        public ByteArrayExtensionsTester()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
         private TestContext testContextInstance;
 
         /// <summary>

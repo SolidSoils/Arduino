@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Solid.Arduino;
-using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Solid.Arduino.Test
 {
@@ -18,13 +12,6 @@ namespace Solid.Arduino.Test
     [TestClass]
     public class IStringProtocolTester
     {
-        public IStringProtocolTester()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -188,11 +175,11 @@ namespace Solid.Arduino.Test
 
             var t = Task.Run(() =>
                 {
-                    string data = session.Read(1000);
+                    string data = session.Read(2048);
                 }
             );
 
-            connection.MockReceiveDelayed(new string('*', 1000));
+            connection.MockReceiveDelayed(new string('*', 40480));
 
             await t;
         }
