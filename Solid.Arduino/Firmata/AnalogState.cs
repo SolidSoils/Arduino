@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the analog level read from or set to an analog pin.
     /// </summary>
-    public struct AnalogState
+    public sealed class AnalogState
     {
         /// <summary>
         /// Gets the MIDI channel number (0 - 15).

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a mapping between a MIDI channel and a physical pin number.
     /// </summary>
-    public struct AnalogPinMapping
+    public sealed class AnalogPinMapping
     {
         /// <summary>
         /// Gets the MIDI channel number (0 - 15).

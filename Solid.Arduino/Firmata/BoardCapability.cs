@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a summary of pinmode capabilities supported by an Arduino board.
     /// </summary>
-    public struct BoardCapability
+    public sealed class BoardCapability
     {
         /// <summary>
         /// Gets the capability array of the board's pins.

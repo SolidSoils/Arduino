@@ -17,6 +17,6 @@
         /// <summary>
         /// Gets the string value being received.
         /// </summary>
-        public string Text { get { return _text; } }
+        public string Text => _text;
     }
 }

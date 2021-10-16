@@ -3,7 +3,7 @@
     /// <summary>
     /// Contains information about a pin's state.
     /// </summary>
-    public struct PinState
+    public sealed class PinState
     {
         /// <summary>
         /// The 0-based pin number

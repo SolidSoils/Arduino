@@ -17,7 +17,6 @@ namespace Solid.Arduino.I2C
         /// <summary>
         /// Gets the I2C message value being received.
         /// </summary>
-        public I2CReply Value { get { return _value; } }
-
+        public I2CReply Value => _value;
     }
 }

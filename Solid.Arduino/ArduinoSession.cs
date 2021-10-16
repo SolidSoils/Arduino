@@ -52,15 +52,16 @@ namespace Solid.Arduino
     ///        pincap.Servo,
     ///        pincap.ServoResolution);
     /// }
+    /// 
     /// Console.WriteLine();
     /// Console.ReadLine();
     /// </code>
     /// </example>
     public class ArduinoSession : IFirmataProtocol, IServoProtocol, II2CProtocol, IStringProtocol, IDisposable
     {
-        #region Type declarations
+        #region Private types
 
-        private delegate void ProcessMessageHandler(int messageByte);
+        private delegate void ProcessMessageHandler(byte messageByte);
 
         private enum MessageHeader
         {
@@ -104,16 +105,15 @@ namespace Solid.Arduino
                 _terminator = terminator;
             }
 
-            public char Terminator { get { return _terminator; } }
-            public int BlockLength { get { return _blockLength; } }
-            public StringReadMode Mode { get { return _mode; } }
+            public char Terminator => _terminator;
+            public int BlockLength => _blockLength;
+            public StringReadMode Mode => _mode;
         }
 
         #endregion
 
         private const byte AnalogMessage = 0xE0;
         private const byte DigitalMessage = 0x90;
-        private const byte VersionReportHeader = 0xF9;
         private const byte SysExStart = 0xF0;
         private const byte SysExEnd = 0xF7;
 
@@ -131,7 +131,7 @@ namespace Solid.Arduino
         private int _messageTimeout = -1;
         private ProcessMessageHandler _processMessage;
         private int _messageBufferIndex, _stringBufferIndex;
-        private readonly int[] _messageBuffer = new int[Buffersize];
+        private readonly byte[] _messageBuffer = new byte[Buffersize];
         private readonly char[] _stringBuffer = new char[Buffersize];
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Solid.Arduino
         /// </remarks>
         public int TimeOut
         {
-            get { return _messageTimeout; }
+            get => _messageTimeout;
             set
             {
                 if (value < SerialPort.InfiniteTimeout)
@@ -218,8 +218,8 @@ namespace Solid.Arduino
         /// </remarks>
         public string NewLine
         {
-            get { return _connection.NewLine; }
-            set { _connection.NewLine = value; }
+            get => _connection.NewLine;
+            set => _connection.NewLine = value;
         }
 
         /// <inheritdoc cref="IStringProtocol.Write"/>
@@ -743,6 +743,9 @@ namespace Solid.Arduino
 
         #region IDisposable
 
+        /// <summary>
+        /// Closes the underlying connection.
+        /// </summary>
         public void Dispose()
         {
             if (!_gotOpenConnection)
@@ -755,7 +758,7 @@ namespace Solid.Arduino
 
         #region Private Methods
 
-        private void WriteMessageByte(int dataByte)
+        private void WriteMessageByte(byte dataByte)
         {
             if (_messageBufferIndex == Buffersize)
                 throw new OverflowException(Messages.OverflowEx_CmdBufferFull);
@@ -809,16 +812,10 @@ namespace Solid.Arduino
                 {
                     if (_receivedMessageList.Count > 0)
                     {
-                        var message = (from firmataMessage in _receivedMessageList
-                            where firmataMessage.Type == awaitedMessage.Type
-                            select firmataMessage).FirstOrDefault();
+                        FirmataMessage message = _receivedMessageList.FirstOrDefault(m => m.Type == awaitedMessage.Type);
+
                         if (message != null)
                         {
-                            //if (_receivedMessageQueue.Count > 0
-                            //    && _receivedMessageQueue.Select( fm => fm.Type == awaitedMessage.Type).First()) // .Find(FirmataMessage =>) .First().Type == awaitedMessage.Type)
-                            //{
-                            //FirmataMessage message = _receivedMessageQueue.First.Value;
-                            //_receivedMessageQueue.RemoveFirst();
                             _receivedMessageList.Remove(message);
                             Monitor.PulseAll(_receivedMessageList);
                             return message;
@@ -897,7 +894,7 @@ namespace Solid.Arduino
         {
             while (_connection.IsOpen && _connection.BytesToRead > 0)
             {
-                int serialByte = _connection.ReadByte();
+                var serialByte = (byte)_connection.ReadByte();
 
 #if TRACE
                 if (_messageBufferIndex > 0 && _messageBufferIndex % 8 == 0)
@@ -1000,7 +997,7 @@ namespace Solid.Arduino
             }
         }
 
-        private void ProcessCommand(int serialByte)
+        private void ProcessCommand(byte serialByte)
         {
             _messageBuffer[0] = serialByte;
             _messageBufferIndex = 1;
@@ -1048,7 +1045,7 @@ namespace Solid.Arduino
             _messageBufferIndex = 0;
         }
 
-        private void ProcessAnalogStateMessage(int messageByte)
+        private void ProcessAnalogStateMessage(byte messageByte)
         {
             if (_messageBufferIndex < 2)
             {
@@ -1068,7 +1065,7 @@ namespace Solid.Arduino
             }
         }
 
-        private void ProcessDigitalStateMessage(int messageByte)
+        private void ProcessDigitalStateMessage(byte messageByte)
         {
             if (_messageBufferIndex < 2)
             {
@@ -1088,7 +1085,7 @@ namespace Solid.Arduino
             }
         }
 
-        private void ProcessProtocolVersionMessage(int messageByte)
+        private void ProcessProtocolVersionMessage(byte messageByte)
         {
             if (_messageBufferIndex < 2)
             {
@@ -1105,7 +1102,7 @@ namespace Solid.Arduino
             }
         }
 
-        private void ProcessSysExMessage(int messageByte)
+        private void ProcessSysExMessage(byte messageByte)
         {
             if (messageByte != SysExEnd)
             {
@@ -1113,33 +1110,34 @@ namespace Solid.Arduino
                 return;
             }
 
-            switch (_messageBuffer[1])
+            switch ((SysExCommand)_messageBuffer[1])
             {
-                case 0x6A: // AnalogMappingResponse
+                case SysExCommand.AnalogMappingResponse:
                     DeliverMessage(CreateAnalogMappingResponse());
                     return;
 
-                case 0x6C: // CapabilityResponse
+                case SysExCommand.CapabilityResponse:
                     DeliverMessage(CreateCapabilityResponse());
                     return;
 
-                case 0x6E: // PinStateResponse
+                case SysExCommand.PinStateResponse:
                     DeliverMessage(CreatePinStateResponse());
                     return;
 
-                case 0x71: // StringData
+                case SysExCommand.StringData:
                     DeliverMessage(CreateStringDataMessage());
                     return;
 
-                case 0x77: // I2cReply
+                case SysExCommand.I2cReply:
                     DeliverMessage(CreateI2CReply());
                     return;
 
-                case 0x79: // FirmwareResponse
+                case SysExCommand.ReportFirmware:
                     DeliverMessage(CreateFirmwareResponse());
                     return;
 
                 default: // Unknown or unsupported message
+                    
                     throw new NotSupportedException(string.Format(Messages.NotSupportedResponse, _messageBuffer[1]));
             }
         }

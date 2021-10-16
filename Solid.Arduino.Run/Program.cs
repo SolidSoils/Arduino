@@ -11,11 +11,12 @@ namespace Solid.Arduino.Run
     {
         static void Main(string[] args)
         {
-            ISerialConnection connection = GetConnection();
+            // DisplayPortCapabilities();
 
-            if (connection != null)
-                using (var session = new ArduinoSession(connection))
-                    PerformBasicTest(session);
+            ISerialConnection connection = new EnhancedSerialConnection("COM4", SerialBaudRate.Bps_57600);
+
+            using (var session = new ArduinoSession(connection))
+                PerformBasicTest(session);
 
             Console.WriteLine("Press a key");
             Console.ReadKey(true);
@@ -53,8 +54,13 @@ namespace Solid.Arduino.Run
 
         private static void DisplayPortCapabilities()
         {
-            using (var session = new ArduinoSession(new EnhancedSerialConnection("COM3", SerialBaudRate.Bps_57600)))
+            using (var session = new ArduinoSession(new EnhancedSerialConnection("COM4", SerialBaudRate.Bps_57600)))
             {
+                session.StringReceived += (object sender, StringEventArgs eventArgs) =>
+                {
+                    Console.WriteLine(eventArgs.Text);
+                };
+
                 BoardCapability cap = session.GetBoardCapability();
                 Console.WriteLine();
                 Console.WriteLine("Board Capability:");
@@ -80,7 +86,7 @@ namespace Solid.Arduino.Run
 
         private void TimeTest()
         {
-            var session = new ArduinoSession(new SerialConnection("COM3", SerialBaudRate.Bps_57600)) {TimeOut = 1000};
+            var session = new ArduinoSession(new SerialConnection("COM4", SerialBaudRate.Bps_57600)) {TimeOut = 1000};
             session.MessageReceived += Session_OnMessageReceived;
 
             var firmata = (II2CProtocol)session;

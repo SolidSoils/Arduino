@@ -16,8 +16,8 @@ namespace Solid.Arduino.Firmata
         /// <exception cref="ArgumentException">The array contains one or more non-BCD bytes.</exception>
         public static string ConvertBinaryCodedDecimalToString(this byte[] data, bool isLittleEndian = false)
         {
-            if (data == null)
-                throw new ArgumentNullException();
+            if (data is null)
+                throw new ArgumentNullException(nameof(data));
 
             if (data.Length == 0)
                 return string.Empty;

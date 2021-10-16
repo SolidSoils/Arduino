@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a string exchanged with the Firmata SYSEX STRING_DATA command.
     /// </summary>
-    public struct StringData
+    public sealed class StringData
     {
         /// <summary>
         /// Gets or sets the string.

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a summary of mappings between MIDI channels and physical pin numbers.
     /// </summary>
-    public struct BoardAnalogMapping
+    public sealed class BoardAnalogMapping
     {
         /// <summary>
         /// Gets the channel mapping array of the board's analog pins.

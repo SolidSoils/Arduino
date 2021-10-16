@@ -3,7 +3,7 @@
     /// <summary>
     /// Identifies the Arduino board's firmware.
     /// </summary>
-    public struct Firmware
+    public sealed class Firmware
     {
         /// <summary>
         /// Gets the major version number.

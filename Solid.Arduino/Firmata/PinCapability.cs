@@ -3,7 +3,7 @@
     /// <summary>
     /// Contains information about the capabilities of a pin.
     /// </summary>
-    public struct PinCapability
+    public sealed class PinCapability
     {
         /// <summary>
         /// Gets the 0-based number of the pin.

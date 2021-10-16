@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the Firmata communication protocol version.
     /// </summary>
-    public struct ProtocolVersion
+    public sealed class ProtocolVersion
     {
         /// <summary>
         /// Gets or sets the major version number.

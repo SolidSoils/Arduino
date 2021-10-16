@@ -14,13 +14,19 @@ The library implements the serial ASCII, Firmata and I2C protocols, which can be
 Upgrade to .NET Standard 2.0
 Fixed compatibility with Firmata 2.6</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/SolidSoils/Arduino</RepositoryUrl>
-    <PackageIcon>SolidSoilsLogo.jpg</PackageIcon>
-    <PackageIconUrl />
+    <PackageIconUrl>https://secure.gravatar.com/avatar/112117ab5b25236518383750d7c82b27</PackageIconUrl>
     <Product>SolidSoils4Arduino</Product>
+    <ProductName>Solid Soils for Arduino</ProductName>
+    <ProductVersion>1.1.0</ProductVersion>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Data\Git\Arduino\Solid.Arduino\Solid.Arduino.xml</DocumentationFile>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants></DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants />
@@ -45,11 +51,5 @@ Fixed compatibility with Firmata 2.6</PackageReleaseNotes>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Documentation\icons\SolidSoilsLogo.jpg">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 </Project>
