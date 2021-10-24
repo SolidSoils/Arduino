@@ -17,7 +17,7 @@ and directs them to the appropriate requestors (synchronous as well as asynchron
 Currently [Standard Firmata 2.6](https://github.com/firmata/protocol/blob/master/protocol.md) is supported.
 (Extra capabilities of Standard Firmata Plus and Configurable Firmata are currently not supported by this client library.)
 
-Technology: C#/Microsoft .NET Standard 2.0
+Technology: C#/Microsoft .NET Standard 2.1
 
 Dependencies: none
 
