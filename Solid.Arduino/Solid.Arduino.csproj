@@ -1,35 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>SolidSoils.Arduino.Client</PackageId>
     <Authors>Henk van Boeijen</Authors>
     <Company>Solid Soils Solutions</Company>
-    <Description>Client library built on .NET Standard 2.0 and providing an easy way to interact with Arduino boards.
+    <Description>Client library built on .NET Standard 2.1, providing an easy way to interact with Arduino boards.
 The library implements the serial ASCII, Firmata and I2C protocols, which can be used simultaneously.</Description>
     <Copyright>Copyright 2013-2021 Solid Soils Solutions</Copyright>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <PackageProjectUrl>https://github.com/SolidSoils/Arduino</PackageProjectUrl>
     <PackageTags>Arduino Firmata I2C serial</PackageTags>
-    <PackageReleaseNotes>Documentation fix &amp; cleanup
+    <PackageReleaseNotes>Upgrade to .NET Standard 2.1
+Documentation fix &amp; cleanup
 Upgrade to .NET Standard 2.0
 Fixed compatibility with Firmata 2.6</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/SolidSoils/Arduino</RepositoryUrl>
     <PackageIconUrl>https://secure.gravatar.com/avatar/112117ab5b25236518383750d7c82b27</PackageIconUrl>
     <Product>SolidSoils4Arduino</Product>
     <ProductName>Solid Soils for Arduino</ProductName>
-    <ProductVersion>1.1.0</ProductVersion>
+    <ProductVersion>1.1.1</ProductVersion>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.1</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Data\Git\Arduino\Solid.Arduino\Solid.Arduino.xml</DocumentationFile>
-    <DefineConstants></DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants />
+    <DocumentationFile>D:\Data\repos\Arduino\Solid.Arduino\Solid.Arduino.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
